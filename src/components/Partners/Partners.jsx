@@ -10,28 +10,28 @@ const Partners = () => {
       categoryTitle: "Donor",
       title: "",
       logo: "./eu.png",
-      link: "",
+      link: "https://european-union.europa.eu/index_en",
     },
     {
       categoryID: 2,
       categoryTitle: "Other Partners",
       title: "",
       logo: "./creasion 1.png",
-      link: "",
+      link: "https://creasion.org/",
     },
     {
       categoryID: 2,
       categoryTitle: "Other Partners",
       title: "",
       logo: "./Youth_Innovation_Lab.png",
-      link: "",
+      link: "https://www.youthinnovationlab.org/",
     },
     {
       categoryID: 2,
       categoryTitle: "Other Partners",
       title: "",
       logo: "./restless_development.png",
-      link: "",
+      link: "https://restlessdevelopment.org/country/nepal/",
     },
   ];
 
@@ -61,7 +61,9 @@ const Partners = () => {
                   key={index}
                   style={{ textAlign: "center" }}
                 >
-                  <img src={val.logo} alt="" />
+                  <a href={val.link} target="_blank">
+                    <img src={val.logo} alt="" />
+                  </a>
                 </Grid>
               );
             })}
@@ -80,7 +82,9 @@ const Partners = () => {
                   key={index}
                   style={{ textAlign: "center" }}
                 >
-                  <img src={val.logo} alt="" />
+                  <a href={val.link} target="_blank">
+                    <img src={val.logo} alt="" />
+                  </a>
                 </Grid>
               );
             })}

@@ -4,10 +4,14 @@ import VerticalScroll from "@/components/VerticalScroll";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import { Card, Container, Grid } from "@mui/material";
 
+// Components
 import BannerWave from "../components/BannerCurve";
 import Wave from "../components/Curve";
+
+// Sections
 import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
+import NepalMap from "../components/NepalMap";
 
 import useSnoothScroll from "@/hook/use-smooth-scroll";
 
@@ -112,10 +116,28 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className={homeStyle.focus_area}>
+      <section className={homeStyle.impacts_map}>
         <div className={homeStyle.curve}>
-          <Wave fill="#1e607a" />
+          <Wave fill="#e9d5aa80" />
         </div>
+        <Container maxWidth="lg">
+          <h2 style={{ textAlign: "center" }}>Where we Work</h2>
+
+          <Container maxWidth="sm" style={{ textAlign: "center" }}>
+            <p>
+              GreenShift Nepal will work with waste enterprises, SMEs, CSOs of
+              waste workers, youths, school children, and three tiers of
+              government in the promotion of circular economy of plastics.
+            </p>
+          </Container>
+          <NepalMap />
+        </Container>
+      </section>
+
+      <section className={homeStyle.focus_area}>
+        {/* <div className={homeStyle.curve}>
+          <Wave fill="#1e607a" />
+        </div> */}
 
         <Container maxWidth="lg">
           <h2 style={{ textAlign: "center" }}>Focus Areas</h2>
