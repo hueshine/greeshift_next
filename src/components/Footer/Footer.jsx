@@ -10,8 +10,7 @@ import footerStyle from "@/styles/footer.module.scss";
 const Footer = () => {
   return (
     <footer className={footerStyle.footer}>
-      <h1>Footer</h1>
-      {/* <Container maxWidth="xl">
+      <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid item lg={3} className={footerStyle.logo}>
             <img src="./logo.png" alt="" />
@@ -79,7 +78,7 @@ const Footer = () => {
             </small>
           </p>
         </div>
-      </Container> */}
+      </Container>
     </footer>
   );
 };
