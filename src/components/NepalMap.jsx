@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useIsomorphicLayoutEffect } from "@/hook";
+
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
+import Drawer from "@mui/material/Drawer";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-const MapOfNepal = () => {
-  const markerStyle = {
-    fill: "#de024b",
-  };
+import componentStyle from "@/styles/component.module.scss";
 
-  const markerShadow = {
-    fill: "#6e6a617a",
-  };
+const MapOfNepal = () => {
+  const markerStyle = { fill: "#de024b" };
+
+  const markerShadow = { fill: "#6e6a617a" };
 
   const [municipality, setMunicipality] = React.useState("");
+
+  const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
     setMunicipality(event.target.value);
@@ -37,8 +40,59 @@ const MapOfNepal = () => {
     }
   };
 
+  const DrawerList = (
+    <div className={componentStyle.drawer_box}>
+      <h3>Kohalpur Municipality</h3>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis aut
+        quasi officiis quam recusandae et quibusdam nihil ea ut blanditiis
+        tenetur animi, consectetur corrupti placeat nulla quos saepe modi est
+        asperiores iure harum! Id, modi ab. Labore quis aperiam error est
+        voluptates ab quos harum, hic neque minima tempora. Repellendus
+        delectus, ut culpa officiis labore deserunt cum vitae laborum soluta
+        maiores temporibus eligendi, quae ea veritatis dolorum consequatur ex
+        ipsa! Nostrum perspiciatis facere dignissimos blanditiis, enim aliquam
+        velit facilis voluptatibus repudiandae accusantium quasi itaque.
+      </p>
+    </div>
+  );
+
+  useIsomorphicLayoutEffect(() => {
+    let markers = document.querySelectorAll(".markers");
+
+    markers.forEach((marker) => {
+      marker.addEventListener("click", () => {
+        setOpen(true);
+      });
+
+      marker.addEventListener("mouseenter", () => {
+        markers.forEach((marker) => marker.classList.add("hover-non"));
+        marker.classList.add("hover-active");
+        marker.classList.remove("hover-non");
+      });
+
+      marker.addEventListener("mouseleave", () => {
+        markers.forEach((marker) => {
+          marker.classList.remove("hover-non");
+          marker.classList.remove("hover-active");
+        });
+      });
+    });
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    console.log("hello");
+  }, [open]);
+
   return (
     <>
+      <Drawer
+        open={open}
+        onClose={() => setOpen(false)}
+        classList={componentStyle.drawer}
+      >
+        {DrawerList}
+      </Drawer>
       <Container maxWidth="sm">
         <Box sx={{ width: 320 }} style={{ margin: "40px auto" }}>
           <FormControl fullWidth>

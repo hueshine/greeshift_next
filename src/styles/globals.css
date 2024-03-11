@@ -324,6 +324,21 @@ img {
   transition: 0.5s all ease;
 }
 
+.markers {
+  position: relative;
+  z-index: 5;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.markers.hover-active {
+  opacity: 1;
+}
+
+.markers.hover-non {
+  opacity: 0.2;
+}
+
 @media screen and (max-width: 550px) {
   h1 {
     font-size: 62px;
