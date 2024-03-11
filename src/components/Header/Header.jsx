@@ -7,13 +7,18 @@ const Header = () => {
     <header className={headerStyle.header}>
       <Container maxWidth="xl">
         <Grid container alignItems="center">
-          <Grid item md={3}>
+          <Grid item md={5}>
             <div className={headerStyle.logo}>
-              <img src="./logo-reverse.png" alt="" />
+              <a href="" className={headerStyle.creasion}>
+                <img src="./creasion 1.png" alt="" />
+              </a>
+              <a href="">
+                <img src="./logo-reverse.png" alt="" />
+              </a>
             </div>
           </Grid>
 
-          <Grid item md={9}>
+          <Grid item md={7}>
             <ul className={headerStyle.nav}>
               <li>
                 <a href="">Home</a>

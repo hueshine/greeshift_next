@@ -4,8 +4,16 @@
   width: 100%;
 
   .logo {
+    .creasion {
+      margin-right: 25px;
+      img {
+        height: 85px;
+        width: auto;
+      }
+    }
+
     img {
-      width: 210px;
+      width: 180px;
     }
   }
   .nav {

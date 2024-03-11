@@ -59,7 +59,6 @@ const HomeFocusArea = () => {
               end: "bottom bottom",
               pin: true,
               pinSpacing: false,
-              markers: true,
               scrub: true,
             },
             yPercent: -25,
