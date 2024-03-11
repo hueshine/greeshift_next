@@ -8,15 +8,17 @@ import XIcon from "@mui/icons-material/X";
 import footerStyle from "@/styles/footer.module.scss";
 
 const Footer = () => {
+  let marginBottom = { marginBottom: "30px" };
+
   return (
     <footer className={footerStyle.footer}>
       <Container maxWidth="xl">
         <Grid container spacing={3}>
-          <Grid item lg={3} className={footerStyle.logo}>
+          <Grid item style={marginBottom} lg={3} className={footerStyle.logo}>
             <img src="./logo.png" alt="" />
           </Grid>
 
-          <Grid item lg={3}>
+          <Grid item style={marginBottom} lg={3}>
             <h6>Contact Us</h6>
             <a href="">Pabitra Pyara Mar, Baluwatar, Kathmandu</a>
             <a href="">+977-1234566</a>
@@ -35,7 +37,7 @@ const Footer = () => {
             </div>
           </Grid>
 
-          <Grid item lg={3}>
+          <Grid item style={marginBottom} lg={3}>
             <h6>Quick Links</h6>
             <a href="">About Us</a>
             <a href="">News & Updates</a>
@@ -43,7 +45,7 @@ const Footer = () => {
             <a href="">Join The Green Movement</a>
           </Grid>
 
-          <Grid item lg={3}>
+          <Grid item style={marginBottom} lg={3}>
             <div className={footerStyle.newsletter}>
               <h6>Let's Connect !</h6>
 

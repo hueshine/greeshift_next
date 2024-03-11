@@ -18,7 +18,7 @@ import useSnoothScroll from "@/hook/use-smooth-scroll";
 import homeStyle from "@/styles/home.module.scss";
 import Link from "next/link";
 
-import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 let newsData = [
   {
@@ -231,7 +231,7 @@ export default function Home() {
                           <h6>{val.title}</h6>
 
                           <Link href={""}>
-                            Read More <ArrowCircleRightOutlinedIcon />
+                            Read More <ArrowOutwardIcon />
                           </Link>
                         </Grid>
                       </Grid>
@@ -253,7 +253,7 @@ export default function Home() {
                   <h6>{newsData[0].title}</h6>
 
                   <Link href={""}>
-                    Read More <ArrowCircleRightOutlinedIcon />
+                    Read More <ArrowOutwardIcon />
                   </Link>
                 </div>
               </Card>
