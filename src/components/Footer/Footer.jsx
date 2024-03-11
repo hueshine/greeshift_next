@@ -71,7 +71,7 @@ const Footer = () => {
           </p>
           <p>
             <small>
-              Powered by{" "}
+              Powered by
               <a href="" target="_blank">
                 Hue Shine
               </a>
