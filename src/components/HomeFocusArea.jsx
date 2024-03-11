@@ -6,9 +6,12 @@ import homeStyle from "../styles/home.module.scss";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 
 // hooks
 import { useIsomorphicLayoutEffect } from "@/hook";
+
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 const HomeFocusArea = () => {
   const cardRrefs = useRef([]);
@@ -68,6 +71,11 @@ const HomeFocusArea = () => {
 
       ScrollTrigger.refresh();
     });
+
+    if (window.innerWidth < 500) {
+      ctx.revert();
+    }
+
     return () => ctx.revert();
   }, []);
 
@@ -90,6 +98,10 @@ const HomeFocusArea = () => {
                 <Grid item md={8}>
                   <h4>{val.title}</h4>
                   <p>{val.text}</p>
+
+                  <Link href="/">
+                    Read More <ArrowOutwardIcon />
+                  </Link>
                 </Grid>
               </Grid>
             </Container>

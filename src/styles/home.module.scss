@@ -44,6 +44,10 @@
   position: relative;
   background: rgba($color: #e9d5aa, $alpha: 0.5);
 
+  .curve {
+    top: -1px;
+  }
+
   svg {
     polygon {
       fill: rgba($color: #e9d5aa, $alpha: 0.2);
@@ -63,7 +67,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 50%;
+    height: 70%;
     z-index: -1;
     background: #1e607a;
   }
@@ -88,6 +92,28 @@
       h4 {
         margin-bottom: 35px;
         height: 68px;
+      }
+
+      a {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        opacity: 0.5;
+        transition: 0.3s;
+
+        &:hover {
+          opacity: 1;
+
+          svg {
+            transform: rotate(45deg);
+          }
+        }
+
+        svg {
+          margin-left: 5px;
+          transition: 0.5s;
+        }
       }
     }
   }
@@ -214,4 +240,25 @@
     margin-top: 0;
     padding-top: 120px;
   }
+}
+
+@media screen and (max-width: 550px) {
+  .home_news {
+    margin-top: 0;
+    padding-top: 120px;
+  }
+
+  .focusBox {
+    .focusCard {
+      border-radius: 0 !important;
+
+      h4 {
+        height: auto;
+      }
+    }
+  }
+}
+
+.impact_numbers {
+  margin-top: 80px;
 }

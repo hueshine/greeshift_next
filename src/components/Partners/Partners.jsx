@@ -72,7 +72,7 @@ const Partners = () => {
 
         <div className={partnerStyle.row}>
           <h5>Other Partners</h5>
-          <Grid container spacing={8}>
+          <Grid container spacing={8} style={{ justifyContent: "center" }}>
             {otherPartners.map((val, index) => {
               return (
                 <Grid

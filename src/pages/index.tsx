@@ -48,6 +48,37 @@ let newsData = [
   },
 ];
 
+let impactNumbers = [
+  {
+    num: 3,
+    numCaption: "",
+    title: "CSOs of WW",
+    icon: "",
+    text: "",
+  },
+  {
+    num: 11000,
+    numCaption: "",
+    title: "Young Students Reached",
+    icon: "",
+    text: "",
+  },
+  {
+    num: 9,
+    numCaption: "",
+    title: "Waste Smart Fellows",
+    icon: "",
+    text: "",
+  },
+  {
+    num: 36,
+    numCaption: "",
+    title: "Climate Smart Schools",
+    icon: "",
+    text: "",
+  },
+];
+
 export default function Home() {
   useSnoothScroll();
   return (
@@ -125,12 +156,18 @@ export default function Home() {
 
           <Container maxWidth="sm" style={{ textAlign: "center" }}>
             <p>
-              GreenShift Nepal will work with waste enterprises, SMEs, CSOs of
-              waste workers, youths, school children, and three tiers of
-              government in the promotion of circular economy of plastics.
+              GreenShift Nepal is a four-year project which will be implemented
+              in 9 municipalities – 3 in each of Bagmati, Madhesh, and Lumbini
+              provinces.
             </p>
           </Container>
           <NepalMap />
+
+          {/* <div className={homeStyle.impact_numbers}>
+            <h6>Projected Impacts</h6>
+
+            
+          </div> */}
         </Container>
       </section>
 
@@ -185,11 +222,11 @@ export default function Home() {
                         spacing={4}
                         style={{ alignItems: "center" }}
                       >
-                        <Grid item sm={3}>
+                        <Grid item md={3}>
                           <img src={val.image} alt="" />
                         </Grid>
 
-                        <Grid item sm={9} className={homeStyle.news_text}>
+                        <Grid item md={9} className={homeStyle.news_text}>
                           <p>{val.date}</p>
                           <h6>{val.title}</h6>
 
