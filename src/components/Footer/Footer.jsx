@@ -1,9 +1,10 @@
 import { Container, Grid } from "@mui/material";
 import React from "react";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import XIcon from "@mui/icons-material/X";
+
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 import footerStyle from "@/styles/footer.module.scss";
 
@@ -15,7 +16,16 @@ const Footer = () => {
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid item style={marginBottom} lg={3} className={footerStyle.logo}>
-            <img src="./logo.png" alt="" />
+            <a href="">
+              <img src="./logo.png" alt="" />
+            </a>
+
+            <a href="" target="_blank" className={footerStyle.logo_btn}>
+              Grievances
+              <div>
+                <ArrowOutwardIcon />
+              </div>
+            </a>
           </Grid>
 
           <Grid item style={marginBottom} lg={3}>
@@ -25,13 +35,13 @@ const Footer = () => {
             <a href="">greenshiftnepal@gmail.com</a>
 
             <div className={footerStyle.social}>
-              <a href="">
+              <a target="_blank">
                 <FacebookIcon />
               </a>
-              <a href="">
+              <a target="_blank">
                 <InstagramIcon />
               </a>
-              <a href="">
+              <a target="_blank">
                 <XIcon />
               </a>
             </div>
@@ -53,7 +63,7 @@ const Footer = () => {
                 <input type="text" placeholder="Your email address" />
 
                 <button>
-                  <ArrowRightAltIcon />
+                  <ArrowOutwardIcon />
                 </button>
               </div>
 

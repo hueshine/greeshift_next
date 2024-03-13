@@ -1,6 +1,10 @@
 import { Container, Grid } from "@mui/material";
 import React from "react";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+
 import partnerStyle from "@/styles/partners.module.scss";
 
 const Partners = () => {
@@ -14,29 +18,63 @@ const Partners = () => {
     },
     {
       categoryID: 2,
-      categoryTitle: "Other Partners",
+      categoryTitle: "Consortium Partners ",
       title: "",
       logo: "./creasion 1.png",
       link: "https://creasion.org/",
     },
     {
       categoryID: 2,
-      categoryTitle: "Other Partners",
+      categoryTitle: "Consortium Partners ",
       title: "",
       logo: "./Youth_Innovation_Lab.png",
       link: "https://www.youthinnovationlab.org/",
     },
     {
       categoryID: 2,
-      categoryTitle: "Other Partners",
+      categoryTitle: "Consortium Partners ",
       title: "",
       logo: "./restless_development.png",
       link: "https://restlessdevelopment.org/country/nepal/",
     },
+
+    {
+      categoryID: 3,
+      categoryTitle: "Goverment Partners ",
+      title: "",
+      logo: "./creasion 1.png",
+      link: "https://creasion.org/",
+    },
+    {
+      categoryID: 3,
+      categoryTitle: "Goverment Partners ",
+      title: "",
+      logo: "./restless_development.png",
+      link: "https://restlessdevelopment.org/country/nepal/",
+    },
+    {
+      categoryID: 3,
+      categoryTitle: "Goverment Partners ",
+      title: "",
+      logo: "./Youth_Innovation_Lab.png",
+      link: "https://www.youthinnovationlab.org/",
+    },
+
+    {
+      categoryID: 3,
+      categoryTitle: "Goverment Partners ",
+      title: "",
+      logo: "./6.png",
+      link: "https://www.youthinnovationlab.org/",
+    },
   ];
 
-  let donorData = partnersData.filter((item) => item.categoryID == 1);
-  let otherPartners = partnersData.filter((item) => item.categoryID == 2);
+  const groupData = partnersData.reduce((acc, partner) => {
+    acc[partner.categoryID] = acc[partner.categoryID] || [];
+    acc[partner.categoryID].push(partner);
+    return acc;
+  }, {});
+
   return (
     <section className={partnerStyle.partners}>
       <Container maxWidth="lg">
@@ -49,47 +87,32 @@ const Partners = () => {
           </p>
         </Container>
 
-        <div className={partnerStyle.row}>
-          <h5>Donor</h5>
-          <Grid container spacing={8} style={{ justifyContent: "center" }}>
-            {donorData.map((val, index) => {
-              return (
-                <Grid
-                  item
-                  sm={12}
-                  md={4}
-                  key={index}
-                  style={{ textAlign: "center" }}
-                >
-                  <a href={val.link} target="_blank">
-                    <img src={val.logo} alt="" />
-                  </a>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </div>
+        {Object.keys(groupData).map((categoryID) => (
+          <div className={partnerStyle.row} key={categoryID}>
+            <h5>{groupData[categoryID][0].categoryTitle}</h5>
 
-        <div className={partnerStyle.row}>
-          <h5>Other Partners</h5>
-          <Grid container spacing={8} style={{ justifyContent: "center" }}>
-            {otherPartners.map((val, index) => {
-              return (
-                <Grid
-                  item
-                  sm={12}
-                  md={4}
-                  key={index}
-                  style={{ textAlign: "center" }}
-                >
-                  <a href={val.link} target="_blank">
-                    <img src={val.logo} alt="" />
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={3}
+              speed={3500}
+              autoplay={{
+                delay: 4500,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              modules={[Autoplay]}
+              centeredSlides={groupData[categoryID].length < 2 ? true : false}
+            >
+              {groupData[categoryID].map((partner) => (
+                <SwiperSlide style={{ textAlign: "center" }}>
+                  <a href={partner.link}>
+                    <img src={partner.logo} alt={partner.title} />
                   </a>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        ))}
       </Container>
     </section>
   );

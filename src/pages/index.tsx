@@ -211,32 +211,30 @@ export default function Home() {
             <Grid item md={6}>
               {newsData.slice(1, 4).map((val, index) => {
                 return (
-                  <>
-                    <Card
-                      key={index}
-                      variant="outlined"
-                      className={homeStyle.news_card}
+                  <Card
+                    variant="outlined"
+                    key={index}
+                    className={homeStyle.news_card}
+                  >
+                    <Grid
+                      container
+                      spacing={4}
+                      style={{ alignItems: "center" }}
                     >
-                      <Grid
-                        container
-                        spacing={4}
-                        style={{ alignItems: "center" }}
-                      >
-                        <Grid item md={3}>
-                          <img src={val.image} alt="" />
-                        </Grid>
-
-                        <Grid item md={9} className={homeStyle.news_text}>
-                          <p>{val.date}</p>
-                          <h6>{val.title}</h6>
-
-                          <Link href={""}>
-                            Read More <ArrowOutwardIcon />
-                          </Link>
-                        </Grid>
+                      <Grid item md={4}>
+                        <img src={val.image} alt="" />
                       </Grid>
-                    </Card>
-                  </>
+
+                      <Grid item md={8} className={homeStyle.news_text}>
+                        <p>{val.date}</p>
+                        <h6>{val.title}</h6>
+
+                        <Link href={""}>
+                          Read More <ArrowOutwardIcon />
+                        </Link>
+                      </Grid>
+                    </Grid>
+                  </Card>
                 );
               })}
             </Grid>
