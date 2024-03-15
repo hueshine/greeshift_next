@@ -1,7 +1,5 @@
 import Head from "next/head";
 
-import VerticalScroll from "@/components/VerticalScroll";
-import HorizontalScroll from "@/components/HorizontalScroll";
 import { Card, Container, Grid } from "@mui/material";
 
 // Components
@@ -11,7 +9,7 @@ import Wave from "../components/Curve";
 // Sections
 import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
-import NepalMap from "../components/NepalMap";
+import MapComponent from "../components/MapComponent/MapComponent";
 
 import useSnoothScroll from "@/hook/use-smooth-scroll";
 
@@ -161,13 +159,7 @@ export default function Home() {
               provinces.
             </p>
           </Container>
-          <NepalMap />
-
-          {/* <div className={homeStyle.impact_numbers}>
-            <h6>Projected Impacts</h6>
-
-            
-          </div> */}
+          <MapComponent />
         </Container>
       </section>
 

@@ -103,8 +103,8 @@ const Partners = () => {
               modules={[Autoplay]}
               centeredSlides={groupData[categoryID].length < 2 ? true : false}
             >
-              {groupData[categoryID].map((partner) => (
-                <SwiperSlide style={{ textAlign: "center" }}>
+              {groupData[categoryID].map((partner, index) => (
+                <SwiperSlide key={index} style={{ textAlign: "center" }}>
                   <a href={partner.link}>
                     <img src={partner.logo} alt={partner.title} />
                   </a>

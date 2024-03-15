@@ -14,10 +14,13 @@
     "@mui/icons-material": "^5.15.12",
     "@mui/material": "^5.15.12",
     "@studio-freight/lenis": "^1.0.26",
+    "@types/mapbox-gl": "^3.1.0",
     "gsap": "file:gsap-bonus.tgz",
+    "mapbox-gl": "^3.2.0",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-map-gl": "^7.1.7",
     "sass": "^1.71.1",
     "styled-components": "^6.0.8",
     "swiper": "^11.0.7"
