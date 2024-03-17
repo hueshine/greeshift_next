@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useEffect } from "react";
+import React, { useState} from "react";
 import { useIsomorphicLayoutEffect } from "@/hook";
 
 import { Container, Grid } from "@mui/material";
@@ -18,6 +18,7 @@ import mapboxgl from "!mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import Drawer from "@mui/material/Drawer";
+import LinearProgress from '@mui/material/LinearProgress';
 
 import { Source, Layer } from "react-map-gl";
 
@@ -25,7 +26,9 @@ const MapComponent = () => {
   const [open, setOpen] = useState(false);
   const [popupInfo, setPopupInfo] = useState(null);
 
-  const [municipality, setMunicipality] = React.useState("");
+  const [municipality, setMunicipality] = useState("");
+
+  let [clickedMarkerIndex, setClickedMarkerIndex] = useState(null);
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoieW9nZXNoa2Fya2kiLCJhIjoiY2txZXphNHNlMGNybDJ1cXVmeXFiZzB1eSJ9.A7dJUR4ppKJDKWZypF_0lA";
@@ -41,12 +44,16 @@ const MapComponent = () => {
   };
 
   const closeDrawer = () => {
+    setClickedMarkerIndex(null);
     setMunicipality("Select Municipality");
     setOpen(false);
     setPopupInfo(null);
   };
 
   const handleChange = (event) => {
+
+
+
     setMunicipality(event.target.value);
 
     let selected = event.target.value;
@@ -54,16 +61,13 @@ const MapComponent = () => {
     const filterData = MunicipalityData.filter(
       (data) => data.municipality == selected
     );
+    
+    setClickedMarkerIndex(filterData[0].id -1 );
 
-    console.log(filterData[0]);
 
     setOpen(true);
     setPopupInfo(filterData[0]);
   };
-
-  useIsomorphicLayoutEffect(() => {
-    console.log(popupInfo && popupInfo.municipality);
-  }, [popupInfo]);
 
   const [viewport, setViewport] = useState({
     latitude: 28.3534542,
@@ -80,9 +84,16 @@ const MapComponent = () => {
       onClick={(e) => {
         setOpen(true);
         setPopupInfo(city);
+        setClickedMarkerIndex(index);
       }}
     >
-      <img src="./pin.png" alt="" className={componentStyle.map_pin} />
+      <img
+        src="./pin.png"
+        alt=""
+        className={`${componentStyle.map_pin} marker-pin ${
+          clickedMarkerIndex === index ? "hover-active" : ""
+        }`}
+      />
     </Marker>
   ));
 
@@ -104,21 +115,22 @@ const MapComponent = () => {
             </p>
           </div>
 
-          <ul>
+          <ul class={componentStyle.list} >
             <li>
-              <strong>Climate Fellows </strong>: 0
+            
+              <span>Climate Fellows :</span><strong>2</strong>
             </li>
             <li>
-              <strong>Young People Reached </strong>: 1
+              <span>Young People Reached : </span><strong>1</strong>
             </li>
             <li>
-              <strong>Government Representatives Oriented </strong>: 0
+              <span>Government Representatives Oriented : </span><strong>0</strong>
             </li>
             <li>
-              <strong>Point Data Collected </strong>: 0
+              <span>Point Data Collected : </span><strong>0</strong>
             </li>
             <li>
-              <strong>Community People Reached </strong>: 0
+              <span>Community People Reached : </span><strong>0</strong>
             </li>
           </ul>
         </>
@@ -127,6 +139,8 @@ const MapComponent = () => {
       )}
     </div>
   );
+
+
   return (
     <>
       <Container maxWidth="sm">
@@ -144,7 +158,7 @@ const MapComponent = () => {
             >
               {MunicipalityData.map((val, index) => {
                 return (
-                  <MenuItem value={val.municipality} key={index}>
+                  <MenuItem value={val.municipality}  key={index}>
                     {val.municipality}
                   </MenuItem>
                 );
@@ -154,19 +168,21 @@ const MapComponent = () => {
         </Box>
       </Container>
 
-      <Map
-        {...viewport}
-        classList={componentStyle.map}
-        mapboxAccessToken={mapboxgl.accessToken}
-        dragPan={false}
-        mapStyle="mapbox://styles/yogeshkarki/cltppcq79000601qz3rkz2ogc"
-      >
-        {pins}
+      <div className="map-container">
+        <Map
+          {...viewport}
+          classList={componentStyle.map}
+          mapboxAccessToken={mapboxgl.accessToken}
+          dragPan={false}
+          mapStyle="mapbox://styles/yogeshkarki/cltppcq79000601qz3rkz2ogc"
+        >
+          {pins}
 
-        <Source id="nepalMap" type="geojson" data={NepalDisrticts}>
-          <Layer {...mapStyleLine} />
-        </Source>
-      </Map>
+          <Source id="nepalMap" type="geojson" data={NepalDisrticts}>
+            <Layer {...mapStyleLine} />
+          </Source>
+        </Map>
+      </div>
 
       <Drawer
         open={open}

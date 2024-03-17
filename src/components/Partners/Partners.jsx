@@ -99,7 +99,7 @@ const Partners = () => {
                 delay: 4500,
                 disableOnInteraction: false,
               }}
-              loop={true}
+              loop={groupData[categoryID].length > 3 ? true : false}
               modules={[Autoplay]}
               centeredSlides={groupData[categoryID].length < 2 ? true : false}
             >

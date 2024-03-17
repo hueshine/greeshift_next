@@ -1,6 +1,6 @@
 .drawer {
   &_box {
-    width: 35vw;
+    width: 25vw;
     padding: 40px;
 
     img {
@@ -23,6 +23,15 @@
         }
       }
     }
+
+    .list {
+      li {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #cdcdcd;
+
+      }
+    } 
 
     ul {
       margin-top: 20px;

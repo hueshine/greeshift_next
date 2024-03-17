@@ -342,19 +342,20 @@ img {
   transition: 0.5s all ease;
 }
 
-.markers {
-  position: relative;
-  z-index: 5;
+.marker-pin {
   transition: 0.3s;
   cursor: pointer;
+  opacity: 0.75;
 }
 
-.markers.hover-active {
-  opacity: 1;
+.marker-pin.hover-active {
+  opacity: 1 !important;
+  transform: scale(2) !important;
 }
 
-.markers.hover-non {
+.marker-pin.hover-non {
   opacity: 0.2;
+  transform: scale(1);
 }
 
 .mapboxgl-map {

@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "municipality": "Kohalpur",
     "latitude": 28.2057197,
     "longitude": 81.6925301,
@@ -7,6 +8,7 @@
     "image": "https://lh5.googleusercontent.com/p/AF1QipN1BcTZz6vV_BdVfyR9ykzyraVk_ruqofF8tDhu=w426-h240-k-no"
   },
   {
+    "id": 2,
     "municipality": "Nepalgunj",
     "latitude": 28.054801,
     "longitude": 81.616742,
@@ -14,6 +16,7 @@
     "image": "https://lh5.googleusercontent.com/p/AF1QipMMvfMHhjJ272q0e4SlstQecE2il88QJFxgsdzU=w480-h240-k-no"
   },
   {
+    "id": 3,
     "municipality": "Tilottama",
     "latitude": 27.614717,
     "longitude": 83.473904,
@@ -21,6 +24,7 @@
     "image": "https://lh5.googleusercontent.com/p/AF1QipMOd8QQ-W9WDuKtnQez8Bebwbi-37xAa6fMmNlS=s387-k-no"
   },
   {
+    "id": 4,
     "municipality": "Bharatpur",
     "latitude": 27.628851,
     "longitude": 84.385634,
@@ -28,6 +32,7 @@
     "image": "https://lh5.googleusercontent.com/p/AF1QipMDKIWU-GX64d8DiQYwd_iDSComr2dwBG3Sr-1U=w408-h483-k-no"
   },
   {
+    "id": 5,
     "municipality": "Ichchhakamana ",
     "latitude": 27.870114,
     "longitude": 84.626537,
@@ -35,6 +40,7 @@
     "image": "https://lh5.googleusercontent.com/p/AF1QipM2iyxmKQ9hg3Pb1FuI1jhjYs05Eh5b4FaRTzER=w408-h272-k-no"
   },
   {
+    "id": 6,
     "municipality": "Bardibas",
     "latitude": 27.042614,
     "longitude": 85.872479,
@@ -42,6 +48,7 @@
     "image": "https://lh5.googleusercontent.com/p/AF1QipPh0GUFnV9QmL0Y2kwa7mTgmxIMCbcNg2oSRyTM=w533-h240-k-no"
   },
   {
+    "id": 7,
     "municipality": "Lalitpur",
     "latitude": 27.659194,
     "longitude": 85.324619,
@@ -49,6 +56,7 @@
     "image": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFBxICUEUgnXMvIhfMGqkuzFAzAEKZ2G2wwd-8GI8Si_J0DR7RUAPr2FvmQwDImNjdNRfkCSLUZgQGTP3Lyi27URE25KoUGbOgIl2Hues9lycoLqBD7okncDBxlo3Ve8ycAzpFzlOgCXtv8BzIyWpeAYe4xMLj0idAVw3NtoEp-Jir5GPVO4rBp=w408-h270-k-no"
   },
   {
+    "id": 8,
     "municipality": "Janakpur",
     "latitude": 26.730076,
     "longitude": 85.927526,
@@ -56,6 +64,7 @@
     "image": ""
   },
   {
+    "id": 9,
     "municipality": "Khadak",
     "latitude": 26.644402,
     "longitude": 86.606304,
