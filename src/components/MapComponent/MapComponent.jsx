@@ -13,7 +13,7 @@ import componentStyle from "@/styles/component.module.scss";
 import NepalDisrticts from "./data/NepalDisrticts.json";
 import MunicipalityData from "./data/data.json";
 
-import Map, { Marker } from "react-map-gl";
+import Map, { FlyToInterpolator , Marker } from "react-map-gl";
 import mapboxgl from "!mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -48,6 +48,13 @@ const MapComponent = () => {
     setMunicipality("Select Municipality");
     setOpen(false);
     setPopupInfo(null);
+
+    setViewport({
+      ...viewport,
+      latitude: 28.3534542,
+      longitude: 84.0835325,
+      zoom: 6.6
+    });
   };
 
   const handleChange = (event) => {
@@ -72,9 +79,20 @@ const MapComponent = () => {
   const [viewport, setViewport] = useState({
     latitude: 28.3534542,
     longitude: 84.0835325,
-    minZoom: 6.6,
-    maxZoom: 6.6,
+    zoom: 6.6
+  
   });
+
+  const flyToMuni = (lng ,lat) => {
+    setViewport({
+      ...viewport,
+      latitude: lat,
+      longitude: lng,
+      zoom: 8,
+      transitionDuration: 5000, // duration of the fly animation in milliseconds
+      transitionInterpolator: 'flyTo', 
+    });
+  }
 
   const pins = MunicipalityData.map((city, index) => (
     <Marker
@@ -85,6 +103,7 @@ const MapComponent = () => {
         setOpen(true);
         setPopupInfo(city);
         setClickedMarkerIndex(index);
+        flyToMuni(city.longitude, city.latitude )
       }}
     >
       <img
@@ -173,8 +192,7 @@ const MapComponent = () => {
           {...viewport}
           classList={componentStyle.map}
           mapboxAccessToken={mapboxgl.accessToken}
-          dragPan={false}
-          mapStyle="mapbox://styles/yogeshkarki/cltppcq79000601qz3rkz2ogc"
+          mapStyle="mapbox://styles/yogeshkarki/cl09du53z009w14ro850lmz4z"
         >
           {pins}
 
