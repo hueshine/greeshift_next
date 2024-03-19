@@ -353,13 +353,13 @@ img {
   transform: scale(2) !important;
 }
 
-.marker-pin.hover-non {
-  opacity: 0.2;
-  transform: scale(1);
+.marker-pin.map-zoom {
+  opacity: 0;
 }
 
 .mapboxgl-map {
-  height: 750px !important;
+  width: 100% !important;
+  height: 60vh !important;
 }
 
 @media screen and (max-width: 550px) {

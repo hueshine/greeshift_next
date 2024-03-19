@@ -164,10 +164,6 @@ export default function Home() {
       </section>
 
       <section className={homeStyle.focus_area}>
-        {/* <div className={homeStyle.curve}>
-          <Wave fill="#1e607a" />
-        </div> */}
-
         <Container maxWidth="lg">
           <h2 style={{ textAlign: "center" }}>Focus Areas</h2>
 
