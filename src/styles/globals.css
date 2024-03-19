@@ -362,6 +362,12 @@ img {
   height: 60vh !important;
 }
 
+@media screen and (max-width: 1700px) {
+  .mapboxgl-map {
+    height: 70vh !important;
+  }
+}
+
 @media screen and (max-width: 550px) {
   h1 {
     font-size: 62px;

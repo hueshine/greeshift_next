@@ -72,10 +72,17 @@ const MapComponent = () => {
 
   const [mapdata, setMMapData] = useState(NepalDisrticts);
   const [municipalitylabel, setmunicipalityLabel] = useState();
+  const [initialZoom, setInitialZoom] = useState(6.3);
 
   const [municipality, setMunicipality] = useState("");
 
   let [clickedMarkerIndex, setClickedMarkerIndex] = useState(null);
+
+  useIsomorphicLayoutEffect(() => {
+    let windowInnerWidth = window.innerWidth;
+
+    windowInnerWidth > 1700 ? setInitialZoom(6.3) : setInitialZoom(6.1);
+  });
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoieW9nZXNoa2Fya2kiLCJhIjoiY2txZXphNHNlMGNybDJ1cXVmeXFiZzB1eSJ9.A7dJUR4ppKJDKWZypF_0lA";
@@ -83,8 +90,8 @@ const MapComponent = () => {
   const [viewport, setViewport] = useState({
     latitude: 28.3534542,
     longitude: 84.0835325,
-    minZoom: 6.3,
-    maxZoom: 6.3,
+    minZoom: initialZoom,
+    maxZoom: initialZoom,
   });
 
   const flyToMuni = (lng, lat) => {
@@ -193,7 +200,7 @@ const MapComponent = () => {
       ...viewport,
       latitude: 28.3534542,
       longitude: 84.0835325,
-      zoom: 6.3,
+      zoom: initialZoom,
     });
   };
 
