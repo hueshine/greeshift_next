@@ -78,7 +78,7 @@ let impactNumbers = [
 ];
 
 export default function Home() {
-  useSnoothScroll();
+  // useSnoothScroll();
   return (
     <>
       <Head>

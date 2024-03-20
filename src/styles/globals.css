@@ -345,7 +345,7 @@ img {
 .marker-pin {
   transition: 0.3s;
   cursor: pointer;
-  opacity: 0.75;
+  opacity: 0.6;
 }
 
 .marker-pin.hover-active {
@@ -358,6 +358,7 @@ img {
 }
 
 .mapboxgl-map {
+  margin-top: 60px;
   width: 100% !important;
   height: 60vh !important;
 }
