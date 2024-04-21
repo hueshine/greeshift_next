@@ -145,24 +145,6 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className={homeStyle.impacts_map}>
-        <div className={homeStyle.curve}>
-          <Wave fill="#e9d5aa80" />
-        </div>
-        <Container maxWidth="lg">
-          <h2 style={{ textAlign: "center" }}>Where we Work</h2>
-
-          <Container maxWidth="sm" style={{ textAlign: "center" }}>
-            <p>
-              GreenShift Nepal is a four-year project which will be implemented
-              in 9 municipalities – 3 in each of Bagmati, Madhesh, and Lumbini
-              provinces.
-            </p>
-          </Container>
-          <MapComponent />
-        </Container>
-      </section>
-
       <section className={homeStyle.focus_area}>
         <Container maxWidth="lg">
           <h2 style={{ textAlign: "center" }}>Focus Areas</h2>
