@@ -5,40 +5,48 @@ import headerStyle from "@/styles/header.module.scss";
 const Header = () => {
   return (
     <header className={headerStyle.header}>
-      <Container maxWidth="xl">
+      <div className={headerStyle.container}>
         <Grid container alignItems="center">
-          <Grid item md={5}>
+          <Grid item md={3}>
             <div className={headerStyle.logo}>
-              <a href="" className={headerStyle.creasion}>
-                <img src="./creasion 1.png" alt="" />
-              </a>
               <a href="">
-                <img src="./logo-reverse.png" alt="" />
+                <img src="./logo.png" alt="" />
               </a>
             </div>
           </Grid>
 
-          <Grid item md={7}>
+          <Grid item md={6}>
             <ul className={headerStyle.nav}>
-              <li>
-                <a href="">Home</a>
-              </li>
               <li>
                 <a href="">About</a>
               </li>
               <li>
-                <a href="">News & Updates</a>
+                <a href="">CREASION</a>
               </li>
+              <li>
+                <a href="">Restless Development</a>
+              </li>
+              <li>
+                <a href="">Youth Innovation Lab</a>
+              </li>
+
               <li>
                 <a href="">Knowledge Hub</a>
               </li>
+            </ul>
+          </Grid>
+
+          <Grid item md={3}>
+            <ul className={`${headerStyle.nav} ${headerStyle.nav_align_right}`}>
               <li>
-                <a href="">Join the green movement</a>
+                <a href="" className={headerStyle.btn_highlight}>
+                  Join the Green Movement
+                </a>
               </li>
             </ul>
           </Grid>
         </Grid>
-      </Container>
+      </div>
     </header>
   );
 };

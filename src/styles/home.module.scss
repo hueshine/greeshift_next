@@ -2,38 +2,69 @@
   position: relative;
   width: 100%;
   height: 100vh;
-
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  background-image: radial-gradient(
+    circle,
+    #33b2b6,
+    #5abdc1,
+    #78c9cb,
+    #93d4d6,
+    #addfe1
+  );
 
   .text {
     position: absolute;
-    top: 50%;
-    width: 850px;
-    max-width: 90%;
-    transform: translateY(-50%);
+    top: 60%;
+    left: 50%;
+    width: 100%;
+    max-width: 850px;
+    transform: translate(-50%, -50%);
     color: #fff;
+    text-align: center;
 
     h1 {
-      margin-bottom: 50px;
+      font-size: 118px;
+      line-height: 152px;
+      text-transform: uppercase;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #ffffffb5;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+      font-family: "TuskerGrotesk-7700";
+
+      span {
+        -webkit-text-fill-color: #90eb9d;
+        -webkit-text-stroke-width: 0px;
+
+        -webkit-text-stroke-color: #ffffffb5;
+      }
     }
 
-    p {
+    button {
+      margin-top: 60px;
+      padding: 18px 35px;
+      color: #1e607a;
+      border: 2px solid #1e607a;
+      border-radius: 30px;
       font-size: 16px;
-      width: 550px;
-      max-width: 90%;
-      opacity: 0.6;
+      background: transparent;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 1px;
+      opacity: 0.9;
+
+      &:hover {
+        background: #1e607a;
+        color: #fff;
+      }
     }
   }
 }
 
 .intro {
   padding: 120px 0;
-  margin-bottom: 40px;
   position: relative;
+  background: #eff4f3;
 
   video {
     width: 100%;

@@ -2,6 +2,13 @@
   position: absolute;
   z-index: 8;
   width: 100%;
+  padding: 10px 15px;
+
+  .container {
+    background: #fff;
+    border-radius: 4px;
+    padding: 0 15px;
+  }
 
   .logo {
     .creasion {
@@ -19,14 +26,34 @@
   .nav {
     display: flex;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: center;
+
+    &_align_right {
+      justify-content: right;
+
+      li {
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+    }
     li {
-      margin-left: 50px;
+      margin: 0 25px;
       a {
-        font-size: 16px;
-        font-weight: 400;
-        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        color: #1e607a;
         text-transform: uppercase;
+        font-family: "Satoshi";
+
+        &.btn_highlight {
+          background: #33b2b6;
+          font-size: 18px !important;
+          color: #fff;
+          line-height: 1;
+          padding: 12px 20px;
+          border-radius: 5px;
+        }
       }
     }
   }

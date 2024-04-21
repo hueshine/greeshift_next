@@ -98,10 +98,6 @@ const HomeFocusArea = () => {
                 <Grid item md={8}>
                   <h4>{val.title}</h4>
                   <p>{val.text}</p>
-
-                  <Link href="/">
-                    Read More <ArrowOutwardIcon />
-                  </Link>
                 </Grid>
               </Grid>
             </Container>

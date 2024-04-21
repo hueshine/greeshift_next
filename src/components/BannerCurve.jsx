@@ -19,19 +19,6 @@ const BannerWave = (props) => {
           start: "top 80%",
           end: "bottom 35%",
           scrub: true,
-          onLeave: () => {
-            gsap.fromTo(
-              "#initialCurve",
-              {
-                morphSVG: "#initialCurve",
-              },
-              {
-                duration: 8,
-                morphSVG:
-                  "M0 119.95c582.58,0 635.23,0.05 960,0.05 324.77,0 377.43,-0.05 960,-0.05l0 0.05 -1920 0 0 -0.05z",
-              }
-            );
-          },
         },
         morphSVG: "#initialCurve",
       }

@@ -9,7 +9,6 @@ import Wave from "../components/Curve";
 // Sections
 import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
-import MapComponent from "../components/MapComponent/MapComponent";
 
 import useSnoothScroll from "@/hook/use-smooth-scroll";
 
@@ -78,7 +77,6 @@ let impactNumbers = [
 ];
 
 export default function Home() {
-  // useSnoothScroll();
   return (
     <>
       <Head>
@@ -95,25 +93,53 @@ export default function Home() {
       </Head>
 
       <section className={homeStyle.hero}>
-        <video autoPlay loop muted>
-          <source src="./intro.mp4" type="video/mp4" />
-        </video>
         <Container maxWidth="xl">
           <div className={homeStyle.text}>
-            <h1>Circularity of Plastic Waste</h1>
+            <h1>
+              How <span>Green</span> Are You ?
+            </h1>
 
-            <p>
-              Promoting circular economy of plastics by effectively working
-              towards minimizing plastic waste and diverting existing waste into
-              product value chain.
-            </p>
+            <button>Take a quiz</button>
           </div>
         </Container>
       </section>
 
       <section className={homeStyle.intro} id="intro">
         <div className={homeStyle.curve}>
-          <BannerWave fill="#fff" />
+          <BannerWave fill="#EFF4F3" />
+        </div>
+
+        <Container maxWidth="lg">
+          <Grid container alignItems={"center"} spacing={10}>
+            <Grid item sm={6} id="introText">
+              <div className="text">
+                <h2>
+                  Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
+                  Nepal{" "}
+                </h2>
+                <p>
+                  Green Shift: Circularity of Plastic Waste for Net-Zero Carbon
+                  Nepal (GreenShift Nepal) project is funded by the European
+                  Union to promote a just transition to circular economy.
+                  GreenShift Nepal is a four-year project which will be
+                  implemented in 9 municipalities – 3 in each of Bagmati,
+                  Madhesh, and Lumbini provinces.
+                </p>
+              </div>
+            </Grid>
+
+            <Grid item sm={6}>
+              <video autoPlay loop muted>
+                <source src="./SDG goals GS.mp4" type="video/mp4" />
+              </video>
+            </Grid>
+          </Grid>
+        </Container>
+      </section>
+
+      <section className={homeStyle.intro} id="intro">
+        <div className={homeStyle.curve}>
+          <BannerWave fill="#EFF4F3" />
         </div>
 
         <Container maxWidth="lg">

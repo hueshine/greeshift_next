@@ -126,6 +126,40 @@ a {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "TuskerGrotesk-7700";
+  src: url("../fonts/TuskerGrotesk-7700Bold.woff2") format("woff2"),
+    url("../fonts/TuskerGrotesk-7700Bold.woff") format("woff");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuskerGrotesk-7800";
+  src: url("../fonts/TuskerGrotesk-7800Super.woff2") format("woff2"),
+    url("../fonts/TuskerGrotesk-7800Super.woff") format("woff");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuskerGrotesk";
+  src: url("../fonts/TuskerGrotesk-5600Semibold.woff2") format("woff2"),
+    url("../fonts/TuskerGrotesk-5600Semibold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Regular.woff2") format("woff2"),
+    url("../fonts/Satoshi-Regular.woff") format("woff");
+
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: "Source Sans Pro";
   font-weight: normal;
@@ -278,16 +312,24 @@ a {
 }
 
 h1 {
-  font-size: 100px;
-  font-weight: 700;
-  line-height: 90px;
+  font-size: 108px;
+  font-weight: 900;
+  line-height: 98px;
+  letter-spacing: -4px;
 }
 
 h2 {
-  font-size: 54px;
-  line-height: 58px;
+  font-size: 48px;
+  line-height: 53px;
   font-weight: 700;
   margin-bottom: 25px;
+  letter-spacing: -1px;
+  font-family: "TuskerGrotesk";
+  text-transform: uppercase;
+}
+
+h2 span {
+  color: #33b2b6;
 }
 
 h3 {
@@ -316,10 +358,10 @@ h6 {
 }
 
 p {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
   margin-bottom: 15px;
+  font-family: "Satoshi";
 }
 
 img {
