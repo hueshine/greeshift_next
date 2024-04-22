@@ -59,6 +59,33 @@
       }
     }
   }
+
+  &_btn {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 60px;
+
+    .icon {
+      border: 2px solid #ffffffb5;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+
+      svg {
+        color: #ffffffb5;
+      }
+    }
+
+    span {
+      font-size: 20px;
+      line-height: 48px;
+      color: #ffffffb5;
+    }
+  }
 }
 
 .intro {

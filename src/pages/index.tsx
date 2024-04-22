@@ -7,6 +7,9 @@ import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
 
 import homeStyle from "@/styles/home.module.scss";
+
+import EastIcon from "@mui/icons-material/East";
+
 import Link from "next/link";
 
 let newsData = [
@@ -91,7 +94,12 @@ export default function Home() {
               How <span>Green</span> Are You?
             </h1>
 
-            <button>Take a quiz</button>
+            <div className={homeStyle.hero_btn}>
+              <div className={homeStyle.icon}>
+                <EastIcon />
+              </div>
+              <span>Read More</span>
+            </div>
           </div>
         </Container>
       </section>
