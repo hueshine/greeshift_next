@@ -1,21 +1,13 @@
 import Head from "next/head";
 
-import { Card, Container, Grid } from "@mui/material";
-
-// Components
-import BannerWave from "../components/BannerCurve";
-import Wave from "../components/Curve";
+import { Container, Grid } from "@mui/material";
 
 // Sections
 import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
 
-import useSnoothScroll from "@/hook/use-smooth-scroll";
-
 import homeStyle from "@/styles/home.module.scss";
 import Link from "next/link";
-
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 let newsData = [
   {
@@ -96,7 +88,7 @@ export default function Home() {
         <Container maxWidth="xl">
           <div className={homeStyle.text}>
             <h1>
-              How <span>Green</span> Are You ?
+              How <span>Green</span> Are You?
             </h1>
 
             <button>Take a quiz</button>
@@ -105,13 +97,13 @@ export default function Home() {
       </section>
 
       <section className={homeStyle.intro} id="intro">
-        <div className={homeStyle.curve}>
-          <BannerWave fill="#EFF4F3" />
-        </div>
+        {/* <div className={homeStyle.curve}>
+          <BannerWave fill="#fff" />
+        </div> */}
 
-        <Container maxWidth="lg">
-          <Grid container alignItems={"center"} spacing={10}>
-            <Grid item sm={6} id="introText">
+        <Container maxWidth="xl">
+          <Grid container alignItems={"center"} spacing={12}>
+            <Grid item md={4} id="introText">
               <div className="text">
                 <h2>
                   Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
@@ -125,71 +117,33 @@ export default function Home() {
                   implemented in 9 municipalities – 3 in each of Bagmati,
                   Madhesh, and Lumbini provinces.
                 </p>
+
+                <p>
+                  The project implementation is led by CREASION through the
+                  consortium partners Restless Development, and Youth Innovation
+                  Lab.
+                </p>
               </div>
             </Grid>
 
-            <Grid item sm={6}>
-              <video autoPlay loop muted>
-                <source src="./SDG goals GS.mp4" type="video/mp4" />
-              </video>
+            <Grid item md={0.5}></Grid>
+
+            <Grid item md={7.2}>
+              <div className={homeStyle.text}>
+                <video autoPlay loop muted>
+                  <source src="./SDG goals GS.mp4" type="video/mp4" />
+                </video>
+
+                <img src="/focusarea1.png" alt="" />
+              </div>
             </Grid>
           </Grid>
         </Container>
       </section>
 
-      <section className={homeStyle.intro} id="intro">
-        <div className={homeStyle.curve}>
-          <BannerWave fill="#EFF4F3" />
-        </div>
+      <HomeFocusArea />
 
-        <Container maxWidth="lg">
-          <Grid container alignItems={"center"} spacing={10}>
-            <Grid item sm={6} id="introText">
-              <h2>About Us</h2>
-              <p>
-                Green Shift: Circularity of Plastic Waste for Net-Zero Carbon
-                Nepal (GreenShift Nepal) project is funded by the European Union
-                to promote a just transition to circular economy. GreenShift
-                Nepal is a four-year project which will be implemented in 9
-                municipalities – 3 in each of Bagmati, Madhesh, and Lumbini
-                provinces.
-              </p>
-              <p>
-                The project implementation is led by <strong>CREASION</strong>{" "}
-                through the consortium partners
-                <strong> Restless Development</strong>, and{" "}
-                <strong>Youth Innovation Lab</strong>.
-              </p>
-            </Grid>
-
-            <Grid item sm={6}>
-              <video autoPlay loop muted>
-                <source src="./SDG goals GS.mp4" type="video/mp4" />
-              </video>
-            </Grid>
-          </Grid>
-        </Container>
-      </section>
-
-      <section className={homeStyle.focus_area}>
-        <Container maxWidth="lg">
-          <h2 style={{ textAlign: "center" }}>Focus Areas</h2>
-
-          <Container maxWidth="sm" style={{ textAlign: "center" }}>
-            <p>
-              GreenShift Nepal will work with waste enterprises, SMEs, CSOs of
-              waste workers, youths, school children, and three tiers of
-              government in the promotion of circular economy of plastics.
-            </p>
-          </Container>
-        </Container>
-
-        <div className={homeStyle.focusBox}>
-          <HomeFocusArea />
-        </div>
-      </section>
-
-      <section className={homeStyle.home_news}>
+      {/* <section className={homeStyle.home_news}>
         <Container maxWidth="lg">
           <h2>News & Updates</h2>
           <Container
@@ -254,14 +208,9 @@ export default function Home() {
             </Grid>
           </Grid>
         </Container>
-      </section>
+      </section> */}
 
-      <section className={homeStyle.partners}>
-        <div className={homeStyle.curve}>
-          <Wave fill="#fff" />
-        </div>
-        <Partners />
-      </section>
+      <Partners />
     </>
   );
 }

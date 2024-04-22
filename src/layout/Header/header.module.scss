@@ -27,6 +27,7 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    padding-left: 100px;
 
     &_align_right {
       justify-content: right;
@@ -48,12 +49,23 @@
 
         &.btn_highlight {
           background: #33b2b6;
-          font-size: 18px !important;
           color: #fff;
           line-height: 1;
           padding: 12px 20px;
           border-radius: 5px;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .header {
+    .nav {
+      padding-left: 30px;
+
+      li {
+        margin: 0 25px;
       }
     }
   }

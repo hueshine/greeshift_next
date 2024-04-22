@@ -1,13 +1,13 @@
 import React from "react";
 import { Container, Grid } from "@mui/material";
-import headerStyle from "@/styles/header.module.scss";
+import headerStyle from "./header.module.scss";
 
 const Header = () => {
   return (
     <header className={headerStyle.header}>
       <div className={headerStyle.container}>
         <Grid container alignItems="center">
-          <Grid item md={3}>
+          <Grid item md={2}>
             <div className={headerStyle.logo}>
               <a href="">
                 <img src="./logo.png" alt="" />
@@ -15,7 +15,7 @@ const Header = () => {
             </div>
           </Grid>
 
-          <Grid item md={6}>
+          <Grid item md={7}>
             <ul className={headerStyle.nav}>
               <li>
                 <a href="">About</a>

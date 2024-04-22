@@ -6,7 +6,7 @@ import XIcon from "@mui/icons-material/X";
 
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
-import footerStyle from "@/styles/footer.module.scss";
+import footerStyle from "./footer.module.scss";
 
 const Footer = () => {
   let marginBottom = { marginBottom: "30px" };
