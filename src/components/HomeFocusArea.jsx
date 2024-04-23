@@ -69,7 +69,7 @@ const HomeFocusArea = () => {
 
         gsap.to(bgImage, {
           rotate: 90,
-          scale: 1.1,
+          scale: 1,
           opacity: 0.6,
           scrollTrigger: {
             trigger: ref,
