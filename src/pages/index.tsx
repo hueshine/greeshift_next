@@ -109,9 +109,12 @@ export default function Home() {
       <Hero />
 
       <section className={homeStyle.intro}>
+        <div className={homeStyle.intro_image}>
+          <img src="/about.png" alt="" />
+        </div>
         <div className="container">
           <Grid container alignItems={"center"} spacing={4}>
-            <Grid item xs={12} sm={5}>
+            <Grid item sm={6}>
               <div className={homeStyle.intro_text}>
                 <h2>
                   Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
@@ -126,22 +129,28 @@ export default function Home() {
                 </p>
 
                 <p>
-                  The project implementation is led by CREASION through the
-                  consortium partners Restless Development, and Youth Innovation
-                  Lab.
+                  The project implementation is led by{" "}
+                  <a href="" target="_blank">
+                    CREASION
+                  </a>{" "}
+                  through the consortium partners{" "}
+                  <a href="" target="_blank">
+                    Restless Development
+                  </a>
+                  , and
+                  <a href="" target="_blank">
+                    {" "}
+                    Youth Innovation Lab.
+                  </a>
                 </p>
               </div>
             </Grid>
 
-            <Grid item xs={12} sm={7}>
-              <div className={homeStyle.intro_image}>
-                <video autoPlay loop muted>
-                  <source src="./SDG goals GS.mp4" type="video/mp4" />
-                </video>
-
-                <img src="/focusarea1.png" alt="" />
-              </div>
-            </Grid>
+            <div className={homeStyle.intro_video}>
+              <video autoPlay loop muted>
+                <source src="./SDG goals GS.mp4" type="video/mp4" />
+              </video>
+            </div>
           </Grid>
         </div>
       </section>
