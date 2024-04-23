@@ -2,6 +2,24 @@
   display: flex;
   align-items: center;
 
+  &:hover {
+    .icon {
+      border: 2px solid #33b2b6 !important;
+      svg {
+        color: #33b2b6;
+        &:first-child {
+          transform: translateX(11px);
+          opacity: 1;
+        }
+
+        &:last-child {
+          transform: translateX(18px);
+          opacity: 0;
+        }
+      }
+    }
+  }
+
   .icon {
     border: 2px solid #fff;
     border-radius: 50%;
@@ -11,6 +29,20 @@
     align-items: center;
     justify-content: center;
     margin-right: 15px;
+    transition: 0.6;
+    overflow: hidden;
+
+    svg {
+      transition: 0.5s;
+      &:first-child {
+        transform: translateX(-18px);
+        opacity: 0;
+      }
+
+      &:last-child {
+        transform: translateX(-10px);
+      }
+    }
   }
 
   span {

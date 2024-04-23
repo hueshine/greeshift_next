@@ -17,7 +17,7 @@ const useSnoothScroll = () => {
 
     const gsapCtx = gsap.context(() => {
       const lenis = new Lenis({
-        duration: windowWidth > 1024 ? 2.5 : 1,
+        duration: windowWidth > 1024 ? 2.5 : 0,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
         smoothTouch: true,

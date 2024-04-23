@@ -34,7 +34,7 @@
 
       li {
         &:last-child {
-          margin-right: 0px;
+          margin-right: 0px I !important;
         }
       }
     }
@@ -62,10 +62,45 @@
 @media screen and (max-width: 1700px) {
   .header {
     .nav {
-      padding-left: 30px;
+      padding-left: 80px;
+
+      &_align_right {
+        li {
+          &:last-child {
+            margin-right: 0 !important;
+          }
+        }
+      }
 
       li {
         margin: 0 20px;
+
+        a {
+          font-size: 14px;
+
+          &.btn_highlight {
+            padding: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .header {
+    padding: 5px;
+    .container {
+      padding: 0 5px;
+
+      .nav {
+        li {
+          margin: 0 15px;
+
+          a {
+            font-size: 14px;
+          }
+        }
       }
     }
   }

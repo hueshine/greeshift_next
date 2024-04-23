@@ -160,6 +160,13 @@ a {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Satoshi Black";
+  src: url("../fonts/Satoshi-Black.woff2") format("woff2"),
+    url("../fonts/SourceSansPro-Black.woff") format("woff");
+  font-display: swap;
+}
+
 body {
   font-family: "Satoshi";
   font-weight: normal;
@@ -351,6 +358,20 @@ h4 {
   text-transform: uppercase;
 }
 
+h5 {
+  font-size: 24px;
+  line-height: 29px;
+  font-family: "TuskerGrotesk";
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+h6 {
+  font-size: 22px;
+  line-height: 29px;
+  margin-bottom: 15px;
+  font-family: "Satoshi Black";
+}
+
 p {
   font-size: 20px;
   line-height: 32px;
@@ -366,9 +387,27 @@ img {
   visibility: hidden;
 }
 
-/* @media screen and (max-width: 1700px) {
+.container {
+  max-width: 1536px;
+  margin: 0 auto;
+}
 
-} */
+.tooltip p {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 1700px) {
+  .container {
+    max-width: 1336px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    max-width: 1196px;
+  }
+}
 
 @media screen and (max-width: 550px) {
   h1 {

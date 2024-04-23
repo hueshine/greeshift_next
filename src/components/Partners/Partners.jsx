@@ -81,15 +81,15 @@ const Partners = () => {
     const ctx = gsap.context(() => {
       ScrollTrigger.refresh();
 
-      gsap.to(image, {
-        rotate: 50,
-        scale: 1.4,
-        scrollTrigger: {
-          trigger: mainImage,
-          start: "top 80%",
-          scrub: true,
-        },
-      });
+      // gsap.to(image, {
+      //   rotate: 50,
+      //   scale: 1.4,
+      //   scrollTrigger: {
+      //     trigger: mainImage,
+      //     start: "top 80%",
+      //     scrub: true,
+      //   },
+      // });
     });
 
     return () => ctx.revert();
@@ -97,10 +97,14 @@ const Partners = () => {
 
   return (
     <>
-      <section className={homeStyle.partners} id="box">
-        <div className={homeStyle.partners_bg}>
+      <section
+        className={homeStyle.partners}
+        id="box"
+        style={{ background: "url(/131511.jpg)" }}
+      >
+        {/* <div className={homeStyle.partners_bg}>
           <img src="/partners.svg" alt="" id="image" />
-        </div>
+        </div> */}
         <Container maxWidth={"xl"}>
           <Grid container>
             <Grid item md={3.5}></Grid>
