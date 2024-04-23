@@ -13,12 +13,21 @@ const Footer = () => {
 
   return (
     <footer className={footerStyle.footer}>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item style={marginBottom} lg={3} className={footerStyle.logo}>
             <a href="">
               <img src="./logo.png" alt="" />
             </a>
+          </Grid>
+
+          <Grid item lg={2}></Grid>
+
+          <Grid item style={marginBottom} lg={4}>
+            <h6>Contact Us</h6>
+            <a href="">Pabitra Pyara Marga, Baluwatar</a>
+            <a href="">+977-1-4520784 /01-4540085</a>
+            <a href="">greenshiftnepal@creasion.org</a>
 
             <a href="" target="_blank" className={footerStyle.logo_btn}>
               Grievances
@@ -26,15 +35,8 @@ const Footer = () => {
                 <ArrowOutwardIcon />
               </div>
             </a>
-          </Grid>
 
-          <Grid item style={marginBottom} lg={3}>
-            <h6>Contact Us</h6>
-            <a href="">Pabitra Pyara Mar, Baluwatar, Kathmandu</a>
-            <a href="">+977-1234566</a>
-            <a href="">greenshiftnepal@gmail.com</a>
-
-            <div className={footerStyle.social}>
+            {/* <div className={footerStyle.social}>
               <a target="_blank">
                 <FacebookIcon />
               </a>
@@ -44,7 +46,7 @@ const Footer = () => {
               <a target="_blank">
                 <XIcon />
               </a>
-            </div>
+            </div> */}
           </Grid>
 
           <Grid item style={marginBottom} lg={3}>
@@ -54,40 +56,11 @@ const Footer = () => {
             <a href="">Knowledge Hub</a>
             <a href="">Join The Green Movement</a>
           </Grid>
-
-          <Grid item style={marginBottom} lg={3}>
-            <div className={footerStyle.newsletter}>
-              <h6>Let's Connect !</h6>
-
-              <div className={footerStyle.newsletter_input}>
-                <input type="text" placeholder="Your email address" />
-
-                <button>
-                  <ArrowOutwardIcon />
-                </button>
-              </div>
-
-              <p>
-                <strong>
-                  We continually seek fresh individuals to become part of our
-                  community.
-                </strong>
-              </p>
-            </div>
-          </Grid>
         </Grid>
 
         <div className={footerStyle.copyright}>
           <p>
             <small>© 2024 Green Shift Nepal.</small>
-          </p>
-          <p>
-            <small>
-              Powered by
-              <a href="" target="_blank">
-                Hue Shine
-              </a>
-            </small>
           </p>
         </div>
       </Container>

@@ -23,75 +23,9 @@ import { useIsomorphicLayoutEffect } from "@/hook";
 
 import gsap from "gsap";
 
-let newsData = [
-  {
-    title: "GreenShift: Stakeholders Meeting",
-    image: "/chitwna.jpeg",
-    date: "Feb 21, 2024",
-    text: "<p>On 9th April, 2024, CREASION organized a stakeholders’ meeting at Bardibas municipality to discuss about the growing issues of plastic pollution in the municipality and way forward.</p>",
-    link: "",
-  },
-  {
-    title: "National launch of project Green Shift Nepal",
-    image: "./focusarea3.png",
-    date: "Feb 13, 2024",
-    text: "<p>On 9th April, 2024, CREASION organized a stakeholders’ meeting at Bardibas municipality to discuss about the growing issues of plastic pollution in the municipality and way forward.</p>",
-    link: "",
-  },
-  {
-    title:
-      "Greenshift official MOU signing with Nepalgunj Sub Metropolitan City",
-    image: "./DQ99bEWiVjW8RQ8c8oVx.jpg",
-    date: "Feb 05, 2024",
-    text: "<p>On 9th April, 2024, CREASION organized a stakeholders’ meeting at Bardibas municipality to discuss about the growing issues of plastic pollution in the municipality and way forward.</p>",
-    link: "",
-  },
-  {
-    title: "Greenshift official Mou signing with Bardibas Municipality",
-    image: "./B1wq4pir1AnvaoWzfXo2.jpg",
-    date: "Feb 21, 2024",
-    text: "<p>On 9th April, 2024, CREASION organized a stakeholders’ meeting at Bardibas municipality to discuss about the growing issues of plastic pollution in the municipality and way forward.</p>",
-    link: "",
-  },
-  {
-    title: "Staff orientation for Project Green Shift Nepal ",
-    image: "./B1wq4pir1AnvaoWzfXo2.jpg",
-    date: "Feb 21, 2024",
-    text: "<p>On 9th April, 2024, CREASION organized a stakeholders’ meeting at Bardibas municipality to discuss about the growing issues of plastic pollution in the municipality and way forward.</p>",
-    link: "",
-  },
-];
+import newsJSON from "./news-and-updates/data.json";
 
-let impactNumbers = [
-  {
-    num: 3,
-    numCaption: "",
-    title: "CSOs of WW",
-    icon: "",
-    text: "",
-  },
-  {
-    num: 11000,
-    numCaption: "",
-    title: "Young Students Reached",
-    icon: "",
-    text: "",
-  },
-  {
-    num: 9,
-    numCaption: "",
-    title: "Waste Smart Fellows",
-    icon: "",
-    text: "",
-  },
-  {
-    num: 36,
-    numCaption: "",
-    title: "Climate Smart Schools",
-    icon: "",
-    text: "",
-  },
-];
+let newsData = newsJSON.news;
 
 export default function Home() {
   return (
@@ -178,6 +112,9 @@ export default function Home() {
       </section>
 
       <section className={homeStyle.home_news}>
+        <div className={homeStyle.curveSvg}>
+          <Curve fill={"#5ABDC1"} />
+        </div>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             <Grid item md={4}>
@@ -235,9 +172,9 @@ export default function Home() {
       </section>
 
       <section className={homeStyle.partners}>
-        {/* <div className={homeStyle.curve}>
-          <Curve fill="red" />
-        </div> */}
+        <div className={homeStyle.curveSvg}>
+          <Curve fill={"#EFF4F3"} />
+        </div>
         <Partners />
       </section>
     </>
