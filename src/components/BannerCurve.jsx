@@ -1,35 +1,46 @@
-import React, { useEffect } from "react";
 import gsap from "gsap";
 
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { MorphSVGPlugin } from "gsap/dist/MorphSVGPlugin";
 
-gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin);
-const BannerWave = (props) => {
-  useEffect(() => {
-    gsap.fromTo(
-      "#initialCurve",
-      {
-        morphSVG:
-          "M0 119.95c582.58,0 635.23,0.05 960,0.05 324.77,0 377.43,-0.05 960,-0.05l0 0.05 -1920 0 0 -0.05z",
-      },
-      {
-        scrollTrigger: {
-          trigger: "svg",
-          start: "top 80%",
-          end: "bottom 35%",
-          scrub: true,
+import { useIsomorphicLayoutEffect } from "@/hook";
+
+const BannerWave = () => {
+  useIsomorphicLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        "#initialCurve",
+        {
+          morphSVG:
+            "M1440,0l-60,0c-60,0-180,0-300,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0l0,96l60-10.7C120,75,240,53,360,42.7C480,32,600,32,720,69.3C840,107,960,181,1080,202.7c120,21.3,240-10.7,300-26.7l60-16V0z",
         },
-        morphSVG: "#initialCurve",
-      }
-    );
+        {
+          scrollTrigger: {
+            trigger: ".svgCurve",
+            start: "top 80%",
+            end: "350% top",
+            scrub: true,
+          },
+          morphSVG:
+            "M0,0C584,0,632.6,0,960,0C1284.8,0,1337.4,0,1920,0V0L0,0L0,0z",
+        }
+      );
+
+      ScrollTrigger.refresh();
+    });
+
+    return () => ctx.revert();
   });
+
   return (
-    <svg viewBox="0 0 1920 120" preserveAspectRatio="none">
+    <svg viewBox="0 0 1440 320" className="svgCurve">
       <path
-        fill={props.fill}
+        fill="#33b2b6"
         id="initialCurve"
-        d="M0 119.83c582.58,0 635.23,-119.83 960,-119.83 324.77,0 377.43,119.83 960,119.83l0 0.17 -1920 0 0 -0.17z"
+        d="M1440,0l-60,0c-60,0-180,0-300,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0l0,96l60-10.7
+        C120,75,240,53,360,42.7C480,32,600,32,720,69.3C840,107,960,181,1080,202.7c120,21.3,240-10.7,300-26.7l60-16V0z"
       ></path>
     </svg>
   );

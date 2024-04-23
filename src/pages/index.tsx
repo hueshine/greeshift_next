@@ -9,6 +9,9 @@ import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
 import Button from "@/components/Button/Button";
 
+import BannerCurve from "@/components/BannerCurve";
+import Curve from "@/components/Curve";
+
 import homeStyle from "@/styles/home.module.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -109,10 +112,13 @@ export default function Home() {
       <Hero />
 
       <section className={homeStyle.intro}>
+        <div className={homeStyle.banner_svg}>
+          <BannerCurve />
+        </div>
         <div className={homeStyle.intro_image}>
           <img src="/about.png" alt="" />
         </div>
-        <div className="container">
+        <Container maxWidth="lg">
           <Grid container alignItems={"center"} spacing={4}>
             <Grid item sm={6}>
               <div className={homeStyle.intro_text}>
@@ -152,7 +158,7 @@ export default function Home() {
               </video>
             </div>
           </Grid>
-        </div>
+        </Container>
       </section>
 
       <section className={homeStyle.focus_area}>
@@ -228,7 +234,12 @@ export default function Home() {
         </Container>
       </section>
 
-      <Partners />
+      <section className={homeStyle.partners}>
+        {/* <div className={homeStyle.curve}>
+          <Curve fill="red" />
+        </div> */}
+        <Partners />
+      </section>
     </>
   );
 }

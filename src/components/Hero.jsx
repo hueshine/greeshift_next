@@ -255,7 +255,7 @@ const Hero = () => {
             <div className={homeStyle.icon}>
               <EastIcon />
             </div>
-            <span>Take a Quiz   </span>
+            <span>Take a Quiz </span>
           </div>
         </div>
       </Container>
