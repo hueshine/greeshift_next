@@ -71,7 +71,7 @@ const Partners = () => {
     <>
       <Container maxWidth={"lg"}>
         <Grid container spacing={4}>
-          <Grid item md={4} className={homeStyle.partner_container}>
+          <Grid item md={4}>
             <div className={homeStyle.partner_container_title}>
               <h2>OUR PARTNERS</h2>
               <p>
@@ -84,7 +84,7 @@ const Partners = () => {
           </Grid>
           <Grid item md={8} className={homeStyle.partner_container}>
             <Grid container spacing={4}>
-              <Grid item md={3} className={homeStyle.partner_box}>
+              <Grid item md={4} className={homeStyle.partner_box}>
                 <h4>
                   <span>Donor</span>
                 </h4>
@@ -94,7 +94,7 @@ const Partners = () => {
                 </div>
               </Grid>
 
-              <Grid item md={9} className={homeStyle.partner_box}>
+              <Grid item md={8} className={homeStyle.partner_box}>
                 <h4>
                   <span>Consortium Partners</span>
                 </h4>

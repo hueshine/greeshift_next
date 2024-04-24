@@ -46,9 +46,9 @@ export default function Home() {
       <Hero />
 
       <section className={homeStyle.intro}>
-        <div className={homeStyle.banner_svg}>
+        {/* <div className={homeStyle.banner_svg}>
           <BannerCurve />
-        </div>
+        </div> */}
         <div className={homeStyle.intro_image}>
           <img src="/about.png" alt="" />
         </div>
@@ -112,9 +112,9 @@ export default function Home() {
       </section>
 
       <section className={homeStyle.home_news}>
-        <div className={homeStyle.curveSvg}>
+        {/* <div className={homeStyle.curveSvg}>
           <Curve fill={"#5ABDC1"} />
-        </div>
+        </div> */}
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             <Grid item md={4}>
@@ -172,9 +172,9 @@ export default function Home() {
       </section>
 
       <section className={homeStyle.partners}>
-        <div className={homeStyle.curveSvg}>
+        {/* <div className={homeStyle.curveSvg}>
           <Curve fill={"#EFF4F3"} />
-        </div>
+        </div> */}
         <Partners />
       </section>
     </>
