@@ -11,10 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Header />
-
       <div id="smooth-wrapper">
         <div id="smooth-content">
+          <Header />
           <Component {...pageProps} />
           <Footer />
         </div>

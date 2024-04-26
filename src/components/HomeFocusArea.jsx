@@ -82,7 +82,9 @@ const HomeFocusArea = () => {
       ScrollTrigger.refresh();
     });
 
+    console.log(window.innerWidth);
     if (window.innerWidth < 500) {
+      console.log("hello");
       ctx.revert();
     }
 

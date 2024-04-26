@@ -30,7 +30,7 @@ const Footer = () => {
             <a href="">greenshiftnepal@creasion.org</a>
 
             <a href="" target="_blank" className={footerStyle.logo_btn}>
-              Grievances
+              Grievance
               <div>
                 <ArrowOutwardIcon />
               </div>

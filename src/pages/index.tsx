@@ -45,10 +45,68 @@ export default function Home() {
 
       <Hero />
 
-      <section className={homeStyle.intro}>
-        {/* <div className={homeStyle.banner_svg}>
-          <BannerCurve />
-        </div> */}
+      <section className={homeStyle.introAbout}>
+        <Container maxWidth={"md"}>
+          <div className={homeStyle.introAbout_text}>
+            <h2>
+              Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
+              Nepal
+            </h2>
+
+            <p>
+              GreenShift Nepal project is funded by the European Union to
+              promote a just transition to circular economy. GreenShift Nepal is
+              a four-year project which will be implemented in 9 municipalities
+              – 3 in each of Bagmati, Madhesh, and Lumbini provinces.
+            </p>
+
+            <p>
+              The project implementation is led by{" "}
+              <a href="" target="_blank">
+                CREASION
+              </a>{" "}
+              through the consortium partners{" "}
+              <a href="" target="_blank">
+                Restless Development
+              </a>
+              , and
+              <a href="" target="_blank">
+                {" "}
+                Youth Innovation Lab.
+              </a>
+            </p>
+          </div>
+        </Container>
+
+        <Container maxWidth={"lg"}>
+          <Grid container spacing={2}>
+            <Grid className={homeStyle.introImg_wrap} item md={3}>
+              <div className={homeStyle.introAbout_img}>
+                <img src="./focusarea1.png" alt="" />
+              </div>
+            </Grid>
+
+            <Grid className={homeStyle.introImg_wrap} item md={3}>
+              <div className={homeStyle.introAbout_img}>
+                <img src="./131511.jpg" alt="" />
+              </div>
+            </Grid>
+
+            <Grid className={homeStyle.introImg_wrap} item md={3}>
+              <div className={homeStyle.introAbout_img}>
+                <img src="./thumbnail.jpg" alt="" />
+              </div>
+            </Grid>
+            <Grid className={homeStyle.introImg_wrap} item md={3}>
+              <div className={homeStyle.introAbout_img}>
+                <img src="./focusarea3.png" alt="" />
+              </div>
+            </Grid>
+          </Grid>
+        </Container>
+      </section>
+
+      {/* <section className={homeStyle.intro}>
         <div className={homeStyle.intro_image}>
           <img src="/about.png" alt="" />
         </div>
@@ -93,7 +151,7 @@ export default function Home() {
             </div>
           </Grid>
         </Container>
-      </section>
+      </section> */}
 
       <section className={homeStyle.focus_area}>
         <h2 style={{ textAlign: "center" }}>Focus Areas</h2>
@@ -112,28 +170,22 @@ export default function Home() {
       </section>
 
       <section className={homeStyle.home_news}>
-        {/* <div className={homeStyle.curveSvg}>
-          <Curve fill={"#5ABDC1"} />
-        </div> */}
         <Container maxWidth="lg">
-          <Grid container spacing={4}>
-            <Grid item md={4}>
-              <div className={homeStyle.home_news_title}>
-                <h2>News & Updates</h2>
-                <p>
-                  GreenShift Nepal will work with waste enterprises, SMEs, CSOs
-                  of waste workers, youths, school children, and three tiers of
-                  government in the promotion of circular economy of plastics.
-                </p>
+          <div className={homeStyle.home_news_flex}>
+            <div className={homeStyle.home_news_title}>
+              <h2>News & Updates</h2>
+              <p>
+                GreenShift Nepal will work with waste enterprises, SMEs, CSOs of
+                waste workers, youths, school children, and three tiers of
+                government in the promotion of circular economy of plastics.
+              </p>
 
-                <Button text={"More News & Updates"} link={"/"} />
-              </div>
-            </Grid>
+              <Button text={"More News & Updates"} link={"/"} />
+            </div>
 
-            <Grid item md={8}>
+            <div className={homeStyle.home_news_slide}>
               <Swiper
                 spaceBetween={30}
-                slidesPerView={2}
                 speed={1500}
                 autoplay={{
                   delay: 5500,
@@ -141,8 +193,18 @@ export default function Home() {
                 }}
                 loop={true}
                 modules={[Autoplay]}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                  },
+                }}
               >
-                {newsData.slice(0, 6).map((val, index) => {
+                {newsData.map((val, index) => {
                   return (
                     <SwiperSlide key={index}>
                       <div className={homeStyle.news_wrap}>
@@ -166,8 +228,8 @@ export default function Home() {
                   );
                 })}
               </Swiper>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </Container>
       </section>
 

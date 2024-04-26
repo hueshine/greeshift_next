@@ -83,10 +83,10 @@ const Partners = () => {
             </div>
           </Grid>
           <Grid item md={8} className={homeStyle.partner_container}>
-            <Grid container spacing={4}>
-              <Grid item md={4} className={homeStyle.partner_box}>
+            <Grid container spacing={2}>
+              <Grid item md={4.5} className={homeStyle.partner_box}>
                 <h4>
-                  <span>Donor</span>
+                  <span>FINANCIAL SUPPORT</span>
                 </h4>
 
                 <div className={homeStyle.partner_box_logo}>
@@ -94,7 +94,7 @@ const Partners = () => {
                 </div>
               </Grid>
 
-              <Grid item md={8} className={homeStyle.partner_box}>
+              <Grid item md={7.5} className={homeStyle.partner_box}>
                 <h4>
                   <span>Consortium Partners</span>
                 </h4>

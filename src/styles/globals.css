@@ -160,13 +160,6 @@ a {
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Satoshi Black";
-  src: url("../fonts/Satoshi-Black.woff2") format("woff2"),
-    url("../fonts/SourceSansPro-Black.woff") format("woff");
-  font-display: swap;
-}
-
 body {
   font-family: "Satoshi";
   font-weight: normal;
@@ -328,11 +321,11 @@ h1 {
 
 h2 {
   font-size: 48px;
-  line-height: 53px;
-  font-weight: 700;
+  line-height: 48px;
+  font-weight: 800;
   margin-bottom: 25px;
   letter-spacing: -1px;
-  font-family: "TuskerGrotesk";
+  font-family: "Source Sans Pro";
   text-transform: uppercase;
 }
 
@@ -345,15 +338,16 @@ h4 span {
 h3 {
   font-size: 42px;
   line-height: 45px;
+  font-family: "Source Sans Pro";
   margin-bottom: 25px;
-  font-family: "TuskerGrotesk";
   text-transform: uppercase;
 }
 
 h4 {
   font-size: 32px;
   line-height: 35px;
-  font-family: "TuskerGrotesk";
+  font-family: "Source Sans Pro";
+
   margin-bottom: 25px;
   text-transform: uppercase;
 }
@@ -361,15 +355,10 @@ h4 {
 h5 {
   font-size: 24px;
   line-height: 29px;
-  font-family: "TuskerGrotesk";
+  font-family: "Source Sans Pro";
+
   margin-bottom: 15px;
   text-transform: uppercase;
-}
-h6 {
-  font-size: 22px;
-  line-height: 29px;
-  margin-bottom: 15px;
-  font-family: "Satoshi Black";
 }
 
 p {
