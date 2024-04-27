@@ -5,6 +5,7 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 // Sections
 import Hero from "@/components/Hero";
+import ImpactSlide from "@/components/ImpactSlide";
 import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
 import Button from "@/components/Button/Button";
@@ -22,6 +23,7 @@ import Link from "next/link";
 import { useIsomorphicLayoutEffect } from "@/hook";
 
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import newsJSON from "./news-and-updates/data.json";
 
@@ -46,7 +48,11 @@ export default function Home() {
       <Hero />
 
       <section className={homeStyle.introAbout}>
-        <Container maxWidth={"md"}>
+        <div className={homeStyle.introAbout_svg}>
+          <img src="./introsvg.svg" alt="" />
+        </div>
+
+        <Container id="introContainer" maxWidth={"md"}>
           <div className={homeStyle.introAbout_text}>
             <h2>
               Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
@@ -78,31 +84,8 @@ export default function Home() {
           </div>
         </Container>
 
-        <Container maxWidth={"lg"}>
-          <Grid container spacing={2}>
-            <Grid className={homeStyle.introImg_wrap} item md={3}>
-              <div className={homeStyle.introAbout_img}>
-                <img src="./focusarea1.png" alt="" />
-              </div>
-            </Grid>
-
-            <Grid className={homeStyle.introImg_wrap} item md={3}>
-              <div className={homeStyle.introAbout_img}>
-                <img src="./131511.jpg" alt="" />
-              </div>
-            </Grid>
-
-            <Grid className={homeStyle.introImg_wrap} item md={3}>
-              <div className={homeStyle.introAbout_img}>
-                <img src="./thumbnail.jpg" alt="" />
-              </div>
-            </Grid>
-            <Grid className={homeStyle.introImg_wrap} item md={3}>
-              <div className={homeStyle.introAbout_img}>
-                <img src="./focusarea3.png" alt="" />
-              </div>
-            </Grid>
-          </Grid>
+        <Container className={homeStyle.impact_slider} maxWidth={"lg"}>
+          <ImpactSlide />
         </Container>
       </section>
 
@@ -153,8 +136,12 @@ export default function Home() {
         </Container>
       </section> */}
 
+      {/* <section className={homeStyle.map}></section> */}
+
       <section className={homeStyle.focus_area}>
-        <h2 style={{ textAlign: "center" }}>Focus Areas</h2>
+        <h2 style={{ textAlign: "center" }}>
+          <span>Focus Areas</span>
+        </h2>
 
         <Container maxWidth="sm" style={{ textAlign: "center" }}>
           <p>

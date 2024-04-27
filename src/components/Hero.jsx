@@ -7,6 +7,8 @@ import EastIcon from "@mui/icons-material/East";
 import { useIsomorphicLayoutEffect } from "@/hook";
 
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { SplitText } from "gsap/dist/SplitText";
 
 import { Jar, WaterJar, TakeAway, Plastic, Glass, Bottle } from "./HeroSvg";
 
@@ -115,6 +117,38 @@ const Hero = () => {
     return () => gsapCtx.revert();
   });
 
+  useIsomorphicLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    const ctx = gsap.context(() => {
+      const split = new SplitText(".heading", {
+        type: "lines",
+        linesClass: "split-line",
+      });
+
+      const lines = document.querySelectorAll(".split-line");
+
+      lines.forEach((line, index) => {
+        const direction = index % 2 === 0 ? -50 : 50;
+
+        gsap.to(line, {
+          yPercent: direction,
+          opacity: 0,
+          scale: 1.3,
+          duration: 1,
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "bottom 95%",
+            end: "bottom 20%",
+            scrub: true,
+          },
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  });
+
   const HtmlTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -127,7 +161,7 @@ const Hero = () => {
     },
   }));
   return (
-    <section className={homeStyle.hero}>
+    <section className={homeStyle.hero} id="hero">
       <div className={homeStyle.hero_svg}>
         <div className={homeStyle.hero_svg_left}>
           <HtmlTooltip
@@ -247,7 +281,7 @@ const Hero = () => {
 
       <Container maxWidth="xl">
         <div className={homeStyle.text}>
-          <h1>
+          <h1 className="heading">
             How <span>Green</span> Are You?
           </h1>
 

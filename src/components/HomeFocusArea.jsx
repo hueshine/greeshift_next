@@ -84,7 +84,6 @@ const HomeFocusArea = () => {
 
     console.log(window.innerWidth);
     if (window.innerWidth < 500) {
-      console.log("hello");
       ctx.revert();
     }
 
@@ -99,7 +98,7 @@ const HomeFocusArea = () => {
             className={homeStyle.focusCard}
             key={index}
             ref={(el) => (cardRrefs.current[index] = el)}
-            style={{ backgroundColor: index % 2 === 0 ? "#5abdc1" : "#33b2b6" }}
+            style={{ backgroundColor: index % 2 === 0 ? "#F0EBE3" : "#F6F5F2" }}
           >
             <Container maxWidth={"lg"}>
               <Grid container spacing={1}>

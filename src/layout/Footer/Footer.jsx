@@ -14,39 +14,11 @@ const Footer = () => {
   return (
     <footer className={footerStyle.footer}>
       <Container maxWidth="lg">
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item style={marginBottom} lg={3} className={footerStyle.logo}>
             <a href="">
               <img src="./logo.png" alt="" />
             </a>
-          </Grid>
-
-          <Grid item lg={2}></Grid>
-
-          <Grid item style={marginBottom} lg={4}>
-            <h6>Contact Us</h6>
-            <a href="">Pabitra Pyara Marga, Baluwatar</a>
-            <a href="">+977-1-4520784 /01-4540085</a>
-            <a href="">greenshiftnepal@creasion.org</a>
-
-            <a href="" target="_blank" className={footerStyle.logo_btn}>
-              Grievance
-              <div>
-                <ArrowOutwardIcon />
-              </div>
-            </a>
-
-            {/* <div className={footerStyle.social}>
-              <a target="_blank">
-                <FacebookIcon />
-              </a>
-              <a target="_blank">
-                <InstagramIcon />
-              </a>
-              <a target="_blank">
-                <XIcon />
-              </a>
-            </div> */}
           </Grid>
 
           <Grid item style={marginBottom} lg={3}>
@@ -56,14 +28,67 @@ const Footer = () => {
             <a href="">Knowledge Hub</a>
             <a href="">Join The Green Movement</a>
           </Grid>
-        </Grid>
 
-        <div className={footerStyle.copyright}>
-          <p>
-            <small>© 2024 Green Shift Nepal.</small>
-          </p>
-        </div>
+          <Grid item style={marginBottom} lg={3}>
+            <h6>CONSORTIUM PARTNERS</h6>
+            <a href="">Creasion</a>
+            <a href="">Youth Innovation Lab</a>
+            <a href="">Restless Development</a>
+
+            <a href="" target="_blank" className={footerStyle.logo_btn}>
+              Grievance
+              <div>
+                <ArrowOutwardIcon />
+              </div>
+            </a>
+          </Grid>
+
+          <Grid item style={marginBottom} lg={3}>
+            <h6>Contact Us</h6>
+            <a href="">Pabitra Pyara Marga, Baluwatar</a>
+            <a href="">+977-1-4520784 /01-4540085</a>
+            <a href="">greenshift@creasion.org</a>
+
+            <div className={footerStyle.social}>
+              <h6>Connect Via</h6>
+              <a target="_blank">
+                <FacebookIcon />
+              </a>
+              <a target="_blank">
+                <InstagramIcon />
+              </a>
+              <a target="_blank">
+                <XIcon />
+              </a>
+            </div>
+          </Grid>
+        </Grid>
       </Container>
+
+      <div className={footerStyle.copyright}>
+        <Container maxWidth={"lg"}>
+          <Grid container spacing={4}>
+            <Grid item md={3}></Grid>
+
+            <Grid item md={6}>
+              <p>
+                <small>
+                  Disclaimer: This website is produced with the financial
+                  support of the European Union. Its content are the sole
+                  responsibility of Creasion and its consortium partners and do
+                  not necessarily reflect the views of the European Union.
+                </small>
+              </p>
+            </Grid>
+
+            <Grid item md={3}>
+              <p>
+                <small>© 2024 Green Shift Nepal.CREASSION</small>
+              </p>
+            </Grid>
+          </Grid>
+        </Container>
+      </div>
     </footer>
   );
 };
