@@ -17,7 +17,7 @@ const Footer = () => {
         <Grid container spacing={2}>
           <Grid item style={marginBottom} lg={3} className={footerStyle.logo}>
             <a href="">
-              <img src="./logo.png" alt="" />
+              <img src="/logo.png" alt="" />
             </a>
           </Grid>
 

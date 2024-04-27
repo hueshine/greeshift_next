@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Grid } from "@mui/material";
 import headerStyle from "./header.module.scss";
 import Link from "next/link";
@@ -10,9 +9,9 @@ const Header = () => {
         <Grid container alignItems="center">
           <Grid item md={2}>
             <div className={headerStyle.logo}>
-              <a href="">
-                <img src="./logo.png" alt="" />
-              </a>
+              <Link href={"/"}>
+                <img src="/logo.png" alt="" />
+              </Link>
             </div>
           </Grid>
 
@@ -23,7 +22,7 @@ const Header = () => {
 
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
-                    <Link href={"/"}>Focus Area</Link>
+                    <Link href={"/focus-area"}>Focus Area</Link>
                     <Link href={"/"}>Impacts</Link>
                     <Link href={"/"}>Team</Link>
                   </div>
@@ -73,7 +72,7 @@ const Header = () => {
                   <div className={headerStyle.wrap}>
                     <Link href={"/"}>Blogs & Field Stories </Link>
                     <Link href={"/"}>Publications & Reports </Link>
-                    <Link href={"/"}>News & Updates </Link>
+                    <Link href={"/news-and-updates"}>News & Updates </Link>
                   </div>
                 </div>
               </li>
