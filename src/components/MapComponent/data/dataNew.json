@@ -1,0 +1,1160 @@
+{
+  "allData": {
+    "title": "All",
+    "cleanup_campaigns": {
+      "title": "Number of Cleanup Campaigns",
+      "number": 110
+    },
+    "plastic_collected": {
+      "title": "Plastic Collected",
+      "number": 9900,
+      "unit": "Kilo Tons"
+    },
+    "budget": {
+      "title": "Budget Spent",
+      "total": 1000000,
+      "spent": 900000,
+      "spent_in_text": "NPR 900k"
+    },
+    "peopleInvolved": {
+      "femaleNum": 200,
+      "maleNum": 465,
+      "female": 80,
+      "male": 60
+    },
+    "emmission": {
+      "title": "CO2 Emission (KG)",
+      "number": 700
+    },
+    "recovered": {
+      "title": " Plastic Recovered (KG)",
+      "number": 1234
+    },
+    "awareness_campaign": {
+      "title": " Awareness and Advocacy Campaign",
+      "number": 15
+    },
+    "vulnerable": {
+      "title": "Trained Vulnerable Communities",
+      "chart": [
+        {
+          "name": "Male",
+          "y": 3000,
+          "color": "#008DDA"
+        },
+        {
+          "name": "Female",
+          "y": 4500,
+          "color": "#DD5746"
+        }
+      ]
+    },
+    "wasteDisposal": {
+      "title": "State of plastic waste disposal",
+      "series": [
+        {
+          "name": "Open dumping",
+          "data": [3, 3, 4, 3, 4, 4, 5]
+        },
+        {
+          "name": "River side dumping",
+          "data": [2, 4, 3, 4, 5, 3, 4]
+        },
+        {
+          "name": "Frequently Fired",
+          "data": [2, 2, 3, 4, 3, 3, 4]
+        },
+        {
+          "name": "Dumped in sensetive areas",
+          "data": [4, 5, 4, 5, 3, 4, 6]
+        }
+      ],
+      "xAxis": {
+        "categories": [
+          "Heatuda",
+          "Lalitpur",
+          "Golanjor",
+          "Bharatpur",
+          "Gajuri",
+          "Ichchhakamana",
+          "Bardibas"
+        ],
+        "crosshair": true,
+        "accessibility": {
+          "description": ""
+        }
+      }
+    },
+    "plasticLeakage": {
+      "title": "Reduction of plastic leakages in nearby rivers in %",
+      "series": [
+        {
+          "name": "PET",
+          "data": [5, 9, 8, 3, 4, 4, 5]
+        },
+        {
+          "name": "HDLPE",
+          "data": [6, 8, 7, 4, 5, 3, 4]
+        },
+        {
+          "name": "LDPE",
+          "data": [7, 7, 6, 4, 3, 3, 4]
+        },
+        {
+          "name": "MLP",
+          "data": [8, 6, 5, 5, 3, 4, 6]
+        },
+        {
+          "name": "Others",
+          "data": [9, 5, 4, 5, 3, 4, 6]
+        }
+      ],
+      "xAxis": {
+        "categories": [
+          "Heatuda",
+          "Lalitpur",
+          "Golanjor",
+          "Bharatpur",
+          "Gajuri",
+          "Ichchhakamana",
+          "Bardibas"
+        ],
+        "crosshair": true,
+        "accessibility": {
+          "description": ""
+        }
+      }
+    },
+    "wasteComposition": {
+      "title": "Waste Composition",
+      "chart": [
+        {
+          "name": "Organic",
+          "y": 20,
+          "Z": 0,
+          "color": "#E1AA74"
+        },
+        {
+          "name": "Sharp",
+          "y": 20,
+          "Z": 0,
+          "color": "#FE5F55"
+        },
+        {
+          "name": "Glass and Paper",
+          "y": 20,
+          "Z": 0,
+          "color": "#777DA7"
+        },
+        {
+          "name": "HDPE",
+          "y": 20,
+          "Z": 0,
+          "color": "#94C9A9"
+        },
+        {
+          "name": "LDPE",
+          "y": 10,
+          "Z": 0,
+          "color": "#C6ECAE"
+        },
+        {
+          "name": "PET",
+          "y": 5,
+          "Z": 0,
+          "color": "#00B295"
+        }
+      ]
+    },
+    "schoolActivities": {
+      "title": "School Activities",
+      "series": [
+        {
+          "name": "Done",
+          "data": [1, 2, 6, 7, 5, 9],
+          "color": "#9DBC98"
+        },
+        {
+          "name": "Remaning",
+          "data": [3, 3, 1, 2, 1, 6],
+          "color": "#638889"
+        }
+      ],
+      "xAxis": {
+        "categories": [
+          "E-Library set up",
+          "Waste Smart Museum",
+          "Child Impact Fund",
+          "otice Board",
+          "School Projects"
+        ],
+        "crosshair": true,
+        "accessibility": {
+          "description": ""
+        }
+      }
+    }
+  },
+  "siteData": [
+    {
+      "municipality": "Bharatpur",
+      "title": "Bharatpur Metropolitan City",
+      "latitude": 27.660632199999998448447513510473072528839111328125,
+      "longitude": 84.40017249999999648935045115649700164794921875,
+      "latLng": [
+        84.706189399999999523060978390276432037353515625,
+        27.6730996000000004642060957849025726318359375
+      ],
+      "zoomValue": 9.800000000000000710542735760100185871124267578125,
+      "cleanup_campaigns": {
+        "title": "Number of Cleanup Campaigns",
+        "number": 100
+      },
+      "plastic_collected": {
+        "title": "Plastic Collected",
+        "number": 2800,
+        "unit": "Kilo Tons"
+      },
+      "budget": {
+        "title": "Budget Spent",
+        "total": 400000,
+        "spent": 250000,
+        "spent_in_text": "NPR 250K"
+      },
+      "school": {
+        "title": "Waste Smart School Established",
+        "remaining": 48,
+        "acheived": 52
+      },
+      "peopleInvolved": {
+        "femaleNum": 200,
+        "maleNum": 465,
+        "female": 45,
+        "male": 65
+      },
+      "hotspot": {
+        "title": "Plastic Waste Maping Hotspot",
+        "chart": [
+          {
+            "name": "Open Dumping",
+            "y": 5,
+            "color": "#B6B7A8"
+          },
+          {
+            "name": "River side dumping",
+            "y": 2,
+            "color": "#9AD0C2"
+          },
+          {
+            "name": "Frequently fired",
+            "y": 2,
+            "color": "#2D9596"
+          },
+          {
+            "name": "Dumped in sensitive areas",
+            "y": 4,
+            "color": "#265073"
+          }
+        ]
+      },
+      "leakage": {
+        "title": "Plastic Leakage in River",
+        "chart": [
+          {
+            "name": "PET",
+            "y": 5,
+            "color": "#F6B17A"
+          },
+          {
+            "name": "HDLPE",
+            "y": 6,
+            "color": "#7077A1"
+          },
+          {
+            "name": "LDPE",
+            "y": 7,
+            "color": "#424769"
+          },
+          {
+            "name": "MLP",
+            "y": 8,
+            "color": "#2D3250"
+          },
+          {
+            "name": "Others",
+            "y": 9,
+            "color": "#43766C"
+          }
+        ]
+      },
+      "wasteComposition": {
+        "title": "Waste Composition",
+        "chart": [
+          {
+            "name": "Organic",
+            "y": 59,
+            "Z": 0,
+            "color": "#E1AA74"
+          },
+          {
+            "name": "Sharp",
+            "y": 4,
+            "Z": 0,
+            "color": "#FE5F55"
+          },
+          {
+            "name": "Glass and Paper",
+            "y": 5,
+            "Z": 0,
+            "color": "#777DA7"
+          },
+          {
+            "name": "HDPE",
+            "y": 5,
+            "Z": 0,
+            "color": "#94C9A9"
+          },
+          {
+            "name": "LDPE",
+            "y": 9,
+            "Z": 0,
+            "color": "#C6ECAE"
+          },
+          {
+            "name": "PET",
+            "y": 18,
+            "Z": 0,
+            "color": "#00B295"
+          }
+        ]
+      },
+      "vulnerable": {
+        "title": "Trained Vulnerable Communities",
+        "chart": [
+          {
+            "name": "Male",
+            "y": 10,
+            "color": "#008DDA"
+          },
+          {
+            "name": "Female",
+            "y": 9,
+            "color": "#DD5746"
+          }
+        ]
+      },
+      "emmission": {
+        "title": "CO2 Emission (KG)",
+        "number": 1400
+      },
+      "recovered": {
+        "title": " Plastic Recovered (KG)",
+        "number": 6345
+      },
+      "awareness_campaign": {
+        "title": " Awareness and Advocacy Campaign",
+        "number": 8
+      }
+    },
+    {
+      "municipality": "Ichchhakamana",
+      "title": "Ichchhakamana Rural Municipality",
+      "latitude": 27.830113999999998242174115148372948169708251953125,
+      "longitude": 84.5665369999999967376425047405064105987548828125,
+      "latLng": [
+        84.806189399999993838719092309474945068359375,
+        27.680113999999999663259586668573319911956787109375
+      ],
+      "zoomValue": 9.800000000000000710542735760100185871124267578125,
+      "cleanup_campaigns": {
+        "title": "Number of Cleanup Campaigns",
+        "number": 90
+      },
+      "plastic_collected": {
+        "title": "Plastic Collected",
+        "number": 4500,
+        "unit": "Kilo Tons"
+      },
+      "budget": {
+        "title": "Budger Spent",
+        "total": 500000,
+        "spent": 450000,
+        "spent_in_text": "NPR 450k"
+      },
+      "school": {
+        "title": "Waste Smart School Established",
+        "remaining": 25,
+        "acheived": 75
+      },
+      "peopleInvolved": {
+        "femaleNum": 200,
+        "maleNum": 465,
+        "female": 80,
+        "male": 80
+      },
+      "hotspot": {
+        "title": "Plastic Waste Maping Hotspot",
+        "chart": [
+          {
+            "name": "Open Dumping",
+            "y": 6,
+            "color": "#B6B7A8"
+          },
+          {
+            "name": "River side dumping",
+            "y": 1,
+            "color": "#9AD0C2"
+          },
+          {
+            "name": "Frequently fired",
+            "y": 2,
+            "color": "#2D9596"
+          },
+          {
+            "name": "Dumped in sensitive areas",
+            "y": 8,
+            "color": "#265073"
+          }
+        ]
+      },
+      "leakage": {
+        "title": "Plastic Leakage in River",
+        "chart": [
+          {
+            "name": "PET",
+            "y": 3,
+            "color": "#F6B17A"
+          },
+          {
+            "name": "HDLPE",
+            "y": 8,
+            "color": "#7077A1"
+          },
+          {
+            "name": "LDPE",
+            "y": 7,
+            "color": "#424769"
+          },
+          {
+            "name": "MLP",
+            "y": 4,
+            "color": "#2D3250"
+          },
+          {
+            "name": "Others",
+            "y": 5,
+            "color": "#43766C"
+          }
+        ]
+      },
+      "wasteComposition": {
+        "title": "Waste Composition",
+        "chart": [
+          {
+            "name": "Organic",
+            "y": 20,
+            "Z": 0,
+            "color": "#E1AA74"
+          },
+          {
+            "name": "Sharp",
+            "y": 20,
+            "Z": 0,
+            "color": "#FE5F55"
+          },
+          {
+            "name": "Glass and Paper",
+            "y": 15,
+            "Z": 0,
+            "color": "#777DA7"
+          },
+          {
+            "name": "HDPE",
+            "y": 9,
+            "Z": 0,
+            "color": "#94C9A9"
+          },
+          {
+            "name": "LDPE",
+            "y": 13,
+            "Z": 0,
+            "color": "#C6ECAE"
+          },
+          {
+            "name": "PET",
+            "y": 18,
+            "Z": 0,
+            "color": "#00B295"
+          }
+        ]
+      },
+      "vulnerable": {
+        "title": "Trained Vulnerable Communities",
+        "chart": [
+          {
+            "name": "Male",
+            "y": 20,
+            "color": "#008DDA"
+          },
+          {
+            "name": "Female",
+            "y": 15,
+            "color": "#DD5746"
+          }
+        ]
+      },
+      "emmission": {
+        "title": "CO2 Emission (KG)",
+        "number": 700
+      },
+      "recovered": {
+        "title": " Plastic Recovered (KG)",
+        "number": 1234
+      },
+      "awareness_campaign": {
+        "title": " Awareness and Advocacy Campaign",
+        "number": 15
+      }
+    },
+    {
+      "municipality": "Bardibas",
+      "title": "Bardibas Municipality",
+      "latitude": 27.0426140000000003738023224286735057830810546875,
+      "longitude": 85.8724789999999984502210281789302825927734375,
+      "latLng": [
+        86.1224789999999984502210281789302825927734375,
+        26.94261399999999895271685090847313404083251953125
+      ],
+      "zoomValue": 9.5,
+      "cleanup_campaigns": {
+        "title": "Number of Cleanup Campaigns",
+        "number": 80
+      },
+      "plastic_collected": {
+        "title": "Plastic Collected",
+        "number": 8500,
+        "unit": "Kilo Tons"
+      },
+      "budget": {
+        "title": "Budget Spent",
+        "total": 400000,
+        "spent": 250000,
+        "spent_in_text": "NPR 250K"
+      },
+      "school": {
+        "title": "Waste Smart School Established",
+        "remaining": 48,
+        "acheived": 52
+      },
+      "peopleInvolved": {
+        "femaleNum": 200,
+        "maleNum": 465,
+        "female": 45,
+        "male": 65
+      },
+      "hotspot": {
+        "title": "Plastic Waste Maping Hotspot",
+        "chart": [
+          {
+            "name": "Open Dumping",
+            "y": 5,
+            "color": "#B6B7A8"
+          },
+          {
+            "name": "River side dumping",
+            "y": 2,
+            "color": "#9AD0C2"
+          },
+          {
+            "name": "Frequently fired",
+            "y": 2,
+            "color": "#2D9596"
+          },
+          {
+            "name": "Dumped in sensitive areas",
+            "y": 4,
+            "color": "#265073"
+          }
+        ]
+      },
+      "leakage": {
+        "title": "Plastic Leakage in River",
+        "chart": [
+          {
+            "name": "PET",
+            "y": 5,
+            "color": "#F6B17A"
+          },
+          {
+            "name": "HDLPE",
+            "y": 6,
+            "color": "#7077A1"
+          },
+          {
+            "name": "LDPE",
+            "y": 7,
+            "color": "#424769"
+          },
+          {
+            "name": "MLP",
+            "y": 8,
+            "color": "#2D3250"
+          },
+          {
+            "name": "Others",
+            "y": 9,
+            "color": "#43766C"
+          }
+        ]
+      },
+      "wasteComposition": {
+        "title": "Waste Composition",
+        "chart": [
+          {
+            "name": "Organic",
+            "y": 59,
+            "Z": 0,
+            "color": "#E1AA74"
+          },
+          {
+            "name": "Sharp",
+            "y": 4,
+            "Z": 0,
+            "color": "#FE5F55"
+          },
+          {
+            "name": "Glass and Paper",
+            "y": 6,
+            "Z": 0,
+            "color": "#777DA7"
+          },
+          {
+            "name": "HDPE",
+            "y": 8,
+            "Z": 0,
+            "color": "#94C9A9"
+          },
+          {
+            "name": "LDPE",
+            "y": 9,
+            "Z": 0,
+            "color": "#C6ECAE"
+          },
+          {
+            "name": "PET",
+            "y": 18,
+            "Z": 0,
+            "color": "#00B295"
+          }
+        ]
+      },
+      "vulnerable": {
+        "title": "Trained Vulnerable Communities",
+        "chart": [
+          {
+            "name": "Male",
+            "y": 10,
+            "color": "#008DDA"
+          },
+          {
+            "name": "Female",
+            "y": 9,
+            "color": "#DD5746"
+          }
+        ]
+      },
+      "emmission": {
+        "title": "CO2 Emission (KG)",
+        "number": 1400
+      },
+      "recovered": {
+        "title": "Plastic Recovered (KG)",
+        "number": 6345
+      },
+      "awareness_campaign": {
+        "title": "Awareness and Advocacy Campaign",
+        "number": 8
+      }
+    },
+    {
+      "municipality": "Kathmandu",
+      "title": "Kathmandu Valley",
+      "latitude": 27.738999400000000861155058373697102069854736328125,
+      "longitude": 85.3645838000000054535121307708323001861572265625,
+      "latLng": [
+        85.9045837999999974954334902577102184295654296875,
+        27.609994000000000369254848919808864593505859375
+      ],
+      "zoomValue": 9.199999999999999289457264239899814128875732421875,
+      "cleanup_campaigns": {
+        "title": "Number of Cleanup Campaigns",
+        "number": 70
+      },
+      "plastic_collected": {
+        "title": "Plastic Collected",
+        "number": 4500,
+        "unit": "Kilo Tons"
+      },
+      "budget": {
+        "title": "Budget Spent",
+        "total": 500000,
+        "spent": 450000,
+        "spent_in_text": "NPR 450K"
+      },
+      "school": {
+        "title": "Waste Smart School Established",
+        "remaining": 25,
+        "acheived": 75
+      },
+      "peopleInvolved": {
+        "femaleNum": 200,
+        "maleNum": 465,
+        "female": 80,
+        "male": 80
+      },
+      "hotspot": {
+        "title": "Plastic Waste Maping Hotspot",
+        "chart": [
+          {
+            "name": "Open Dumping",
+            "y": 6,
+            "color": "#B6B7A8"
+          },
+          {
+            "name": "River side dumping",
+            "y": 1,
+            "color": "#9AD0C2"
+          },
+          {
+            "name": "Frequently fired",
+            "y": 2,
+            "color": "#2D9596"
+          },
+          {
+            "name": "Dumped in sensitive areas",
+            "y": 8,
+            "color": "#265073"
+          }
+        ]
+      },
+      "leakage": {
+        "title": "Plastic Leakage in River",
+        "chart": [
+          {
+            "name": "PET",
+            "y": 3,
+            "color": "#F6B17A"
+          },
+          {
+            "name": "HDLPE",
+            "y": 8,
+            "color": "#7077A1"
+          },
+          {
+            "name": "LDPE",
+            "y": 7,
+            "color": "#424769"
+          },
+          {
+            "name": "MLP",
+            "y": 5,
+            "color": "#2D3250"
+          },
+          {
+            "name": "Others",
+            "y": 9,
+            "color": "#43766C"
+          }
+        ]
+      },
+      "wasteComposition": {
+        "title": "Waste Composition",
+        "chart": [
+          {
+            "name": "Organic",
+            "y": 20,
+            "Z": 0,
+            "color": "#E1AA74"
+          },
+          {
+            "name": "Sharp",
+            "y": 20,
+            "Z": 0,
+            "color": "#FE5F55"
+          },
+          {
+            "name": "Glass and Paper",
+            "y": 20,
+            "Z": 0,
+            "color": "#777DA7"
+          },
+          {
+            "name": "HDPE",
+            "y": 20,
+            "Z": 0,
+            "color": "#94C9A9"
+          },
+          {
+            "name": "LDPE",
+            "y": 10,
+            "Z": 0,
+            "color": "#C6ECAE"
+          },
+          {
+            "name": "PET",
+            "y": 18,
+            "Z": 0,
+            "color": "#00B295"
+          }
+        ]
+      },
+      "vulnerable": {
+        "title": "Trained Vulnerable Communities",
+        "chart": [
+          {
+            "name": "Male",
+            "y": 20,
+            "color": "#008DDA"
+          },
+          {
+            "name": "Female",
+            "y": 15,
+            "color": "#DD5746"
+          }
+        ]
+      },
+      "emmission": {
+        "title": "CO2 Emission (KG)",
+        "number": 700
+      },
+      "recovered": {
+        "title": "Plastic Recovered (KG)",
+        "number": 1234
+      },
+      "awareness_campaign": {
+        "title": "Awareness and Advocacy Campaign",
+        "number": 15
+      }
+    },
+    {
+      "municipality": "Hetauda",
+      "title": "Hetauda Sub Metropolitan City",
+      "latitude": 27.432976000000000027512214728631079196929931640625,
+      "longitude": 85.0080750000000051613824325613677501678466796875,
+      "latLng": [
+        85.40807499999999663486960344016551971435546875,
+        27.30297600000000102227204479277133941650390625
+      ],
+      "zoomValue": 9.5,
+      "cleanup_campaigns": {
+        "title": "Number of Cleanup Campaigns",
+        "number": 60
+      },
+      "plastic_collected": {
+        "title": "Plastic Collected",
+        "number": 2800,
+        "unit": "Kilo Tons"
+      },
+      "budget": {
+        "title": "Budget Spent",
+        "total": 400000,
+        "spent": 250000,
+        "spent_in_text": "NPR 250K"
+      },
+      "school": {
+        "title": "Waste Smart School Established",
+        "remaining": 48,
+        "acheived": 52
+      },
+      "peopleInvolved": {
+        "femaleNum": 200,
+        "maleNum": 465,
+        "female": 45,
+        "male": 65
+      },
+      "hotspot": {
+        "title": "Plastic Waste Maping Hotspot",
+        "chart": [
+          {
+            "name": "Open Dumping",
+            "y": 5,
+            "color": "#B6B7A8"
+          },
+          {
+            "name": "River side dumping",
+            "y": 4,
+            "color": "#9AD0C2"
+          },
+          {
+            "name": "Frequently fired",
+            "y": 3,
+            "color": "#2D9596"
+          },
+          {
+            "name": "Dumped in sensitive areas",
+            "y": 8,
+            "color": "#265073"
+          }
+        ]
+      },
+      "leakage": {
+        "title": "Plastic Leakage in River",
+        "chart": [
+          {
+            "name": "PET",
+            "y": 5,
+            "color": "#F6B17A"
+          },
+          {
+            "name": "HDLPE",
+            "y": 6,
+            "color": "#7077A1"
+          },
+          {
+            "name": "LDPE",
+            "y": 7,
+            "color": "#424769"
+          },
+          {
+            "name": "MLP",
+            "y": 8,
+            "color": "#2D3250"
+          },
+          {
+            "name": "Others",
+            "y": 9,
+            "color": "#43766C"
+          }
+        ]
+      },
+      "wasteComposition": {
+        "title": "Waste Composition",
+        "chart": [
+          {
+            "name": "Organic",
+            "y": 39,
+            "Z": 0,
+            "color": "#E1AA74"
+          },
+          {
+            "name": "Sharp",
+            "y": 10,
+            "Z": 0,
+            "color": "#FE5F55"
+          },
+          {
+            "name": "Glass and Paper",
+            "y": 20,
+            "Z": 0,
+            "color": "#777DA7"
+          },
+          {
+            "name": "HDPE",
+            "y": 25,
+            "Z": 0,
+            "color": "#94C9A9"
+          },
+          {
+            "name": "LDPE",
+            "y": 3,
+            "Z": 0,
+            "color": "#C6ECAE"
+          },
+          {
+            "name": "PET",
+            "y": 18,
+            "Z": 0,
+            "color": "#00B295"
+          }
+        ]
+      },
+      "vulnerable": {
+        "title": "Trained Vulnerable Communities",
+        "chart": [
+          {
+            "name": "Male",
+            "y": 10,
+            "color": "#008DDA"
+          },
+          {
+            "name": "Female",
+            "y": 9,
+            "color": "#DD5746"
+          }
+        ]
+      },
+      "emmission": {
+        "title": "CO2 Emission (KG)",
+        "number": 1400
+      },
+      "recovered": {
+        "title": "Plastic Recovered (KG)",
+        "number": 6345
+      },
+      "awareness_campaign": {
+        "title": "Awareness and Advocacy Campaign",
+        "number": 8
+      }
+    },
+    {
+      "municipality": "Golanjor",
+      "title": "Golanjor Rural Municipality",
+      "latitude": 27.259983999999999326746547012589871883392333984375,
+      "longitude": 86.05922640000000001236912794411182403564453125,
+      "latLng": [
+        86.5522639999999938709152047522366046905517578125,
+        27.259983999999999326746547012589871883392333984375
+      ],
+      "zoomValue": 9.5,
+      "cleanup_campaigns": {
+        "title": "Number of Cleanup Campaigns",
+        "number": 50
+      },
+      "plastic_collected": {
+        "title": "Plastic Collected",
+        "number": 4500,
+        "unit": "Kilo Tons"
+      },
+      "budget": {
+        "title": "Budget Spent",
+        "total": 500000,
+        "spent": 450000,
+        "spent_in_text": "NPR 450K"
+      },
+      "school": {
+        "title": "Waste Smart School Established",
+        "remaining": 25,
+        "acheived": 75
+      },
+      "peopleInvolved": {
+        "femaleNum": 200,
+        "maleNum": 465,
+        "female": 80,
+        "male": 80
+      },
+      "hotspot": {
+        "title": "Plastic Waste Maping Hotspot",
+        "chart": [
+          {
+            "name": "Open Dumping",
+            "y": 6,
+            "color": "#B6B7A8"
+          },
+          {
+            "name": "River side dumping",
+            "y": 1,
+            "color": "#9AD0C2"
+          },
+          {
+            "name": "Frequently fired",
+            "y": 2,
+            "color": "#2D9596"
+          },
+          {
+            "name": "Dumped in sensitive areas",
+            "y": 8,
+            "color": "#265073"
+          }
+        ]
+      },
+      "leakage": {
+        "title": "Plastic Leakage in River",
+        "chart": [
+          {
+            "name": "PET",
+            "y": 3,
+            "color": "#F6B17A"
+          },
+          {
+            "name": "HDLPE",
+            "y": 8,
+            "color": "#7077A1"
+          },
+          {
+            "name": "LDPE",
+            "y": 7,
+            "color": "#424769"
+          },
+          {
+            "name": "MLP",
+            "y": 5,
+            "color": "#2D3250"
+          },
+          {
+            "name": "Others",
+            "y": 9,
+            "color": "#43766C"
+          }
+        ]
+      },
+      "wasteComposition": {
+        "title": "Waste Composition",
+        "chart": [
+          {
+            "name": "Organic",
+            "y": 20,
+            "Z": 0,
+            "color": "#E1AA74"
+          },
+          {
+            "name": "Sharp",
+            "y": 20,
+            "Z": 0,
+            "color": "#FE5F55"
+          },
+          {
+            "name": "Glass and Paper",
+            "y": 20,
+            "Z": 0,
+            "color": "#777DA7"
+          },
+          {
+            "name": "HDPE",
+            "y": 20,
+            "Z": 0,
+            "color": "#94C9A9"
+          },
+          {
+            "name": "LDPE",
+            "y": 10,
+            "Z": 0,
+            "color": "#C6ECAE"
+          },
+          {
+            "name": "PET",
+            "y": 10,
+            "Z": 0,
+            "color": "#00B295"
+          }
+        ]
+      },
+      "vulnerable": {
+        "title": "Trained Vulnerable Communities",
+        "chart": [
+          {
+            "name": "Male",
+            "y": 20,
+            "color": "#008DDA"
+          },
+          {
+            "name": "Female",
+            "y": 15,
+            "color": "#DD5746"
+          }
+        ]
+      },
+      "emmission": {
+        "title": "CO2 Emission (KG)",
+        "number": 700
+      },
+      "recovered": {
+        "title": "Plastic Recovered (KG)",
+        "number": 1234
+      },
+      "awareness_campaign": {
+        "title": "Awareness and Advocacy Campaign",
+        "number": 15
+      }
+    }
+  ]
+}

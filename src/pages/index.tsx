@@ -1,13 +1,14 @@
 import Head from "next/head";
 
-import { Container, Grid, Card } from "@mui/material";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { Container, Grid } from "@mui/material";
 
 // Sections
 import Hero from "@/components/Hero";
 import ImpactSlide from "@/components/ImpactSlide";
 import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
+import MapComponent from "../components/MapComponent/MapComponent";
+
 import Button from "@/components/Button/Button";
 
 import BannerCurve from "@/components/BannerCurve";
@@ -44,9 +45,7 @@ export default function Home() {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-
       <Hero />
-
       <section className={homeStyle.introAbout}>
         <div className={homeStyle.introAbout_svg}>
           <img src="./introsvg.svg" alt="" />
@@ -88,7 +87,6 @@ export default function Home() {
           <ImpactSlide />
         </Container>
       </section>
-
       {/* <section className={homeStyle.intro}>
         <div className={homeStyle.intro_image}>
           <img src="/about.png" alt="" />
@@ -135,9 +133,8 @@ export default function Home() {
           </Grid>
         </Container>
       </section> */}
-
       {/* <section className={homeStyle.map}></section> */}
-
+      <MapComponent />
       <section className={homeStyle.focus_area}>
         <h2 style={{ textAlign: "center" }}>
           <span>Focus Areas</span>
@@ -155,7 +152,6 @@ export default function Home() {
           <HomeFocusArea />
         </div>
       </section>
-
       <section className={homeStyle.home_news}>
         <Container maxWidth="lg">
           <div className={homeStyle.home_news_flex}>
@@ -219,7 +215,6 @@ export default function Home() {
           </div>
         </Container>
       </section>
-
       <section className={homeStyle.partners}>
         {/* <div className={homeStyle.curveSvg}>
           <Curve fill={"#EFF4F3"} />
