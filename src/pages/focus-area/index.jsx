@@ -1,4 +1,11 @@
+import { useState } from "react";
+
 import { Container, Grid } from "@mui/material";
+
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+
 import Banner from "../../layout/Banner/Banner";
 import Head from "next/head";
 
@@ -62,7 +69,23 @@ const data = [
   },
 ];
 
+const modalStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  maxWidth: "80%",
+  bgcolor: "transparent",
+  boxShadow: 24,
+  border: "0px solid transparent",
+};
+
 const index = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => setOpen(false);
+  const [modalImage, setModalImage] = useState();
+
   return (
     <>
       <Head>
@@ -72,6 +95,12 @@ const index = () => {
         <meta property="og:image:height" content="442" />
       </Head>
       <Banner title={"Focus Area"} />
+
+      <Modal open={open} onClose={handleClose}>
+        <Box sx={modalStyle}>
+          <img src={modalImage} alt="" />
+        </Box>
+      </Modal>
 
       {data.map((val, index) => {
         return (
@@ -144,7 +173,14 @@ const index = () => {
               >
                 {val.image.map((img, index) => {
                   return (
-                    <SwiperSlide key={index} className={style.image_slide}>
+                    <SwiperSlide
+                      key={index}
+                      className={style.image_slide}
+                      onClick={() => {
+                        setOpen(true);
+                        setModalImage(img);
+                      }}
+                    >
                       <img src={img} alt="" />
                     </SwiperSlide>
                   );
