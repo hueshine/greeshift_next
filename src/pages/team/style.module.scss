@@ -1,0 +1,126 @@
+.team_text {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.tean_container {
+  text-align: center;
+  background: #e8f5f9;
+  padding: 80px 0;
+
+  .section_nav {
+    margin-bottom: 60px;
+    ul {
+      display: flex;
+      justify-content: center;
+
+      li {
+        font-family: "Source Sans Pro";
+        font-weight: 700;
+        margin: 10px;
+        font-size: 24px;
+        padding: 10px 30px;
+        border-radius: 30px;
+        cursor: pointer;
+
+        &.active {
+          background: #33b2b6;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .team_section {
+    h3 {
+      margin-bottom: 40px;
+    }
+
+    .wrap {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .team_card {
+        flex: 0 25%;
+        max-width: 25%;
+        margin-bottom: 40px;
+
+        &:hover {
+          .profile_image {
+            border: 4px solid #33b2b6;
+          }
+          h5 {
+            color: #33b2b6;
+          }
+        }
+
+        .profile_image {
+          aspect-ratio: 1;
+          border: solid 6px transparent;
+          border-radius: 100%;
+          cursor: pointer;
+          display: inline-block;
+          margin: 0;
+          width: 166px;
+          transition: 0.5s;
+          margin-bottom: 15px;
+
+          img {
+            aspect-ratio: 1;
+            border-radius: 100%;
+            margin: 0;
+            -o-object-fit: cover;
+            object-fit: cover;
+            width: 100%;
+            background: #fff;
+          }
+        }
+
+        h5 {
+          margin-bottom: 5px;
+          font-size: 22px;
+          text-transform: none;
+          transition: 0.5s;
+        }
+
+        p {
+          font-size: 18px;
+          line-height: 20px;
+          max-width: 80%;
+          margin: 0 auto 10px;
+
+          small {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .tean_container {
+    .team_section {
+      .wrap {
+        .team_card {
+          flex: 0 33.33%;
+          max-width: 33.33%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .tean_container {
+    .team_section {
+      .wrap {
+        .team_card {
+          flex: 0 50%;
+          max-width: 50%;
+        }
+      }
+    }
+  }
+}

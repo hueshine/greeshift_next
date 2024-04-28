@@ -3,8 +3,8 @@ import style from "./banner.module.scss";
 const Banner = ({ title }) => {
   return (
     <>
-      <div class={style.header}>
-        <div class={style.inner_header}>
+      <div className={style.header}>
+        <div className={style.inner_header}>
           <h2>{title}</h2>
         </div>
 

@@ -23,7 +23,7 @@ const NewsDetail = () => {
       {selectedNews ? (
         <>
           <Head>
-            <title>{selectedNews.title} | Project Cap</title>
+            <title>{selectedNews.title} | Green Shift Nepal</title>
             <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
             <meta property="og:image:width" content="640" />
             <meta property="og:image:height" content="442" />

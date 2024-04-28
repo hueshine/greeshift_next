@@ -24,7 +24,7 @@ const Header = () => {
                   <div className={headerStyle.wrap}>
                     <Link href={"/focus-area"}>Focus Area</Link>
                     <Link href={"/"}>Impacts</Link>
-                    <Link href={"/"}>Team</Link>
+                    <Link href={"/team"}>Team</Link>
                   </div>
                 </div>
               </li>
