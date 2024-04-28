@@ -2,156 +2,58 @@ import Banner from "../../layout/Banner/Banner";
 import Head from "next/head";
 
 import style from "./style.module.scss";
-import { Container } from "@mui/material";
+import { Container, Drawer } from "@mui/material";
 import { useState } from "react";
 
-const data = {
-  category: ["PIT", "PLT", "Fellows"],
-  PIT: [
-    {
-      name: "Yunish Ghimire",
-      designation: "Project Lead",
-      consortium: "CREASION ",
-      image: "/team/yunish.jpeg",
-      text: "",
-    },
-    {
-      name: "Mahendra Uprety",
-      designation: "Project Associate",
-      consortium: "CREASION",
-      image: "/team/mahendra.jpeg",
-      text: "",
-    },
-    {
-      name: "Sabin Dotel",
-      designation: "Waste Smart Fellowship Coordinator",
-      consortium: "Youth Innovation Lab ",
-      image: "/team/Youth_Innovation_Lab.png",
-      text: "",
-    },
-    {
-      name: "Sangita Maharjan",
-      designation: "Program Coordinator",
-      consortium: "Restless Development ",
-      image: "/team/sangita.jpeg",
-      text: "",
-    },
-    {
-      name: "",
-      designation: "Environment Officer",
-      consortium: "CREASION ",
-      image: "/team/creasion.png",
-      text: "",
-    },
-    {
-      name: "",
-      designation: "MERL Officer",
-      consortium: "CREASION ",
-      image: "/team/creasion.png",
-      text: "",
-    },
-    {
-      name: "Neeti Pradhan",
-      designation: "GESI Consultant",
-      consortium: "CREASION",
-      image: "/team/neeti.jpeg",
-      text: "",
-    },
-    {
-      name: "Milan Rayamajhi",
-      designation: "Communications Officer",
-      consortium: "CREASION ",
-      image: "/team/milan.jpeg",
-      text: "",
-    },
-    {
-      name: "Pratibha Mishra",
-      designation: "Finance Officer",
-      consortium: "CREASION ",
-      image: "/team/pratibha.jpeg",
-      text: "",
-    },
-    {
-      name: "",
-      designation: "Finance Officer",
-      consortium: "Restless Development ",
-      image: "/team/restless_development.png",
-      text: "",
-    },
-    {
-      name: "Sudha Baidhya",
-      designation: "Finance & Admin Manager",
-      consortium: "Youth Innovation Lab ",
-      image: "/team/sudha.png",
-      text: "",
-    },
-    {
-      name: "",
-      designation: "Partnership & Communications Officer",
-      consortium: "Restless Development",
-      image: "/team/restless_development.png",
+import CloseIcon from "@mui/icons-material/Close";
 
-      text: "",
-    },
-  ],
-  PLT: [
-    {
-      name: "Aanand Mishra",
-      designation: "Founder & President",
-      consortium: "CREASION",
-      image: "/team/aanand.jpeg",
-      text: "",
-    },
-    {
-      name: "Pradip Khatiwada",
-      designation: "Executive Director",
-      consortium: "Youth Innovation Lab",
-      image: "/team/Pradip.png",
-      text: "",
-    },
-    {
-      name: "Nalini Paul",
-      designation: "Regional Director",
-      consortium: "Restless Development ",
-      image: "/team/nalini.jpeg",
-      text: "",
-    },
-    {
-      name: "Yunish Ghimire",
-      designation: "Project Lead",
-      consortium: "CREASION",
-      image: "/team/yunish.jpeg",
-      text: "",
-    },
-  ],
-  Fellows: [
-    {
-      name: "Samyog Dhakal ",
-      designation: "",
-      consortium: "",
-      image: "",
-      text: "",
-    },
-    {
-      name: "Om Shanti Thapa",
-      designation: "",
-      consortium: "",
-      image: "",
-      text: "",
-    },
-    {
-      name: "Awanish Adhikari",
-      designation: "",
-      consortium: "",
-      image: "",
-      text: "",
-    },
-  ],
-};
+import data from "./data.json";
 
 const Team = () => {
   const [activeData, setActiveData] = useState(data.PIT);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeProfile, setActiveProfile] = useState();
+
+  const [open, setOpen] = useState(false);
+
+  const toggleDrawer = (newOpen, val) => () => {
+    setOpen(newOpen);
+    setActiveProfile(val);
+  };
+
+  const DrawerList = (
+    <div>
+      {activeProfile ? (
+        <div className={style.profile_detail}>
+          <div className={style.close_btn} onClick={toggleDrawer(false)}>
+            <CloseIcon />
+          </div>
+          <div className={style.head}>
+            <div className={style.image}>
+              <img src={activeProfile.image} alt="" />
+            </div>
+
+            <div className={style.detail}>
+              <h4>{activeProfile.name}</h4>
+              <p>{activeProfile.designation}</p>
+              <p>
+                <small>{activeProfile.consortium}</small>
+              </p>
+            </div>
+          </div>
+
+          <div className={style.text}>
+            <div
+              className={style.news_wrap_text_description}
+              dangerouslySetInnerHTML={{ __html: activeProfile.text }}
+            />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 
   return (
     <>
@@ -162,6 +64,14 @@ const Team = () => {
         <meta property="og:image:height" content="442" />
       </Head>
       <Banner title={"Team"} />
+
+      <Drawer
+        className={style.drawer}
+        open={open}
+        onClose={toggleDrawer(false)}
+      >
+        {DrawerList}
+      </Drawer>
 
       <section className={style.team_text}>
         <Container maxWidth={"lg"}>
@@ -202,7 +112,11 @@ const Team = () => {
             <div className={style.wrap}>
               {activeData.map((val, index) => {
                 return (
-                  <div key={index} className={style.team_card}>
+                  <div
+                    key={index}
+                    className={style.team_card}
+                    onClick={toggleDrawer(true, val)}
+                  >
                     <div className={style.profile_image}>
                       <img src={val.image} alt="" />
                     </div>

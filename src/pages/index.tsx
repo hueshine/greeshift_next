@@ -87,54 +87,7 @@ export default function Home() {
           <ImpactSlide />
         </Container>
       </section>
-      {/* <section className={homeStyle.intro}>
-        <div className={homeStyle.intro_image}>
-          <img src="/about.png" alt="" />
-        </div>
-        <Container maxWidth="lg">
-          <Grid container alignItems={"center"} spacing={4}>
-            <Grid item sm={6}>
-              <div className={homeStyle.intro_text}>
-                <h2>
-                  Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
-                  Nepal{" "}
-                </h2>
-                <p>
-                  GreenShift Nepal project is funded by the European Union to
-                  promote a just transition to circular economy. GreenShift
-                  Nepal is a four-year project which will be implemented in 9
-                  municipalities – 3 in each of Bagmati, Madhesh, and Lumbini
-                  provinces.
-                </p>
 
-                <p>
-                  The project implementation is led by{" "}
-                  <a href="" target="_blank">
-                    CREASION
-                  </a>{" "}
-                  through the consortium partners{" "}
-                  <a href="" target="_blank">
-                    Restless Development
-                  </a>
-                  , and
-                  <a href="" target="_blank">
-                    {" "}
-                    Youth Innovation Lab.
-                  </a>
-                </p>
-              </div>
-            </Grid>
-
-            <div className={homeStyle.intro_video}>
-              <video autoPlay loop muted>
-                <source src="./SDG goals GS.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </Grid>
-        </Container>
-      </section> */}
-      {/* <section className={homeStyle.map}></section> */}
-      <MapComponent />
       <section className={homeStyle.focus_area}>
         <h2 style={{ textAlign: "center" }}>
           <span>Focus Areas</span>
@@ -152,6 +105,9 @@ export default function Home() {
           <HomeFocusArea />
         </div>
       </section>
+
+      <MapComponent />
+
       <section className={homeStyle.home_news}>
         <Container maxWidth="lg">
           <div className={homeStyle.home_news_flex}>

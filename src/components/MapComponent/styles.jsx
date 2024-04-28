@@ -34,7 +34,7 @@ const mapStyleLine = {
   type: "line",
   layout: {},
   paint: {
-    "line-color": "#399ed0",
+    "line-color": "#1e607a",
     "line-width": 1,
   },
 };
@@ -44,7 +44,7 @@ const mapStyleFill = {
   type: "fill",
   layout: {},
   paint: {
-    "fill-color": "#40CC28",
+    "fill-color": "#1e607a",
     "fill-opacity": 0.75,
   },
 };

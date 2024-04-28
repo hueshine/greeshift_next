@@ -862,7 +862,7 @@ const MapComponent = () => {
         {initialZoomValue ? (
           <Map
             initialViewState={viewportXl}
-            mapStyle="mapbox://styles/yogeshkarki/clua14f3500ju01pi4lc43s6a"
+            mapStyle="mapbox://styles/yogeshkarki/clvjq9l5v01ci01qp0oczhfgy"
             mapboxAccessToken={mapboxgl.accessToken}
             attributionControl={false}
             ref={mapRef}

@@ -1,0 +1,140 @@
+.pledge_box {
+  margin: 80px 0;
+
+  &_nav {
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    span {
+      font-size: 18px;
+      font-weight: 600;
+      font-family: "Satoshi";
+      position: relative;
+      z-index: 3;
+    }
+  }
+
+  .form_container {
+    &_title {
+      margin-bottom: 30px;
+
+      h3 {
+        text-transform: none;
+      }
+
+      p {
+        margin-top: 15px;
+      }
+    }
+
+    .pledge_form {
+      border: 1px solid #0000003b;
+      padding: 12px 10px;
+
+      span {
+        font-family: "Satoshi";
+      }
+    }
+  }
+
+  .thanks_container {
+    img {
+      width: 70px;
+    }
+    h2 {
+      text-transform: none;
+    }
+
+    h4 {
+      margin: 30px 0;
+      text-transform: none;
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
+
+    .pledge_into_action {
+      margin: 40px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .icon {
+        width: 100px;
+        img {
+          width: 60px;
+        }
+      }
+
+      .text {
+        width: calc(100% - 100px);
+      }
+
+      h5 {
+        text-transform: none;
+      }
+
+      ul {
+        list-style: circle;
+        padding-left: 20px;
+        li {
+          font-size: 18px;
+          margin-bottom: 15px;
+        }
+      }
+
+      p {
+        margin-bottom: 0;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .form_box {
+    width: 100%;
+    textarea {
+      min-height: 180px;
+      border: 1px solid #0000003b;
+      padding: 12px 10px;
+      width: 100%;
+    }
+  }
+}
+
+.footer {
+  margin-top: 40px;
+  font-family: "Satoshi";
+}
+
+.pledge_box_nav_wrap {
+  width: 100%;
+  display: block;
+  position: relative;
+
+  .pledge_box_nav {
+    padding: 15px 0;
+  }
+}
+
+.pledge_btn {
+  background: #33b2b6;
+  border: 1px solid #33b2b6;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 30px;
+  border-radius: 30px;
+
+  &:hover {
+    color: #33b2b6;
+    background: transparent;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form_grid {
+    width: 100%;
+  }
+}

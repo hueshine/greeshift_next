@@ -45,6 +45,7 @@
         flex: 0 25%;
         max-width: 25%;
         margin-bottom: 40px;
+        cursor: pointer;
 
         &:hover {
           .profile_image {
@@ -99,6 +100,74 @@
   }
 }
 
+.profile_detail {
+  width: 50vw;
+  padding: 40px;
+  position: relative;
+
+  .close_btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .image {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0;
+      width: 30%;
+
+      img {
+        aspect-ratio: 1;
+        border-radius: 8px;
+        margin: 0;
+        -o-object-fit: cover;
+        object-fit: cover;
+        width: 100%;
+        background: #fff;
+      }
+    }
+
+    .detail {
+      width: 65%;
+
+      h4 {
+        margin-bottom: 5px;
+        text-transform: none;
+      }
+
+      p {
+        margin-bottom: 0;
+        font-family: "Satoshi-Medium";
+        font-size: 21px;
+
+        small {
+          font-size: 17px;
+          font-family: "Satoshi";
+        }
+      }
+    }
+  }
+
+  .text {
+    margin-top: 40px;
+    p {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .tean_container {
     .team_section {
@@ -120,6 +189,24 @@
           flex: 0 50%;
           max-width: 50%;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile_detail {
+    width: 100%;
+    padding: 60px 15px;
+
+    .head {
+      .image {
+        width: 100%;
+      }
+
+      .detail {
+        width: 100%;
+        margin-top: 20px;
       }
     }
   }

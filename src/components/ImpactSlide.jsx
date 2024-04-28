@@ -98,6 +98,17 @@ const ImpactSlide = () => {
 
       <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
         <div>
+          <img src="/impact_icon/community.svg" alt="" />
+
+          <h3>
+            20<span></span>
+          </h3>
+          <p>Youth led campaigns</p>
+        </div>
+      </SwiperSlide>
+
+      <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
+        <div>
           <img src="/impact_icon/school.svg" alt="" />
 
           <h3>

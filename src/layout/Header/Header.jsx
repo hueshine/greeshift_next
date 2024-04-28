@@ -33,15 +33,13 @@ const Header = () => {
 
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
+                    <Link href={"/"}>Private Waste Enterprises</Link>
                     <Link href={"/"}>
-                      Strengthening of existing private waste enterprises
+                      Empowering Waste Workers through CSOs{" "}
                     </Link>
-                    <Link href={"/"}>Empowering WWs through CSOs </Link>
-                    <Link href={"/"}>
-                      Provincial SWM policy guideline preparation and handover{" "}
-                    </Link>
-                    <Link href={"/"}>Sustainable packaging program </Link>
-                    <Link href={"/"}>Green business accelerator program </Link>
+                    <Link href={"/"}>Provincial SWM Guideline</Link>
+                    <Link href={"/"}>Sustainable Packaging Program </Link>
+                    <Link href={"/"}>Green Business Accelerator Program </Link>
                   </div>
                 </div>
               </li>
@@ -49,9 +47,7 @@ const Header = () => {
                 <a href="#">Restless Development</a>
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
-                    <Link href={"/"}>
-                      Establishment of Climate Smart Schools at 36 schools
-                    </Link>
+                    <Link href={"/"}>Climate Smart Schools</Link>
                     <Link href={"/"}>Youth Advocacy </Link>
                   </div>
                 </div>
@@ -89,7 +85,9 @@ const Header = () => {
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
                     <Link href={"/"}>What is the Green Movement? </Link>
-                    <Link href={"/"}>(Realistic) Pledge </Link>
+                    <Link href={"/join-the-green-movement/pledge"}>
+                      (Realistic) Pledge{" "}
+                    </Link>
                     <Link href={"/"}>GreenShift Campaign </Link>
                     <Link href={"/"}>Pitch Your Ideas </Link>
                   </div>

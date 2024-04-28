@@ -10,26 +10,10 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 // hooks
 import { useIsomorphicLayoutEffect } from "@/hook";
 
+import data from "@/pages/focus-area/data.json";
+
 const HomeFocusArea = () => {
   const cardRrefs = useRef([]);
-  const focusAreaData = [
-    {
-      title: "Plastic waste management",
-      text: "The project will mainly focus on two principles of circular economy: elimination of waste and pollution and circulate products and materials. GreenShift Nepal will work with youths and school children to generate awareness on plastic waste and support small businesses for the promotion of plastic alternative products. Likewise, it will also work with private waste enterprises in enhancing plastic waste collection and recycling. Additionally, the project will work  ",
-      image: "/chitwna.jpeg",
-    },
-    {
-      title:
-        "Innovation around non-plastic packaging, and promotion of green enterprises ",
-      text: "1600+ WW from marginalized communities, 11,019 Young people (10,800 youths, 180 youths, nine waste smart fellows, 10 YSB), Nine local governments and 207 government representatives, 3 provincial governments, 1 federal government, 5 youth entrepreneurial groups, 30,000 People (policymakers, civil society members, youth, local community members, and journalists) ",
-      image: "/focusarea2.png",
-    },
-    {
-      title: "Supporting advocacy, data and policy changes ",
-      text: "Circular economy is a concept that aims to minimize waste and promote sustainable use of natural resources through smarter product design, longer use, recycling, and regenerate nature. Circular economy is driven by three major principles which are: eliminate waste and pollution, circulate products and materials (at their highest values), and regenerate nature.",
-      image: "/focusarea3.png",
-    },
-  ];
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -92,7 +76,7 @@ const HomeFocusArea = () => {
 
   return (
     <div className="wrap">
-      {focusAreaData.map((val, index) => {
+      {data.map((val, index) => {
         return (
           <div
             className={homeStyle.focusCard}
@@ -109,14 +93,14 @@ const HomeFocusArea = () => {
                       alt=""
                       className={`${homeStyle.lineart} lineart`}
                     />
-                    <img src={val.image} alt="" />
+                    <img src={val.image[0]} alt="" />
                   </div>
                 </Grid>
 
                 <Grid item md={8}>
                   <div className={homeStyle.focusCard_text}>
                     <h4>{val.title}</h4>
-                    <p>{val.text}</p>
+                    <div dangerouslySetInnerHTML={{ __html: val.text }} />
                   </div>
                 </Grid>
               </Grid>

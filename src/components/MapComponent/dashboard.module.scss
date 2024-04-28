@@ -255,7 +255,7 @@
 }
 
 .map_section {
-  height: calc(100vh - 90px);
+  height: 100vh;
 
   position: relative;
 
@@ -306,7 +306,7 @@
     z-index: 99;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    height: calc(100vh - 90px);
+    height: 99vh;
     transition: 0.5s;
 
     &.active {
@@ -315,7 +315,7 @@
   }
 
   .map_container {
-    height: calc(100vh - 90px);
+    height: 100vh;
     overflow: hidden;
   }
 }
