@@ -385,6 +385,11 @@
       position: relative;
       top: auto;
       height: auto;
+      padding: 0;
+
+      .initial {
+        padding: 10px 0;
+      }
     }
   }
 

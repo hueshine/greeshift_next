@@ -318,7 +318,7 @@ const MapComponent = () => {
                           />
 
                           <Grid container>
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={6} md={6}>
                               <div className={componentStyle.genderText}>
                                 <h2>
                                   {MunicipalityData.allData.gender.femaleNum}
@@ -327,7 +327,7 @@ const MapComponent = () => {
                               </div>
                             </Grid>
 
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={6} md={6}>
                               <div className={componentStyle.genderText}>
                                 <h2>
                                   {MunicipalityData.allData.gender.maleNum}
@@ -560,7 +560,7 @@ const MapComponent = () => {
                             />
 
                             <Grid container>
-                              <Grid item xs={12} md={6}>
+                              <Grid item xs={6} md={6}>
                                 <div className={componentStyle.genderText}>
                                   <h2>
                                     {
@@ -572,7 +572,7 @@ const MapComponent = () => {
                                 </div>
                               </Grid>
 
-                              <Grid item xs={12} md={6}>
+                              <Grid item xs={6} md={6}>
                                 <div className={componentStyle.genderText}>
                                   <h2>
                                     {

@@ -137,4 +137,19 @@
   .form_grid {
     width: 100%;
   }
+
+  .pledge_box {
+    .thanks_container {
+      h2 {
+        font-size: 48px;
+      }
+
+      .pledge_into_action {
+        .text {
+          width: 100%;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
 }
