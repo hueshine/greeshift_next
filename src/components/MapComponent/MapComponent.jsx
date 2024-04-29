@@ -311,7 +311,7 @@ const MapComponent = () => {
                       </div>
 
                       <Grid container spacing={2}>
-                        <Grid item xs={12} md={6} xs={12}>
+                        <Grid item xs={12} md={6}>
                           <HighchartsReact
                             highcharts={Highcharts}
                             options={gender}
@@ -338,7 +338,7 @@ const MapComponent = () => {
                           </Grid>
                         </Grid>
 
-                        <Grid item xs={12} md={6} xs={12}>
+                        <Grid item xs={12} md={6}>
                           <label>Ethinicity</label>
                           <HighchartsReact
                             highcharts={Highcharts}
@@ -553,7 +553,7 @@ const MapComponent = () => {
                         </div>
 
                         <Grid container spacing={2}>
-                          <Grid item xs={12} md={6} xs={12}>
+                          <Grid item xs={12} md={6}>
                             <HighchartsReact
                               highcharts={Highcharts}
                               options={gender}
@@ -586,7 +586,7 @@ const MapComponent = () => {
                             </Grid>
                           </Grid>
 
-                          <Grid item xs={12} md={6} xs={12}>
+                          <Grid item xs={12} md={6}>
                             <label>Ethinicity</label>
                             <HighchartsReact
                               highcharts={Highcharts}
