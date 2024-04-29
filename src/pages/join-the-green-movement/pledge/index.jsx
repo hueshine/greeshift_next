@@ -325,6 +325,50 @@ const Pledge = () => {
               <Stepper
                 className={style.pledge_box_nav_wrap}
                 activeStep={activeStep}
+                sx={{
+                  ".MuiStepConnector-root": {
+                    top: 0,
+                  },
+                  ".MuiStepConnector-root span": {
+                    borderColor: "transparent",
+                  },
+                  ".MuiStepConnector-root span::before": {
+                    display: "flex",
+                    justifyContent: "center",
+                    content: '""',
+                  },
+                  ".MuiSvgIcon-root": {
+                    borderRadius: "50%",
+                    border: "1px solid #33b2b6",
+                  },
+                  ".MuiSvgIcon-root:not(.Mui-completed)": {
+                    color: "white",
+                  },
+                  ".MuiStepIcon-root.Mui-completed": {
+                    color: "#fff",
+                    background: "#33b2b6",
+                  },
+                  ".MuiStepIcon-root.Mui-completed path": {
+                    transform: "scale(0.7) translate(5px, 5px)",
+                  },
+                  ".MuiStepIcon-text": {
+                    fill: "#33b2b6",
+                    fontWeight: 500,
+                    fontSize: "9px",
+                  },
+                  ".MuiSvgIcon-root.Mui-active": {
+                    color: "#33b2b6",
+                    padding: "3px",
+                    fontSize: "16px",
+                    borderRadius: "50%",
+                    border: "1px solid #33b2b6",
+                    marginY: "-3px",
+                  },
+                  ".Mui-active .MuiStepIcon-text": {
+                    fill: "white",
+                    fontSize: "11px",
+                  },
+                }}
               >
                 {steps.map((label, index) => {
                   const stepProps = {};
