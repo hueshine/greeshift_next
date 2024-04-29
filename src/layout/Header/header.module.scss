@@ -100,6 +100,21 @@
   }
 }
 
+.mb_display {
+  display: none;
+}
+
+.menuToggle {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+
+  svg {
+    font-size: 32px;
+    color: #33b2b6;
+  }
+}
+
 @media screen and (max-width: 1700px) {
   .header {
     .nav {
@@ -148,8 +163,76 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1100px) {
+  .mb_display {
+    display: block;
+
+    img {
+      height: 62px;
+    }
+
+    .btn_highlight {
+      margin-top: 10px !important;
+      display: block;
+      text-align: center;
+    }
+  }
+
   .header {
-    display: none;
+    z-index: 999;
+    position: fixed;
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0%;
+      width: 75%;
+      height: 103vh;
+      background: #fff;
+      padding-left: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 0px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-100%);
+      transition: 0.5;
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+
+      li {
+        margin: 15px 10px !important;
+        border-bottom: 1px solid #cdcdcd;
+        padding-bottom: 22px;
+
+        a {
+          font-size: 16px !important;
+        }
+
+        .submenu {
+          position: relative;
+          top: auto;
+          left: auto;
+          width: auto;
+          padding-top: 20px;
+          padding-left: 20px;
+          display: none;
+
+          .wrap {
+            a {
+              padding: 6px;
+            }
+          }
+        }
+      }
+    }
+
+    .nav_align_right {
+      display: none;
+    }
   }
 }

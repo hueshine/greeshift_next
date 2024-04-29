@@ -20,6 +20,10 @@ const useSnoothScroll = () => {
       });
     });
 
+    if (window.innerWidth < 1100) {
+      gsapCtx.revert();
+    }
+
     return () => gsapCtx.revert();
   }, []);
 };

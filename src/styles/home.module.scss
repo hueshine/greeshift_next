@@ -14,6 +14,7 @@
     transform: translate(-50%, -50%);
     color: #fff;
     text-align: center;
+    z-index: 3;
 
     h1 {
       font-size: 118px;
@@ -554,6 +555,13 @@
 }
 
 @media screen and (max-width: 550px) {
+  .hero {
+    .hero_svg {
+      width: 100%;
+      opacity: 0.2;
+    }
+  }
+
   .home_news {
     .home_news_flex {
       .home_news_title {
