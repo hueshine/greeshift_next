@@ -23,7 +23,7 @@ const Header = () => {
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
                     <Link href={"/focus-area"}>Focus Area</Link>
-                    <Link href={"/"}>Impacts</Link>
+                    <Link href={"/impacts"}>Impacts</Link>
                     <Link href={"/team"}>Team</Link>
                   </div>
                 </div>

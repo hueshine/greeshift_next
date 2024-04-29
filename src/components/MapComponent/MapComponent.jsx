@@ -3,7 +3,15 @@ import componentStyle from "./dashboard.module.scss";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
-import { Container, Grid } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
+
 import CloseIcon from "@mui/icons-material/Close";
 import InfoIcon from "@mui/icons-material/Info";
 
@@ -16,24 +24,14 @@ import MunicipalityMap from "./data/MapOfMunicipalities.json";
 
 import MunicipalityData from "./data/dataNew.json";
 
-import {
-  BorderLinearProgress,
-  MuniBorderLinearProgress,
-  mapStyleLine,
-  mapStyleFill,
-  viewportCommon,
-} from "./styles";
+import { mapStyleLine, mapStyleFill, viewportCommon } from "./styles";
 
 import {
-  budgetSpentStyle,
-  wasteSmartSchoolStyle,
-  peopleInvolvedStyle,
-  wasteDisposalStyle,
-  reductionPlasticsStyle,
-  wasteCompositionStyle,
-  vulnerableCommunitiesStyle,
-  allwasteDisposalStyle,
-  allPlasticLeakageStyle,
+  grantDistributedStyle,
+  genderStyle,
+  ethinicityStyle,
+  pieChartDataStyle,
+  wasteWorkerStyle,
 } from "./dataStyle";
 
 import Highcharts from "highcharts";
@@ -54,6 +52,25 @@ const MapComponent = () => {
   const [dataBoxIndex, setDataBoxIndex] = useState(false);
   const [selectedMunicipality, setSelectedMunicipality] = useState(null);
   const [allDataIndex, setAllDataIndex] = useState(false);
+  const [MunicipalityFilter, setMunicipalityFilter] = useState(
+    MunicipalityData.siteData
+  );
+
+  const [year, setYear] = useState("");
+
+  const handleChange = (event) => {
+    setYear(event.target.value);
+
+    if (event.target.value == 0) {
+      setMunicipalityFilter(MunicipalityData.siteData);
+    } else {
+      let filterData = MunicipalityData.siteData.filter(
+        (muni) => muni.year == event.target.value
+      );
+
+      setMunicipalityFilter(filterData);
+    }
+  };
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoieW9nZXNoa2Fya2kiLCJhIjoiY2txZXphNHNlMGNybDJ1cXVmeXFiZzB1eSJ9.A7dJUR4ppKJDKWZypF_0lA";
@@ -89,153 +106,87 @@ const MapComponent = () => {
   };
 
   let SideBarData = () => {
-    const budgetSpent = {
-      ...budgetSpentStyle,
+    const grantDistributed = {
+      ...grantDistributedStyle,
 
-      yAxis: {
-        min: 0,
-        max: allDataIndex
-          ? MunicipalityData.allData.budget.total
-          : selectedMunicipality.budget.total,
-        tickPixelInterval: 100,
-        tickPosition: "inside",
-        tickColor: "#FFFFFF",
-        tickLength: 0,
-        tickWidth: 0,
-        minorTickInterval: null,
-        labels: {
-          distance: 20,
-          style: {
-            fontSize: "10px",
+      plotOptions: {
+        series: {
+          label: {
+            connectorAllowed: false,
+          },
+          pointStart: Date.UTC(
+            allDataIndex
+              ? MunicipalityData.allData.grantDistributed.pointStartYear
+              : selectedMunicipality.dashboard.grantDistributed.pointStartYear,
+            allDataIndex
+              ? MunicipalityData.allData.grantDistributed.pointStartMonth
+              : selectedMunicipality.dashboard.grantDistributed.pointStartMonth
+          ),
+          pointIntervalUnit: "month",
+          marker: {
+            symbol: "circle",
           },
         },
-        lineWidth: 0,
-        plotBands: [
-          {
-            from: 0,
-            to:
-              (allDataIndex
-                ? MunicipalityData.allData.budget.total
-                : selectedMunicipality.budget.total) / 4,
-            color: "#F7EEDD",
-            thickness: 40,
-          },
-          {
-            from:
-              (allDataIndex
-                ? MunicipalityData.allData.budget.total
-                : selectedMunicipality.budget.total) / 4,
-            to:
-              (allDataIndex
-                ? MunicipalityData.allData.budget.total
-                : selectedMunicipality.budget.total) / 2,
-            color: "#ACE2E1",
-            thickness: 40,
-          },
-          {
-            from:
-              (allDataIndex
-                ? MunicipalityData.allData.budget.total
-                : selectedMunicipality.budget.total) / 2,
-            to:
-              (allDataIndex
-                ? MunicipalityData.allData.budget.total
-                : selectedMunicipality.budget.total) / 1.33,
-            color: "#41C9E2",
-            thickness: 40,
-          },
-          {
-            from:
-              (allDataIndex
-                ? MunicipalityData.allData.budget.total
-                : selectedMunicipality.budget.total) / 1.33,
-            to: allDataIndex
-              ? MunicipalityData.allData.budget.total
-              : selectedMunicipality.budget.total,
-            color: "#008DDA",
-            thickness: 40,
-          },
-        ],
       },
 
-      series: [
-        {
-          name: "Budget Spent",
-          data: [
-            allDataIndex
-              ? MunicipalityData.allData.budget.spent
-              : selectedMunicipality.budget.spent,
-          ],
-          tooltip: {
-            valueSuffix: "NPR",
-          },
-          dataLabels: {
-            format: "{y} NPR",
-            borderWidth: 0,
-            color: "#333333",
-            style: {
-              fontSize: "16px",
-            },
-          },
-          dial: {
-            radius: "50%",
-            backgroundColor: "#008DDA",
-            baseWidth: 4,
-            baseLength: "0%",
-            rearLength: "0%",
-          },
-          pivot: {
-            backgroundColor: "#008DDA",
-            radius: 8,
-          },
-        },
-      ],
+      ...(allDataIndex
+        ? MunicipalityData.allData.grantDistributed.chart
+        : selectedMunicipality.dashboard.grantDistributed.chart),
     };
 
-    const peopleInvolved = {
-      ...peopleInvolvedStyle,
-
+    const gender = {
+      ...genderStyle,
       series: [
         {
           data: [
             {
               y: allDataIndex
-                ? MunicipalityData.allData.peopleInvolved.female
-                : selectedMunicipality.peopleInvolved.female,
-              colorIndex: 0,
+                ? MunicipalityData.allData.gender.femalePercentage
+                : selectedMunicipality.dashboard.gender.femalePercentage,
             },
             {
               y: allDataIndex
-                ? MunicipalityData.allData.peopleInvolved.male
-                : selectedMunicipality.peopleInvolved.male,
-              colorIndex: 1,
+                ? MunicipalityData.allData.gender.malePercentage
+                : selectedMunicipality.dashboard.gender.malePercentage,
             },
           ],
         },
       ],
     };
 
-    const wasteSmartSchool = {
-      ...wasteSmartSchoolStyle,
+    const ethinicity = {
+      ...ethinicityStyle,
+
+      series: allDataIndex
+        ? MunicipalityData.allData.ethinicity
+        : selectedMunicipality.dashboard.ethinicity,
+    };
+
+    const youthReached = {
+      ...pieChartDataStyle,
       series: [
         {
           minPointSize: 10,
           innerSize: "30%",
           zMin: 0,
           borderRadius: 5,
-          name: "Schools",
+          name: "Youth Reached",
           data: [
             {
               name: "Target Remaininng",
-              y: allDataIndex ? 10 : selectedMunicipality.school.remaining,
+              y: allDataIndex
+                ? MunicipalityData.allData.youthReached.target
+                : selectedMunicipality.dashboard.youthReached.target,
               z: 0,
-              color: "#ffb57c59",
+              color: "#5abdc159",
             },
             {
-              name: "Schools Reached",
-              y: allDataIndex ? 10 : selectedMunicipality.school.acheived,
+              name: "Target Meet",
+              y: allDataIndex
+                ? MunicipalityData.allData.youthReached.reached
+                : selectedMunicipality.dashboard.youthReached.reached,
               z: 0,
-              color: "#ffa35c",
+              color: "#5abdc1",
             },
           ],
           dataLabels: {
@@ -245,86 +196,46 @@ const MapComponent = () => {
       ],
     };
 
-    const wasteDisposal = {
-      ...wasteDisposalStyle,
-
-      series: [
-        {
-          name: "",
-          colorByPoint: true,
-          data: allDataIndex ? "" : selectedMunicipality.hotspot.chart,
-        },
-      ],
-    };
-
-    const reductionPlastics = {
-      ...reductionPlasticsStyle,
-
-      series: [
-        {
-          name: "",
-          colorByPoint: true,
-          data: allDataIndex ? "" : selectedMunicipality.leakage.chart,
-        },
-      ],
-    };
-
-    const wasteComposition = {
-      ...wasteCompositionStyle,
-
+    const studentReached = {
+      ...pieChartDataStyle,
       series: [
         {
           minPointSize: 10,
           innerSize: "30%",
           zMin: 0,
-          borderRadius: 2,
-          name: allDataIndex
-            ? MunicipalityData.allData.wasteComposition.title
-            : selectedMunicipality.wasteComposition.title,
-
-          data: allDataIndex
-            ? MunicipalityData.allData.wasteComposition.chart
-            : selectedMunicipality.wasteComposition.chart,
+          borderRadius: 5,
+          name: "Student Reached",
+          data: [
+            {
+              name: "Target Remaininng",
+              y: allDataIndex
+                ? MunicipalityData.allData.studentReached.target
+                : selectedMunicipality.dashboard.studentReached.target,
+              z: 0,
+              color: "#DD574659",
+            },
+            {
+              name: "Target Meet",
+              y: allDataIndex
+                ? MunicipalityData.allData.studentReached.reached
+                : selectedMunicipality.dashboard.studentReached.reached,
+              z: 0,
+              color: "#DD5746",
+            },
+          ],
+          dataLabels: {
+            enabled: false,
+          },
         },
       ],
     };
 
-    const vulnerableCommunities = {
-      ...vulnerableCommunitiesStyle,
+    const wasteWorkers = {
+      ...wasteWorkerStyle,
 
-      series: [
-        {
-          name: allDataIndex
-            ? MunicipalityData.allData.vulnerable.title
-            : selectedMunicipality.vulnerable.title,
-          colorByPoint: true,
-          data: allDataIndex
-            ? MunicipalityData.allData.vulnerable.chart
-            : selectedMunicipality.vulnerable.chart,
-        },
-      ],
-    };
-
-    const allwasteDisposal = {
-      ...allwasteDisposalStyle,
-
-      xAxis: MunicipalityData.allData.wasteDisposal.xAxis,
-
-      series: MunicipalityData.allData.wasteDisposal.series,
-    };
-
-    const allPlasticLeakage = {
-      ...allPlasticLeakageStyle,
-
-      xAxis: MunicipalityData.allData.plasticLeakage.xAxis,
-      series: MunicipalityData.allData.plasticLeakage.series,
-    };
-
-    const allSchoolActivities = {
-      ...allwasteDisposalStyle,
-
-      xAxis: MunicipalityData.allData.schoolActivities.xAxis,
-      series: MunicipalityData.allData.schoolActivities.series,
+      series: allDataIndex
+        ? MunicipalityData.allData.wasteWorker.chart
+        : selectedMunicipality.dashboard.wasteWorker.chart,
     };
 
     return (
@@ -352,204 +263,200 @@ const MapComponent = () => {
 
             <div className={componentStyle.chart_data}>
               <Grid container columnSpacing={2}>
-                <Grid item md={8} sm={12}>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} md={4}>
-                      <div className={componentStyle.chart_card}>
-                        <div className={componentStyle.numbers}>
-                          <h2>
-                            {MunicipalityData.allData.cleanup_campaigns.number}
-                          </h2>
-                          <h6>
-                            {MunicipalityData.allData.cleanup_campaigns.title}
-                          </h6>
-                        </div>
-                      </div>
-                    </Grid>
-
-                    <Grid item xs={12} md={4}>
-                      <div className={componentStyle.chart_card}>
-                        <div className={componentStyle.numbers}>
-                          <h2>
-                            {MunicipalityData.allData.plastic_collected.number}{" "}
-                            <small>
-                              {MunicipalityData.allData.plastic_collected.unit}
-                            </small>
-                          </h2>
-                          <h6>
-                            {MunicipalityData.allData.plastic_collected.title}
-                          </h6>
-                        </div>
-                      </div>
-                    </Grid>
-
-                    <Grid item xs={12} md={4}>
-                      <div className={componentStyle.chart_card}>
-                        <div className={componentStyle.numbers}>
-                          <h2>
-                            {MunicipalityData.allData.awareness_campaign.number}{" "}
-                          </h2>
-                          <h6>
-                            {MunicipalityData.allData.awareness_campaign.title}
-                          </h6>
-                        </div>
-                      </div>
-                    </Grid>
-
-                    <Grid item xs={12} md={4}>
-                      <div className={componentStyle.chart_card}>
-                        <div className={componentStyle.numbers}>
-                          <h2>{MunicipalityData.allData.recovered.number} </h2>
-                          <h6>{MunicipalityData.allData.recovered.title}</h6>
-                        </div>
-                      </div>
-                    </Grid>
-
-                    <Grid item xs={12} md={8}>
-                      <div className={componentStyle.chart_card}>
-                        <Grid container spacing={2} alignItems={"center"}>
-                          <Grid item md={6} xs={7}>
-                            <HighchartsReact
-                              highcharts={Highcharts}
-                              options={budgetSpent}
-                            />
-                          </Grid>
-
-                          <Grid item md={6} xs={5}>
-                            <h2>
-                              {MunicipalityData.allData.budget.spent_in_text}
-                            </h2>
-                            <h6>{MunicipalityData.allData.budget.title}</h6>
-                          </Grid>
-                        </Grid>
-                      </div>
-                    </Grid>
-                  </Grid>
-                </Grid>
-
-                <Grid item md={4} sm={12}>
-                  <div className={componentStyle.chart_card}>
+                <Grid item xs={12} md={8}>
+                  <div
+                    className={componentStyle.chart_card}
+                    style={{ display: "block" }}
+                  >
                     <div>
+                      <div className={componentStyle.chart_title}>
+                        <h6>
+                          {MunicipalityData.allData.grantDistributed.title}
+                        </h6>
+                      </div>
+
                       <HighchartsReact
                         highcharts={Highcharts}
-                        options={peopleInvolved}
+                        options={grantDistributed}
                       />
+                    </div>
+                  </div>
+                </Grid>
 
-                      <Grid container>
-                        <Grid item md={6} xs={6}>
-                          <div className={componentStyle.numbers}>
-                            <h2>{`${MunicipalityData.allData.peopleInvolved.femaleNum}`}</h2>
-                            <h6>Female Reached</h6>
-                          </div>
+                <Grid item xs={12} md={4}>
+                  <div
+                    className={componentStyle.chart_card}
+                    style={{ height: "307px" }}
+                  >
+                    <div className={componentStyle.numbers}>
+                      <img
+                        src={MunicipalityData.allData.plasticCollected.icon}
+                        alt=""
+                      />
+                      <h2>{MunicipalityData.allData.plasticCollected.count}</h2>
+                      <p>{MunicipalityData.allData.plasticCollected.unit}</p>
+                      <h6>{MunicipalityData.allData.plasticCollected.title}</h6>
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} md={8}>
+                  <div
+                    className={componentStyle.chart_card}
+                    style={{ display: "block" }}
+                  >
+                    <div>
+                      <div className={componentStyle.chart_title}>
+                        <h6>Total Number of People Reached</h6>
+                      </div>
+
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} md={6} xs={12}>
+                          <HighchartsReact
+                            highcharts={Highcharts}
+                            options={gender}
+                          />
+
+                          <Grid container>
+                            <Grid item xs={12} md={6}>
+                              <div className={componentStyle.genderText}>
+                                <h2>
+                                  {MunicipalityData.allData.gender.femaleNum}
+                                </h2>
+                                <p>Female</p>
+                              </div>
+                            </Grid>
+
+                            <Grid item xs={12} md={6}>
+                              <div className={componentStyle.genderText}>
+                                <h2>
+                                  {MunicipalityData.allData.gender.maleNum}
+                                </h2>
+                                <p>Male</p>
+                              </div>
+                            </Grid>
+                          </Grid>
                         </Grid>
 
-                        <Grid item md={6} xs={6}>
-                          <div className={componentStyle.numbers}>
-                            <h2>{`${MunicipalityData.allData.peopleInvolved.maleNum}`}</h2>
-                            <h6>Male Reached</h6>
-                          </div>
+                        <Grid item xs={12} md={6} xs={12}>
+                          <label>Ethinicity</label>
+                          <HighchartsReact
+                            highcharts={Highcharts}
+                            options={ethinicity}
+                          />
                         </Grid>
                       </Grid>
                     </div>
                   </div>
                 </Grid>
 
-                <Grid item md={6} xs={12}>
+                <Grid item xs={12} md={4}>
                   <div
                     className={componentStyle.chart_card}
                     style={{ display: "block" }}
                   >
-                    <div>
-                      <div className={componentStyle.chart_title}>
-                        <h6>{MunicipalityData.allData.wasteDisposal.title}</h6>
-                      </div>
+                    <div className={componentStyle.chart_title}>
+                      <h6>{MunicipalityData.allData.youthReached.title}</h6>
+                    </div>
 
+                    <div>
                       <HighchartsReact
                         highcharts={Highcharts}
-                        options={allwasteDisposal}
+                        options={youthReached}
                       />
-                    </div>
-                  </div>
-                </Grid>
 
-                <Grid item md={6} xs={12}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
-                      <div className={componentStyle.chart_title}>
-                        <h6>{MunicipalityData.allData.plasticLeakage.title}</h6>
-                      </div>
-
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={allPlasticLeakage}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item md={5} xs={12}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
-                      <div className={componentStyle.chart_title}>
-                        <h6>{MunicipalityData.allData.vulnerable.title}</h6>
-                      </div>
-
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={vulnerableCommunities}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item md={5} xs={12}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
-                      <div className={componentStyle.chart_title}>
+                      <div
+                        className={componentStyle.chart_title}
+                        style={{ textAlign: "center" }}
+                      >
+                        <h2>{MunicipalityData.allData.youthReached.reached}</h2>
                         <h6>
-                          {MunicipalityData.allData.wasteComposition.title}
+                          {MunicipalityData.allData.youthReached.countTitle}
                         </h6>
                       </div>
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={wasteComposition}
-                      />
                     </div>
                   </div>
                 </Grid>
 
-                <Grid item md={2} xs={12}>
-                  <div className={componentStyle.chart_card}>
+                <Grid item xs={12} md={4}>
+                  <div
+                    className={componentStyle.chart_card}
+                    style={{ height: "130px" }}
+                  >
                     <div className={componentStyle.numbers}>
-                      <h2>{MunicipalityData.allData.emmission.number}</h2>
-                      <h6>{MunicipalityData.allData.emmission.title}</h6>
+                      <h2>{MunicipalityData.allData.campaigns.count}</h2>
+                      <h6>{MunicipalityData.allData.campaigns.title}</h6>
+                    </div>
+                  </div>
+
+                  <div
+                    className={componentStyle.chart_card}
+                    style={{ height: "130px" }}
+                  >
+                    <div className={componentStyle.numbers}>
+                      <h2>{MunicipalityData.allData.tagMePoints.count}</h2>
+                      <h6>{MunicipalityData.allData.tagMePoints.title}</h6>
+                    </div>
+                  </div>
+
+                  <div
+                    className={componentStyle.chart_card}
+                    style={{ height: "130px" }}
+                  >
+                    <div className={componentStyle.numbers}>
+                      <h2>
+                        {MunicipalityData.allData.govermentOfficial.count}
+                      </h2>
+                      <h6>
+                        {MunicipalityData.allData.govermentOfficial.title}
+                      </h6>
                     </div>
                   </div>
                 </Grid>
 
-                <Grid item md={6} xs={12}>
+                <Grid item xs={12} md={4}>
                   <div
                     className={componentStyle.chart_card}
                     style={{ display: "block" }}
                   >
+                    <div className={componentStyle.chart_title}>
+                      <h6>{MunicipalityData.allData.studentReached.title}</h6>
+                    </div>
+
                     <div>
-                      <div className={componentStyle.chart_title}>
-                        <h6>
-                          {MunicipalityData.allData.schoolActivities.title}
-                        </h6>
-                      </div>
                       <HighchartsReact
                         highcharts={Highcharts}
-                        options={allSchoolActivities}
+                        options={studentReached}
+                      />
+
+                      <div
+                        className={componentStyle.chart_title}
+                        style={{ textAlign: "center" }}
+                      >
+                        <h2>
+                          {MunicipalityData.allData.studentReached.reached}
+                        </h2>
+                        <h6>
+                          {MunicipalityData.allData.studentReached.countTitle}
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} md={4}>
+                  <div
+                    className={componentStyle.chart_card}
+                    style={{ display: "block" }}
+                  >
+                    <div className={componentStyle.chart_title}>
+                      <h6>{MunicipalityData.allData.wasteWorker.title}</h6>
+                    </div>
+
+                    <div>
+                      <HighchartsReact
+                        highcharts={Highcharts}
+                        options={wasteWorkers}
                       />
                     </div>
                   </div>
@@ -579,186 +486,265 @@ const MapComponent = () => {
             </div>
 
             <div className={componentStyle.chart_data}>
-              <Grid container columnSpacing={2}>
-                <Grid item md={3} xs={12}>
-                  <div className={componentStyle.chart_card}>
-                    <div className={componentStyle.numbers}>
-                      <h2>{selectedMunicipality.cleanup_campaigns.number}</h2>
-                      <h6>{selectedMunicipality.cleanup_campaigns.title}</h6>
-                    </div>
-                  </div>
+              <div className={componentStyle.chart_data}>
+                <Grid container columnSpacing={2}>
+                  <Grid item xs={12} md={8}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ display: "block" }}
+                    >
+                      <div>
+                        <div className={componentStyle.chart_title}>
+                          <h6>
+                            {
+                              selectedMunicipality.dashboard.grantDistributed
+                                .title
+                            }
+                          </h6>
+                        </div>
 
-                  <div className={componentStyle.chart_card}>
-                    <div className={componentStyle.numbers}>
-                      <h2>
-                        {selectedMunicipality.plastic_collected.number}{" "}
-                        <small>
-                          {selectedMunicipality.plastic_collected.unit}
-                        </small>
-                      </h2>
-                      <h6>{selectedMunicipality.plastic_collected.title}</h6>
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item md={5} xs={12}>
-                  <div className={componentStyle.chart_card}>
-                    <Grid container spacing={2} alignItems={"center"}>
-                      <Grid item md={6} xs={7}>
                         <HighchartsReact
                           highcharts={Highcharts}
-                          options={budgetSpent}
+                          options={grantDistributed}
                         />
-                      </Grid>
+                      </div>
+                    </div>
+                  </Grid>
 
-                      <Grid item md={6} xs={5}>
-                        <h2>{selectedMunicipality.budget.spent_in_text}</h2>
-                        <h6>{selectedMunicipality.budget.title}</h6>
-                      </Grid>
-                    </Grid>
-                  </div>
+                  <Grid item xs={12} md={4}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ height: "307px" }}
+                    >
+                      <div className={componentStyle.numbers}>
+                        <img
+                          src={
+                            selectedMunicipality.dashboard.plasticCollected.icon
+                          }
+                          alt=""
+                        />
+                        <h2>
+                          {
+                            selectedMunicipality.dashboard.plasticCollected
+                              .count
+                          }
+                        </h2>
+                        <p>
+                          {selectedMunicipality.dashboard.plasticCollected.unit}
+                        </p>
+                        <h6>
+                          {
+                            selectedMunicipality.dashboard.plasticCollected
+                              .title
+                          }
+                        </h6>
+                      </div>
+                    </div>
+                  </Grid>
 
-                  <div className={componentStyle.chart_card}>
-                    <Grid container spacing={2} alignItems={"center"}>
-                      <Grid item md={6} xs={7}>
+                  <Grid item xs={12} md={8}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ display: "block" }}
+                    >
+                      <div>
+                        <div className={componentStyle.chart_title}>
+                          <h6>Total Number of People Reached</h6>
+                        </div>
+
+                        <Grid container spacing={2}>
+                          <Grid item xs={12} md={6} xs={12}>
+                            <HighchartsReact
+                              highcharts={Highcharts}
+                              options={gender}
+                            />
+
+                            <Grid container>
+                              <Grid item xs={12} md={6}>
+                                <div className={componentStyle.genderText}>
+                                  <h2>
+                                    {
+                                      selectedMunicipality.dashboard.gender
+                                        .femaleNum
+                                    }
+                                  </h2>
+                                  <p>Female</p>
+                                </div>
+                              </Grid>
+
+                              <Grid item xs={12} md={6}>
+                                <div className={componentStyle.genderText}>
+                                  <h2>
+                                    {
+                                      selectedMunicipality.dashboard.gender
+                                        .maleNum
+                                    }
+                                  </h2>
+                                  <p>Male</p>
+                                </div>
+                              </Grid>
+                            </Grid>
+                          </Grid>
+
+                          <Grid item xs={12} md={6} xs={12}>
+                            <label>Ethinicity</label>
+                            <HighchartsReact
+                              highcharts={Highcharts}
+                              options={ethinicity}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </div>
+                  </Grid>
+
+                  <Grid item xs={12} md={4}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ display: "block" }}
+                    >
+                      <div className={componentStyle.chart_title}>
+                        <h6>
+                          {selectedMunicipality.dashboard.youthReached.title}
+                        </h6>
+                      </div>
+
+                      <div>
                         <HighchartsReact
                           highcharts={Highcharts}
-                          options={wasteSmartSchool}
+                          options={youthReached}
                         />
-                      </Grid>
 
-                      <Grid item md={6} xs={5}>
-                        <h2>{`${selectedMunicipality.school.acheived}%`}</h2>
-                        <h6>{selectedMunicipality.school.title}</h6>
-                      </Grid>
-                    </Grid>
-                  </div>
-                </Grid>
-
-                <Grid item md={4}>
-                  <div className={componentStyle.chart_card}>
-                    <div>
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={peopleInvolved}
-                      />
-
-                      <Grid container>
-                        <Grid item md={6} xs={6}>
-                          <div className={componentStyle.numbers}>
-                            <h2>{`${selectedMunicipality.peopleInvolved.femaleNum}`}</h2>
-                            <h6>Female Reached</h6>
-                          </div>
-                        </Grid>
-
-                        <Grid item md={6} xs={6}>
-                          <div className={componentStyle.numbers}>
-                            <h2>{`${selectedMunicipality.peopleInvolved.maleNum}`}</h2>
-                            <h6>Male Reached</h6>
-                          </div>
-                        </Grid>
-                      </Grid>
+                        <div
+                          className={componentStyle.chart_title}
+                          style={{ textAlign: "center" }}
+                        >
+                          <h2>
+                            {
+                              selectedMunicipality.dashboard.youthReached
+                                .reached
+                            }
+                          </h2>
+                          <h6>
+                            {
+                              selectedMunicipality.dashboard.youthReached
+                                .countTitle
+                            }
+                          </h6>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </Grid>
+                  </Grid>
 
-                <Grid item md={6} xs={12}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
+                  <Grid item xs={12} md={4}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ height: "130px" }}
+                    >
+                      <div className={componentStyle.numbers}>
+                        <h2>
+                          {selectedMunicipality.dashboard.campaigns.count}
+                        </h2>
+                        <h6>
+                          {selectedMunicipality.dashboard.campaigns.title}
+                        </h6>
+                      </div>
+                    </div>
+
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ height: "130px" }}
+                    >
+                      <div className={componentStyle.numbers}>
+                        <h2>
+                          {selectedMunicipality.dashboard.tagMePoints.count}
+                        </h2>
+                        <h6>
+                          {selectedMunicipality.dashboard.tagMePoints.title}
+                        </h6>
+                      </div>
+                    </div>
+
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ height: "130px" }}
+                    >
+                      <div className={componentStyle.numbers}>
+                        <h2>
+                          {
+                            selectedMunicipality.dashboard.govermentOfficial
+                              .count
+                          }
+                        </h2>
+                        <h6>
+                          {
+                            selectedMunicipality.dashboard.govermentOfficial
+                              .title
+                          }
+                        </h6>
+                      </div>
+                    </div>
+                  </Grid>
+
+                  <Grid item xs={12} md={4}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ display: "block" }}
+                    >
                       <div className={componentStyle.chart_title}>
-                        <h6>{selectedMunicipality.hotspot.title}</h6>
+                        <h6>
+                          {selectedMunicipality.dashboard.studentReached.title}
+                        </h6>
                       </div>
 
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={wasteDisposal}
-                      />
-                    </div>
-                  </div>
-                </Grid>
+                      <div>
+                        <HighchartsReact
+                          highcharts={Highcharts}
+                          options={studentReached}
+                        />
 
-                <Grid item md={6} xs={12}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
+                        <div
+                          className={componentStyle.chart_title}
+                          style={{ textAlign: "center" }}
+                        >
+                          <h2>
+                            {
+                              selectedMunicipality.dashboard.studentReached
+                                .reached
+                            }
+                          </h2>
+                          <h6>
+                            {
+                              selectedMunicipality.dashboard.studentReached
+                                .countTitle
+                            }
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </Grid>
+
+                  <Grid item xs={12} md={4}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ display: "block" }}
+                    >
                       <div className={componentStyle.chart_title}>
-                        <h6>{selectedMunicipality.leakage.title}</h6>
+                        <h6>
+                          {selectedMunicipality.dashboard.wasteWorker.title}
+                        </h6>
                       </div>
 
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={reductionPlastics}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item md={6} xs={12}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
-                      <div className={componentStyle.chart_title}>
-                        <h6>{selectedMunicipality.wasteComposition.title}</h6>
+                      <div>
+                        <HighchartsReact
+                          highcharts={Highcharts}
+                          options={wasteWorkers}
+                        />
                       </div>
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={wasteComposition}
-                      />
                     </div>
-                  </div>
+                  </Grid>
                 </Grid>
-
-                <Grid item md={6} xs={12}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
-                      <div className={componentStyle.chart_title}>
-                        <h6>{selectedMunicipality.vulnerable.title}</h6>
-                      </div>
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={vulnerableCommunities}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item md={3} xs={12}>
-                  <div className={componentStyle.chart_card}>
-                    <div className={componentStyle.numbers}>
-                      <h2>{selectedMunicipality.emmission.number}</h2>
-                      <h6>{selectedMunicipality.emmission.title}</h6>
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item md={3} xs={12}>
-                  <div className={componentStyle.chart_card}>
-                    <div className={componentStyle.numbers}>
-                      <h2>{selectedMunicipality.recovered.number}</h2>
-                      <h6>{selectedMunicipality.recovered.title}</h6>
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item md={3} xs={12}>
-                  <div className={componentStyle.chart_card}>
-                    <div className={componentStyle.numbers}>
-                      <h2>{selectedMunicipality.awareness_campaign.number}</h2>
-                      <h6>{selectedMunicipality.awareness_campaign.title}</h6>
-                    </div>
-                  </div>
-                </Grid>
-              </Grid>
+              </div>
             </div>
           </>
         )}
@@ -770,15 +756,24 @@ const MapComponent = () => {
     return (
       <div className={componentStyle.initial}>
         <div className={componentStyle.initial_head}>
-          <h4>
-            Envisioning the{" "}
-            <span style={{ color: "#40cc28" }}>Green Circuit</span>{" "}
-          </h4>
+          <p>Filter Data</p>
 
-          <p>
-            The Seven municipalities viz. Lalitpur Metropolitan City, Bharatpur
-            Metropolitan City Bardibas Municipality, Hetauda Sub Metropolitan
-          </p>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Select Year</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={year}
+              label="Select year"
+              onChange={handleChange}
+            >
+              <MenuItem value={0}>See All</MenuItem>
+
+              <MenuItem value={1}>First Year</MenuItem>
+              <MenuItem value={2}>Second Year</MenuItem>
+              <MenuItem value={3}>Third Year</MenuItem>
+            </Select>
+          </FormControl>
         </div>
 
         <div className={componentStyle.initial_wrap}>
@@ -790,12 +785,10 @@ const MapComponent = () => {
               }}
             >
               <div className={componentStyle.initial_list}>
-                <h6>All</h6>
-                <span>20%</span>
+                <h6>Overall Dashboard</h6>
               </div>
-              <MuniBorderLinearProgress variant="determinate" value={20} />
             </li>
-            {MunicipalityData.siteData.map((val, index) => {
+            {MunicipalityFilter.map((val, index) => {
               return (
                 <li
                   key={index}
@@ -808,9 +801,7 @@ const MapComponent = () => {
                 >
                   <div className={componentStyle.initial_list}>
                     <h6>{val.title}</h6>
-                    <span>20%</span>
                   </div>
-                  <MuniBorderLinearProgress variant="determinate" value={20} />
                 </li>
               );
             })}
@@ -820,7 +811,7 @@ const MapComponent = () => {
     );
   };
 
-  const pins = MunicipalityData.siteData.map((city, index) => (
+  const pins = MunicipalityFilter.map((city, index) => (
     <Marker
       key={`marker-${index}`}
       longitude={city.longitude}
@@ -880,26 +871,6 @@ const MapComponent = () => {
         ) : (
           ""
         )}
-      </div>
-
-      <div className={componentStyle.map_title}>
-        <h5>Plastics Collection</h5>
-        <BorderLinearProgress variant="determinate" value={70} />
-        <div className={componentStyle.target_grid}>
-          <div className={componentStyle.target_item}>
-            <p>Target Achieved</p>
-            <h3>
-              215 <small>Tons</small>
-            </h3>
-          </div>
-
-          <div className={componentStyle.target_item}>
-            <p>Target</p>
-            <h3>
-              5 <small>Kilo Tons</small>
-            </h3>
-          </div>
-        </div>
       </div>
 
       {/* <div className={componentStyle.map_info}>

@@ -12,7 +12,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 15,
-    backgroundColor: theme.palette.mode === "light" ? "#40CC28" : "#308fe8",
+    backgroundColor: theme.palette.mode === "light" ? "#1e607a" : "#308fe8",
   },
 }));
 
@@ -44,7 +44,7 @@ const mapStyleFill = {
   type: "fill",
   layout: {},
   paint: {
-    "fill-color": "#1e607a",
+    "fill-color": "#4F6F52",
     "fill-opacity": 0.75,
   },
 };

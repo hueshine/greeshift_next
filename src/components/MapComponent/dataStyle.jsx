@@ -1,28 +1,42 @@
-const wasteSmartSchoolStyle = {
+const grantDistributedStyle = {
   chart: {
-    type: "pie",
+    type: "line",
     spacing: [10, 10, 10, 10],
     height: 235,
   },
+  title: false,
   credits: {
     enabled: false,
   },
-  title: {
-    text: "",
+  yAxis: {
+    title: false,
   },
 
-  plotOptions: {
-    pie: {
-      allowPointSelect: false,
-      cursor: "pointer",
-      dataLabels: {
-        enabled: true,
+  legend: {
+    layout: "horizontal",
+    align: "center",
+    verticalAlign: "bottom",
+  },
+
+  responsive: {
+    rules: [
+      {
+        condition: {
+          maxWidth: 500,
+        },
+        chartOptions: {
+          legend: {
+            layout: "horizontal",
+            align: "center",
+            verticalAlign: "bottom",
+          },
+        },
       },
-      showInLegend: false,
-    },
+    ],
   },
 };
-const peopleInvolvedStyle = {
+
+const genderStyle = {
   chart: {
     type: "pictorial",
     height: 235,
@@ -52,6 +66,7 @@ const peopleInvolvedStyle = {
     categories: ["Female", "Male"],
     lineWidth: 0,
     opposite: true,
+    visible: false,
   },
 
   yAxis: {
@@ -81,11 +96,11 @@ const peopleInvolvedStyle = {
       paths: [
         {
           definition:
-            "M71.8,71.4c0,2.6-1.5,5-4,6.1c-3.3,1.4-7.2-0.2-8.6-3.5l-3.8-9.1c-0.2-0.6-1.1-0.3-1,0.3l5.7,23.5c0.5,2-1,3.9-3.1,3.9h-4.8v34.2c0,1.9-0.8,3.6-2,4.9c-1.3,1.3-3,2-4.9,2c-3.8,0-6.9-3.1-6.9-6.9V92.5h-2.8v34.2c0,1.9-0.8,3.6-2,4.9c-1.3,1.3-3,2-4.9,2c-3.8,0-6.9-3.1-6.9-6.9V92.5h-4.8c-2,0-3.6-1.9-3.1-3.9l5.7-23.5c0.2-0.6-0.7-0.9-1-0.3l-3.8,9.1c-1,2.5-3.5,4-6,4c-0.8,0-1.7-0.2-2.5-0.5C3.2,76,1.6,72.2,3,68.9l13.8-33.4c1-2.5,3.5-4.1,6.1-4.1h11.5c-4.7-1.2-8.1-5.5-8.1-10.5c0-6,4.9-10.8,10.8-10.8C43.2,10.1,48,15,48,21c0,5-3.4,9.3-8.1,10.5h11.3c2.6-0.1,5.2,1.5,6.2,4.1l13.8,33.4C71.7,69.7,71.8,70.5,71.8,71.4z",
+            "M89.4,158.2c-0.8,1.1-2,1.8-3.4,1.9h0c-2.8,0.4-5.3-1.6-5.7-4.4c0,0-4.5-31-4.6-35.2v0c-0.7-4.8-3.3-22.8-4.4-32h-0.9c-0.8,4.3-2.8,16.1-2.8,20.8c0,2.2,0.5,7.2,1,12.4c0,0,0.5,1.4,1.2,3.9v0c0.3,0.1,0.3,0.5,0.2,0.7c2.3,8.3,6.8,26.5,7.2,45.2v15.9h-7.6v8.6c0,0.5,0,0.9-0.1,1.3c0,0,0,0,0,0c0.1,0.4,0.1,0.9,0.1,1.3V237c0,5-4,9-9,9c-5,0-9-4-9-9v-38.2c0-0.5,0-0.9,0.1-1.3c0,0,0,0,0,0c-0.1-0.4-0.1-0.9-0.1-1.3v-8.6h-2.2v8.9c0,0.5,0,0.9-0.1,1.4c0,0,0,0,0,0c0.1,0.4,0.1,0.9,0.1,1.4v38.2c0,5-4,9-9,9c-5,0-9-4-9-9v-38.2c0-0.5,0-0.9,0.1-1.4c0,0,0,0,0,0c-0.1-0.4-0.1-0.9-0.1-1.4v-8.9h-4.9v-15.9c0.4-18.5,4.5-36.5,6.7-44.9h-0.1c-0.8,0-0.8-1,0-1h0.4c0.7-2.5,1.1-3.8,1.1-3.8h0c0.6-5.2,1.1-10.2,1.1-12.4c0-4.5-1.9-16-2.7-20.8h-1c-1.1,9.2-3.7,27.2-4.4,32v0c-0.1,4.3-4.6,35.2-4.6,35.2c-0.4,2.8-2.9,4.7-5.7,4.4c-1.3-0.2-2.5-0.9-3.4-1.9c-0.8-1.1-1.2-2.4-1-3.7c0,0,3.8-33.7,4.6-35.6c0,0,0,0,0-0.1c0.8-6.9,4.2-35.5,4.9-37.2c4.1-15,15.7-14.1,15.7-14.1H45c0.1,0,0.2,0,0.3,0h1.4c-7.9-1.9-13.7-9-13.7-17.4c0-9.9,8-17.9,17.9-17.9c9.9,0,17.9,8,17.9,17.9c0,8.4-5.8,15.5-13.7,17.4h2.8c0.1,0,0.2,0,0.3,0H65c0,0,11.6-0.9,15.7,14.1c0.8,1.7,4.1,30.3,4.9,37.2c0,0,0,0,0,0.1c0.9,1.9,4.6,35.6,4.6,35.6C90.5,155.8,90.2,157.1,89.4,158.2z",
         },
         {
           definition:
-            "M65.9,73.8c0,3.1-2.1,5.8-5.3,6.4c-3.5,0.7-7-1.6-7.7-5.1l-2.2-11c-0.1-0.6-1-0.5-1,0.1V127c0,1.9-0.8,3.6-2,4.9c-1.2,1.2-3,2-4.9,2c-3.8,0-6.9-3.1-6.9-6.9V84.2c0-0.8-0.6-1.4-1.4-1.4s-1.4,0.6-1.4,1.4V127c0,1.9-0.8,3.6-2,4.9c-1.3,1.2-3,2-4.9,2c-3.8,0-6.9-3.1-6.9-6.9V63.9c0-0.6-0.9-0.7-1-0.1L16,75.1c-0.6,3.1-3.4,5.3-6.4,5.3c-0.4,0-0.9,0-1.3-0.1c-3.5-0.7-5.8-4.2-5.1-7.7l7.2-35.4c0.3-1.5,1.1-2.8,2.3-3.8c1.1-0.9,2.6-1.5,4.1-1.5h14.7c-4.8-1.2-8.3-5.4-8.3-10.5c0-6,4.9-10.9,10.8-10.9s10.8,4.9,10.8,10.9c0,5.1-3.5,9.4-8.3,10.5h15.6c3,0.1,5.7,2.2,6.3,5.3l7.2,35.4C65.8,72.9,65.9,73.3,65.9,73.8z",
+            "M88,158.8c-0.8,1.1-2,1.8-3.4,1.9h0c-2.8,0.4-5.3-1.6-5.7-4.4c0,0-4.4-30.4-4.6-35.1c-0.7-4.6-3.3-22.8-4.4-32.1h-0.6v63.5c0,0.3,0,0.5,0,0.8V192c0,0.5,0,0.9-0.1,1.3c0,0,0,0,0,0c0.1,0.4,0.1,0.9,0.1,1.4v45.5c0,5-4,9-9,9c-5,0-9-4-9-9v-45.5c0-0.5,0-0.9,0.1-1.4c0,0,0,0,0,0c-0.1-0.4-0.1-0.9-0.1-1.3v-26.7h-2.2v27c0,0.5,0,0.9-0.1,1.3c0,0,0,0,0,0c0.1,0.4,0.1,0.9,0.1,1.3v45.5c0,5-4,9-9,9c-5,0-9-4-9-9V195c0-0.5,0-0.9,0.1-1.3c0,0,0,0,0,0c-0.1-0.4-0.1-0.9-0.1-1.3V89.2h-0.6c-1.1,9.2-3.7,27.3-4.4,32v0c-0.1,4.3-4.6,35.2-4.6,35.2c-0.4,2.8-2.9,4.7-5.7,4.4h0c-1.3-0.2-2.5-0.9-3.3-1.9c-0.8-1.1-1.2-2.4-1-3.7c0,0,3.8-33.7,4.6-35.6c0,0,0,0,0,0c0.8-6.8,4.2-35.5,5-37.2c4.1-15,15.7-14.1,15.7-14.1h7.5c-7-2.5-11.9-9.1-11.9-16.9c0-9.9,8-17.9,17.9-17.9c9.9,0,17.9,8,17.9,17.9c0,7.8-5,14.4-11.9,16.9h7.3c0,0,11.6-0.8,15.7,14.1c0.8,1.7,4.2,30.3,5,37.2c0,0,0,0,0,0.1c0.9,1.9,4.6,35.6,4.6,35.6C89.2,156.4,88.8,157.8,88,158.8z",
         },
       ],
     },
@@ -125,143 +140,7 @@ const peopleInvolvedStyle = {
   },
 };
 
-const budgetSpentStyle = {
-  chart: {
-    type: "gauge",
-    spacing: [10, 10, 10, 10],
-    height: 180,
-  },
-  credits: {
-    enabled: false,
-  },
-
-  title: false,
-
-  pane: {
-    startAngle: -90,
-    endAngle: 89.9,
-    background: null,
-    center: ["50%", "75%"],
-    size: "110%",
-  },
-
-  plotOptions: {
-    gauge: {
-      dataLabels: {
-        enabled: false, // Disable data labels for the gauge chart
-      },
-      dial: {
-        backgroundColor: "transparent", // Hide the dial (value display at the bottom)
-      },
-    },
-  },
-};
-
-const wasteDisposalStyle = {
-  chart: {
-    type: "column",
-    spacing: [10, 10, 10, 10],
-    height: 200,
-  },
-  credits: {
-    enabled: false,
-  },
-  title: false,
-  accessibility: {
-    announceNewData: {
-      enabled: true,
-    },
-  },
-  xAxis: {
-    type: "category",
-    gridLineWidth: 0,
-    lineColor: "#efefef",
-  },
-  yAxis: {
-    title: false,
-    labels: {
-      enabled: true,
-    },
-    gridLineWidth: 0,
-  },
-  legend: {
-    enabled: false,
-  },
-
-  tooltip: {
-    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-    pointFormat:
-      '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}',
-  },
-  plotOptions: {
-    column: {
-      dataLabels: {
-        enabled: true,
-        color: "#333",
-        align: "center",
-        format: "{y}",
-        style: {
-          textOutline: "none",
-          fontSize: "13px",
-          fontWeight: "normal",
-        },
-      },
-      groupPadding: 0.2,
-    },
-  },
-};
-
-const reductionPlasticsStyle = {
-  chart: {
-    type: "column",
-    spacing: [10, 10, 10, 10],
-    height: 200,
-  },
-  credits: {
-    enabled: false,
-  },
-  title: false,
-
-  xAxis: {
-    type: "category",
-    gridLineWidth: 0,
-    lineColor: "#efefef",
-  },
-  yAxis: {
-    title: false,
-    labels: {
-      enabled: true,
-    },
-    gridLineWidth: 0,
-  },
-  legend: {
-    enabled: false,
-  },
-
-  tooltip: {
-    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-    pointFormat:
-      '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}%',
-  },
-  plotOptions: {
-    column: {
-      dataLabels: {
-        enabled: true,
-        color: "#333",
-        align: "center",
-        format: "{y} tonnes", // Display the value of each bar
-        style: {
-          textOutline: "none",
-          fontSize: "13px",
-          fontWeight: "normal",
-        },
-      },
-      groupPadding: 0.15,
-    },
-  },
-};
-
-const wasteCompositionStyle = {
+const ethinicityStyle = {
   chart: {
     type: "pie",
     spacing: [10, 10, 10, 10],
@@ -287,13 +166,38 @@ const wasteCompositionStyle = {
     },
   },
   legend: {
-    layout: "vertical", // Set legend layout to vertical
-    align: "left", // Align legend to the right
-    verticalAlign: "middle", // Center the legend vertically
+    layout: "horizontal",
+    align: "center",
+    verticalAlign: "bottom",
   },
 };
 
-const vulnerableCommunitiesStyle = {
+const pieChartDataStyle = {
+  chart: {
+    type: "pie",
+    spacing: [10, 10, 10, 10],
+    height: 212,
+  },
+  credits: {
+    enabled: false,
+  },
+  title: {
+    text: "",
+  },
+
+  plotOptions: {
+    pie: {
+      allowPointSelect: false,
+      cursor: "pointer",
+      dataLabels: {
+        enabled: true,
+      },
+      showInLegend: false,
+    },
+  },
+};
+
+const wasteWorkerStyle = {
   chart: {
     type: "column",
     spacing: [10, 10, 10, 10],
@@ -347,65 +251,10 @@ const vulnerableCommunitiesStyle = {
   },
 };
 
-const allwasteDisposalStyle = {
-  chart: {
-    type: "column",
-    spacing: [10, 10, 10, 10],
-    height: 320,
-  },
-  credits: {
-    enabled: false,
-  },
-  title: false,
-  yAxis: {
-    min: 0,
-    title: false,
-  },
-  tooltip: {
-    valueSuffix: "",
-  },
-  plotOptions: {
-    column: {
-      pointPadding: 0.1,
-      borderWidth: 0,
-    },
-  },
-};
-
-const allPlasticLeakageStyle = {
-  chart: {
-    type: "column",
-    spacing: [10, 10, 10, 10],
-    height: 320,
-  },
-  credits: {
-    enabled: false,
-  },
-  title: false,
-
-  yAxis: {
-    min: 0,
-    title: false,
-  },
-  tooltip: {
-    valueSuffix: "",
-  },
-  plotOptions: {
-    column: {
-      pointPadding: 0.1,
-      borderWidth: 0,
-    },
-  },
-};
-
 export {
-  budgetSpentStyle,
-  wasteSmartSchoolStyle,
-  peopleInvolvedStyle,
-  wasteDisposalStyle,
-  reductionPlasticsStyle,
-  wasteCompositionStyle,
-  vulnerableCommunitiesStyle,
-  allwasteDisposalStyle,
-  allPlasticLeakageStyle,
+  grantDistributedStyle,
+  genderStyle,
+  ethinicityStyle,
+  pieChartDataStyle,
+  wasteWorkerStyle,
 };
