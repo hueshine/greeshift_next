@@ -9,6 +9,8 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
+import creasiondata from "@/pages/creasion/data.json";
+
 const Header = () => {
   const [open, setOpen] = useState(false);
 
@@ -69,38 +71,19 @@ const Header = () => {
 
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
-                    <Link
-                      className="btn-page"
-                      href={"/creasion/private-waste-enterprises"}
-                    >
-                      Private Waste Enterprises
-                    </Link>
-                    <Link
-                      className="btn-page"
-                      href={"/creasion/empowering-waste-workers-through-csos"}
-                    >
-                      Empowering Waste Workers through CSOs{" "}
-                    </Link>
-                    <Link
-                      className="btn-page"
-                      href={
-                        "/creasion/local-and-provincial-swm-policy-guideline"
-                      }
-                    >
-                      Local and Provincial SWM Policy Guideline
-                    </Link>
-                    <Link
-                      className="btn-page"
-                      href={"/creasion/sustainable-packaging-program"}
-                    >
-                      Sustainable Packaging Program{" "}
-                    </Link>
-                    <Link
-                      className="btn-page"
-                      href={"/creasion/green-business-accelerator-program"}
-                    >
-                      Green Business Accelerator Program
-                    </Link>
+                    {creasiondata.map((val, index) => {
+                      let link = val.title.toLowerCase().replace(/\s+/g, "-");
+
+                      return (
+                        <Link
+                          className="btn-page"
+                          href={`/creasion/${link}`}
+                          key={index}
+                        >
+                          {val.title}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </li>
