@@ -333,9 +333,8 @@ h2 {
   line-height: 48px;
   font-weight: 800;
   margin-bottom: 25px;
-  letter-spacing: -1px;
+  letter-spacing: -1.27px;
   font-family: "Source Sans Pro";
-  text-transform: uppercase;
 }
 
 h2 span,
@@ -347,27 +346,25 @@ h4 span {
 h3 {
   font-size: 42px;
   line-height: 45px;
+  letter-spacing: -1.27px;
   font-family: "Source Sans Pro";
   margin-bottom: 25px;
-  text-transform: uppercase;
 }
 
 h4 {
   font-size: 32px;
   line-height: 35px;
   font-family: "Source Sans Pro";
-
+  letter-spacing: -1.27px;
   margin-bottom: 25px;
-  text-transform: uppercase;
 }
 
 h5 {
   font-size: 24px;
   line-height: 29px;
   font-family: "Source Sans Pro";
-
+  letter-spacing: -1.27px;
   margin-bottom: 15px;
-  text-transform: uppercase;
 }
 
 p {

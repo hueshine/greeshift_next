@@ -1,11 +1,14 @@
 import style from "./banner.module.scss";
 
-const Banner = ({ title }) => {
+const Banner = ({ title, parent }) => {
   return (
     <>
       <div className={style.header}>
         <div className={style.inner_header}>
-          <h2>{title}</h2>
+          <div className={style.text}>
+            <h6>{parent}</h6>
+            <h2>{title}</h2>
+          </div>
         </div>
 
         <div>

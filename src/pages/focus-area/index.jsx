@@ -55,7 +55,7 @@ const index = () => {
             key={index}
             id={`focusarea${index}`}
           >
-            <Container maxWidth="md" className={style.focus_container}>
+            <Container maxWidth="lg" className={style.focus_container}>
               <div className={style.title}>
                 <span>Focus Area 0{index + 1}</span>
                 <h3>{val.title}</h3>
@@ -97,7 +97,8 @@ const index = () => {
               </Grid>
 
               <Swiper
-                spaceBetween={30}
+                className={style.image_slide_wrap}
+                spaceBetween={15}
                 speed={12000}
                 autoplay={{
                   delay: 0,
@@ -113,7 +114,7 @@ const index = () => {
                   },
                   768: {
                     slidesPerView: 3,
-                    spaceBetween: 20,
+                    spaceBetween: 10,
                   },
                 }}
               >
