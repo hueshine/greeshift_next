@@ -46,7 +46,7 @@ const Footer = () => {
           <Grid item style={marginBottom} lg={3}>
             <h6>Contact Us</h6>
             <a href="">Pabitra Pyara Marga, Baluwatar</a>
-            <a href="">+977-1-4520784 /01-4540085</a>
+            <a href="">+977-1 -4520784 /01-4540085</a>
             <a href="">greenshift@creasion.org</a>
 
             <div className={footerStyle.social}>
@@ -83,7 +83,7 @@ const Footer = () => {
 
             <Grid item md={3}>
               <p>
-                <small>© 2024 Green Shift Nepal.CREASSION</small>
+                <small>© 2024 Green Shift Nepal.CREASION</small>
               </p>
             </Grid>
           </Grid>

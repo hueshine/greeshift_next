@@ -19,7 +19,7 @@ const Creasion = () => {
 
   const { name } = router.query;
 
-  const selectedData = data.creasion.find(
+  const selectedData = data.restlessDevelopment.find(
     (el) => el.title.toLowerCase().replace(/\s+/g, "-") === name
   );
 
@@ -61,7 +61,7 @@ const Creasion = () => {
             <meta property="og:image:width" content="640" />
             <meta property="og:image:height" content="442" />
           </Head>
-          <Banner title={selectedData.title} parent={"CREASION"} />
+          <Banner title={selectedData.title} parent={selectedData.ledBy} />
 
           <section className={style.about}>
             <Container maxWidth={"lg"}>

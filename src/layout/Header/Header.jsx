@@ -9,7 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
-import creasiondata from "@/pages/creasion/data.json";
+import data from "@/pages/api/activityData.json";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -71,7 +71,7 @@ const Header = () => {
 
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
-                    {creasiondata.map((val, index) => {
+                    {data.creasion.map((val, index) => {
                       let link = val.title.toLowerCase().replace(/\s+/g, "-");
 
                       return (
@@ -91,12 +91,19 @@ const Header = () => {
                 <a href="#">Restless Development</a>
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
-                    <Link className="btn-page" href={"/"}>
-                      Climate Smart Schools
-                    </Link>
-                    <Link className="btn-page" href={"/"}>
-                      Youth Advocacy{" "}
-                    </Link>
+                    {data.restlessDevelopment.map((val, index) => {
+                      let link = val.title.toLowerCase().replace(/\s+/g, "-");
+
+                      return (
+                        <Link
+                          className="btn-page"
+                          href={`/restless-development/${link}`}
+                          key={index}
+                        >
+                          {val.title}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </li>
@@ -104,10 +111,19 @@ const Header = () => {
                 <a href="#">Youth Innovation Lab</a>
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
-                    <Link className="btn-page" href={"/"}>
-                      Waste Smart Fellowship
-                    </Link>
-                    {/* <Link className="btn-page" href={"/"}>Tag me app</Link> */}
+                    {data.yiLab.map((val, index) => {
+                      let link = val.title.toLowerCase().replace(/\s+/g, "-");
+
+                      return (
+                        <Link
+                          className="btn-page"
+                          href={`/youth-innovation-lab/${link}`}
+                          key={index}
+                        >
+                          {val.title}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </li>

@@ -95,3 +95,34 @@
     object-fit: cover;
   }
 }
+
+.image_slide_wrap {
+  margin-bottom: 60px;
+  &:hover {
+    img {
+      opacity: 0.6;
+      padding: 10px;
+    }
+  }
+}
+
+.image_slide {
+  margin-top: 40px;
+
+  img {
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      padding: 0;
+      transform: scale(1.05);
+      opacity: 1;
+      z-index: 9;
+    }
+  }
+}
