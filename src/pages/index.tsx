@@ -93,7 +93,7 @@ export default function Home() {
           <span>Focus Areas</span>
         </h2>
 
-        <Container maxWidth="sm" style={{ textAlign: "center" }}>
+        <Container maxWidth="lg" style={{ textAlign: "center" }}>
           <p>
             GreenShift Nepal will work with waste enterprises, SMEs, CSOs of
             waste workers, youths, school children, and three tiers of
@@ -172,9 +172,6 @@ export default function Home() {
         </Container>
       </section>
       <section className={homeStyle.partners}>
-        {/* <div className={homeStyle.curveSvg}>
-          <Curve fill={"#EFF4F3"} />
-        </div> */}
         <Partners />
       </section>
     </>

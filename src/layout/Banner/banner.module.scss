@@ -2,11 +2,13 @@
   position: relative;
   text-align: center;
   background: linear-gradient(60deg, #33b2b6 0%, #addfe1 100%);
+  background-position: center !important;
+  background-size: cover !important;
   color: white;
 }
 
 .inner_header {
-  height: 55vh;
+  height: 60vh;
   width: 100%;
   margin: 0;
   padding: 0;

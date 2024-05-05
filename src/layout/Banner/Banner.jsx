@@ -1,9 +1,12 @@
 import style from "./banner.module.scss";
 
-const Banner = ({ title, parent }) => {
+const Banner = ({ title, parent, image }) => {
   return (
     <>
-      <div className={style.header}>
+      <div
+        className={style.header}
+        style={{ backgroundImage: `url(${image})` }}
+      >
         <div className={style.inner_header}>
           <div className={style.text}>
             <h6>{parent}</h6>
