@@ -152,7 +152,7 @@ const Header = () => {
 
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
-                    <Link href={"/what-is-the-greeshift-campaign"}>
+                    <Link href={"/greenshift-campaigns"}>
                       What is the GreenShift Campaign?
                     </Link>
 
@@ -181,7 +181,7 @@ const Header = () => {
 
                 <div className={headerStyle.submenu}>
                   <div className={headerStyle.wrap}>
-                    <Link href={"/what-is-the-greeshift-campaign"}>
+                    <Link href={"/greenshift-campaigns"}>
                       What is the GreenShift Campaign?
                     </Link>
                     <Link href={"/join-the-green-movement/pledge"}>

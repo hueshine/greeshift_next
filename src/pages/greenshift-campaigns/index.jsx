@@ -2,6 +2,8 @@ import Banner from "../../layout/Banner/Banner";
 import Head from "next/head";
 import { Container, Grid, Link } from "@mui/material";
 
+import campaignData from "./data.json";
+
 import style from "./style.module.scss";
 
 const GreenShiftCampaign = () => {
@@ -70,31 +72,34 @@ const GreenShiftCampaign = () => {
       <section className={style.campaign_wrap}>
         <Container>
           <h2>
-            Do You want to be part of the <span>GreenShift Campaign?</span>{" "}
+            Do you want to be part of the <span>GreenShift Campaign?</span>{" "}
           </h2>
 
           <Grid container columnSpacing={4}>
-            <Grid item md={4}>
-              <div className={style.campaign_card}>
-                <img src="/FROMg4Y0DlqW4Q45geDb.jpg" alt="" />
+            {campaignData.map((val, index) => {
+              let link = val.title.toLowerCase().replace(/\s+/g, "-");
 
-                <div className={style.text}>
-                  <h4>#GreenShift Photography Competition </h4>
-                  <div>
-                    <p>
-                      Photography serves as a transformative tool, offering
-                      unique perspectives through various lenses and enabling
-                      diverse narratives to emerge. It holds the remarkable
-                      ability to persuade and shed light on pressing issues,
-                      compelling viewers to take action in preserving our
-                      environment.{" "}
-                    </p>
+              return (
+                <Grid item md={4} key={index}>
+                  <div className={style.campaign_card}>
+                    <img src="/FROMg4Y0DlqW4Q45geDb.jpg" alt="" />
 
-                    <Link href={"/"}>Learn More </Link>
+                    <div className={style.text}>
+                      <h4>{val.title}</h4>
+
+                      <div
+                        className={style.text_short}
+                        dangerouslySetInnerHTML={{ __html: val.text }}
+                      />
+
+                      <Link href={`/greenshift-campaigns/${link}`}>
+                        Learn More{" "}
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Grid>
+                </Grid>
+              );
+            })}
           </Grid>
         </Container>
       </section>
