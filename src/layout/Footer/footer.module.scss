@@ -153,7 +153,7 @@
   }
 
   .social {
-    margin-top: 38px;
+    margin-top: 55px;
     a {
       display: inline-flex;
       justify-content: center;
@@ -182,5 +182,14 @@
   a {
     width: 49%;
     display: block;
+  }
+}
+
+.logo_bottom {
+  margin-left: 85px;
+
+  a {
+    display: block;
+    margin-bottom: 20px;
   }
 }

@@ -27,7 +27,7 @@ const Footer = () => {
 
             <div className={footerStyle.logo_bottom}>
               <a href="">
-                <img src="/restless_development.png" alt="" />
+                <img src="/rd.svg" alt="" />
               </a>
 
               <a href="">
