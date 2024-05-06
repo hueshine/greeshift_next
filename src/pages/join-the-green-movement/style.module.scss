@@ -84,6 +84,8 @@
     width: 100%;
     small {
       font-size: 14px;
+      margin-top: 30px;
+      display: block;
     }
 
     textarea {
@@ -91,6 +93,58 @@
       border: 1px solid #0000003b;
       padding: 12px 10px;
       width: 100%;
+    }
+  }
+}
+
+.form_box {
+  small {
+    font-size: 14px;
+    margin-top: 20px;
+    display: block;
+  }
+}
+
+.upload_image {
+  background-color: transparent;
+  color: #00000099;
+  width: 100%;
+  border: 1px solid #cdcdcd;
+  height: 68px;
+
+  &:hover {
+    background: #33b2b6;
+  }
+}
+
+.form_grid_terms {
+  margin-top: 20px;
+  font-size: 16px;
+
+  .pledge_btn {
+    padding: 20px 30px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0;
+
+    svg {
+      margin-left: 8px;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-family: "Source Sans Pro";
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: circle;
+    padding-left: 20px;
+    li {
+      margin-bottom: 5px;
     }
   }
 }

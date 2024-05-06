@@ -15,10 +15,25 @@ const Footer = () => {
     <footer className={footerStyle.footer}>
       <Container maxWidth="lg">
         <Grid container spacing={2}>
-          <Grid item style={marginBottom} lg={3} className={footerStyle.logo}>
-            <a href="">
-              <img src="/logo.png" alt="" />
-            </a>
+          <Grid item style={marginBottom} lg={6} className={footerStyle.logo}>
+            <div className={footerStyle.logo_top}>
+              <a href="" className={footerStyle.creasion}>
+                <img src="/Creasion_footer_logo.png" alt="" />
+              </a>
+              <a href="">
+                <img src="/logo.png" alt="" />
+              </a>
+            </div>
+
+            <div className={footerStyle.logo_bottom}>
+              <a href="">
+                <img src="/restless_development.png" alt="" />
+              </a>
+
+              <a href="">
+                <img src="/Youth_Innovation_Lab.png" alt="" />
+              </a>
+            </div>
           </Grid>
 
           <Grid item style={marginBottom} lg={3}>
@@ -27,13 +42,6 @@ const Footer = () => {
             <a href="">News & Updates</a>
             <a href="">Knowledge Hub</a>
             <a href="">Join The Green Movement</a>
-          </Grid>
-
-          <Grid item style={marginBottom} lg={3}>
-            <h6>CONSORTIUM PARTNERS</h6>
-            <a href="">Creasion</a>
-            <a href="">Youth Innovation Lab</a>
-            <a href="">Restless Development</a>
 
             <a href="" target="_blank" className={footerStyle.logo_btn}>
               Grievance
@@ -42,6 +50,15 @@ const Footer = () => {
               </div>
             </a>
           </Grid>
+
+          {/* <Grid item style={marginBottom} lg={3}>
+            <h6>CONSORTIUM PARTNERS</h6>
+            <a href="">Creasion</a>
+            <a href="">Youth Innovation Lab</a>
+            <a href="">Restless Development</a>
+
+           
+          </Grid> */}
 
           <Grid item style={marginBottom} lg={3}>
             <h6>Contact Us</h6>

@@ -172,3 +172,15 @@
     }
   }
 }
+
+.logo_top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: -15px;
+
+  a {
+    width: 49%;
+    display: block;
+  }
+}

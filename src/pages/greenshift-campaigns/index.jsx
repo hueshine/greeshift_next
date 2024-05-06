@@ -75,7 +75,7 @@ const GreenShiftCampaign = () => {
             Do you want to be part of the <span>GreenShift Campaign?</span>{" "}
           </h2>
 
-          <Grid container columnSpacing={4}>
+          <Grid container columnSpacing={4} justifyContent={"center"}>
             {campaignData.map((val, index) => {
               let link = val.title.toLowerCase().replace(/\s+/g, "-");
 

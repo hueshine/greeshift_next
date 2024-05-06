@@ -15,8 +15,9 @@ import {
 
 import { Container, Grid } from "@mui/material";
 
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import styled from "styled-components";
+import PhotoIcon from "@mui/icons-material/Photo";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import SendIcon from "@mui/icons-material/Send";
 
 import provinceData from "../pledge/province.json";
 import districtData from "../pledge/district.json";
@@ -295,22 +296,53 @@ const Ideas = () => {
 
               <Grid className={style.form_grid} item md={4}></Grid>
 
-              {/* <Grid className={style.form_grid} item md={4}>
+              <Grid className={style.form_grid} item md={6}>
                 <div className={style.form_box}>
                   <InputLabel htmlFor="wasteCollected">
                     Verification{" "}
                   </InputLabel>
+
+                  <Button
+                    className={style.upload_image}
+                    component="label"
+                    variant="contained"
+                    startIcon={<PhotoIcon />}
+                  >
+                    Upload image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      style={{ display: "none" }}
+                    />
+                  </Button>
+
                   <small>
                     For verification, upload a picture of the weighing scale
                     with the weight of your collected waste
                   </small>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    hidden
+                  />
+                </div>
+              </Grid>
+
+              <Grid className={style.form_grid} item md={6}>
+                <div className={style.form_box}>
+                  <InputLabel htmlFor="wasteCollected">
+                    Upload your 60 sec video
+                  </InputLabel>
 
                   <Button
+                    className={style.upload_image}
                     component="label"
                     variant="contained"
-                    startIcon={<CloudUploadIcon />}
+                    startIcon={<OndemandVideoIcon />}
                   >
-                    Upload image
+                    Upload Video
                     <input
                       type="file"
                       accept="image/*"
@@ -326,7 +358,40 @@ const Ideas = () => {
                     hidden
                   />
                 </div>
-              </Grid> */}
+              </Grid>
+
+              <Grid className={style.form_grid_terms} item md={8}>
+                <p>*Terms & Conditions </p>
+                <ul>
+                  <li>
+                    CREASION reserves the right to correspond with selected
+                    participants for video amendments{" "}
+                  </li>
+                  <li>
+                    By entering the GreenShift campaign, the participant grants
+                    CREASION all rights to their work and confirm that it is
+                    their work, and not that of someone else, or copied.
+                  </li>
+                  <li>
+                    CREASION reserves the right to make amendments to any
+                    submitted videos as deemed necessary.
+                  </li>
+                </ul>
+              </Grid>
+
+              <Grid className={style.form_grid_terms} item md={8}>
+                <FormControlLabel
+                  control={<Checkbox name="terms" />}
+                  label="I accept the terms and conditions of the GreenShift campaign"
+                />
+              </Grid>
+
+              <Grid item md={4}></Grid>
+              <Grid className={style.form_grid_terms} item md={4}>
+                <button className={style.pledge_btn}>
+                  Become a Green Warrior <SendIcon />
+                </button>
+              </Grid>
             </Grid>
           </div>
         </Container>
