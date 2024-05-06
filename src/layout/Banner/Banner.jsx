@@ -5,7 +5,7 @@ const Banner = ({ title, parent, image }) => {
     <>
       <div
         className={style.header}
-        style={{ backgroundImage: `url(${image})` }}
+        style={image ? { backgroundImage: `url(${image})` } : {}}
       >
         <div className={style.inner_header}>
           <div className={style.text}>

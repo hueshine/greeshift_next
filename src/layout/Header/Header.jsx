@@ -163,7 +163,10 @@ const Header = () => {
                       (Realistic) Pledge{" "}
                     </Link>
 
-                    <Link className="btn-page" href={"/"}>
+                    <Link
+                      className="btn-page"
+                      href={"/join-the-green-movement/pitch-your-ideas"}
+                    >
                       Pitch Your Ideas{" "}
                     </Link>
                   </div>
@@ -187,7 +190,9 @@ const Header = () => {
                     <Link href={"/join-the-green-movement/pledge"}>
                       (Realistic) Pledge{" "}
                     </Link>
-                    <Link href={"/"}>Pitch Your Ideas </Link>
+                    <Link href={"/join-the-green-movement/pitch-your-ideas"}>
+                      Pitch Your Ideas{" "}
+                    </Link>
                   </div>
                 </div>
               </li>

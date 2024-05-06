@@ -178,7 +178,7 @@ const Pledge = () => {
 
               <Grid className={style.form_grid} item md={6}>
                 <div className={style.form_box}>
-                  <InputLabel htmlFor="municipality">Muniicipality</InputLabel>
+                  <InputLabel htmlFor="municipality">Municipality</InputLabel>
 
                   <Select
                     name="municipality"
@@ -245,38 +245,87 @@ const Pledge = () => {
             </div>
 
             <Grid container rowSpacing={2} columnSpacing={4}>
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.pledge_form}>
+              <Grid className={style.form_grid} item md={12}>
+                <p>Reduce Plastic Waste</p>
+                <div
+                  className={`${style.pledge_form} ${style.pledge_form_multiple}`}
+                >
                   <FormControlLabel
                     control={<Checkbox name="pledge1" />}
-                    label="Reduce Plastic Waste "
+                    label="Carry my own water bottle"
+                  />
+
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Carry my own reusable shopping bags to minimize single-use plastics "
+                  />
+
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Avoid using plastic utensils such as plates, spoons, forks, cups, straws in social gathering"
+                  />
+
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Use digital banners to minimize the use of plastic flex prints in events "
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Shop from businesses that use plastic alternative packaging "
+                  />
+
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Donate or sell books, notebooks, or any other paper documents "
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Avoid unncessary printing of any official and personal documents "
+                  />
+
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Avoid printing receipts from ATM machines "
                   />
                 </div>
               </Grid>
 
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.pledge_form}>
+              <Grid className={style.form_grid} item md={12}>
+                <p>Practice Sustainable Lifestyle </p>
+                <div
+                  className={`${style.pledge_form} ${style.pledge_form_multiple}`}
+                >
                   <FormControlLabel
-                    control={<Checkbox name="pledge2" />}
-                    label="Use Sustainable Product  "
+                    control={<Checkbox name="pledge1" />}
+                    label="Use Bi-cycle for short distance commuting"
                   />
-                </div>
-              </Grid>
 
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.pledge_form}>
                   <FormControlLabel
-                    control={<Checkbox name="pledge3" />}
-                    label="Practice Sustainable Lifestyle  "
+                    control={<Checkbox name="pledge1" />}
+                    label="Consume locally sourced food"
                   />
-                </div>
-              </Grid>
 
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.pledge_form}>
                   <FormControlLabel
-                    control={<Checkbox name="pledge4" />}
-                    label="Consume energy mindfully  "
+                    control={<Checkbox name="pledge1" />}
+                    label="Use thrifted products and refurbished gadgets"
+                  />
+
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Turn off any electrical devices when not in use"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Promote green and local businesses for daily use products"
+                  />
+
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Segregate organic and inorganic waste at my home"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="pledge1" />}
+                    label="Convert my household organic waste into compost for garden"
                   />
                 </div>
               </Grid>
@@ -285,7 +334,7 @@ const Pledge = () => {
                 <div className={style.pledge_form}>
                   <FormControlLabel
                     control={<Checkbox name="pledge5" />}
-                    label="Reduce paper waste   "
+                    label="Reduce paper waste"
                   />
                 </div>
               </Grid>
@@ -294,7 +343,7 @@ const Pledge = () => {
                 <div className={style.pledge_form}>
                   <FormControlLabel
                     control={<Checkbox name="pledge6" />}
-                    label="Minimize waste   "
+                    label="Minimize waste"
                   />
                 </div>
               </Grid>
@@ -349,7 +398,7 @@ const Pledge = () => {
                     background: "#33b2b6",
                   },
                   ".MuiStepIcon-root.Mui-completed path": {
-                    transform: "scale(0.7) translate(5px, 5px)",
+                    transform: "scale(0.6) translate(8px, 8px)",
                   },
                   ".MuiStepIcon-text": {
                     fill: "#33b2b6",

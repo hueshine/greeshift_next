@@ -83,7 +83,7 @@ const Footer = () => {
 
             <Grid item md={3}>
               <p>
-                <small>© 2024 Green Shift Nepal.CREASION</small>
+                <small>© 2024 Green Shift Nepal, CREASION</small>
               </p>
             </Grid>
           </Grid>

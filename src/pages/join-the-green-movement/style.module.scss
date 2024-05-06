@@ -1,3 +1,22 @@
+.pledge_form_multiple {
+  label {
+    width: 100%;
+    border-bottom: 1px solid #cdcdcd;
+    margin-bottom: 5px;
+    padding: 10px;
+    align-items: flex-start;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    span {
+      padding: 0;
+      margin-right: 10px;
+    }
+  }
+}
+
 .pledge_box {
   margin: 80px 0;
 
@@ -17,6 +36,10 @@
   }
 
   .form_container {
+    p {
+      font-size: 16px;
+    }
+
     &_title {
       margin-bottom: 30px;
 
@@ -55,51 +78,66 @@
     p {
       margin-bottom: 30px;
     }
-
-    .pledge_into_action {
-      margin: 40px 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-
-      .icon {
-        width: 100px;
-        img {
-          width: 60px;
-        }
-      }
-
-      .text {
-        width: calc(100% - 100px);
-      }
-
-      h5 {
-        text-transform: none;
-      }
-
-      ul {
-        list-style: circle;
-        padding-left: 20px;
-        li {
-          font-size: 18px;
-          margin-bottom: 15px;
-        }
-      }
-
-      p {
-        margin-bottom: 0;
-        font-size: 18px;
-      }
-    }
   }
 
   .form_box {
     width: 100%;
+    small {
+      font-size: 14px;
+    }
+
     textarea {
       min-height: 180px;
       border: 1px solid #0000003b;
       padding: 12px 10px;
       width: 100%;
+    }
+  }
+}
+
+.pledge_into_action {
+  margin: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .icon {
+    width: 100px;
+    img {
+      width: 60px;
+    }
+  }
+
+  .text {
+    width: calc(100% - 100px);
+  }
+
+  h5 {
+    text-transform: none;
+  }
+
+  ul {
+    list-style: circle;
+    padding-left: 20px;
+    li {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+}
+
+.pitch_action {
+  .pledge_into_action {
+    display: block;
+
+    .text {
+      width: 100%;
+      margin-top: 30px;
     }
   }
 }
@@ -131,6 +169,10 @@
     color: #33b2b6;
     background: transparent;
   }
+}
+
+.pitch_form {
+  margin: 40px 0;
 }
 
 @media screen and (max-width: 500px) {
