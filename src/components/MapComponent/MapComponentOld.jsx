@@ -755,19 +755,16 @@ const MapComponent = () => {
   let SideBarInitial = () => {
     return (
       <div className={componentStyle.initial}>
-        <div
-          className={componentStyle.initial_head}
-          style={{ marginBottom: "15px" }}
-        >
+        <div className={componentStyle.initial_head}>
+          <p>Filter Data</p>
+
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">
-              View Municipality according to year
-            </InputLabel>
+            <InputLabel id="demo-simple-select-label">Select Year</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={year}
-              label="View Municipality according to year"
+              label="Select year"
               onChange={handleChange}
             >
               <MenuItem value={0}>See All</MenuItem>
@@ -779,7 +776,7 @@ const MapComponent = () => {
           </FormControl>
         </div>
 
-        {/* <div className={componentStyle.initial_wrap}>
+        <div className={componentStyle.initial_wrap}>
           <ul>
             <li
               onClick={(e) => {
@@ -809,53 +806,6 @@ const MapComponent = () => {
               );
             })}
           </ul>
-        </div> */}
-
-        <div className={componentStyle.muniCard_wrap}>
-          {MunicipalityFilter.map((val, index) => {
-            return (
-              <div
-                className={componentStyle.muniCard}
-                key={index}
-                onClick={(e) => {
-                  setDataBoxIndex(true);
-                  setAllDataIndex(false);
-                  setSelectedMunicipality(val);
-                  whereFly(val);
-                }}
-              >
-                <div className={componentStyle.muniCard_img}>
-                  <img src={val.image} alt="" />
-                </div>
-
-                <div className={componentStyle.muniCard_text}>
-                  <h5>{val.title}</h5>
-                  <p>
-                    <span>Project Year:</span>
-                    {val.date}
-                  </p>
-
-                  {val.plasticWasteCollected ? (
-                    <p>
-                      <span>Plastic Waste Collected:</span>
-                      {val.plasticWasteCollected}
-                    </p>
-                  ) : (
-                    ""
-                  )}
-
-                  {val.grantDistributed ? (
-                    <p>
-                      <span>Grant Distributed:</span>
-                      {val.grantDistributed}
-                    </p>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </div>
-            );
-          })}
         </div>
       </div>
     );
