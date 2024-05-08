@@ -11,14 +11,6 @@
   }
 
   .logo {
-    .creasion {
-      margin-right: 25px;
-      img {
-        height: 85px;
-        width: auto;
-      }
-    }
-
     img {
       width: 180px;
     }
@@ -62,6 +54,13 @@
         display: none;
         z-index: 9;
 
+        &.close {
+          display: none;
+        }
+
+        &.active {
+          display: block;
+        }
         .wrap {
           background: #fff;
           border-radius: 4px;
@@ -144,7 +143,7 @@
   }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1480px) {
   .header {
     padding: 5px;
     .container {

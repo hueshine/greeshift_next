@@ -399,6 +399,10 @@ img {
   margin: 0 auto;
 }
 
+.swiper-center .swiper-wrapper {
+  justify-content: center;
+}
+
 @media screen and (max-width: 1700px) {
   .container {
     max-width: 1336px;
