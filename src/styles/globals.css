@@ -339,8 +339,12 @@ h2 {
 
 h2 span,
 h3 span,
-h4 span {
+h4 span,
+h2 em,
+h3 em,
+h4 em {
   color: #33b2b6;
+  font-style: normal;
 }
 
 h3 {
@@ -422,52 +426,13 @@ img {
   }
 
   h2 {
-    font-size: 56px;
-    line-height: 64px;
+    font-size: 48px;
+    line-height: 47px;
     margin-bottom: 25px;
   }
-}
-/* 
-.css-z7uhs0-MuiStepConnector-line {
-  border-color: transparent;
-}
 
-.css-117w1su-MuiStepIcon-text {
-  fill: #fff;
-  font-size: 9px;
-  font-family: "Source Sans Pro";
+  h3 {
+    font-size: 38px;
+    line-height: 39px;
+  }
 }
-
-.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active,
-.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed,
-span.MuiStepLabel-label.Mui-completed.css-1hv8oq8-MuiStepLabel-label {
-  color: #33b2b6;
-}
-span.MuiStepLabel-iconContainer.Mui-completed.css-vnkopk-MuiStepLabel-iconContainer {
-  background: #33b2b6;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  position: relative;
-  margin-right: 10px;
-}
-
-span.MuiStepLabel-iconContainer.Mui-completed.css-vnkopk-MuiStepLabel-iconContainer
-  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiStepIcon-root.Mui-completed.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
-  color: #fff;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed path {
-  transform: scale(0.5);
-}
-
-.css-1hv8oq8-MuiStepLabel-label.Mui-active {
-  color: #33b2b6;
-}
-
-.css-a1sg1c-MuiButtonBase-root-MuiButton-root {
-  opacity: 0.5;
-} */

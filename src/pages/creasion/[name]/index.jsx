@@ -4,16 +4,34 @@ import Head from "next/head";
 import Activity from "../../../components/Activity/Activity";
 import { useRouter } from "next/router";
 
-import data from "@/pages/api/activityData.json";
+import { useIsomorphicLayoutEffect } from "@/hook";
+import { useState } from "react";
 
 const Creasion = () => {
+  const [activityData, setActivityData] = useState();
+
+  useIsomorphicLayoutEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        "https://www.app.greenshift.creasion.org/api/activities"
+      );
+      const apiData = await res.json();
+
+      setActivityData(apiData.items);
+    };
+    fetchData();
+  }, []);
   const router = useRouter();
 
   const { name } = router.query;
 
-  const selectedData = data.creasion.find(
-    (el) => el.title.toLowerCase().replace(/\s+/g, "-") === name
-  );
+  let selectedData = null;
+
+  if (activityData) {
+    selectedData = activityData.find(
+      (el) => el.title.toLowerCase().replace(/\s+/g, "-") === name
+    );
+  }
 
   return (
     <>

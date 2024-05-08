@@ -9,11 +9,11 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
-import data from "@/pages/api/activityData.json";
-
 const Header = () => {
+  const [activityData, setActivityData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const [open, setOpen] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
     let btns = document.querySelectorAll(".btn-page");
@@ -36,6 +36,19 @@ const Header = () => {
       });
     });
   }, [open]);
+
+  useIsomorphicLayoutEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        "https://app.greenshift.creasion.org/api/activities"
+      );
+      const apiData = await res.json();
+
+      setActivityData(apiData.items);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
 
   return (
     <header className={`${headerStyle.header} header`}>
@@ -85,19 +98,28 @@ const Header = () => {
 
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
-                    {data.creasion.map((val, index) => {
-                      let link = val.title.toLowerCase().replace(/\s+/g, "-");
-
-                      return (
-                        <Link
-                          className="btn-page"
-                          href={`/creasion/${link}`}
-                          key={index}
-                        >
-                          {val.title}
-                        </Link>
-                      );
-                    })}
+                    {!loading ? (
+                      <>
+                        {activityData
+                          .filter((item) => item.ledBy === "CREASION")
+                          .map((val, index) => {
+                            let link = val.title
+                              .toLowerCase()
+                              .replace(/\s+/g, "-");
+                            return (
+                              <Link
+                                className="btn-page"
+                                href={`/creasion/${link}`}
+                                key={index}
+                              >
+                                {val.title}
+                              </Link>
+                            );
+                          })}
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </li>
@@ -105,19 +127,30 @@ const Header = () => {
                 <a href="#">Restless Development</a>
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
-                    {data.restlessDevelopment.map((val, index) => {
-                      let link = val.title.toLowerCase().replace(/\s+/g, "-");
-
-                      return (
-                        <Link
-                          className="btn-page"
-                          href={`/restless-development/${link}`}
-                          key={index}
-                        >
-                          {val.title}
-                        </Link>
-                      );
-                    })}
+                    {!loading ? (
+                      <>
+                        {activityData
+                          .filter(
+                            (item) => item.ledBy === "RESTLESS DEVELOPMENT"
+                          )
+                          .map((val, index) => {
+                            let link = val.title
+                              .toLowerCase()
+                              .replace(/\s+/g, "-");
+                            return (
+                              <Link
+                                className="btn-page"
+                                href={`/restless-development/${link}`}
+                                key={index}
+                              >
+                                {val.title}
+                              </Link>
+                            );
+                          })}
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </li>
@@ -125,19 +158,30 @@ const Header = () => {
                 <a href="#">Youth Innovation Lab</a>
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
-                    {data.yiLab.map((val, index) => {
-                      let link = val.title.toLowerCase().replace(/\s+/g, "-");
-
-                      return (
-                        <Link
-                          className="btn-page"
-                          href={`/youth-innovation-lab/${link}`}
-                          key={index}
-                        >
-                          {val.title}
-                        </Link>
-                      );
-                    })}
+                    {!loading ? (
+                      <>
+                        {activityData
+                          .filter(
+                            (item) => item.ledBy === "YOUTH INNOVATION LAB"
+                          )
+                          .map((val, index) => {
+                            let link = val.title
+                              .toLowerCase()
+                              .replace(/\s+/g, "-");
+                            return (
+                              <Link
+                                className="btn-page"
+                                href={`/youth-innovation-lab/${link}`}
+                                key={index}
+                              >
+                                {val.title}
+                              </Link>
+                            );
+                          })}
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </li>
@@ -166,7 +210,7 @@ const Header = () => {
 
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
-                    <Link href={"/greenshift-campaigns"}>
+                    <Link className="btn-page" href={"/greenshift-campaigns"}>
                       What is the GreenShift Campaign?
                     </Link>
 

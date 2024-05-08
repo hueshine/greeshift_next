@@ -26,6 +26,8 @@ const modalStyle = {
 const Activity = ({ data }) => {
   let selectedData = data;
 
+  console.log(selectedData.activity);
+
   useIsomorphicLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap.from(".image", {
@@ -143,7 +145,7 @@ const Activity = ({ data }) => {
         ""
       )}
 
-      <section className={style.image_slider}>
+      {/* <section className={style.image_slider}>
         <Swiper
           className={style.image_slide_wrap}
           spaceBetween={15}
@@ -181,7 +183,7 @@ const Activity = ({ data }) => {
             );
           })}
         </Swiper>
-      </section>
+      </section> */}
 
       <section className={style.sdg_wrap}>
         <Container maxWidth={"lg"}>
