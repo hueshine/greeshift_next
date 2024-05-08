@@ -85,7 +85,7 @@ const HomeFocusArea = () => {
           >
             <Container maxWidth={"lg"}>
               <Grid container spacing={1}>
-                <Grid item md={4}>
+                <Grid item md={4} xs={12}>
                   <div className={homeStyle.focusCard_image}>
                     <img
                       src="/partners.svg"
@@ -96,7 +96,7 @@ const HomeFocusArea = () => {
                   </div>
                 </Grid>
 
-                <Grid item md={8}>
+                <Grid item md={8} xs={12}>
                   <div className={homeStyle.focusCard_text}>
                     <h4>{val.title}</h4>
                     <div dangerouslySetInnerHTML={{ __html: val.text }} />

@@ -124,10 +124,10 @@ const Partners = () => {
                 }}
                 loop={true}
                 modules={[Autoplay]}
-                className={
-                  groupData[categoryID].length < 4 ? "swiper-center" : ""
-                }
-                // centeredSlides={groupData[categoryID].length < 2 ? true : false}
+                // className={
+                //   groupData[categoryID].length < 4 ? "swiper-center" : ""
+                // }
+                centeredSlides={groupData[categoryID].length < 2 ? true : false}
                 breakpoints={{
                   640: {
                     slidesPerView: 2,

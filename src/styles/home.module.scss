@@ -582,6 +582,11 @@
     .focusCard {
       border-radius: 0 !important;
 
+      img {
+        border-radius: 0 !important;
+        width: 100% !important;
+      }
+
       h4 {
         height: auto !important;
       }

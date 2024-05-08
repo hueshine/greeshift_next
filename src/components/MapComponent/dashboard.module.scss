@@ -6,6 +6,11 @@
   }
 }
 
+.mb_title {
+  margin: 50px 0 25px;
+  display: none;
+}
+
 .muniCard {
   display: flex;
   flex-wrap: wrap;
@@ -436,6 +441,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .mb_title {
+    display: block;
+  }
+
   .map_info {
     display: none;
   }

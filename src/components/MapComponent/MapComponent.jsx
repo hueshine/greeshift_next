@@ -755,6 +755,7 @@ const MapComponent = () => {
   let SideBarInitial = () => {
     return (
       <div className={componentStyle.initial}>
+        <h3 className={componentStyle.mb_title}>Project Areas</h3>
         <div
           className={componentStyle.initial_head}
           style={{ marginBottom: "15px" }}

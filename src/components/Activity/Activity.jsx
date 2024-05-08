@@ -161,7 +161,7 @@ const Activity = ({ data }) => {
               spaceBetween: 0,
             },
             768: {
-              slidesPerView: 5,
+              slidesPerView: 3.5,
               spaceBetween: 10,
             },
           }}
