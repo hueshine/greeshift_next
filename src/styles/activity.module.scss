@@ -129,6 +129,24 @@
   background-color: #e8f5f9;
 }
 
+.modal_box {
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+
+  p {
+    display: none;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
 .image_slide_wrap {
   margin-bottom: 60px;
   &:hover {

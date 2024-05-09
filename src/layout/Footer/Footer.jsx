@@ -17,20 +17,27 @@ const Footer = () => {
         <Grid container spacing={2}>
           <Grid item style={marginBottom} lg={6} className={footerStyle.logo}>
             <div className={footerStyle.logo_top}>
-              <a href="" className={footerStyle.creasion}>
+              <a
+                href="http://creasion.org/"
+                target="_blank"
+                className={footerStyle.creasion}
+              >
                 <img src="/Creasion_footer_logo.png" alt="" />
               </a>
-              <a href="">
+              <a href="#">
                 <img src="/logo.png" alt="" />
               </a>
             </div>
 
             <div className={footerStyle.logo_bottom}>
-              <a href="">
+              <a
+                href="https://restlessdevelopment.org/country/nepal/"
+                target="_blank"
+              >
                 <img src="/rd.svg" alt="" />
               </a>
 
-              <a href="">
+              <a href="https://youthinnovationlab.org/" target="_blank">
                 <img src="/Youth_Innovation_Lab.png" alt="" />
               </a>
             </div>

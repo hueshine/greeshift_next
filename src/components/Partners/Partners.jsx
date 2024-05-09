@@ -115,42 +115,49 @@ const Partners = () => {
             <div className={homeStyle.partnerRow} key={categoryID}>
               <h5>{groupData[categoryID][0].categoryTitle}</h5>
 
-              <Swiper
-                slidesPerView={2}
-                speed={3500}
-                autoplay={{
-                  delay: 4500,
-                  disableOnInteraction: false,
-                }}
-                loop={true}
-                modules={[Autoplay]}
-                // className={
-                //   groupData[categoryID].length < 4 ? "swiper-center" : ""
-                // }
-                centeredSlides={groupData[categoryID].length < 2 ? true : false}
-                breakpoints={{
-                  640: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                    loop: false,
-                  },
-                  768: {
-                    slidesPerView: 4,
-                    spaceBetween: 20,
-                  },
-                }}
-              >
-                {groupData[categoryID].map((partner) => (
-                  <SwiperSlide
-                    key={partner.logo}
-                    style={{ textAlign: "center" }}
-                  >
-                    <a href={partner.link} target="_blank">
+              {groupData[categoryID].length < 4 ? (
+                <div className={homeStyle.partner_logo_wrapper}>
+                  {groupData[categoryID].map((partner) => (
+                    <a href={partner.link} key={partner.logo} target="_blank">
                       <img src={partner.logo} alt={partner.title} />
                     </a>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                  ))}
+                </div>
+              ) : (
+                <Swiper
+                  slidesPerView={2}
+                  speed={3500}
+                  autoplay={{
+                    delay: 4500,
+                    disableOnInteraction: false,
+                  }}
+                  loop={true}
+                  modules={[Autoplay]}
+                  centeredSlides={false}
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 2,
+                      spaceBetween: 0,
+                      loop: false,
+                    },
+                    768: {
+                      slidesPerView: 4,
+                      spaceBetween: 20,
+                    },
+                  }}
+                >
+                  {groupData[categoryID].map((partner) => (
+                    <SwiperSlide
+                      key={partner.logo}
+                      style={{ textAlign: "center" }}
+                    >
+                      <a href={partner.link} target="_blank">
+                        <img src={partner.logo} alt={partner.title} />
+                      </a>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              )}
             </div>
           );
         })}

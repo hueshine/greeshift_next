@@ -18,6 +18,11 @@ import {
   TextareaAutosize,
 } from "@mui/material";
 
+import { useIsomorphicLayoutEffect } from "@/hook";
+
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+import gsap from "gsap";
+
 import { Container, Grid } from "@mui/material";
 
 import provinceData from "./province.json";
@@ -44,6 +49,13 @@ const Pledge = () => {
 
   const handleNext = () => {
     const form = document.getElementById("multi-step-form");
+    const box = document.getElementById("pledgeBox");
+
+    // gsap.to(box, {
+    //   duration: 0.5,
+    //   scrollTo: { y: "#pledgeBox", offsetY: 50 },
+    // });
+
     if (form.reportValidity()) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
@@ -367,7 +379,7 @@ const Pledge = () => {
 
       <Banner title={"Pledge"} />
 
-      <div className={style.pledge_box}>
+      <div className={style.pledge_box} id="pledgeBox">
         <Container maxWidth={"lg"}>
           <Grid container spacing={10}>
             <Grid item md={3.5}>

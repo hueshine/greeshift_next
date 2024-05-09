@@ -28,6 +28,7 @@ const Header = () => {
 
     btns.forEach((btn) => {
       btn.addEventListener("click", () => {
+        console.log("click");
         setOpen(false);
 
         submenu.forEach((menu) => {

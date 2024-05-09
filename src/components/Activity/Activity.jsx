@@ -26,7 +26,7 @@ const modalStyle = {
 const Activity = ({ data }) => {
   let selectedData = data;
 
-  console.log(selectedData.activity);
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
   useIsomorphicLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -40,6 +40,7 @@ const Activity = ({ data }) => {
   });
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [emptyActivity, setEmptyActivity] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState({
     activity: "",
     title: "",
@@ -50,19 +51,36 @@ const Activity = ({ data }) => {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
-  const [modalImage, setModalImage] = useState();
+  const [modalImage, setModalImage] = useState({
+    img: "",
+    index: "",
+  });
 
   useIsomorphicLayoutEffect(() => {
-    if (selectedData && selectedData.activities) {
-      setSelectedActivity(selectedData.activities[0]);
+    if (selectedData.activity.length > 0) {
+      setSelectedActivity(selectedData.activity[0]);
+    } else {
+      setEmptyActivity(true);
     }
   }, [selectedData]);
 
   return (
     <>
       <Modal open={open} onClose={handleClose}>
-        <Box sx={modalStyle}>
-          <img src={modalImage} alt="" />
+        <Box className={style.modal_box} sx={modalStyle}>
+          <img src={`${imageUrl}/${modalImage.img}`} alt="" />
+
+          {data.subtitle &&
+            data.subtitle.map((val, index) => {
+              return (
+                <p
+                  key={index}
+                  className={index === modalImage.index ? style.active : ""}
+                >
+                  {val}
+                </p>
+              );
+            })}
         </Box>
       </Modal>
       <section className={style.about}>
@@ -99,11 +117,13 @@ const Activity = ({ data }) => {
         </Container>
       </section>
 
-      {selectedData.activities ? (
+      {emptyActivity ? (
+        ""
+      ) : (
         <section className={style.activity}>
           <div className={style.activity_nav}>
             <ul>
-              {selectedData.activities.map((val, index) => {
+              {selectedData.activity.map((val, index) => {
                 return (
                   <li
                     key={index}
@@ -124,7 +144,6 @@ const Activity = ({ data }) => {
               <Grid container columnSpacing={8} alignItems={"center"}>
                 <Grid item sm={7}>
                   <div className={style.activity_detail_text}>
-                    {/* <label>{selectedActivity.activity}</label> */}
                     <h3>{selectedActivity.title}</h3>
                     <div
                       className={style.text}
@@ -135,17 +154,19 @@ const Activity = ({ data }) => {
                   </div>
                 </Grid>
                 <Grid item sm={5}>
-                  <img src={selectedActivity.image} className="image" alt="" />
+                  <img
+                    src={`${imageUrl}/${selectedActivity.image}`}
+                    className="image"
+                    alt=""
+                  />
                 </Grid>
               </Grid>
             </div>
           </Container>
         </section>
-      ) : (
-        ""
       )}
 
-      {/* <section className={style.image_slider}>
+      <section className={style.image_slider}>
         <Swiper
           className={style.image_slide_wrap}
           spaceBetween={15}
@@ -175,15 +196,18 @@ const Activity = ({ data }) => {
                 key={index}
                 onClick={() => {
                   setOpen(true);
-                  setModalImage(img);
+                  setModalImage({
+                    img: img,
+                    index: index,
+                  });
                 }}
               >
-                <img src={img} alt="" />
+                <img src={`${imageUrl}/${img}`} alt="" />
               </SwiperSlide>
             );
           })}
         </Swiper>
-      </section> */}
+      </section>
 
       <section className={style.sdg_wrap}>
         <Container maxWidth={"lg"}>
