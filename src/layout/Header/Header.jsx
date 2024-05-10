@@ -108,13 +108,14 @@ const Header = () => {
                               .toLowerCase()
                               .replace(/\s+/g, "-");
                             return (
-                              <Link
+                              <a
                                 className="btn-page"
                                 href={`/creasion/${link}`}
                                 key={index}
+                                target="_blank"
                               >
                                 {val.title}
-                              </Link>
+                              </a>
                             );
                           })}
                       </>
@@ -139,13 +140,14 @@ const Header = () => {
                               .toLowerCase()
                               .replace(/\s+/g, "-");
                             return (
-                              <Link
+                              <a
                                 className="btn-page"
                                 href={`/restless-development/${link}`}
                                 key={index}
+                                target="_blank"
                               >
                                 {val.title}
-                              </Link>
+                              </a>
                             );
                           })}
                       </>
@@ -170,13 +172,14 @@ const Header = () => {
                               .toLowerCase()
                               .replace(/\s+/g, "-");
                             return (
-                              <Link
+                              <a
                                 className="btn-page"
                                 href={`/youth-innovation-lab/${link}`}
                                 key={index}
+                                target="_blank"
                               >
                                 {val.title}
-                              </Link>
+                              </a>
                             );
                           })}
                       </>
@@ -194,7 +197,10 @@ const Header = () => {
                     <Link className="btn-page" href={"/"}>
                       Blogs & Field Stories{" "}
                     </Link>
-                    <Link className="btn-page" href={"/"}>
+                    <Link
+                      className="btn-page"
+                      href={"/publications-and-reports"}
+                    >
                       Publications & Reports{" "}
                     </Link>
                     <Link className="btn-page" href={"/news-and-updates"}>

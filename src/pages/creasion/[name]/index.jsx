@@ -4,6 +4,8 @@ import Head from "next/head";
 import Activity from "../../../components/Activity/Activity";
 import { useRouter } from "next/router";
 
+import PreLoader from "../../../layout/PreLoader/PreLoader";
+
 import { useIsomorphicLayoutEffect } from "@/hook";
 import { useState } from "react";
 
@@ -48,7 +50,7 @@ const Creasion = () => {
           <Activity data={selectedData} />
         </>
       ) : (
-        "Preloader "
+        <PreLoader />
       )}
     </>
   );

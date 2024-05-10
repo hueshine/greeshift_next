@@ -13,6 +13,7 @@ import { SplitText } from "gsap/dist/SplitText";
 import { Jar, WaterJar, TakeAway, Plastic, Glass, Bottle } from "./HeroSvg";
 
 import homeStyle from "../styles/home.module.scss";
+import Link from "next/link";
 
 const Hero = () => {
   useIsomorphicLayoutEffect(() => {
@@ -285,12 +286,14 @@ const Hero = () => {
             How <span>Green</span> Are You?
           </h1>
 
-          <div className={homeStyle.hero_btn}>
-            <div className={homeStyle.icon}>
-              <EastIcon />
+          {/* <Link href={"/focus-area"}>
+            <div className={homeStyle.hero_btn}>
+              <div className={homeStyle.icon}>
+                <EastIcon />
+              </div>
+              <span>Focusarea </span>
             </div>
-            <span>Take a Quiz </span>
-          </div>
+          </Link> */}
         </div>
       </Container>
     </section>

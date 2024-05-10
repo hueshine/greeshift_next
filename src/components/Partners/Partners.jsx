@@ -90,6 +90,20 @@ const Partners = () => {
       logo: "/Municipalities/7.png",
       link: "",
     },
+    {
+      categoryID: 3,
+      categoryTitle: "Goverment Partners ",
+      title: "",
+      logo: "/Municipalities/8.png",
+      link: "",
+    },
+    {
+      categoryID: 3,
+      categoryTitle: "Goverment Partners ",
+      title: "",
+      logo: "/Municipalities/9.png",
+      link: "",
+    },
   ];
 
   const groupData = partnersData.reduce((acc, partner) => {
