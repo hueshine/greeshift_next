@@ -15,6 +15,7 @@
     "@mui/material": "^5.15.12",
     "@studio-freight/lenis": "^1.0.26",
     "@types/mapbox-gl": "^3.1.0",
+    "axios": "^1.6.8",
     "gsap": "file:gsap-bonus.tgz",
     "highcharts": "^11.4.1",
     "highcharts-react-official": "^3.2.1",

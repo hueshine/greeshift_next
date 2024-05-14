@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Banner from "../../../layout/Banner/Banner";
+import axios from "axios";
 
 import { useState } from "react";
 
@@ -28,6 +29,7 @@ import style from "../style.module.scss";
 const steps = ["Personal Information", "Contact Information", "Pledge to"];
 
 const Pledge = () => {
+  const [btnLoad, setBtnLoad] = useState("Take The Pledge");
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
@@ -102,7 +104,6 @@ const Pledge = () => {
   };
 
   const handleSubmit = (e) => {
-    handleNext();
     e.preventDefault();
 
     let provinceTitle = provinceData.results.filter(
@@ -129,8 +130,26 @@ const Pledge = () => {
 
     const form = document.getElementById("multi-step-form");
     if (form.reportValidity()) {
-      // Handle form submission
-      console.log(formDataToSend);
+      setBtnLoad("Loading ...");
+      axios
+        .post(
+          "https://app.greenshift.creasion.org/api/submit-pledge-form",
+          formDataToSend,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((response) => {
+          if (response.data.errors) {
+            response.data.errors.forEach((error) => {
+              console.log(error);
+            });
+          } else {
+            handleNext();
+          }
+        });
     }
   };
 
