@@ -286,14 +286,14 @@ const Hero = () => {
             How <span>Green</span> Are You?
           </h1>
 
-          {/* <Link href={"/focus-area"}>
+          <Link href={"/focus-area"}>
             <div className={homeStyle.hero_btn}>
               <div className={homeStyle.icon}>
                 <EastIcon />
               </div>
-              <span>Focusarea </span>
+              <span>Take a Quiz </span>
             </div>
-          </Link> */}
+          </Link>
         </div>
       </Container>
     </section>

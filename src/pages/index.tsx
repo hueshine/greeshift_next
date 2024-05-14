@@ -45,47 +45,51 @@ export default function Home() {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Hero />
-      <section className={homeStyle.introAbout}>
-        <div className={homeStyle.introAbout_svg}>
-          <img src="./introsvg.svg" alt="" />
-        </div>
 
-        <Container id="introContainer" maxWidth={"md"}>
-          <div className={homeStyle.introAbout_text}>
-            <h2>
-              Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
-              Nepal
-            </h2>
-
-            <p>
-              GreenShift Nepal project is funded by the European Union to
-              promote a just transition to circular economy. GreenShift Nepal is
-              a four-year project which will be implemented in 9 municipalities
-              – 3 in each of Bagmati, Madhesh, and Lumbini provinces.
-            </p>
-
-            <p>
-              The project implementation is led by{" "}
-              <a href="" target="_blank">
-                CREASION
-              </a>{" "}
-              through the consortium partners{" "}
-              <a href="" target="_blank">
-                Restless Development
-              </a>
-              , and
-              <a href="" target="_blank">
-                {" "}
-                Youth Innovation Lab.
-              </a>
-            </p>
+      <section className={homeStyle.heroAbout}>
+        <Hero />
+        <section className={homeStyle.introAbout}>
+          <div className={homeStyle.introAbout_svg}>
+            <img src="./introsvg.svg" alt="" />
           </div>
-        </Container>
 
-        <Container className={homeStyle.impact_slider} maxWidth={"lg"}>
-          <ImpactSlide />
-        </Container>
+          <Container id="introContainer" maxWidth={"md"}>
+            <div className={homeStyle.introAbout_text}>
+              <h2>
+                Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
+                Nepal
+              </h2>
+
+              <p>
+                GreenShift Nepal project is funded by the European Union to
+                promote a just transition to circular economy. GreenShift Nepal
+                is a four-year project which will be implemented in 9
+                municipalities – 3 in each of Bagmati, Madhesh, and Lumbini
+                provinces.
+              </p>
+
+              <p>
+                The project implementation is led by{" "}
+                <a href="" target="_blank">
+                  CREASION
+                </a>{" "}
+                through the consortium partners{" "}
+                <a href="" target="_blank">
+                  Restless Development
+                </a>
+                , and
+                <a href="" target="_blank">
+                  {" "}
+                  Youth Innovation Lab.
+                </a>
+              </p>
+            </div>
+          </Container>
+
+          <Container className={homeStyle.impact_slider} maxWidth={"lg"}>
+            <ImpactSlide />
+          </Container>
+        </section>
       </section>
 
       <section className={homeStyle.focus_area}>
@@ -106,7 +110,10 @@ export default function Home() {
         </div>
       </section>
 
-      <MapComponent />
+      <div className={homeStyle.home_map}>
+        {/* <h2>Project Areas</h2> */}
+        <MapComponent />
+      </div>
 
       <section className={homeStyle.home_news}>
         <Container maxWidth="lg">

@@ -15,13 +15,7 @@ import {
   InputLabel,
   FormControlLabel,
   Checkbox,
-  TextareaAutosize,
 } from "@mui/material";
-
-import { useIsomorphicLayoutEffect } from "@/hook";
-
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-import gsap from "gsap";
 
 import { Container, Grid } from "@mui/material";
 
@@ -44,8 +38,31 @@ const Pledge = () => {
     municipality: "",
     email: "",
     phone: "",
-    message: "",
+    pledges: [],
   });
+
+  const plasticWaste = [
+    "Carry my own water bottle",
+    "Carry my own reusable shopping bags to minimize single-use plastics",
+    "Avoid using plastic utensils such as plates, spoons, forks, cups, straws in social gathering",
+    "Use digital banners to minimize the use of plastic flex prints in events",
+    "Shop from businesses that use plastic alternative packaging",
+    "Donate or sell books, notebooks, or any other paper documents",
+    "Avoid unncessary printing of any official and personal documents",
+    "Avoid printing receipts from ATM machines",
+  ];
+
+  const sustainableLifeStyle = [
+    "Use Bi-cycle for short distance commuting",
+    "Consume locally sourced food",
+    "Use thrifted products and refurbished gadgets",
+    "Turn off any electrical devices when not in use",
+    "Promote green and local businesses for daily use products",
+    "Segregate organic and inorganic waste at my home",
+    "Convert my household organic waste into compost for garden",
+  ];
+
+  const singlePledges = ["Reduce paper waste", "Minimize waste"];
 
   const handleNext = () => {
     const form = document.getElementById("multi-step-form");
@@ -69,17 +86,51 @@ const Pledge = () => {
     setActiveStep(0);
   };
 
+  const handleCheckboxChange = (event) => {
+    setFormData({
+      ...formData,
+      pledges: {
+        ...formData.pledges,
+        [event.target.name]: event.target.checked,
+      },
+    });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
+    handleNext();
     e.preventDefault();
+
+    let provinceTitle = provinceData.results.filter(
+      (item) => item.id === formData.province
+    );
+
+    let districtTitle = districtData.results.filter(
+      (item) => item.id === formData.district
+    );
+
+    const formDataToSend = new FormData();
+
+    Object.keys(formData).forEach((key) => {
+      if (key !== "image") {
+        formDataToSend.append(key, formData[key]);
+      }
+    });
+
+    formDataToSend.append("pledges", JSON.stringify(formData.pledges));
+
+    formDataToSend.append("province", provinceTitle[0].title);
+
+    formDataToSend.append("district", districtTitle[0].title);
+
     const form = document.getElementById("multi-step-form");
     if (form.reportValidity()) {
       // Handle form submission
-      console.log(formData);
+      console.log(formDataToSend);
     }
   };
 
@@ -155,6 +206,7 @@ const Pledge = () => {
                     value={formData.province}
                     onChange={handleChange}
                     fullWidth
+                    required
                   >
                     {provinceData.results.map((val, index) => {
                       return (
@@ -176,6 +228,7 @@ const Pledge = () => {
                     value={formData.district}
                     onChange={handleChange}
                     fullWidth
+                    required
                   >
                     {districtData.results
                       .filter((val) => val.province == formData.province)
@@ -197,11 +250,12 @@ const Pledge = () => {
                     value={formData.municipality}
                     onChange={handleChange}
                     fullWidth
+                    required
                   >
                     {municipalityData.results
                       .filter((val) => val.district == formData.district)
                       .map((val, index) => (
-                        <MenuItem key={index} value={val.code}>
+                        <MenuItem key={index} value={val.title}>
                           {val.title}
                         </MenuItem>
                       ))}
@@ -262,43 +316,21 @@ const Pledge = () => {
                 <div
                   className={`${style.pledge_form} ${style.pledge_form_multiple}`}
                 >
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Carry my own water bottle"
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Carry my own reusable shopping bags to minimize single-use plastics "
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Avoid using plastic utensils such as plates, spoons, forks, cups, straws in social gathering"
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Use digital banners to minimize the use of plastic flex prints in events "
-                  />
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Shop from businesses that use plastic alternative packaging "
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Donate or sell books, notebooks, or any other paper documents "
-                  />
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Avoid unncessary printing of any official and personal documents "
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Avoid printing receipts from ATM machines "
-                  />
+                  {plasticWaste.map((pledge, index) => {
+                    return (
+                      <FormControlLabel
+                        key={index}
+                        control={
+                          <Checkbox
+                            name={pledge}
+                            checked={formData.pledges[`pledge${index + 1}`]}
+                            onChange={handleCheckboxChange}
+                          />
+                        }
+                        label={pledge}
+                      />
+                    );
+                  })}
                 </div>
               </Grid>
 
@@ -307,58 +339,61 @@ const Pledge = () => {
                 <div
                   className={`${style.pledge_form} ${style.pledge_form_multiple}`}
                 >
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Use Bi-cycle for short distance commuting"
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Consume locally sourced food"
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Use thrifted products and refurbished gadgets"
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Turn off any electrical devices when not in use"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Promote green and local businesses for daily use products"
-                  />
-
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Segregate organic and inorganic waste at my home"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox name="pledge1" />}
-                    label="Convert my household organic waste into compost for garden"
-                  />
+                  {sustainableLifeStyle.map((pledge, index) => {
+                    return (
+                      <FormControlLabel
+                        key={index}
+                        control={
+                          <Checkbox
+                            name={pledge}
+                            checked={formData.pledges[`pledge${index + 1}`]}
+                            onChange={handleCheckboxChange}
+                          />
+                        }
+                        label={pledge}
+                      />
+                    );
+                  })}
                 </div>
               </Grid>
 
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.pledge_form}>
-                  <FormControlLabel
-                    control={<Checkbox name="pledge5" />}
-                    label="Reduce paper waste"
-                  />
-                </div>
-              </Grid>
+              {singlePledges.map((pledge, index) => {
+                return (
+                  <Grid item md={6} key={index} className={style.form_grid}>
+                    <div className={style.pledge_form}>
+                      <FormControlLabel
+                        key={index}
+                        control={
+                          <Checkbox
+                            name={pledge}
+                            checked={formData.pledges[`pledge${index + 1}`]}
+                            onChange={handleCheckboxChange}
+                          />
+                        }
+                        label={pledge}
+                      />
+                    </div>
+                  </Grid>
+                );
+              })}
 
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.pledge_form}>
-                  <FormControlLabel
-                    control={<Checkbox name="pledge6" />}
-                    label="Minimize waste"
-                  />
-                </div>
-              </Grid>
+              {/* {singlePledges.map((pledge, index) => {
+                return (
+                  <Grid className={style.form_grid} item md={6} key={index}>
+                    <div className={style.pledge_form}>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={formData.pledges[`pledge${index + 1}`]}
+                            onChange={handleCheckboxChange}
+                          />
+                        }
+                        label={pledge}
+                      />
+                    </div>
+                  </Grid>
+                );
+              })} */}
             </Grid>
           </div>
         );
@@ -463,31 +498,25 @@ const Pledge = () => {
 
                     <div className={style.pledge_into_action}>
                       <div className={style.icon}>
-                        <img src="/video.svg" alt="" />
+                        <img src="/honesty.svg" alt="" />
                       </div>
                       <div className={style.text}>
-                        <h5>Submit your 60 Second Video! </h5>
+                        <h5>Turn your Pledge into Action! </h5>
                         <ul>
                           <li>
                             <p>
-                              To become a Green Warrior, take a 60 second video
-                              of you and your friends, family or community,
-                              doing a clean-up activity to collect solid wastes
-                              in your neighbourhood
+                              Customized pledges according to what the user
+                              selects/ticks in the boxes
                             </p>
                           </li>
                           <li>
                             <p>
-                              Make sure to get the attendance of all those who
-                              are part of the clean-up activity. Find the
-                              attendance sheet attached [Link]{" "}
+                              To turn your pledge into action you can practice
+                              what you have pledged in you daily life!
                             </p>
                           </li>
                           <li>
-                            <p>
-                              Make sure to fill in all the details along with
-                              the time in the attendance sheet.{" "}
-                            </p>
+                            <p>What have you pledged?</p>
                           </li>
                         </ul>
                       </div>
@@ -495,21 +524,28 @@ const Pledge = () => {
 
                     <div className={style.pledge_into_action}>
                       <div className={style.icon}>
-                        <img src="/scale.svg" alt="" />
+                        <img src="/nature.svg" alt="" />
                       </div>
                       <div className={style.text}>
-                        <h5>Weigh Your Waste! </h5>
+                        <h5>Send us for verification! </h5>
                         <ul>
                           <li>
                             <p>
+                              After you turn your pledge into action, send us
+                              your photos or videos (maximum 60 sec) showing us
+                              how you have turned your pledge into action
+                            </p>
+                          </li>
+                          <li>
+                            <p>
                               After the clean-up, weigh your collected waste and
-                              click a picture of it{" "}
+                              click a picture of it
                             </p>
                           </li>
                           <li>
                             <p>
                               Handover your collected waste to your nearest
-                              waste collectors/pickers{" "}
+                              waste collectors/pickers
                             </p>
                           </li>
                         </ul>
@@ -521,18 +557,21 @@ const Pledge = () => {
                         <img src="/gift_box.svg" alt="" />
                       </div>
                       <div className={style.text}>
-                        <h5>Get your Prize! </h5>
+                        <h5>
+                          Get your Certificates (and a chance to be featured on
+                          our website)!
+                        </h5>
                         <ul>
                           <li>
                             <p>
                               The prizes are determined according to the hours
-                              of volunteering and the wastes collected{" "}
+                              of volunteering and the wastes collected
                             </p>
                           </li>
                           <li>
                             <p>
                               [x] hours of volunteering = GreenShift stickers,
-                              T-shirt{" "}
+                              T-shirt
                             </p>
                           </li>
                         </ul>
@@ -558,7 +597,14 @@ const Pledge = () => {
                       </Button>
                       <Box sx={{ flex: "1 1 auto" }} />
 
-                      <Button className={style.pledge_btn} onClick={handleNext}>
+                      <Button
+                        className={style.pledge_btn}
+                        onClick={
+                          activeStep === steps.length - 1
+                            ? handleSubmit
+                            : handleNext
+                        }
+                      >
                         {activeStep === steps.length - 1
                           ? "Take the pledge"
                           : "Next"}

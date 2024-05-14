@@ -1,7 +1,15 @@
 .header {
   position: relative;
   text-align: center;
-  background: linear-gradient(60deg, #33b2b6 0%, #addfe1 100%);
+  // background: linear-gradient(60deg, #33b2b6 0%, #addfe1 100%);
+  background-image: linear-gradient(
+    to left bottom,
+    #2cbfb9,
+    #18b4b8,
+    #03aab5,
+    #009fb1,
+    #0094ac
+  );
   background-position: center !important;
   background-size: cover !important;
   color: white;

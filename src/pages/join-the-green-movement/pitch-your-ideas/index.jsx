@@ -74,7 +74,7 @@ const Ideas = () => {
       <Banner title={"Pitch Your Ideas"} />
 
       <Container maxWidth={"lg"}>
-        <div className={style.pledge_into_action}>
+        {/* <div className={style.pledge_into_action}>
           <div className={style.icon}>
             <img src="/video.svg" alt="" />
           </div>
@@ -146,7 +146,7 @@ const Ideas = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </div> */}
       </Container>
 
       <section className={style.pitch_form}>

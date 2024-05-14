@@ -89,7 +89,14 @@
         font-family: "Satoshi";
 
         &.btn_highlight {
-          background: #33b2b6;
+          background-image: linear-gradient(
+            to left bottom,
+            #2cbfb9,
+            #18b4b8,
+            #03aab5,
+            #009fb1,
+            #0094ac
+          );
           color: #fff;
           line-height: 1;
           padding: 12px 20px;
@@ -144,7 +151,7 @@
   }
 }
 
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1500px) {
   .header {
     padding: 5px;
     .container {

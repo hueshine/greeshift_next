@@ -9,7 +9,15 @@
 
 .mission {
   padding: 80px 0;
-  background: #33b2b6;
+  // background: #33b2b6;
+  background-image: linear-gradient(
+    to left bottom,
+    #2cbfb9,
+    #18b4b8,
+    #03aab5,
+    #009fb1,
+    #0094ac
+  );
   text-align: center;
 
   h2 {

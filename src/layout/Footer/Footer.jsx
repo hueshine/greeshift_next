@@ -13,9 +13,9 @@ const Footer = () => {
 
   return (
     <footer className={footerStyle.footer}>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Grid container spacing={2}>
-          <Grid item style={marginBottom} lg={6} className={footerStyle.logo}>
+          <Grid item style={marginBottom} lg={4} className={footerStyle.logo}>
             <div className={footerStyle.logo_top}>
               <a
                 href="http://creasion.org/"
@@ -25,7 +25,7 @@ const Footer = () => {
                 <img src="/Creasion_footer_logo.png" alt="" />
               </a>
               <a href="#">
-                <img src="/logo.png" alt="" />
+                <img src="/logo-reverse.png" alt="" />
               </a>
             </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
                 href="https://restlessdevelopment.org/country/nepal/"
                 target="_blank"
               >
-                <img src="/rd.svg" alt="" />
+                <img src="/rd.png" alt="" />
               </a>
 
               <a href="https://youthinnovationlab.org/" target="_blank">
@@ -43,29 +43,13 @@ const Footer = () => {
             </div>
           </Grid>
 
-          <Grid item style={marginBottom} lg={3}>
+          <Grid item style={marginBottom} lg={2.5}>
             <h6>Quick Links</h6>
             <a href="">About Us</a>
             <a href="">News & Updates</a>
             <a href="">Knowledge Hub</a>
             <a href="">Join The Green Movement</a>
-
-            <a href="" target="_blank" className={footerStyle.logo_btn}>
-              Grievance
-              <div>
-                <ArrowOutwardIcon />
-              </div>
-            </a>
           </Grid>
-
-          {/* <Grid item style={marginBottom} lg={3}>
-            <h6>CONSORTIUM PARTNERS</h6>
-            <a href="">Creasion</a>
-            <a href="">Youth Innovation Lab</a>
-            <a href="">Restless Development</a>
-
-           
-          </Grid> */}
 
           <Grid item style={marginBottom} lg={3}>
             <h6>Contact Us</h6>
@@ -86,15 +70,35 @@ const Footer = () => {
               </a>
             </div>
           </Grid>
+
+          <Grid item style={marginBottom} lg={2.5}>
+            <h6>Grievance</h6>
+            <p>
+              GreenShift Nepal is committed to upholding the highest standards
+              of integrity and we have a zero-tolerance policy regarding any
+              instances of misconduct.{" "}
+            </p>
+
+            <a
+              href="https://forms.gle/xiTjvzAjvmTfDWpT8 "
+              target="_blank"
+              className={footerStyle.logo_btn}
+            >
+              Grievance
+              <div>
+                <ArrowOutwardIcon />
+              </div>
+            </a>
+          </Grid>
         </Grid>
       </Container>
 
       <div className={footerStyle.copyright}>
-        <Container maxWidth={"lg"}>
-          <Grid container spacing={4}>
-            <Grid item md={3}></Grid>
+        <Container maxWidth={"xl"}>
+          <Grid container spacing={2}>
+            <Grid item lg={4}></Grid>
 
-            <Grid item md={6}>
+            <Grid item lg={4}>
               <p>
                 <small>
                   Disclaimer: This website is produced with the financial
@@ -105,7 +109,9 @@ const Footer = () => {
               </p>
             </Grid>
 
-            <Grid item md={3}>
+            <Grid item lg={1.5}></Grid>
+
+            <Grid item md={2.5}>
               <p>
                 <small>© 2024 Green Shift Nepal, CREASION</small>
               </p>

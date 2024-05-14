@@ -780,38 +780,6 @@ const MapComponent = () => {
           </FormControl>
         </div>
 
-        {/* <div className={componentStyle.initial_wrap}>
-          <ul>
-            <li
-              onClick={(e) => {
-                setDataBoxIndex(true);
-                setAllDataIndex(true);
-              }}
-            >
-              <div className={componentStyle.initial_list}>
-                <h6>Overall Dashboard</h6>
-              </div>
-            </li>
-            {MunicipalityFilter.map((val, index) => {
-              return (
-                <li
-                  key={index}
-                  onClick={(e) => {
-                    setDataBoxIndex(true);
-                    setAllDataIndex(false);
-                    setSelectedMunicipality(val);
-                    whereFly(val);
-                  }}
-                >
-                  <div className={componentStyle.initial_list}>
-                    <h6>{val.title}</h6>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div> */}
-
         <div className={componentStyle.muniCard_wrap}>
           {MunicipalityFilter.map((val, index) => {
             return (

@@ -112,7 +112,6 @@ const Header = () => {
                                 className="btn-page"
                                 href={`/creasion/${link}`}
                                 key={index}
-                                target="_blank"
                               >
                                 {val.title}
                               </a>
@@ -144,7 +143,6 @@ const Header = () => {
                                 className="btn-page"
                                 href={`/restless-development/${link}`}
                                 key={index}
-                                target="_blank"
                               >
                                 {val.title}
                               </a>
@@ -176,7 +174,6 @@ const Header = () => {
                                 className="btn-page"
                                 href={`/youth-innovation-lab/${link}`}
                                 key={index}
-                                target="_blank"
                               >
                                 {val.title}
                               </a>
