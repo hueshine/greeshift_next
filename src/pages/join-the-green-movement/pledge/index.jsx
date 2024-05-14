@@ -176,6 +176,7 @@ const Pledge = () => {
                     value={formData.name}
                     onChange={handleChange}
                     fullWidth
+                    required
                   />
                 </div>
               </Grid>
@@ -188,6 +189,7 @@ const Pledge = () => {
                     value={formData.gender}
                     onChange={handleChange}
                     fullWidth
+                    required
                   >
                     <MenuItem value={"male"}>Male</MenuItem>
                     <MenuItem value={"female"}>Female</MenuItem>
@@ -303,6 +305,7 @@ const Pledge = () => {
                     value={formData.email}
                     onChange={handleChange}
                     fullWidth
+                    required
                   />
                 </div>
               </Grid>
@@ -316,6 +319,7 @@ const Pledge = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     fullWidth
+                    required
                   />
                 </div>
               </Grid>
