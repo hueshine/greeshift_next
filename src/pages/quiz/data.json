@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "image": "/qsn1.jpg",
+    "question": "Where is the world’s most plastic raw material produced?",
+    "answers": ["Gulf countries", "Europe", "Asia", "USA"],
+    "correctAnswer": "Europe",
+    "review": "<p>1Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aliquid asperiores repellat autem dolorem, ipsam unde commodi eveniet similique velit sequi atque. Doloribus non molestias facere nisi nemo numquam eaque, velit repudiandae ratione voluptas, deleniti vero quisquam, voluptatem sint provident. Aliquam corporis cum fugiat dolores iure provident nobis, modi consectetur repellat? Libero?</p>"
+  },
+  {
+    "id": 2,
+    "image": "/chitwna.jpeg",
+    "question": "How many countries in the world did not sign the plastic pollution treaty? ",
+    "answers": ["8", "10", "20", "30"],
+    "correctAnswer": "10",
+    "review": "<p>2Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aliquid asperiores repellat autem dolorem, ipsam unde commodi eveniet similique velit sequi atque. Doloribus non molestias facere nisi nemo numquam eaque, velit repudiandae ratione voluptas, deleniti vero quisquam, voluptatem sint provident. Aliquam corporis cum fugiat dolores iure provident nobis, modi consectetur repellat? Libero?</p>"
+  },
+  {
+    "id": 3,
+    "image": "/focusarea/1/IMG_1641.JPG",
+    "question": "Which law prohibits the transboundary of plastic? ",
+    "answers": [
+      "The Kyoto Protocol",
+      "The Paris Agreement",
+      "The Basel Convention",
+      "The Montreal Protocol"
+    ],
+    "correctAnswer": "The Basel Convention",
+    "review": "<p>3Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aliquid asperiores repellat autem dolorem, ipsam unde commodi eveniet similique velit sequi atque. Doloribus non molestias facere nisi nemo numquam eaque, velit repudiandae ratione voluptas, deleniti vero quisquam, voluptatem sint provident. Aliquam corporis cum fugiat dolores iure provident nobis, modi consectetur repellat? Libero?</p>"
+  },
+  {
+    "id": 4,
+    "image": "/focusarea/1/workers.jpeg",
+    "question": "How many Single Use Plastic (SUP) bags are used Nepal annually?",
+    "answers": ["1 billion", "2 billion", "4 billion", "6 billion"],
+    "correctAnswer": "2 billion",
+    "review": "<p>4Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aliquid asperiores repellat autem dolorem, ipsam unde commodi eveniet similique velit sequi atque. Doloribus non molestias facere nisi nemo numquam eaque, velit repudiandae ratione voluptas, deleniti vero quisquam, voluptatem sint provident. Aliquam corporis cum fugiat dolores iure provident nobis, modi consectetur repellat? Libero?</p>"
+  }
+]
