@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Head from "next/head";
 import Banner from "../../layout/Banner/Banner";
 
 import style from "./style.module.scss";
 import { Container } from "@mui/material";
 
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+
 import data from "./data.json";
 
 const Quiz = () => {
+  gsap.registerPlugin(ScrollToPlugin);
+
+  const elTop = useRef(null);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
 
@@ -54,6 +61,26 @@ const Quiz = () => {
     setSelectedAnswer("");
     setSelectedAnswerIndex(null);
     setAnswerChecked(false);
+
+    const ctx = gsap.context(() => {
+      console.log(elTop.current);
+      gsap.to(window, { duration: 0.5, scrollTo: elTop.current });
+    });
+
+    return () => ctx.revert();
+  };
+
+  const QuizProgress = () => {
+    const calculateWidth = () => {
+      if (questions.length === 0) return "0%";
+      const percentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+      return `${percentage}%`;
+    };
+    return (
+      <div className={style.qsns_line}>
+        <span style={{ width: calculateWidth() }}></span>
+      </div>
+    );
   };
 
   return (
@@ -71,12 +98,12 @@ const Quiz = () => {
         <meta property="og:image:height" content="442" />
       </Head>
 
-      <Banner title={"Plastic Pollution Quiz"} />
+      <Banner title={"How Green Are You?"} />
 
-      <div className={style.wrapper}>
+      <div className={style.wrapper} ref={elTop}>
         <div className={style.quiz_title}>
           <Container maxWidth={"md"}>
-            <h2>Plastic Pollution Quiz</h2>
+            {/* <h2>Plastic Pollution Quiz</h2> */}
 
             <p>
               How much do you know about the threats that our planet faces from
@@ -86,6 +113,8 @@ const Quiz = () => {
         </div>
 
         <Container maxWidth="md">
+          <QuizProgress />
+
           {!showResults ? (
             <>
               <div className={style.question}>
@@ -120,7 +149,12 @@ const Quiz = () => {
               {answerChecked ? (
                 <>
                   <div className={style.answer_review}>
-                    <h5>Correct</h5>
+                    {selectedAnswer == correctAnswer ? (
+                      <h5 style={{ color: "#45B855" }}>Correct</h5>
+                    ) : (
+                      <h5 style={{ color: "#D04242" }}>Incorrect</h5>
+                    )}
+
                     <div
                       className={style.text}
                       dangerouslySetInnerHTML={{
@@ -143,7 +177,86 @@ const Quiz = () => {
               )}
             </>
           ) : (
-            "Result"
+            <div className={style.result}>
+              {/* <div className={style.image}>
+                <img src="/quiz-result.svg" alt="" />
+              </div> */}
+
+              <div className={style.result_box}>
+                <div className={style.box}>
+                  <svg x="0px" y="0px" viewBox="0 0 150 150">
+                    <circle cx="77" cy="73.4" r="59.9" />
+                    <text
+                      transform="matrix(1 0 0 1 52.623 88.7207)"
+                      class="st1 st2"
+                    >
+                      {questions.length < 10
+                        ? "0" + questions.length
+                        : questions.length}
+                    </text>
+                  </svg>
+
+                  <p>Total Questions</p>
+                </div>
+
+                <div className={style.box}>
+                  <svg
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 150 150"
+                    className={style.correct}
+                  >
+                    <circle cx="75" cy="73.6" r="61.9" />
+                    <text transform="matrix(1 0 0 1 52.623 88.7207)">
+                      {quizResult.correctAnswers < 10
+                        ? "0" + quizResult.correctAnswers
+                        : quizResult.correctAnswers}
+                    </text>
+                  </svg>
+
+                  <p>Correct Answers</p>
+                </div>
+
+                <div className={style.box}>
+                  <svg
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 150 150"
+                    className={style.incorrect}
+                  >
+                    <circle cx="75" cy="73.6" r="61.9" />
+                    <text transform="matrix(1 0 0 1 52.623 88.7207)">
+                      {quizResult.wrongAnswers < 10
+                        ? "0" + quizResult.wrongAnswers
+                        : quizResult.wrongAnswers}
+                    </text>
+                  </svg>
+
+                  <p>Incorrect Answers</p>
+                </div>
+              </div>
+
+              {/* <table className="table">
+                <tbody>
+                  <tr>
+                    <td>Total Questions:</td>
+                    <td>{questions.length}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Score:</td>
+                    <td>{quizResult.score}</td>
+                  </tr>
+                  <tr>
+                    <td>Correct Answers:</td>
+                    <td>{quizResult.correctAnswers}</td>
+                  </tr>
+                  <tr>
+                    <td>Wrong Answers:</td>
+                    <td>{quizResult.wrongAnswers}</td>
+                  </tr>
+                </tbody>
+              </table> */}
+            </div>
           )}
         </Container>
       </div>

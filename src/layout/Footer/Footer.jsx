@@ -7,6 +7,7 @@ import XIcon from "@mui/icons-material/X";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 import footerStyle from "./footer.module.scss";
+import Link from "next/link";
 
 const Footer = () => {
   let marginBottom = { marginBottom: "30px" };
@@ -45,10 +46,11 @@ const Footer = () => {
 
           <Grid item style={marginBottom} lg={2.5}>
             <h6>Quick Links</h6>
-            <a href="">About Us</a>
-            <a href="">News & Updates</a>
-            <a href="">Knowledge Hub</a>
-            <a href="">Join The Green Movement</a>
+            <Link href={"/focus-area"}>Focus Area</Link>
+            <Link href={"/impacts"}>Impacts</Link>
+            <Link href={"/news-and-updates"}>News & Updates</Link>
+            <Link href={"/greenshift-campaigns"}>GreenShift Campaigns</Link>
+            <Link href={"/pitch-your-ideas"}>Pitch Your Ideas</Link>
           </Grid>
 
           <Grid item style={marginBottom} lg={3}>
@@ -59,13 +61,13 @@ const Footer = () => {
 
             <div className={footerStyle.social}>
               <h6>Connect Via</h6>
-              <a target="_blank">
+              <a href="https://www.facebook.com/creasionorgg/" target="_blank">
                 <FacebookIcon />
               </a>
-              <a target="_blank">
+              <a href="https://www.instagram.com/creasionorg/" target="_blank">
                 <InstagramIcon />
               </a>
-              <a target="_blank">
+              <a href="https://twitter.com/creasionorg" target="_blank">
                 <XIcon />
               </a>
             </div>
@@ -98,7 +100,7 @@ const Footer = () => {
           <Grid container spacing={2}>
             <Grid item lg={4}></Grid>
 
-            <Grid item lg={4}>
+            <Grid item lg={4.5}>
               <p>
                 <small>
                   Disclaimer: This website is produced with the financial
@@ -109,7 +111,7 @@ const Footer = () => {
               </p>
             </Grid>
 
-            <Grid item lg={1.5}></Grid>
+            <Grid item lg={1}></Grid>
 
             <Grid item md={2.5}>
               <p>

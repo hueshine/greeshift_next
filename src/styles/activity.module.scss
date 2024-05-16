@@ -134,9 +134,19 @@
   box-shadow: none !important;
   outline: none !important;
 
+  .close {
+    cursor: pointer;
+    position: absolute;
+    right: -30px;
+    top: 0;
+    svg {
+      color: #fff;
+    }
+  }
+
   p {
     display: none;
-    background: #000;
+    background: #33b2b6;
     color: #fff;
     font-size: 14px;
     padding: 10px;

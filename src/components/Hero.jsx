@@ -286,7 +286,7 @@ const Hero = () => {
             How <span>Green</span> Are You?
           </h1>
 
-          <Link href={"/focus-area"}>
+          <Link href={"/quiz"}>
             <div className={homeStyle.hero_btn}>
               <div className={homeStyle.icon}>
                 <EastIcon />

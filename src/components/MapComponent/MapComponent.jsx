@@ -872,7 +872,7 @@ const MapComponent = () => {
         {initialZoomValue ? (
           <Map
             initialViewState={viewportXl}
-            mapStyle="mapbox://styles/yogeshkarki/clvjq9l5v01ci01qp0oczhfgy"
+            mapStyle="mapbox://styles/yogeshkarki/clw91skcb003s01qrdck13ilv"
             mapboxAccessToken={mapboxgl.accessToken}
             attributionControl={false}
             ref={mapRef}
@@ -892,15 +892,16 @@ const MapComponent = () => {
         )}
       </div>
 
-      {/* <div className={componentStyle.map_info}>
+      <div className={componentStyle.map_info}>
+        <h2>
+          Project <span>Areas</span>
+        </h2>
+
         <p>
-          <InfoIcon />
-          <small>
-            <strong>Click</strong> on the highlighted municipalities to view the
-            impacts of Project Cap
-          </small>
+          GreenShift Nepal is a four-year project which will be implemented in 9
+          municipalities – 3 in each of Bagmati, Madhesh, and Lumbini provinces.
         </p>
-      </div> */}
+      </div>
 
       <Container maxWidth="xl">
         <div

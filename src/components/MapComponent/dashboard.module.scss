@@ -11,6 +11,29 @@
   display: none;
 }
 
+.map_info {
+  position: absolute;
+  bottom: 55px;
+  left: 75px;
+
+  h2 {
+    color: #fff;
+    text-transform: uppercase;
+
+    span {
+      color: #33b2b6;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    color: #fff;
+    width: 420px;
+    line-height: 24px;
+    max-width: 100%;
+  }
+}
+
 .muniCard {
   display: flex;
   flex-wrap: wrap;
@@ -26,8 +49,8 @@
   }
 
   &_img {
-    width: 35%;
-    height: 140px;
+    width: 30%;
+    height: 120px;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
@@ -56,7 +79,7 @@
   }
 
   &_text {
-    width: 62%;
+    width: 65%;
 
     h5 {
       line-height: 1.2;
@@ -418,6 +441,16 @@
   }
 }
 
+@media screen and (max-width: 1700px) {
+  .map_info {
+    bottom: 20px;
+
+    h2 {
+      margin-bottom: 15px;
+    }
+  }
+}
+
 @media screen and (max-width: 1400px) {
   .map_section {
     .map_data_box {
@@ -426,9 +459,19 @@
       }
     }
   }
+
+  .map_info {
+    h2 {
+      font-size: 38px;
+      margin-bottom: 8px;
+    }
+  }
 }
 
 @media screen and (max-width: 900px) {
+  .map_info {
+    display: none;
+  }
   .map_section {
     .map_data_box {
       right: 0;

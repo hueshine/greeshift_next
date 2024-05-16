@@ -35,5 +35,18 @@
     "answers": ["1 billion", "2 billion", "4 billion", "6 billion"],
     "correctAnswer": "2 billion",
     "review": "<p>4Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aliquid asperiores repellat autem dolorem, ipsam unde commodi eveniet similique velit sequi atque. Doloribus non molestias facere nisi nemo numquam eaque, velit repudiandae ratione voluptas, deleniti vero quisquam, voluptatem sint provident. Aliquam corporis cum fugiat dolores iure provident nobis, modi consectetur repellat? Libero?</p>"
+  },
+  {
+    "id": 5,
+    "image": "/focusarea/1/workers.jpeg",
+    "question": "What is the estimated plastic leakage into the environment per year?",
+    "answers": [
+      "50,000,000 Kilos per year",
+      "100,000,000 Kilos per year",
+      "150,000,000 Kilos per year",
+      "200,000,000 Kilos per year"
+    ],
+    "correctAnswer": "200,000,000 Kilos per year",
+    "review": "<p>5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aliquid asperiores repellat autem dolorem, ipsam unde commodi eveniet similique velit sequi atque. Doloribus non molestias facere nisi nemo numquam eaque, velit repudiandae ratione voluptas, deleniti vero quisquam, voluptatem sint provident. Aliquam corporis cum fugiat dolores iure provident nobis, modi consectetur repellat? Libero?</p>"
   }
 ]

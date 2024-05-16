@@ -39,7 +39,7 @@ const index = () => {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={"Focus Area"} image={"/Scrap-Bottles.png"} />
+      <Banner title={"Focus Area"} />
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={modalStyle}>

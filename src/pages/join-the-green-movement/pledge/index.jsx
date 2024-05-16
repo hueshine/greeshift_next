@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import Head from "next/head";
 import Banner from "../../../layout/Banner/Banner";
 import axios from "axios";
@@ -24,11 +26,18 @@ import provinceData from "./province.json";
 import districtData from "./district.json";
 import municipalityData from "./municipality.json";
 
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+
 import style from "../style.module.scss";
 
 const steps = ["Personal Information", "Contact Information", "Pledge to"];
 
 const Pledge = () => {
+  gsap.registerPlugin(ScrollToPlugin);
+
+  const elTop = useRef(null);
+
   const [btnLoad, setBtnLoad] = useState("Take The Pledge");
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -68,16 +77,17 @@ const Pledge = () => {
 
   const handleNext = () => {
     const form = document.getElementById("multi-step-form");
-    const box = document.getElementById("pledgeBox");
-
-    // gsap.to(box, {
-    //   duration: 0.5,
-    //   scrollTo: { y: "#pledgeBox", offsetY: 50 },
-    // });
 
     if (form.reportValidity()) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
+
+    const ctx = gsap.context(() => {
+      console.log(elTop.current);
+      gsap.to(window, { duration: 0.5, scrollTo: elTop.current });
+    });
+
+    return () => ctx.revert();
   };
 
   const handleBack = () => {
@@ -437,7 +447,7 @@ const Pledge = () => {
 
       <Banner title={"Pledge"} />
 
-      <div className={style.pledge_box} id="pledgeBox">
+      <div className={style.pledge_box} id="pledgeBox" ref={elTop}>
         <Container maxWidth={"lg"}>
           <Grid container spacing={10}>
             <Grid item md={3.5}>

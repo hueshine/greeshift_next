@@ -74,31 +74,11 @@
     line-height: 24px;
   }
 
-  input {
-    width: 100%;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid rgba(#011821, 0.43);
-    padding: 15px 0;
-    margin-bottom: 15px;
-
-    &::placeholder {
-      font-size: 15px;
-      font-weight: 400;
-    }
-
-    &:active,
-    &:focus {
-      outline: none;
-    }
-  }
-
   .copyright {
     margin-top: 30px;
-    padding-top: 20px;
     border-top: 1px solid rgba(#1e1e1e, 0.08);
     background: #216c83;
-    padding: 40px 0;
+    padding: 20px 0;
 
     p {
       margin-right: 10px;
@@ -110,6 +90,7 @@
       margin-bottom: 10px;
       display: inline;
       font-size: 14px;
+      line-height: 20px;
       font-weight: 300;
 
       small {

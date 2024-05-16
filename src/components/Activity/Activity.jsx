@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
+import CloseIcon from "@mui/icons-material/Close";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -68,6 +70,9 @@ const Activity = ({ data }) => {
     <>
       <Modal open={open} onClose={handleClose}>
         <Box className={style.modal_box} sx={modalStyle}>
+          <div className={style.close} onClick={handleClose}>
+            <CloseIcon />
+          </div>
           <img src={`${imageUrl}/${modalImage.img}`} alt="" />
 
           {data.subtitle &&
