@@ -63,7 +63,7 @@ const Team = () => {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={"Team"} />
+      <Banner title={"Team"} parent={"About"} />
 
       <Drawer
         className={style.drawer}
@@ -75,7 +75,9 @@ const Team = () => {
 
       <section className={style.team_text}>
         <Container maxWidth={"lg"}>
-          <h2>A shared passion for the Green Shift</h2>
+          <h2>
+            A shared passion for the <em>Green Shift</em>
+          </h2>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa aut
             quae voluptatum ipsa eum eaque mollitia corrupti aliquid odit.

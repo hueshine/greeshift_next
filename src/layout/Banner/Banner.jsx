@@ -1,9 +1,32 @@
 import style from "./banner.module.scss";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+import { useIsomorphicLayoutEffect } from "@/hook";
 
 const Banner = ({ title, parent, image }) => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useIsomorphicLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to("#banner h2", {
+        y: 30,
+        scale: 1.1,
+        scrollTrigger: {
+          trigger: "#banner",
+          start: "top top",
+          scrub: true,
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  });
+
   return (
     <>
       <div
+        id="banner"
         className={style.header}
         style={image ? { backgroundImage: `url(${image})` } : {}}
       >

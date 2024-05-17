@@ -2,28 +2,16 @@ import { useState } from "react";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
-import CloseIcon from "@mui/icons-material/Close";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
+import Fancybox from "../Fancybox";
 import gsap from "gsap";
 
-import { Container, Grid, Modal, Box } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 import style from "@/styles/activity.module.scss";
-
-const modalStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  maxWidth: "80%",
-  bgcolor: "transparent",
-  boxShadow: 24,
-  border: "0px solid transparent",
-};
 
 const Activity = ({ data }) => {
   let selectedData = data;
@@ -50,14 +38,6 @@ const Activity = ({ data }) => {
     image: "",
   });
 
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => setOpen(false);
-  const [modalImage, setModalImage] = useState({
-    img: "",
-    index: "",
-  });
-
   useIsomorphicLayoutEffect(() => {
     if (selectedData.activity.length > 0) {
       setSelectedActivity(selectedData.activity[0]);
@@ -68,26 +48,6 @@ const Activity = ({ data }) => {
 
   return (
     <>
-      <Modal open={open} onClose={handleClose}>
-        <Box className={style.modal_box} sx={modalStyle}>
-          <div className={style.close} onClick={handleClose}>
-            <CloseIcon />
-          </div>
-          <img src={`${imageUrl}/${modalImage.img}`} alt="" />
-
-          {data.subtitle &&
-            data.subtitle.map((val, index) => {
-              return (
-                <p
-                  key={index}
-                  className={index === modalImage.index ? style.active : ""}
-                >
-                  {val}
-                </p>
-              );
-            })}
-        </Box>
-      </Modal>
       <section className={style.about}>
         <Container maxWidth={"lg"}>
           <Grid container columnSpacing={8}>
@@ -171,48 +131,49 @@ const Activity = ({ data }) => {
         </section>
       )}
 
-      <section className={style.image_slider}>
-        <Swiper
-          className={style.image_slide_wrap}
-          spaceBetween={15}
-          speed={12000}
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: true,
-          }}
-          loop={true}
-          modules={[Autoplay]}
-          freeMode={true}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 0,
-            },
-            768: {
-              slidesPerView: 3.5,
-              spaceBetween: 10,
-            },
-          }}
-        >
-          {selectedData.images.map((img, index) => {
-            return (
-              <SwiperSlide
-                className={style.image_slide}
-                key={index}
-                onClick={() => {
-                  setOpen(true);
-                  setModalImage({
-                    img: img,
-                    index: index,
-                  });
-                }}
-              >
-                <img src={`${imageUrl}/${img}`} alt="" />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </section>
+      <Fancybox
+        options={{
+          Carousel: {
+            infinite: false,
+          },
+        }}
+      >
+        <section className={style.image_slider}>
+          <Swiper
+            className={style.image_slide_wrap}
+            spaceBetween={15}
+            speed={12000}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: true,
+            }}
+            loop={true}
+            modules={[Autoplay]}
+            freeMode={true}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              768: {
+                slidesPerView: 3.5,
+                spaceBetween: 10,
+              },
+            }}
+          >
+            {selectedData.images.map((img, index) => {
+              return (
+                <SwiperSlide className={style.image_slide} key={index}>
+                  <a data-fancybox="gallery" href={`${imageUrl}/${img}`}>
+                    <img src={`${imageUrl}/${img}`} alt="" />
+                    <p>{selectedData.subtitle[index]}</p>
+                  </a>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </section>
+      </Fancybox>
 
       <section className={style.sdg_wrap}>
         <Container maxWidth={"lg"}>

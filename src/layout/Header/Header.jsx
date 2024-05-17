@@ -28,7 +28,6 @@ const Header = () => {
 
     btns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        console.log("click");
         setOpen(false);
 
         submenu.forEach((menu) => {
@@ -191,7 +190,7 @@ const Header = () => {
                 <a href="#">Knowledge Hub</a>
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
-                    <Link className="btn-page" href={"/"}>
+                    <Link className="btn-page" href={"/blog-and-field-stories"}>
                       Blogs & Field Stories{" "}
                     </Link>
                     <Link

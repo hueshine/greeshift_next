@@ -1,9 +1,4 @@
-import { useState } from "react";
-
 import { Container, Grid } from "@mui/material";
-
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
 
 import Banner from "../../layout/Banner/Banner";
 import Head from "next/head";
@@ -12,25 +7,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import style from "./style.module.scss";
+
+import Fancybox from "../../components/Fancybox";
 import data from "./data.json";
 
-const modalStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  maxWidth: "80%",
-  bgcolor: "transparent",
-  boxShadow: 24,
-  border: "0px solid transparent",
-};
-
 const index = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => setOpen(false);
-  const [modalImage, setModalImage] = useState();
-
   return (
     <>
       <Head>
@@ -39,13 +20,7 @@ const index = () => {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={"Focus Area"} />
-
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={modalStyle}>
-          <img src={modalImage} alt="" />
-        </Box>
-      </Modal>
+      <Banner title={"Focus Area"} parent={"About"} />
 
       {data.map((val, index) => {
         return (
@@ -56,7 +31,10 @@ const index = () => {
           >
             <Container maxWidth="lg" className={style.focus_container}>
               <div className={style.title}>
-                <span>Focus Area 0{index + 1}</span>
+                <div className={style.title_index}>
+                  <h1>0{index + 1}</h1>
+                  <span>Focus Area </span>
+                </div>
                 <h3>{val.title}</h3>
               </div>
 
@@ -94,7 +72,15 @@ const index = () => {
                   </div>
                 </Grid>
               </Grid>
+            </Container>
 
+            <Fancybox
+              options={{
+                Carousel: {
+                  infinite: false,
+                },
+              }}
+            >
               <Swiper
                 className={style.image_slide_wrap}
                 spaceBetween={15}
@@ -112,27 +98,22 @@ const index = () => {
                     spaceBetween: 0,
                   },
                   768: {
-                    slidesPerView: 3,
+                    slidesPerView: 4,
                     spaceBetween: 10,
                   },
                 }}
               >
                 {val.image.map((img, index) => {
                   return (
-                    <SwiperSlide
-                      key={index}
-                      className={style.image_slide}
-                      onClick={() => {
-                        setOpen(true);
-                        setModalImage(img);
-                      }}
-                    >
-                      <img src={img} alt="" />
+                    <SwiperSlide key={index} className={style.image_slide}>
+                      <a data-fancybox="gallery" href={`${img}`}>
+                        <img src={img} alt="" />
+                      </a>
                     </SwiperSlide>
                   );
                 })}
               </Swiper>
-            </Container>
+            </Fancybox>
           </section>
         );
       })}

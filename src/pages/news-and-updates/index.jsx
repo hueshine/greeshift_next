@@ -24,7 +24,7 @@ const News = () => {
         <meta property="og:image:height" content="442" />
       </Head>
 
-      <Banner title={"News & Updates"} />
+      <Banner title={"News & Updates"} parent={"Knowledge Hub"} />
 
       <section className={style.newsList}>
         <Container maxWidth={"lg"}>
