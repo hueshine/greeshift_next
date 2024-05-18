@@ -113,7 +113,7 @@ const Footer = () => {
 
             <Grid item lg={1}></Grid>
 
-            <Grid item md={2.5}>
+            <Grid item md={2.5} xs={12}>
               <p>
                 <small>© 2024 Green Shift Nepal, CREASION</small>
               </p>
