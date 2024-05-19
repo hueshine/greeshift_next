@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
-import InfoIcon from "@mui/icons-material/Info";
 
 import { Marker, Map, Source, Layer } from "react-map-gl";
 import mapboxgl from "!mapbox-gl";
@@ -22,9 +21,9 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import NepalMap from "./data/MapOfNepal.json";
 import MunicipalityMap from "./data/MapOfMunicipalities.json";
 
-import MunicipalityData from "./data/dataNew.json";
-
 import { mapStyleLine, mapStyleFill, viewportCommon } from "./styles";
+
+// import MunicipalityData from "./data/dataNew.json";
 
 import {
   grantDistributedStyle,
@@ -46,7 +45,10 @@ if (typeof Highcharts === "object") {
   HighchartsPictorial(Highcharts);
 }
 
-const MapComponent = () => {
+const MapComponent = ({ mapData }) => {
+  let MunicipalityData = mapData;
+  const imageUrl = `https://www.app.greenshift.creasion.org/storage`;
+
   const mapRef = useRef(null);
   const [initialZoomValue, setInitialZoomValue] = useState(null);
   const [dataBoxIndex, setDataBoxIndex] = useState(false);
@@ -290,9 +292,10 @@ const MapComponent = () => {
                   >
                     <div className={componentStyle.numbers}>
                       <img
-                        src={MunicipalityData.allData.plasticCollected.icon}
+                        src={`${imageUrl}/${MunicipalityData.allData.plasticCollected.icon}`}
                         alt=""
                       />
+                      abc
                       <h2>{MunicipalityData.allData.plasticCollected.count}</h2>
                       <p>{MunicipalityData.allData.plasticCollected.unit}</p>
                       <h6>{MunicipalityData.allData.plasticCollected.title}</h6>
@@ -384,8 +387,8 @@ const MapComponent = () => {
                     style={{ height: "130px" }}
                   >
                     <div className={componentStyle.numbers}>
-                      <h2>{MunicipalityData.allData.campaigns.count}</h2>
-                      <h6>{MunicipalityData.allData.campaigns.title}</h6>
+                      <h2>{MunicipalityData.allData.campaign.count}</h2>
+                      <h6>{MunicipalityData.allData.campaign.title}</h6>
                     </div>
                   </div>
 
@@ -470,7 +473,10 @@ const MapComponent = () => {
               <Grid container spacing={2} alignItems={"center"}>
                 <Grid item sm={7}>
                   <h5>{selectedMunicipality.title}</h5>
-                  <p>Last Updated 8th April, 2024</p>
+                  <p>
+                    Last Updated{" "}
+                    {selectedMunicipality.last_updated_at.split("T")[0]}
+                  </p>
                 </Grid>
 
                 <Grid item sm={5}>
@@ -518,9 +524,7 @@ const MapComponent = () => {
                     >
                       <div className={componentStyle.numbers}>
                         <img
-                          src={
-                            selectedMunicipality.dashboard.plasticCollected.icon
-                          }
+                          src={`${imageUrl}/${selectedMunicipality.dashboard.plasticCollected.icon}`}
                           alt=""
                         />
                         <h2>
@@ -642,12 +646,8 @@ const MapComponent = () => {
                       style={{ height: "130px" }}
                     >
                       <div className={componentStyle.numbers}>
-                        <h2>
-                          {selectedMunicipality.dashboard.campaigns.count}
-                        </h2>
-                        <h6>
-                          {selectedMunicipality.dashboard.campaigns.title}
-                        </h6>
+                        <h2>{selectedMunicipality.dashboard.campaign.count}</h2>
+                        <h6>{selectedMunicipality.dashboard.campaign.title}</h6>
                       </div>
                     </div>
 
@@ -794,7 +794,7 @@ const MapComponent = () => {
                 }}
               >
                 <div className={componentStyle.muniCard_img}>
-                  <img src={val.image} alt="" />
+                  <img src={`${imageUrl}/${val.image}`} alt="" />
                 </div>
 
                 <div className={componentStyle.muniCard_text}>
