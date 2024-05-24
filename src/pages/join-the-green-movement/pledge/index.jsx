@@ -410,23 +410,7 @@ const Pledge = () => {
                 );
               })}
 
-              {/* {singlePledges.map((pledge, index) => {
-                return (
-                  <Grid className={style.form_grid} item md={6} key={index}>
-                    <div className={style.pledge_form}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={formData.pledges[`pledge${index + 1}`]}
-                            onChange={handleCheckboxChange}
-                          />
-                        }
-                        label={pledge}
-                      />
-                    </div>
-                  </Grid>
-                );
-              })} */}
+            
             </Grid>
           </div>
         );

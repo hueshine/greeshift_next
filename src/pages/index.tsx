@@ -11,9 +11,6 @@ import MapComponent from "../components/MapComponent/MapComponent";
 
 import Button from "@/components/Button/Button";
 
-import BannerCurve from "@/components/BannerCurve";
-import Curve from "@/components/Curve";
-
 import homeStyle from "@/styles/home.module.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,16 +18,14 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 import Link from "next/link";
-import { useIsomorphicLayoutEffect } from "@/hook";
-
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import newsJSON from "./news-and-updates/data.json";
 
 let newsData = newsJSON.news;
 
-export default function Home() {
+interface DashboardData {}
+
+export default function Home({ apiMapData }: { apiMapData: DashboardData }) {
   return (
     <>
       <Head>
@@ -112,7 +107,7 @@ export default function Home() {
 
       <div className={homeStyle.home_map}>
         {/* <h2>Project Areas</h2> */}
-        <MapComponent />
+        <MapComponent mapData={apiMapData} />
       </div>
 
       <section className={homeStyle.home_news}>
@@ -183,4 +178,18 @@ export default function Home() {
       </section>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const resMap = await fetch(
+    "https://app.greenshift.creasion.org/api/dashboard"
+  );
+  const apiMapData = await resMap.json();
+
+  return {
+    props: {
+      apiMapData,
+    },
+    revalidate: 30,
+  };
 }

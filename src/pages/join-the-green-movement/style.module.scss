@@ -82,6 +82,12 @@
 
   .form_box {
     width: 100%;
+    margin-bottom: 10px;
+
+    label {
+      margin-bottom: 10px;
+      font-family: "Source Sans Pro";
+    }
     small {
       font-size: 14px;
       margin-top: 30px;
@@ -107,13 +113,20 @@
 
 .upload_image {
   background-color: transparent;
-  color: #00000099;
   width: 100%;
   border: 1px solid #cdcdcd;
-  height: 68px;
+  box-shadow: none !important;
+  height: 56px;
+  text-transform: none;
+
+  svg {
+    color: #33b2b6;
+    opacity: 0.5;
+    margin-right: 5px;
+  }
 
   &:hover {
-    background: #33b2b6;
+    background: inherit;
   }
 }
 
@@ -226,7 +239,78 @@
 }
 
 .pitch_form {
-  margin: 40px 0;
+  margin: 80px 0;
+
+  .upload_image {
+    font-size: 14px;
+    justify-content: left;
+    color: #0000003b;
+  }
+  .form_container_title {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .forms_section {
+    background: #e8f5f9;
+    margin-top: 80px;
+    padding: 5px 0 80px;
+
+    .forms_nav {
+      margin-bottom: 40px;
+      position: relative;
+      border-bottom: 1px solid #cdcdcd;
+
+      button {
+        font-family: "Source Sans Pro";
+        font-weight: 500;
+        margin: 10px 20px;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: -0.2px;
+        cursor: pointer;
+        position: relative;
+        color: #000;
+      }
+
+      div {
+        div {
+          justify-content: center;
+        }
+      }
+    }
+
+    .tab_title {
+      text-align: center;
+
+      h5 {
+        margin-top: 40px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 40px;
+        a {
+          color: #33b2b6;
+        }
+      }
+
+      h3 {
+        margin: 40px 0 20px;
+      }
+    }
+  }
+
+  .form_box {
+    margin-bottom: 10px;
+
+    label {
+      margin-bottom: 10px;
+      font-family: "Source Sans Pro";
+      color: #111;
+      font-size: 16px;
+    }
+  }
 }
 
 @media screen and (max-width: 500px) {

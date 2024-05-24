@@ -3,63 +3,51 @@ import { useState } from "react";
 import Head from "next/head";
 import Banner from "../../../layout/Banner/Banner";
 
-import {
-  TextField,
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControlLabel,
-  Checkbox,
-  Button,
-} from "@mui/material";
+import { Link } from "@mui/material";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
-import { Container, Grid } from "@mui/material";
-
-import PhotoIcon from "@mui/icons-material/Photo";
-import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-import SendIcon from "@mui/icons-material/Send";
-
-import provinceData from "../pledge/province.json";
-import districtData from "../pledge/district.json";
-import municipalityData from "../pledge/municipality.json";
+import { Container } from "@mui/material";
 
 import style from "../style.module.scss";
+import PledgeIntoAction from "./PledgeIntoAction";
+import CleanUp from "./CleanUp";
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <>{children}</>}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
 
 const Ideas = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    gender: "",
-    province: "",
-    district: "",
-    municipality: "",
-    email: "",
-    numOfVolunteers: "",
-    wasteCollected: "",
-    image: "",
-    video: "",
-  });
+  const [value, setValue] = useState(0);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleImageChange = (event) => {
-    const selectedImage = event.target.files[0];
-    setFormData({
-      ...formData,
-      image: selectedImage,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = document.getElementById("multi-step-form");
-    if (form.reportValidity()) {
-      // Handle form submission
-      console.log(formData);
-    }
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -73,328 +61,72 @@ const Ideas = () => {
 
       <Banner title={"Pitch Your Ideas"} />
 
-      <Container maxWidth={"lg"}>
-        {/* <div className={style.pledge_into_action}>
-          <div className={style.icon}>
-            <img src="/video.svg" alt="" />
-          </div>
-          <div className={style.text}>
-            <h5>Submit your 60 Second Video! </h5>
-            <ul>
-              <li>
-                <p>
-                  To become a Green Warrior, take a 60 second video of you and
-                  your friends, family or community, doing a clean-up activity
-                  to collect solid wastes in your neighbourhood
-                </p>
-              </li>
-              <li>
-                <p>
-                  Make sure to get the attendance of all those who are part of
-                  the clean-up activity. Find the attendance sheet attached
-                  [Link]{" "}
-                </p>
-              </li>
-              <li>
-                <p>
-                  Make sure to fill in all the details along with the time in
-                  the attendance sheet.{" "}
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className={style.pledge_into_action}>
-          <div className={style.icon}>
-            <img src="/scale.svg" alt="" />
-          </div>
-          <div className={style.text}>
-            <h5>Weigh Your Waste! </h5>
-            <ul>
-              <li>
-                <p>
-                  After the clean-up, weigh your collected waste and click a
-                  picture of it{" "}
-                </p>
-              </li>
-              <li>
-                <p>
-                  Handover your collected waste to your nearest waste
-                  collectors/pickers{" "}
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className={style.pledge_into_action}>
-          <div className={style.icon}>
-            <img src="/gift_box.svg" alt="" />
-          </div>
-          <div className={style.text}>
-            <h5>Get your Prize! </h5>
-            <ul>
-              <li>
-                <p>
-                  The prizes are determined according to the hours of
-                  volunteering and the wastes collected{" "}
-                </p>
-              </li>
-              <li>
-                <p>[x] hours of volunteering = GreenShift stickers, T-shirt </p>
-              </li>
-            </ul>
-          </div>
-        </div> */}
-      </Container>
-
       <section className={style.pitch_form}>
-        <Container maxWidth={"lg"}>
-          <div className={style.form_container}>
+        <div className={style.form_container}>
+          <Container maxWidth={"lg"}>
             <div className={style.form_container_title}>
-              {/* <h3>
-              Our <span>Action</span>, Our <span>Responsibility</span>,
-              <br /> Let’s take a realistic pledge.
-            </h3>
-            <p>Ready to take the responsibility?</p> */}
+              <h3>
+                An open platform for everyone to{" "}
+                <span>Engage, Educate and Empower</span> for a just transition
+                towards <em>Circular Economy</em>.
+              </h3>
+              <p>
+                Let’s Act together for a Better and Sustainable future, where
+                plastic waste is minimized, resources are preserved, and
+                societies thrive in harmony with nature.{" "}
+              </p>
+
+              <p>If you want to become a Green Warrior:</p>
             </div>
+          </Container>
 
-            <Grid container rowSpacing={2} columnSpacing={2}>
-              <Grid className={style.form_grid} item md={4}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="name">Full Name</InputLabel>
+          <div className={style.forms_section}>
+            <Tabs
+              value={value}
+              onChange={handleTabChange}
+              aria-label="basic tabs example"
+              className={style.forms_nav}
+              sx={{
+                "& .Mui-selected": { color: "#33b2b6 !important" },
+                "& .MuiTabs-indicator": { backgroundColor: "#33b2b6" },
+              }}
+            >
+              <Tab label="PLEDGE INTO ACTION" {...a11yProps(0)} />
+              <Tab label="CLEAN-UP!" {...a11yProps(1)} />
+            </Tabs>
 
-                  <TextField
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    fullWidth
-                  />
+            <Container maxWidth="lg">
+              <CustomTabPanel value={value} index={0}>
+                <div className={style.tab_title}>
+                  <h3>
+                    Ready to turn your take your <br />{" "}
+                    <em>Pledge into Action?</em>{" "}
+                  </h3>
+                  <p>
+                    Have you taken your Pledges? If not take you realistic
+                    pledge from{" "}
+                    <Link href="/join-the-green-movement/pledge">here</Link>
+                  </p>
                 </div>
-              </Grid>
 
-              <Grid className={style.form_grid} item md={4}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="age">Age</InputLabel>
-
-                  <TextField
-                    name="age"
-                    value={formData.age}
-                    onChange={handleChange}
-                    fullWidth
-                  />
+                <PledgeIntoAction />
+              </CustomTabPanel>
+              <CustomTabPanel value={value} index={1}>
+                <div className={style.tab_title}>
+                  <h3>CLEAN-UP !</h3>
+                  <p>
+                    If you’re someone who is passionate about the environment,
+                    advocating, spreading awareness about keeping our
+                    environment clean and green, here’s your chance to become a
+                    Green Warrior!{" "}
+                  </p>
                 </div>
-              </Grid>
 
-              <Grid className={style.form_grid} item md={4}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="gender">Gender</InputLabel>
-                  <Select
-                    name="gender"
-                    value={formData.gender}
-                    onChange={handleChange}
-                    fullWidth
-                  >
-                    <MenuItem value={"male"}>Male</MenuItem>
-                    <MenuItem value={"female"}>Female</MenuItem>
-                    <MenuItem value={"others"}>Others</MenuItem>
-                  </Select>
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={4}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="province">Province</InputLabel>
-
-                  <Select
-                    name="province"
-                    value={formData.province}
-                    onChange={handleChange}
-                    fullWidth
-                  >
-                    {provinceData.results.map((val, index) => {
-                      return (
-                        <MenuItem key={index} value={val.id}>
-                          {val.title}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={4}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="district">District</InputLabel>
-
-                  <Select
-                    name="district"
-                    value={formData.district}
-                    onChange={handleChange}
-                    fullWidth
-                  >
-                    {districtData.results
-                      .filter((val) => val.province == formData.province)
-                      .map((val, index) => (
-                        <MenuItem key={index} value={val.id}>
-                          {val.title}
-                        </MenuItem>
-                      ))}
-                  </Select>
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={4}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="municipality">Municipality</InputLabel>
-
-                  <Select
-                    name="municipality"
-                    value={formData.municipality}
-                    onChange={handleChange}
-                    fullWidth
-                  >
-                    {municipalityData.results
-                      .filter((val) => val.district == formData.district)
-                      .map((val, index) => (
-                        <MenuItem key={index} value={val.code}>
-                          {val.title}
-                        </MenuItem>
-                      ))}
-                  </Select>
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={4}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="numOfVolunteers">
-                    Total number of volunteers
-                  </InputLabel>
-                  <TextField
-                    name="numOfVolunteers"
-                    value={formData.numOfVolunteers}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={4}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="wasteCollected">
-                    Amount of waste collected
-                  </InputLabel>
-                  <TextField
-                    name="wasteCollected"
-                    value={formData.wasteCollected}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={4}></Grid>
-
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="wasteCollected">
-                    Verification{" "}
-                  </InputLabel>
-
-                  <Button
-                    className={style.upload_image}
-                    component="label"
-                    variant="contained"
-                    startIcon={<PhotoIcon />}
-                  >
-                    Upload image
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      style={{ display: "none" }}
-                    />
-                  </Button>
-
-                  <small>
-                    For verification, upload a picture of the weighing scale
-                    with the weight of your collected waste
-                  </small>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    hidden
-                  />
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="wasteCollected">
-                    Upload your 60 sec video
-                  </InputLabel>
-
-                  <Button
-                    className={style.upload_image}
-                    component="label"
-                    variant="contained"
-                    startIcon={<OndemandVideoIcon />}
-                  >
-                    Upload Video
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      style={{ display: "none" }}
-                    />
-                  </Button>
-
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    hidden
-                  />
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid_terms} item md={8}>
-                <p>*Terms & Conditions </p>
-                <ul>
-                  <li>
-                    CREASION reserves the right to correspond with selected
-                    participants for video amendments{" "}
-                  </li>
-                  <li>
-                    By entering the GreenShift campaign, the participant grants
-                    CREASION all rights to their work and confirm that it is
-                    their work, and not that of someone else, or copied.
-                  </li>
-                  <li>
-                    CREASION reserves the right to make amendments to any
-                    submitted videos as deemed necessary.
-                  </li>
-                </ul>
-              </Grid>
-
-              <Grid className={style.form_grid_terms} item md={8}>
-                <FormControlLabel
-                  control={<Checkbox name="terms" />}
-                  label="I accept the terms and conditions of the GreenShift campaign"
-                />
-              </Grid>
-
-              <Grid item md={4}></Grid>
-              <Grid className={style.form_grid_terms} item md={4}>
-                <button className={style.pledge_btn}>
-                  Become a Green Warrior <SendIcon />
-                </button>
-              </Grid>
-            </Grid>
+                <CleanUp />
+              </CustomTabPanel>
+            </Container>
           </div>
-        </Container>
+        </div>
       </section>
     </>
   );
