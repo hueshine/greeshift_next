@@ -32,10 +32,8 @@ const PledgeIntoAction = () => {
     district: "",
     municipality: "",
     email: "",
-    numOfVolunteers: "",
-    wasteCollected: "",
-    image: "",
-    video: "",
+    phone: "",
+    photoVideo: "",
   });
 
   const handleChange = (e) => {
@@ -45,11 +43,8 @@ const PledgeIntoAction = () => {
 
   const handleImageChange = (event) => {
     const selectedFile = event.target.files[0];
-    const maxFileSize = 200 * 1024 * 1024;
-    setFormData({
-      ...formData,
-      image: selectedFile,
-    });
+    const maxFileSize = 200 * 1024 * 1024; // 200MB
+
     if (selectedFile) {
       if (
         selectedFile.type.startsWith("image/") ||
@@ -58,7 +53,7 @@ const PledgeIntoAction = () => {
         if (selectedFile.size <= maxFileSize) {
           setFormData({
             ...formData,
-            file: selectedFile,
+            photoVideo: selectedFile,
           });
           setPitchUpload(selectedFile.name);
           setError("");
@@ -68,15 +63,17 @@ const PledgeIntoAction = () => {
       } else {
         setError("Only image or video files are allowed");
       }
-    } else {
-      setPitchUpload("Click to Upload");
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = document.getElementById("multi-step-form");
-    if (form.reportValidity()) {
+
+    if (!formData.photoVideo) {
+      setError("Please upload a photo or video");
+    }
+    if (form.reportValidity() && formData.photoVideo) {
       // Handle form submission
       console.log(formData);
     }
@@ -192,10 +189,10 @@ const PledgeIntoAction = () => {
 
           <Grid className={style.form_grid} item md={4}>
             <div className={style.form_box}>
-              <InputLabel htmlFor="numOfVolunteers">Phone Number</InputLabel>
+              <InputLabel htmlFor="phone">Phone Number</InputLabel>
               <TextField
-                name="numOfVolunteers"
-                value={formData.numOfVolunteers}
+                name="phone"
+                value={formData.phone}
                 onChange={handleChange}
                 fullWidth
               />
@@ -204,10 +201,10 @@ const PledgeIntoAction = () => {
 
           <Grid className={style.form_grid} item md={4}>
             <div className={style.form_box}>
-              <InputLabel htmlFor="wasteCollected">Email Id</InputLabel>
+              <InputLabel htmlFor="email">Email Id</InputLabel>
               <TextField
-                name="wasteCollected"
-                value={formData.wasteCollected}
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
                 fullWidth
               />
@@ -232,18 +229,10 @@ const PledgeIntoAction = () => {
                   type="file"
                   accept="image/*,video/*"
                   onChange={handleImageChange}
+                  name="photoVideo"
                   style={{ display: "none" }}
-                  required
                 />
               </Button>
-
-              <input
-                type="file"
-                accept="image/*,video/*"
-                onChange={handleImageChange}
-                hidden
-                required
-              />
 
               {error && <Alert severity="error">{error}</Alert>}
             </div>
