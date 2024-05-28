@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import {
   TextField,
@@ -10,6 +10,8 @@ import {
   Button,
 } from "@mui/material";
 
+import axios from "axios";
+
 import { Alert, Grid } from "@mui/material";
 
 import FileUploadIcon from "@mui/icons-material/FileUpload";
@@ -18,10 +20,18 @@ import SendIcon from "@mui/icons-material/Send";
 import provinceData from "../pledge/province.json";
 import districtData from "../pledge/district.json";
 import municipalityData from "../pledge/municipality.json";
+import CircularProgress from "@mui/material/CircularProgress";
+
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import style from "../style.module.scss";
 
 const PledgeIntoAction = () => {
+  gsap.registerPlugin(ScrollToPlugin);
+
+  const elTop = useRef(null);
+
   const [error, setError] = useState("");
   const [pitchUpload, setPitchUpload] = useState("Click to Upload");
   const [formData, setFormData] = useState({
@@ -35,6 +45,7 @@ const PledgeIntoAction = () => {
     phone: "",
     photoVideo: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,22 +77,85 @@ const PledgeIntoAction = () => {
     }
   };
 
+  const handleReset = () => {
+    setPitchUpload("Click to Upload");
+    setFormData({
+      name: "",
+      age: "",
+      gender: "",
+      province: "",
+      district: "",
+      municipality: "",
+      email: "",
+      phone: "",
+      photoVideo: "",
+    });
+
+    const ctx = gsap.context(() => {
+      gsap.to(window, { duration: 0.5, scrollTo: elTop.current - 200 });
+    });
+
+    return () => ctx.revert();
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = document.getElementById("multi-step-form");
 
+    let provinceTitle = provinceData.results.filter(
+      (item) => item.id === formData.province
+    );
+
+    let districtTitle = districtData.results.filter(
+      (item) => item.id === formData.district
+    );
+
+    const formDataToSend = new FormData();
+
+    Object.keys(formData).forEach((key) => {
+      if (key !== "image") {
+        formDataToSend.append(key, formData[key]);
+      }
+    });
+
+    formDataToSend.append("province", provinceTitle[0].title);
+
+    formDataToSend.append("district", districtTitle[0].title);
+
+    formDataToSend.append("image", formData.photoVideo);
+
     if (!formData.photoVideo) {
       setError("Please upload a photo or video");
     }
+
     if (form.reportValidity() && formData.photoVideo) {
-      // Handle form submission
-      console.log(formData);
+      setLoading(true);
+      axios
+        .post(
+          "https://app.greenshift.creasion.org/api/submit-pitchYouIdeas-form",
+          formDataToSend,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((response) => {
+          if (response.data.errors) {
+            response.data.errors.forEach((error) => {
+              console.log(error);
+            });
+          } else {
+            setLoading(false);
+            handleReset();
+          }
+        });
     }
   };
   return (
     <>
       <form id="multi-step-form" onSubmit={handleSubmit}>
-        <Grid container rowSpacing={2} columnSpacing={2}>
+        <Grid container rowSpacing={2} columnSpacing={2} ref={elTop}>
           <Grid className={style.form_grid} item md={4}>
             <div className={style.form_box}>
               <InputLabel htmlFor="name">Full Name</InputLabel>
@@ -268,7 +342,15 @@ const PledgeIntoAction = () => {
           <Grid item md={4}></Grid>
           <Grid className={style.form_grid_terms} item md={4}>
             <button className={style.pledge_btn} onClick={handleSubmit}>
-              Become a Green Warrior <SendIcon />
+              {loading ? (
+                <>
+                  Submitting Information <CircularProgress />{" "}
+                </>
+              ) : (
+                <>
+                  Become a Green Warrior <SendIcon />
+                </>
+              )}
             </button>
           </Grid>
         </Grid>

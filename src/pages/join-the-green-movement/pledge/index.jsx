@@ -83,7 +83,6 @@ const Pledge = () => {
     }
 
     const ctx = gsap.context(() => {
-      console.log(elTop.current);
       gsap.to(window, { duration: 0.5, scrollTo: elTop.current });
     });
 
@@ -409,8 +408,6 @@ const Pledge = () => {
                   </Grid>
                 );
               })}
-
-            
             </Grid>
           </div>
         );

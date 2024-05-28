@@ -135,13 +135,22 @@
   font-size: 16px;
 
   .pledge_btn {
-    padding: 20px 30px;
+    padding: 20px 10px;
     display: inline-flex;
     align-items: center;
     margin-top: 0;
+    width: 280px;
+    text-transform: uppercase;
+    justify-content: space-around;
 
     svg {
       margin-left: 8px;
+    }
+
+    span {
+      width: 34px;
+      height: 20px;
+      color: #fff;
     }
   }
 
@@ -231,10 +240,11 @@
   font-size: 14px;
   padding: 8px 30px;
   border-radius: 30px;
+  cursor: pointer;
 
   &:hover {
-    color: #33b2b6;
-    background: transparent;
+    color: #fff;
+    background: #177072;
   }
 }
 
@@ -309,6 +319,43 @@
       font-family: "Source Sans Pro";
       color: #111;
       font-size: 16px;
+    }
+  }
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .box {
+    width: 60vw;
+    height: 60vh;
+    background: #fff;
+    text-align: center;
+    padding: 70px 0;
+
+    img {
+      width: 120px;
+      margin-bottom: 40px;
+    }
+
+    h4 {
+      text-transform: uppercase;
+    }
+
+    p {
+      max-width: 380px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 }
