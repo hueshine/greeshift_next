@@ -332,7 +332,7 @@ const PledgeIntoAction = () => {
                 {municipalityData.results
                   .filter((val) => val.district == formData.district)
                   .map((val, index) => (
-                    <MenuItem key={index} value={val.code}>
+                    <MenuItem key={index} value={val.title}>
                       {val.title}
                     </MenuItem>
                   ))}
