@@ -436,3 +436,10 @@ img {
     line-height: 39px;
   }
 }
+
+progress,
+progress::-webkit-progress-value {
+  background: #addfe1;
+  height: 5px;
+  border-radius: 8px;
+}

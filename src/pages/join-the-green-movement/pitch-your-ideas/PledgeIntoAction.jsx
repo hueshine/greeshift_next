@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import {
   TextField,
@@ -12,7 +12,7 @@ import {
 
 import axios from "axios";
 
-import { Alert, Grid } from "@mui/material";
+import { Alert, Grid, Snackbar } from "@mui/material";
 
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import SendIcon from "@mui/icons-material/Send";
@@ -20,7 +20,6 @@ import SendIcon from "@mui/icons-material/Send";
 import provinceData from "../pledge/province.json";
 import districtData from "../pledge/district.json";
 import municipalityData from "../pledge/municipality.json";
-import CircularProgress from "@mui/material/CircularProgress";
 
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
@@ -31,7 +30,8 @@ const PledgeIntoAction = () => {
   gsap.registerPlugin(ScrollToPlugin);
 
   const elTop = useRef(null);
-
+  const [open, setOpen] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ status: "", message: "" });
   const [error, setError] = useState("");
   const [pitchUpload, setPitchUpload] = useState("Click to Upload");
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -48,6 +48,31 @@ const PledgeIntoAction = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  const handleCloseSnack = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (open) {
+      const ctx = gsap.context(() => {
+        gsap.to("#notification", {
+          scrollTrigger: {
+            trigger: "#notification",
+            start: "top top",
+            end: "bottom bottom",
+            pin: "#notification",
+            markers: true,
+          },
+        });
+      });
+
+      return () => ctx.revert();
+    }
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -55,7 +80,7 @@ const PledgeIntoAction = () => {
 
   const handleImageChange = (event) => {
     const selectedFile = event.target.files[0];
-    const maxFileSize = 200 * 1024 * 1024; // 200MB
+    const maxFileSize = 250 * 1024 * 1024; // 200MB
 
     if (selectedFile) {
       if (
@@ -103,14 +128,6 @@ const PledgeIntoAction = () => {
     e.preventDefault();
     const form = document.getElementById("multi-step-form");
 
-    let provinceTitle = provinceData.results.filter(
-      (item) => item.id === formData.province
-    );
-
-    let districtTitle = districtData.results.filter(
-      (item) => item.id === formData.district
-    );
-
     const formDataToSend = new FormData();
 
     Object.keys(formData).forEach((key) => {
@@ -119,10 +136,6 @@ const PledgeIntoAction = () => {
       }
     });
 
-    formDataToSend.append("province", provinceTitle[0].title);
-
-    formDataToSend.append("district", districtTitle[0].title);
-
     formDataToSend.append("image", formData.photoVideo);
 
     if (!formData.photoVideo) {
@@ -130,6 +143,17 @@ const PledgeIntoAction = () => {
     }
 
     if (form.reportValidity() && formData.photoVideo) {
+      let provinceTitle = provinceData.results.filter(
+        (item) => item.id === formData.province
+      );
+
+      let districtTitle = districtData.results.filter(
+        (item) => item.id === formData.district
+      );
+
+      formDataToSend.append("province", provinceTitle[0].title);
+
+      formDataToSend.append("district", districtTitle[0].title);
       setLoading(true);
       axios
         .post(
@@ -150,21 +174,59 @@ const PledgeIntoAction = () => {
         .then((response) => {
           if (response.data.errors) {
             response.data.errors.forEach((error) => {
-              console.log(error);
+              setLoading(false);
+              setOpen(true);
+              setSubmitStatus({
+                status: "error",
+                message: "Something went wrong. Try Again",
+              });
+              handleReset();
             });
           } else {
+            setOpen(true);
             setLoading(false);
+            setSubmitStatus({
+              status: "success",
+              message:
+                "We have received your idea. Our team will review it and get back to you soon",
+            });
             handleReset();
           }
         })
         .catch((error) => {
+          setOpen(true);
           setLoading(false);
+          setSubmitStatus({
+            status: "error",
+            message: "Something went wrong. Try Again!",
+          });
+          handleReset();
           console.error("There was an error!", error);
         });
     }
   };
+
   return (
     <>
+      <div>
+        <Snackbar
+          id="notification"
+          className={style.notificaton}
+          open={open}
+          autoHideDuration={5000}
+          onClose={handleCloseSnack}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <Alert
+            onClose={handleCloseSnack}
+            severity={submitStatus.status}
+            variant="filled"
+            sx={{ width: "100%" }}
+          >
+            {submitStatus.message}
+          </Alert>
+        </Snackbar>
+      </div>
       <form id="multi-step-form" onSubmit={handleSubmit}>
         <Grid container rowSpacing={2} columnSpacing={2} ref={elTop}>
           <Grid className={style.form_grid} item md={4}>
@@ -176,6 +238,7 @@ const PledgeIntoAction = () => {
                 value={formData.name}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -189,6 +252,7 @@ const PledgeIntoAction = () => {
                 value={formData.age}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -201,6 +265,7 @@ const PledgeIntoAction = () => {
                 value={formData.gender}
                 onChange={handleChange}
                 fullWidth
+                required
               >
                 <MenuItem value={"male"}>Male</MenuItem>
                 <MenuItem value={"female"}>Female</MenuItem>
@@ -262,6 +327,7 @@ const PledgeIntoAction = () => {
                 value={formData.municipality}
                 onChange={handleChange}
                 fullWidth
+                required
               >
                 {municipalityData.results
                   .filter((val) => val.district == formData.district)
@@ -282,6 +348,7 @@ const PledgeIntoAction = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -294,6 +361,7 @@ const PledgeIntoAction = () => {
                 value={formData.email}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -354,28 +422,18 @@ const PledgeIntoAction = () => {
 
           <Grid item md={4}></Grid>
           <Grid className={style.form_grid_terms} item md={4}>
-            <button className={style.pledge_btn} onClick={handleSubmit}>
-              {loading ? (
-                <>
-                  Uploading <CircularProgress />{" "}
-                </>
-              ) : (
-                <>
-                  Become a Green Warrior <SendIcon />
-                </>
-              )}
-            </button>
+            {loading ? (
+              <div className={style.pledge_btn}>
+                Uploading: <span>{uploadProgress}%</span>
+                <progress value={uploadProgress} max="100"></progress>
+              </div>
+            ) : (
+              <button className={style.pledge_btn} onClick={() => handleSubmit}>
+                Become a Green Warrior <SendIcon />
+              </button>
+            )}
           </Grid>
         </Grid>
-
-        {loading ? (
-          <div className={style.uploading}>
-            <p>Uploading: {uploadProgress}%</p>
-            <progress value={uploadProgress} max="100"></progress>
-          </div>
-        ) : (
-          ""
-        )}
       </form>
     </>
   );

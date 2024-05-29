@@ -135,22 +135,25 @@
   font-size: 16px;
 
   .pledge_btn {
-    padding: 20px 10px;
+    padding: 15px;
     display: inline-flex;
     align-items: center;
     margin-top: 0;
     width: 280px;
     text-transform: uppercase;
     justify-content: space-around;
+    position: relative;
+
+    progress {
+      position: absolute;
+      width: 80%;
+      left: 50%;
+      bottom: 0px;
+      transform: translateX(-50%);
+    }
 
     svg {
       margin-left: 8px;
-    }
-
-    span {
-      width: 34px !important;
-      height: 20px !important;
-      color: #fff !important;
     }
   }
 
@@ -379,4 +382,14 @@
       }
     }
   }
+}
+
+.notificaton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  // > div {
+  //   background: #2a9625;
+  // }
 }
