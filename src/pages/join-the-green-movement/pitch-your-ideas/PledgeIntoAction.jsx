@@ -34,6 +34,7 @@ const PledgeIntoAction = () => {
 
   const [error, setError] = useState("");
   const [pitchUpload, setPitchUpload] = useState("Click to Upload");
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -138,6 +139,12 @@ const PledgeIntoAction = () => {
             headers: {
               "Content-Type": "multipart/form-data",
             },
+            onUploadProgress: (progressEvent) => {
+              const percentCompleted = Math.round(
+                (progressEvent.loaded * 100) / progressEvent.total
+              );
+              setUploadProgress(percentCompleted);
+            },
           }
         )
         .then((response) => {
@@ -149,6 +156,10 @@ const PledgeIntoAction = () => {
             setLoading(false);
             handleReset();
           }
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.error("There was an error!", error);
         });
     }
   };
@@ -207,6 +218,7 @@ const PledgeIntoAction = () => {
                 value={formData.province}
                 onChange={handleChange}
                 fullWidth
+                required
               >
                 {provinceData.results.map((val, index) => {
                   return (
@@ -228,6 +240,7 @@ const PledgeIntoAction = () => {
                 value={formData.district}
                 onChange={handleChange}
                 fullWidth
+                required
               >
                 {districtData.results
                   .filter((val) => val.province == formData.province)
@@ -344,7 +357,7 @@ const PledgeIntoAction = () => {
             <button className={style.pledge_btn} onClick={handleSubmit}>
               {loading ? (
                 <>
-                  Submitting Information <CircularProgress />{" "}
+                  Uploading <CircularProgress />{" "}
                 </>
               ) : (
                 <>
@@ -354,6 +367,15 @@ const PledgeIntoAction = () => {
             </button>
           </Grid>
         </Grid>
+
+        {loading ? (
+          <div className={style.uploading}>
+            <p>Uploading: {uploadProgress}%</p>
+            <progress value={uploadProgress} max="100"></progress>
+          </div>
+        ) : (
+          ""
+        )}
       </form>
     </>
   );
