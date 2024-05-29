@@ -3,7 +3,6 @@ import MapConponent from "../../components/MapComponent/MapComponent";
 import Head from "next/head";
 
 const Impacts = ({ apiData }) => {
-  console.log(apiData);
   return (
     <>
       <Head>
