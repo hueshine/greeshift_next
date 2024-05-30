@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import {
   TextField,
@@ -12,7 +12,7 @@ import {
 
 import axios from "axios";
 
-import { Alert, Grid } from "@mui/material";
+import { Alert, Grid, Snackbar } from "@mui/material";
 
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import SendIcon from "@mui/icons-material/Send";
@@ -21,15 +21,26 @@ import provinceData from "../pledge/province.json";
 import districtData from "../pledge/district.json";
 import municipalityData from "../pledge/municipality.json";
 
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+
 import style from "../style.module.scss";
 
 const PledgeIntoAction = () => {
+  gsap.registerPlugin(ScrollToPlugin);
+
+  const elTop = useRef(null);
+  const [open, setOpen] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ status: "", message: "" });
+  const [uploadProgress, setUploadProgress] = useState(0);
+
   const [imageError, setImageError] = useState("");
   const [videoError, setVideoError] = useState("");
   const [pitchUpload, setPitchUpload] = useState("Click to Upload a Picture");
   const [pitchUploadVideo, setPitchUploadVideo] = useState(
     "Click to Upload a Video"
   );
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -44,6 +55,54 @@ const PledgeIntoAction = () => {
     image: "",
     video: "",
   });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleCloseSnack = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (open) {
+      const ctx = gsap.context(() => {
+        gsap.to("#notification", {
+          scrollTrigger: {
+            trigger: "#notification",
+            start: "top top",
+            end: "bottom bottom",
+            pin: "#notification",
+            markers: true,
+          },
+        });
+      });
+
+      return () => ctx.revert();
+    }
+  });
+
+  const handleReset = () => {
+    setPitchUpload("Click to Upload");
+    setFormData({
+      name: "",
+      age: "",
+      gender: "",
+      province: "",
+      district: "",
+      municipality: "",
+      email: "",
+      phone: "",
+      photoVideo: "",
+    });
+
+    const ctx = gsap.context(() => {
+      gsap.to(window, { duration: 0.5, scrollTo: elTop.current - 200 });
+    });
+
+    return () => ctx.revert();
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -95,6 +154,16 @@ const PledgeIntoAction = () => {
     e.preventDefault();
     const form = document.getElementById("cleanup-form");
 
+    const formDataToSend = new FormData();
+
+    Object.keys(formData).forEach((key) => {
+      if (key !== "image") {
+        formDataToSend.append(key, formData[key]);
+      }
+    });
+
+    formDataToSend.append("image", formData.photoVideo);
+
     if (!formData.image) {
       setImageError("Please upload a photo");
     }
@@ -104,8 +173,18 @@ const PledgeIntoAction = () => {
     }
 
     if (form.reportValidity() && formData.image && formData.video) {
-      // Handle form submission submit-cleanup-form
-      console.log(formData);
+      let provinceTitle = provinceData.results.filter(
+        (item) => item.id === formData.province
+      );
+
+      let districtTitle = districtData.results.filter(
+        (item) => item.id === formData.district
+      );
+
+      formDataToSend.append("province", provinceTitle[0].title);
+
+      formDataToSend.append("district", districtTitle[0].title);
+      setLoading(true);
 
       axios
         .post(
@@ -115,22 +194,71 @@ const PledgeIntoAction = () => {
             headers: {
               "Content-Type": "multipart/form-data",
             },
+            onUploadProgress: (progressEvent) => {
+              const percentCompleted = Math.round(
+                (progressEvent.loaded * 100) / progressEvent.total
+              );
+              setUploadProgress(percentCompleted);
+            },
           }
         )
         .then((response) => {
           if (response.data.errors) {
             response.data.errors.forEach((error) => {
-              console.log(error);
+              setLoading(false);
+              setOpen(true);
+              setSubmitStatus({
+                status: "error",
+                message: "Something went wrong. Try Again",
+              });
+              handleReset();
             });
           } else {
+            setOpen(true);
+            setLoading(false);
+            setSubmitStatus({
+              status: "success",
+              message:
+                "We have received your idea. Our team will review it and get back to you soon",
+            });
+            handleReset();
           }
+        })
+        .catch((error) => {
+          setOpen(true);
+          setLoading(false);
+          setSubmitStatus({
+            status: "error",
+            message: "Something went wrong. Try Again!",
+          });
+          handleReset();
+          console.error("There was an error!", error);
         });
     }
   };
   return (
     <>
+      <div>
+        <Snackbar
+          id="notification"
+          className={style.notificaton}
+          open={open}
+          autoHideDuration={5000}
+          onClose={handleCloseSnack}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <Alert
+            onClose={handleCloseSnack}
+            severity={submitStatus.status}
+            variant="filled"
+            sx={{ width: "100%" }}
+          >
+            {submitStatus.message}
+          </Alert>
+        </Snackbar>
+      </div>
       <form id="cleanup-form" onSubmit={handleSubmit}>
-        <Grid container rowSpacing={2} columnSpacing={2}>
+        <Grid container rowSpacing={2} columnSpacing={2} ref={elTop}>
           <Grid className={style.form_grid} item md={4}>
             <div className={style.form_box}>
               <InputLabel htmlFor="name">Full Name</InputLabel>
@@ -140,6 +268,7 @@ const PledgeIntoAction = () => {
                 value={formData.name}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -153,6 +282,7 @@ const PledgeIntoAction = () => {
                 value={formData.age}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -165,6 +295,7 @@ const PledgeIntoAction = () => {
                 value={formData.gender}
                 onChange={handleChange}
                 fullWidth
+                required
               >
                 <MenuItem value={"male"}>Male</MenuItem>
                 <MenuItem value={"female"}>Female</MenuItem>
@@ -182,6 +313,7 @@ const PledgeIntoAction = () => {
                 value={formData.province}
                 onChange={handleChange}
                 fullWidth
+                required
               >
                 {provinceData.results.map((val, index) => {
                   return (
@@ -203,6 +335,7 @@ const PledgeIntoAction = () => {
                 value={formData.district}
                 onChange={handleChange}
                 fullWidth
+                required
               >
                 {districtData.results
                   .filter((val) => val.province == formData.province)
@@ -224,6 +357,7 @@ const PledgeIntoAction = () => {
                 value={formData.municipality}
                 onChange={handleChange}
                 fullWidth
+                required
               >
                 {municipalityData.results
                   .filter((val) => val.district == formData.district)
@@ -244,6 +378,7 @@ const PledgeIntoAction = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -256,6 +391,7 @@ const PledgeIntoAction = () => {
                 value={formData.email}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -272,6 +408,7 @@ const PledgeIntoAction = () => {
                 value={formData.numOfVolunteers}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -286,6 +423,7 @@ const PledgeIntoAction = () => {
                 value={formData.wasteCollected}
                 onChange={handleChange}
                 fullWidth
+                required
               />
             </div>
           </Grid>
@@ -367,9 +505,16 @@ const PledgeIntoAction = () => {
 
           <Grid item md={4}></Grid>
           <Grid className={style.form_grid_terms} item md={4}>
-            <button className={style.pledge_btn} onClick={handleSubmit}>
-              Become a Green Warrior <SendIcon />
-            </button>
+            {loading ? (
+              <div className={style.pledge_btn}>
+                Uploading: <span>{uploadProgress}%</span>
+                <progress value={uploadProgress} max="100"></progress>
+              </div>
+            ) : (
+              <button className={style.pledge_btn} onClick={() => handleSubmit}>
+                Become a Green Warrior <SendIcon />
+              </button>
+            )}
           </Grid>
         </Grid>
       </form>

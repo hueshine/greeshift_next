@@ -1,23 +1,45 @@
-import Head from "next/head";
-import { Container, Grid } from "@mui/material";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { useState } from "react";
 
-import data from "../data.json";
+import Head from "next/head";
+import { Container } from "@mui/material";
+import { useRouter } from "next/router";
+
+import { useIsomorphicLayoutEffect } from "@/hook";
 
 import style from "../style.module.scss";
 import Banner from "../../../layout/Banner/Banner";
 
 const NewsDetail = () => {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
+  const [data, setData] = useState(null);
+
   const router = useRouter();
 
   const { name } = router.query;
 
-  let campaignData = data;
+  useIsomorphicLayoutEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        "https://app.greenshift.creasion.org/api/campaign"
+      );
+      const newData = await res.json();
+      setData(newData);
+    };
+    fetchData();
+  }, []);
 
-  const selectedCampaigns = campaignData.find(
-    (el) => el.title.toLowerCase().replace(/\s+/g, "-") === name
-  );
+  const campaign =
+    data &&
+    data.campaigns.find(
+      (el) => el.title.toLowerCase().replace(/\s+/g, "-") === name
+    );
+
+  let selectedCampaigns = null;
+  if (campaign) {
+    selectedCampaigns = [campaign];
+  }
+
   return (
     <>
       {selectedCampaigns ? (
@@ -29,19 +51,21 @@ const NewsDetail = () => {
             <meta property="og:image:height" content="442" />
           </Head>
 
-          <Banner title={selectedCampaigns.title} />
+          <Banner title={selectedCampaigns[0].title} />
 
           <div className={style.campaign_detail}>
             <Container maxWidth={"lg"}>
               <div className={style.image}>
-                <img src={selectedCampaigns.image} alt="" />
+                <img src={`${imageUrl}/${selectedCampaigns[0].image}`} alt="" />
               </div>
             </Container>
 
             <Container maxWidth="md">
               <div
                 className={style.text}
-                dangerouslySetInnerHTML={{ __html: selectedCampaigns.text }}
+                dangerouslySetInnerHTML={{
+                  __html: selectedCampaigns[0].description,
+                }}
               />
             </Container>
           </div>

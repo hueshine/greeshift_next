@@ -7,10 +7,10 @@ import { useState } from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
 
-import data from "./data.json";
+const Team = ({ apiData }) => {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
-const Team = () => {
-  const [activeData, setActiveData] = useState(data.PIT);
+  const [activeData, setActiveData] = useState(apiData.PIT);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeProfile, setActiveProfile] = useState();
 
@@ -30,7 +30,7 @@ const Team = () => {
           </div>
           <div className={style.head}>
             <div className={style.image}>
-              <img src={activeProfile.image} alt="" />
+              <img src={`${imageUrl}/${activeProfile.image}`} alt="" />
             </div>
 
             <div className={style.detail}>
@@ -59,11 +59,11 @@ const Team = () => {
     <>
       <Head>
         <title>Team | Green Shift Nepal</title>
-        <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+        {/* <meta property="og:image" content={`${imageUrl}/${apiData.banner}`} /> */}
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={"Team"} parent={"About"} />
+      <Banner title={apiData.banner_text} parent={"About"} />
 
       <Drawer
         className={style.drawer}
@@ -75,17 +75,11 @@ const Team = () => {
 
       <section className={style.team_text}>
         <Container maxWidth={"lg"}>
-          <h2>
-            A shared passion for the <em>Green Shift</em>
-          </h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa aut
-            quae voluptatum ipsa eum eaque mollitia corrupti aliquid odit.
-            Consectetur id eius accusantium. Magnam illum, libero fugit atque
-            hic nulla esse sunt accusamus eaque mollitia alias adipisci minus
-            veritatis id tempore, totam voluptates aperiam quae, officia
-            consectetur harum dolor suscipit doloremque! Eius!
-          </p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: apiData.intro,
+            }}
+          />
         </Container>
       </section>
 
@@ -94,13 +88,13 @@ const Team = () => {
           <div className={style.team_section}>
             <div className={style.section_nav}>
               <ul>
-                {data.category.map((val, index) => {
+                {apiData.category.map((val, index) => {
                   return (
                     <li
                       key={index}
                       className={activeIndex == index ? style.active : ""}
                       onClick={() => {
-                        setActiveData(data[val]);
+                        setActiveData(apiData[val]);
                         setActiveIndex(index);
                       }}
                     >
@@ -120,7 +114,7 @@ const Team = () => {
                     onClick={toggleDrawer(true, val)}
                   >
                     <div className={style.profile_image}>
-                      <img src={val.image} alt="" />
+                      <img src={`${imageUrl}/${val.image}`} alt="" />
                     </div>
                     <h5>{val.name}</h5>
                     <p>{val.designation}</p>
@@ -136,6 +130,19 @@ const Team = () => {
       </section>
     </>
   );
+};
+
+export const getStaticProps = async ({}) => {
+  // Fetch additional data from the API
+  const response = await fetch("https://app.greenshift.creasion.org/api/team");
+  const apiData = await response.json();
+
+  return {
+    props: {
+      apiData,
+    },
+    revalidate: 30,
+  };
 };
 
 export default Team;

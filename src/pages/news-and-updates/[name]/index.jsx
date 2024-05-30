@@ -1,23 +1,40 @@
+import React, { useState } from "react";
+
 import Head from "next/head";
 import { Container, Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import newsData from "../data.json";
+import { useIsomorphicLayoutEffect } from "@/hook";
 
 import style from "../news.module.scss";
 import Banner from "../../../layout/Banner/Banner";
 
 const NewsDetail = () => {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+  const [dataNews, setDataNews] = useState(null);
+
   const router = useRouter();
 
   const { name } = router.query;
 
-  let news = newsData.news;
+  useIsomorphicLayoutEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("https://app.greenshift.creasion.org/api/news");
+      const newData = await res.json();
+      setDataNews(newData.news);
+    };
+    fetchData();
+  }, []);
 
-  const selectedNews = news.find(
-    (el) => el.title.toLowerCase().replace(/\s+/g, "-") === name
-  );
+  const NewsSingle =
+    dataNews &&
+    dataNews.find((el) => el.title.toLowerCase().replace(/\s+/g, "-") === name);
+
+  let selectedNews = null;
+  if (NewsSingle) {
+    selectedNews = [NewsSingle];
+  }
   return (
     <>
       {selectedNews ? (
@@ -33,17 +50,17 @@ const NewsDetail = () => {
           <section className={style.newsDetail}>
             <Container maxWidth={"lg"}>
               <div className={style.newsDetail_title}>
-                <h2>{selectedNews.title}</h2>
+                <h2>{selectedNews[0].title}</h2>
                 <p>
-                  <small>{selectedNews.date}</small>
+                  <small>{selectedNews[0].date}</small>
                 </p>
 
-                <img src={selectedNews.image} alt="" />
+                <img src={`${imageUrl}/${selectedNews[0].image}`} alt="" />
               </div>
 
               <div
                 className={style.newsDetail_text}
-                dangerouslySetInnerHTML={{ __html: selectedNews.text }}
+                dangerouslySetInnerHTML={{ __html: selectedNews[0].text }}
               />
             </Container>
           </section>
@@ -51,40 +68,6 @@ const NewsDetail = () => {
       ) : (
         ""
       )}
-
-      <section className={style.recent_news}>
-        <Container maxWidth={"lg"}>
-          <h2>Recent News & Updates</h2>
-
-          <Grid container spacing={3}>
-            {news.slice(0, 3).map((val, index) => {
-              let link = val.title.toLowerCase().replace(/\s+/g, "-");
-
-              return (
-                <Grid item md={4} key={index}>
-                  <div className={style.news_wrap}>
-                    <div className={style.news_wrap_text}>
-                      <h6>{val.title}</h6>
-
-                      <span>{val.date}</span>
-
-                      <div
-                        className={style.news_wrap_text_description}
-                        dangerouslySetInnerHTML={{ __html: val.text }}
-                      />
-
-                      <Link href={`/news-and-updates/${link}`}>Read More</Link>
-                    </div>
-                    <div className={style.news_wrap_image}>
-                      <img src={val.image} alt="" />
-                    </div>
-                  </div>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Container>
-      </section>
     </>
   );
 };
