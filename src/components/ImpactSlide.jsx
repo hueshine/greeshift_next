@@ -6,7 +6,9 @@ import homeStyle from "@/styles/home.module.scss";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
-const ImpactSlide = () => {
+const ImpactSlide = ({ data }) => {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
   useIsomorphicLayoutEffect(() => {
     let impactBoxes = document.querySelectorAll(".impact_box");
     let maxHeight = 0;
@@ -53,81 +55,21 @@ const ImpactSlide = () => {
         },
       }}
     >
-      <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
-        <div>
-          <img src="/impact_icon/co2emission.svg" alt="" />
-          <h3>
-            1000<span></span>
-          </h3>
-          <p>Tons Plastic waste collected</p>
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
-        <div>
-          <img src="/impact_icon/community.svg" alt="" />
-
-          <h3>
-            20<span></span>
-          </h3>
-          <p>Youth led campaigns</p>
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
-        <div>
-          <img src="/impact_icon/contract.svg" alt="" />
-
-          <h3>
-            600<span></span>
-          </h3>
-          <p>Tag-me app data points collected</p>
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
-        <div>
-          <img src="/impact_icon/plastic_waste_collected.svg" alt="" />
-
-          <h3>
-            1520<span></span>
-          </h3>
-          <p>Students reached</p>
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
-        <div>
-          <img src="/impact_icon/community.svg" alt="" />
-
-          <h3>
-            20<span></span>
-          </h3>
-          <p>Youth led campaigns</p>
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
-        <div>
-          <img src="/impact_icon/school.svg" alt="" />
-
-          <h3>
-            4686<span></span>
-          </h3>
-          <p>Tons of CO2 emissions avoided ​</p>
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide className={`${homeStyle.impact_box} impact_box`}>
-        <div>
-          <img src="/impact_icon/youth.svg" alt="" />
-
-          <h3>
-            650<span></span>
-          </h3>
-          <p>Direct and indirect employment generated </p>
-        </div>
-      </SwiperSlide>
+      {data.map((val, index) => (
+        <SwiperSlide
+          key={index}
+          className={`${homeStyle.impact_box} impact_box`}
+        >
+          <div>
+            <img src={`${imageUrl}/${val.image}`} alt="" />
+            <h3>
+              {val.title}
+              <span></span>
+            </h3>
+            <p>{val.subtitle}</p>
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

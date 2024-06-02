@@ -4,9 +4,8 @@ import Head from "next/head";
 import style from "./style.module.scss";
 import { Container, Grid, Link } from "@mui/material";
 
-import data from "./data.json";
-
-const Blogs = () => {
+const Blogs = ({ apiData }) => {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
   return (
     <>
       <Head>
@@ -22,7 +21,7 @@ const Blogs = () => {
         <meta property="og:image:height" content="442" />
       </Head>
 
-      <Banner title={"Blogs & Field Stories"} parent={"Knowledge Hub"} />
+      <Banner title={apiData.banner_text} parent={"Knowledge Hub"} />
 
       <div className={style.blog_wrapper}>
         <Container maxWidth={"lg"}>
@@ -30,21 +29,21 @@ const Blogs = () => {
             <Grid item md={12}>
               <div className={style.blog_latest}>
                 <div className={style.image}>
-                  <img src={data[0].image} alt="" />
+                  <img src={`${imageUrl}/${apiData.blogs[0].image}`} alt="" />
                 </div>
                 <div className={style.text}>
-                  <h4>{data[0].title}</h4>
+                  <h4>{apiData.blogs[0].title}</h4>
                   <span>
-                    {data[0].author} | {data[0].date}
+                    {apiData.blogs[0].author} | {apiData.blogs[0].date}
                   </span>
 
                   <div
                     className={style.blog_text}
-                    dangerouslySetInnerHTML={{ __html: data[0].text }}
+                    dangerouslySetInnerHTML={{ __html: apiData.blogs[0].text }}
                   />
 
                   <Link
-                    href={`/blog-and-field-stories/${data[0].title
+                    href={`/blog-and-field-stories/${apiData.blogs[0].title
                       .toLowerCase()
                       .replace(/\s+/g, "-")}`}
                   >
@@ -54,13 +53,13 @@ const Blogs = () => {
               </div>
             </Grid>
 
-            {data.slice(1).map((val, index) => {
+            {apiData.blogs.slice(1).map((val, index) => {
               let link = val.title.toLowerCase().replace(/\s+/g, "-");
               return (
                 <Grid key={index} item md={4}>
                   <div className={style.blog_grid}>
                     <div className={style.image}>
-                      <img src={val.image} alt="" />
+                      <img src={`${imageUrl}/${val.image}`} alt="" />
                     </div>
                     <div className={style.text}>
                       <h4>{val.title}</h4>
@@ -86,6 +85,19 @@ const Blogs = () => {
       </div>
     </>
   );
+};
+
+export const getStaticProps = async ({}) => {
+  // Fetch additional data from the API
+  const response = await fetch("https://app.greenshift.creasion.org/api/blogs");
+  const apiData = await response.json();
+
+  return {
+    props: {
+      apiData,
+    },
+    revalidate: 30,
+  };
 };
 
 export default Blogs;

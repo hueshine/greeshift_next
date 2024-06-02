@@ -5,7 +5,6 @@ import { Container, Grid, Link } from "@mui/material";
 import style from "./style.module.scss";
 
 const GreenShiftCampaign = ({ apiData }) => {
-  console.log(apiData);
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
   return (

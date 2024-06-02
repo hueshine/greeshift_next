@@ -8,9 +8,8 @@ import { Container } from "@mui/material";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
-import data from "./data.json";
-
-const Quiz = () => {
+const Quiz = ({ apiData }) => {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
   gsap.registerPlugin(ScrollToPlugin);
 
   const elTop = useRef(null);
@@ -27,7 +26,7 @@ const Quiz = () => {
     wrongAnswers: 0,
   });
 
-  const questions = data;
+  const questions = apiData;
 
   const { question, image, answers, correctAnswer, review } =
     questions[currentQuestionIndex];
@@ -103,8 +102,6 @@ const Quiz = () => {
       <div className={style.wrapper} ref={elTop}>
         <div className={style.quiz_title}>
           <Container maxWidth={"md"}>
-            {/* <h2>Plastic Pollution Quiz</h2> */}
-
             <p>
               How much do you know about the threats that our planet faces from
               plastic pollution?
@@ -120,7 +117,7 @@ const Quiz = () => {
               <div className={style.question}>
                 <h4>{question}</h4>
 
-                <img src={image} alt="" />
+                <img src={`${imageUrl}/${image}`} alt="" />
               </div>
 
               <div className={style.options_wrap}>
@@ -178,10 +175,6 @@ const Quiz = () => {
             </>
           ) : (
             <div className={style.result}>
-              {/* <div className={style.image}>
-                <img src="/quiz-result.svg" alt="" />
-              </div> */}
-
               <div className={style.result_box}>
                 <div className={style.box}>
                   <svg x="0px" y="0px" viewBox="0 0 150 150">
@@ -235,33 +228,25 @@ const Quiz = () => {
                   <p>Incorrect Answers</p>
                 </div>
               </div>
-
-              {/* <table className="table">
-                <tbody>
-                  <tr>
-                    <td>Total Questions:</td>
-                    <td>{questions.length}</td>
-                  </tr>
-                  <tr>
-                    <td>Total Score:</td>
-                    <td>{quizResult.score}</td>
-                  </tr>
-                  <tr>
-                    <td>Correct Answers:</td>
-                    <td>{quizResult.correctAnswers}</td>
-                  </tr>
-                  <tr>
-                    <td>Wrong Answers:</td>
-                    <td>{quizResult.wrongAnswers}</td>
-                  </tr>
-                </tbody>
-              </table> */}
             </div>
           )}
         </Container>
       </div>
     </>
   );
+};
+
+export const getStaticProps = async ({}) => {
+  // Fetch additional data from the API
+  const response = await fetch("https://app.greenshift.creasion.org/api/quiz");
+  const apiData = await response.json();
+
+  return {
+    props: {
+      apiData,
+    },
+    revalidate: 30,
+  };
 };
 
 export default Quiz;

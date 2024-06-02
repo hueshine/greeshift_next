@@ -6,105 +6,10 @@ import "swiper/css";
 
 import homeStyle from "@/styles/home.module.scss";
 
-const Partners = () => {
-  let partnersData = [
-    {
-      categoryID: 1,
-      categoryTitle: "FINANCIAL SUPPORT",
-      title: "",
-      logo: "./eu.png",
-      link: "https://european-union.europa.eu/index_en",
-    },
-    {
-      categoryID: 2,
-      categoryTitle: "CONSORTIUM Partners ",
-      title: "",
-      logo: "./creasion 1.png",
-      link: "https://creasion.org/",
-    },
-    {
-      categoryID: 2,
-      categoryTitle: "Consortium Partners ",
-      title: "",
-      logo: "./Youth_Innovation_Lab.png",
-      link: "https://www.youthinnovationlab.org/",
-    },
-    {
-      categoryID: 2,
-      categoryTitle: "Consortium Partners ",
-      title: "",
-      logo: "./restless_development.png",
-      link: "https://restlessdevelopment.org/country/nepal/",
-    },
+const Partners = ({ data }) => {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/1.png",
-      link: "",
-    },
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/2.png",
-      link: "",
-    },
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/3.png",
-      link: "",
-    },
-
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/4.png",
-      link: "",
-    },
-
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/5.png",
-      link: "",
-    },
-
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/6.png",
-      link: "",
-    },
-
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/7.png",
-      link: "",
-    },
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/8.png",
-      link: "",
-    },
-    {
-      categoryID: 3,
-      categoryTitle: "Goverment Partners ",
-      title: "",
-      logo: "/Municipalities/9.png",
-      link: "",
-    },
-  ];
+  let partnersData = data.partner;
 
   const groupData = partnersData.reduce((acc, partner) => {
     acc[partner.categoryID] = acc[partner.categoryID] || [];
@@ -133,7 +38,10 @@ const Partners = () => {
                 <div className={homeStyle.partner_logo_wrapper}>
                   {groupData[categoryID].map((partner) => (
                     <a href={partner.link} key={partner.logo} target="_blank">
-                      <img src={partner.logo} alt={partner.title} />
+                      <img
+                        src={`${imageUrl}/${partner.logo}`}
+                        alt={partner.title}
+                      />
                     </a>
                   ))}
                 </div>
@@ -166,7 +74,10 @@ const Partners = () => {
                       style={{ textAlign: "center" }}
                     >
                       <a href={partner.link} target="_blank">
-                        <img src={partner.logo} alt={partner.title} />
+                        <img
+                          src={`${imageUrl}/${partner.logo}`}
+                          alt={partner.title}
+                        />
                       </a>
                     </SwiperSlide>
                   ))}

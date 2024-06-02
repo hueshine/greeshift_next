@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 import { Container, Grid } from "@mui/material";
 import homeStyle from "../styles/home.module.scss";
-import Button from "@/components/Button/Button";
+// import Button from "@/components/Button/Button";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -10,9 +10,10 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 // hooks
 import { useIsomorphicLayoutEffect } from "@/hook";
 
-import data from "@/pages/focus-area/data.json";
+const HomeFocusArea = ({ focusData }) => {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
-const HomeFocusArea = () => {
+  let data = focusData.areas;
   const cardRrefs = useRef([]);
 
   useIsomorphicLayoutEffect(() => {
@@ -92,7 +93,7 @@ const HomeFocusArea = () => {
                       alt=""
                       className={`${homeStyle.lineart} lineart`}
                     />
-                    <img src={val.image[0]} alt="" />
+                    <img src={`${imageUrl}/${val.image[0]}`} alt="" />
                   </div>
                 </Grid>
 

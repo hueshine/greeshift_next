@@ -19,13 +19,39 @@ import "swiper/css";
 
 import Link from "next/link";
 
-import newsJSON from "./news-and-updates/data.json";
-
-let newsData = newsJSON.news;
-
 interface DashboardData {}
 
-export default function Home({ apiMapData }: { apiMapData: DashboardData }) {
+interface FocusData {}
+
+interface HomeData {
+  og_image: any;
+  homepage: any;
+  impacts: any;
+}
+
+interface NewsItem {
+  title: string;
+  date: string;
+  text: string;
+  image: string;
+}
+
+interface NewsData {
+  news: NewsItem[];
+}
+
+export default function Home({
+  apiMapData,
+  apiFocusArea,
+  apiNewsData,
+  apiHomeData,
+}: {
+  apiMapData: DashboardData;
+  apiFocusArea: FocusData;
+  apiNewsData: NewsData;
+  apiHomeData: HomeData;
+}) {
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
   return (
     <>
       <Head>
@@ -36,7 +62,10 @@ export default function Home({ apiMapData }: { apiMapData: DashboardData }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:image" content="./focusarea1.png" />
+        <meta
+          property="og:image"
+          content={`${imageUrl}/${apiHomeData.og_image}`}
+        />
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
@@ -50,63 +79,35 @@ export default function Home({ apiMapData }: { apiMapData: DashboardData }) {
 
           <Container id="introContainer" maxWidth={"md"}>
             <div className={homeStyle.introAbout_text}>
-              <h2>
-                Circularity of Plastic Waste for <span>Net-Zero Carbon</span>{" "}
-                Nepal
-              </h2>
-
-              <p>
-                GreenShift Nepal project is funded by the European Union to
-                promote a just transition to circular economy. GreenShift Nepal
-                is a four-year project which will be implemented in 9
-                municipalities – 3 in each of Bagmati, Madhesh, and Lumbini
-                provinces.
-              </p>
-
-              <p>
-                The project implementation is led by{" "}
-                <a href="" target="_blank">
-                  CREASION
-                </a>{" "}
-                through the consortium partners{" "}
-                <a href="" target="_blank">
-                  Restless Development
-                </a>
-                , and
-                <a href="" target="_blank">
-                  {" "}
-                  Youth Innovation Lab.
-                </a>
-              </p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: apiHomeData.homepage.impacts,
+                }}
+              />
             </div>
           </Container>
 
           <Container className={homeStyle.impact_slider} maxWidth={"lg"}>
-            <ImpactSlide />
+            <ImpactSlide data={apiHomeData.impacts} />
           </Container>
         </section>
       </section>
 
       <section className={homeStyle.focus_area}>
         <h2 style={{ textAlign: "center" }}>
-          <span>Focus Areas</span>
+          <span>{apiHomeData.homepage.area_title}</span>
         </h2>
 
         <Container maxWidth="lg" style={{ textAlign: "center" }}>
-          <p>
-            GreenShift Nepal will work with waste enterprises, SMEs, CSOs of
-            waste workers, youths, school children, and three tiers of
-            government in the promotion of circular economy of plastics.
-          </p>
+          <p>{apiHomeData.homepage.area_description}</p>
         </Container>
 
         <div className={homeStyle.focusBox}>
-          <HomeFocusArea />
+          <HomeFocusArea focusData={apiFocusArea} />
         </div>
       </section>
 
       <div className={homeStyle.home_map}>
-        {/* <h2>Project Areas</h2> */}
         <MapComponent mapData={apiMapData} />
       </div>
 
@@ -114,12 +115,11 @@ export default function Home({ apiMapData }: { apiMapData: DashboardData }) {
         <Container maxWidth="lg">
           <div className={homeStyle.home_news_flex}>
             <div className={homeStyle.home_news_title}>
-              <h2>News & Updates</h2>
-              <p>
-                GreenShift Nepal will work with waste enterprises, SMEs, CSOs of
-                waste workers, youths, school children, and three tiers of
-                government in the promotion of circular economy of plastics.
-              </p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: apiHomeData.homepage.news,
+                }}
+              />
 
               <Button text={"More News & Updates"} link={"/"} />
             </div>
@@ -145,7 +145,7 @@ export default function Home({ apiMapData }: { apiMapData: DashboardData }) {
                   },
                 }}
               >
-                {newsData.map((val, index) => {
+                {apiNewsData.news.map((val, index) => {
                   return (
                     <SwiperSlide key={index}>
                       <div className={homeStyle.news_wrap}>
@@ -162,7 +162,7 @@ export default function Home({ apiMapData }: { apiMapData: DashboardData }) {
                           <Link href={"/"}>Read More</Link>
                         </div>
                         <div className={homeStyle.news_wrap_image}>
-                          <img src={val.image} alt="" />
+                          <img src={`${imageUrl}/${val.image}`} alt="" />
                         </div>
                       </div>
                     </SwiperSlide>
@@ -174,7 +174,7 @@ export default function Home({ apiMapData }: { apiMapData: DashboardData }) {
         </Container>
       </section>
       <section className={homeStyle.partners}>
-        <Partners />
+        <Partners data={apiHomeData} />
       </section>
     </>
   );
@@ -186,9 +186,23 @@ export async function getStaticProps() {
   );
   const apiMapData = await resMap.json();
 
+  const focusArea = await fetch("https://app.greenshift.creasion.org/api/area");
+  const apiFocusArea = await focusArea.json();
+
+  const news = await fetch("https://app.greenshift.creasion.org/api/news");
+  const apiNewsData = await news.json();
+
+  const homeData = await fetch(
+    "https://app.greenshift.creasion.org/api/homepage"
+  );
+  const apiHomeData = await homeData.json();
+
   return {
     props: {
       apiMapData,
+      apiFocusArea,
+      apiNewsData,
+      apiHomeData,
     },
     revalidate: 30,
   };

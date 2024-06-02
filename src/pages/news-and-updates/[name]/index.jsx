@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { Container, Grid } from "@mui/material";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
@@ -40,7 +39,7 @@ const NewsDetail = () => {
       {selectedNews ? (
         <>
           <Head>
-            <title>{selectedNews.title} | Green Shift Nepal</title>
+            <title>{selectedNews[0].title} | Green Shift Nepal</title>
             <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
             <meta property="og:image:width" content="640" />
             <meta property="og:image:height" content="442" />
