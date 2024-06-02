@@ -16,7 +16,7 @@ const index = ({ apiData }) => {
   return (
     <>
       <Head>
-        <title>{apiData.page_title} | Green Shift Nepal</title>
+        <title>Focus Areas | Green Shift Nepal</title>
         <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
@@ -122,17 +122,17 @@ const index = ({ apiData }) => {
   );
 };
 
-  export const getStaticProps = async ({}) => {
-    // Fetch additional data from the API
-    const response = await fetch("https://app.greenshift.creasion.org/api/area");
-    const apiData = await response.json();
+export const getStaticProps = async ({}) => {
+  // Fetch additional data from the API
+  const response = await fetch("https://app.greenshift.creasion.org/api/area");
+  const apiData = await response.json();
 
-    return {
-      props: {
-        apiData,
-      },
-      revalidate: 30,
-    };
+  return {
+    props: {
+      apiData,
+    },
+    revalidate: 30,
   };
+};
 
 export default index;
