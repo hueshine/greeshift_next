@@ -12,7 +12,7 @@ import style from "./style.module.scss";
 
 import Fancybox from "../../components/Fancybox";
 
-const Focus = () => {
+const Focus = ({ apiData }) => {
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
   return (
     <>
@@ -22,9 +22,22 @@ const Focus = () => {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={"Focus Area"} parent={"About"} />
+      <Banner title={apiData.banner_text} parent={"About"} />
     </>
   );
+};
+
+export const getStaticProps = async ({}) => {
+  // Fetch additional data from the API
+  const response = await fetch("https://app.greenshift.creasion.org/api/area");
+  const apiData = await response.json();
+
+  return {
+    props: {
+      apiData,
+    },
+    revalidate: 30,
+  };
 };
 
 export default Focus;
