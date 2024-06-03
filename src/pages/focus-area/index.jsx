@@ -21,9 +21,9 @@ const FocusArea = ({ apiData }) => {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={apiData.banner_text} parent={"About"} />
-
-      {apiData.areas.map((val, index) => {
+      <Banner title={"apiData.banner_text"} parent={"About"} />
+      Test Page
+      {/* {apiData.areas.map((val, index) => {
         return (
           <section
             className={style.focuarea_main}
@@ -117,7 +117,7 @@ const FocusArea = ({ apiData }) => {
             </Fancybox>
           </section>
         );
-      })}
+      })} */}
     </>
   );
 };

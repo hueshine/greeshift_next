@@ -121,7 +121,7 @@ export default function Home({
                 }}
               />
 
-              <Button text={"More News & Updates"} link={"/"} />
+              <Button text={"More News & Updates"} link={"/news-and-updates"} />
             </div>
 
             <div className={homeStyle.home_news_slide}>
@@ -146,6 +146,7 @@ export default function Home({
                 }}
               >
                 {apiNewsData.news.map((val, index) => {
+                  let link = val.title.toLowerCase().replace(/\s+/g, "-");
                   return (
                     <SwiperSlide key={index}>
                       <div className={homeStyle.news_wrap}>
@@ -159,7 +160,9 @@ export default function Home({
                             dangerouslySetInnerHTML={{ __html: val.text }}
                           />
 
-                          <Link href={"/"}>Read More</Link>
+                          <Link href={`/news-and-updates/${link}`}>
+                            Read More
+                          </Link>
                         </div>
                         <div className={homeStyle.news_wrap_image}>
                           <img src={`${imageUrl}/${val.image}`} alt="" />
