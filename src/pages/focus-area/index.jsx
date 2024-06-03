@@ -10,7 +10,7 @@ import style from "./style.module.scss";
 
 import Fancybox from "../../components/Fancybox";
 
-const index = ({ apiData }) => {
+const FocusArea = ({ apiData }) => {
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
   return (
@@ -135,4 +135,4 @@ export const getStaticProps = async ({}) => {
   };
 };
 
-export default index;
+export default FocusArea;

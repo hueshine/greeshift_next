@@ -214,3 +214,29 @@
     }
   }
 }
+.result_text {
+  margin-top: 60px;
+  text-align: center;
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  a {
+    justify-content: center;
+    margin-top: 30px;
+
+    span {
+      font-size: 18px;
+      color: #03aab5;
+    }
+
+    div {
+      border: 2px solid #03aab5 !important;
+
+      svg {
+        color: #03aab5;
+      }
+    }
+  }
+}

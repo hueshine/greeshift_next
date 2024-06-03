@@ -30,6 +30,7 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import style from "../style.module.scss";
+import Link from "next/link";
 
 const steps = ["Personal Information", "Contact Information", "Pledge to"];
 
@@ -217,12 +218,16 @@ const Pledge = () => {
                     onChange={handleChange}
                     fullWidth
                   >
-                    <MenuItem value={"dalit"}>Dalit</MenuItem>
-                    <MenuItem value={"janajati"}>Janajati (Others)</MenuItem>
-                    <MenuItem value={"madhesi"}>Madhesi</MenuItem>
-                    <MenuItem value={"muslim"}>Muslim</MenuItem>
-                    <MenuItem value={"tharu"}>Tharu</MenuItem>
-                    <MenuItem value={"none"}>None of the above</MenuItem>
+                    <MenuItem value={"Dalit"}>Dalit</MenuItem>
+                    <MenuItem value={"Janajati"}>Janajati (Others)</MenuItem>
+                    <MenuItem value={"Madhesi"}>Madhesi</MenuItem>
+                    <MenuItem value={"Muslim"}>Muslim</MenuItem>
+                    <MenuItem value={"Tharu"}>Tharu</MenuItem>
+                    <MenuItem value={"Brahmin/Chhetri"}>
+                      Brahmin/Chhetri
+                    </MenuItem>
+
+                    <MenuItem value={"Others"}>Others</MenuItem>
                   </Select>
                 </div>
               </Grid>
@@ -502,12 +507,13 @@ const Pledge = () => {
                     <h2>
                       <span>Congratulations!</span>
                     </h2>
-                    <h4>
-                      You are now a part of the <span>Green Movement!</span>
-                    </h4>
+                    <h4>You are now a part of the Green Movement!</h4>
                     <p>
-                      To take your pledge into action, here are a few ways you
-                      can become a Green Warrior!
+                      To take your{" "}
+                      <Link href={"/join-the-green-movement/pitch-your-ideas"}>
+                        Pledge into action{" "}
+                      </Link>
+                      , here are a few ways you can become a Green Warrior!
                     </p>
 
                     <div className={style.pledge_into_action}>

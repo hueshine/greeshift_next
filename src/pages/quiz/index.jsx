@@ -5,6 +5,8 @@ import Banner from "../../layout/Banner/Banner";
 import style from "./style.module.scss";
 import { Container } from "@mui/material";
 
+import Button from "@/components/Button/Button";
+
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
@@ -227,6 +229,27 @@ const Quiz = ({ apiData }) => {
 
                   <p>Incorrect Answers</p>
                 </div>
+              </div>
+
+              <div className={style.result_text}>
+                <h3>
+                  Did you get a chance to reflect on the current state of
+                  plastic pollution around the world?{" "}
+                </h3>
+                <p>
+                  The situation is dire, but it has the potential to become even
+                  worse. Now is the time to act. Let's each do our part to
+                  create a cleaner, healthier planet.{" "}
+                </p>
+                <p>
+                  Take the pledge today and turn your commitment into meaningful
+                  action!
+                </p>
+
+                <Button
+                  text="Take the Pledge"
+                  link={"/join-the-green-movement/pledge"}
+                />
               </div>
             </div>
           )}
