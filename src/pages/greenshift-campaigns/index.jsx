@@ -38,44 +38,6 @@ const GreenShiftCampaign = ({ apiData }) => {
           />
         </Container>
       </section>
-
-      <section className={style.campaign_wrap}>
-        <Container>
-          <div
-            className={style.news_wrap_text_description}
-            dangerouslySetInnerHTML={{
-              __html: apiData.header.basic_post_description,
-            }}
-          />
-
-          <Grid container columnSpacing={4} justifyContent={"center"}>
-            {apiData.campaigns.map((val, index) => {
-              let link = val.title.toLowerCase().replace(/\s+/g, "-");
-
-              return (
-                <Grid item md={4} key={index}>
-                  <div className={style.campaign_card}>
-                    <img src={`${imageUrl}/${val.image}`} alt="" />
-
-                    <div className={style.text}>
-                      <h4>{val.title}</h4>
-
-                      <div
-                        className={style.text_short}
-                        dangerouslySetInnerHTML={{ __html: val.text }}
-                      />
-
-                      <Link href={`/greenshift-campaigns/${link}`}>
-                        Learn More{" "}
-                      </Link>
-                    </div>
-                  </div>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Container>
-      </section>
     </>
   );
 };

@@ -219,6 +219,13 @@ const Header = () => {
 
                     <Link
                       className="btn-page"
+                      href={"/greenshift-campaigns/campaigns"}
+                    >
+                      Campaigns
+                    </Link>
+
+                    <Link
+                      className="btn-page"
                       href={"/join-the-green-movement/pledge"}
                     >
                       (Realistic) Pledge{" "}
@@ -249,6 +256,12 @@ const Header = () => {
                   <div className={headerStyle.wrap}>
                     <Link href={"/greenshift-campaigns"}>
                       What is the GreenShift Campaign?
+                    </Link>
+                    <Link
+                      className="btn-page"
+                      href={"/greenshift-campaigns/campaigns"}
+                    >
+                      Campaigns
                     </Link>
                     <Link href={"/join-the-green-movement/pledge"}>
                       (Realistic) Pledge{" "}
