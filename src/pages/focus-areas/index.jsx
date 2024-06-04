@@ -11,10 +11,7 @@ import style from "./style.module.scss";
 import Fancybox from "../../components/Fancybox";
 import data from "./data.json";
 
-const News = ({ apiData }) => {
-  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
-
-  console.log(apiData);
+const News = () => {
   return (
     <>
       <Head>
@@ -30,7 +27,7 @@ const News = ({ apiData }) => {
         <meta property="og:image:height" content="442" />
       </Head>
 
-      <Banner title={apiData.banner_text} parent={"About"} />
+      <Banner title={"Focus Areas"} parent={"Green Shift"} />
 
       {data.map((val, index) => {
         return (
@@ -129,19 +126,6 @@ const News = ({ apiData }) => {
       })}
     </>
   );
-};
-
-export const getStaticProps = async ({}) => {
-  // Fetch additional data from the API
-  const response = await fetch("https://app.greenshift.creasion.org/api/area");
-  const apiData = await response.json();
-
-  return {
-    props: {
-      apiData,
-    },
-    revalidate: 30,
-  };
 };
 
 export default News;
