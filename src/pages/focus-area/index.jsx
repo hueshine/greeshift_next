@@ -29,7 +29,7 @@ const Focus = ({ apiData }) => {
 
 export const getStaticProps = async ({}) => {
   // Fetch additional data from the API
-  const response = await fetch("https://app.greenshift.creasion.org/api/area");
+  const response = await fetch("https://app.greenshift.creasion.org/api/blogs");
   const apiData = await response.json();
 
   return {
