@@ -202,6 +202,9 @@ const Header = () => {
                     <Link className="btn-page" href={"/news-and-updates"}>
                       News & Updates{" "}
                     </Link>
+                    <Link className="btn-page" href={"/media"}>
+                      Media
+                    </Link>
                   </div>
                 </div>
               </li>

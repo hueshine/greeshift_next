@@ -6,11 +6,11 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 
 import Button from "@/components/Button/Button";
 
-import data from "./data.json";
+// import data from "./data.json";
 
 import style from "./style.module.scss";
 
-const Media = () => {
+const Media = ({ apiData }) => {
   return (
     <>
       <Head>
@@ -19,13 +19,13 @@ const Media = () => {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={data.banner_text} parent={"Knowledge Hub"} />
+      <Banner title={apiData.banner_text} parent={"Knowledge Hub"} />
 
       <section className={style.about}>
         <Container maxWidth="lg">
           <div
             dangerouslySetInnerHTML={{
-              __html: data.text,
+              __html: apiData.text,
             }}
           />
         </Container>
@@ -34,18 +34,22 @@ const Media = () => {
       <section className={style.media_wrap}>
         <Container maxWidth={"lg"}>
           <Grid container spacing={4}>
-            {data.events.map((val, index) => {
+            {apiData.events.map((val, index) => {
+              let link = val.title.toLowerCase().replace(/\s+/g, "-");
               return (
                 <Grid item sm={6} key={index}>
                   <div className={style.media_list}>
                     <div className={style.title}>
-                      <Link href={"/"}>
+                      <Link href={`/media/${link}`}>
                         <h5>{val.title}</h5>
                       </Link>
                     </div>
 
                     <div className={style.footer}>
-                      <Button text={"Read More"} link={"/"}></Button>
+                      <Button
+                        text={"Read More"}
+                        link={`/media/${link}`}
+                      ></Button>
 
                       <p>
                         <CalendarTodayIcon />
@@ -61,6 +65,19 @@ const Media = () => {
       </section>
     </>
   );
+};
+
+export const getStaticProps = async ({}) => {
+  // Fetch additional data from the API
+  const response = await fetch("https://app.greenshift.creasion.org/api/media");
+  const apiData = await response.json();
+
+  return {
+    props: {
+      apiData,
+    },
+    revalidate: 30,
+  };
 };
 
 export default Media;

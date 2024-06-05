@@ -35,10 +35,9 @@
 
   h6 {
     margin-bottom: 20px;
-    font-family: "Source Sans Pro";
     font-weight: 600;
     color: #addfe1;
-    font-size: 22px;
+    font-size: 20px;
     opacity: 0.9;
     text-transform: uppercase;
   }
@@ -70,7 +69,7 @@
 /* Animation */
 
 .parallax > use {
-  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  animation: move-forever 25s cubic-bezier(0.95, 0.95, 0.95, 0.95) infinite;
 }
 .parallax > use:nth-child(1) {
   animation-delay: -2s;

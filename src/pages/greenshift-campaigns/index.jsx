@@ -2,6 +2,7 @@ import Banner from "../../layout/Banner/Banner";
 import Head from "next/head";
 import { Container, Grid, Link } from "@mui/material";
 
+import Button from "@/components/Button/Button";
 import style from "./style.module.scss";
 
 const GreenShiftCampaign = ({ apiData }) => {
@@ -36,6 +37,13 @@ const GreenShiftCampaign = ({ apiData }) => {
               __html: apiData.header.basic_description,
             }}
           />
+
+          <div className={style.see_more}>
+            <Button
+              text={"GreenShift Campaigns"}
+              link={`/greenshift-campaigns/campaigns`}
+            ></Button>
+          </div>
         </Container>
       </section>
     </>
