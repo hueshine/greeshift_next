@@ -11,7 +11,7 @@ import style from "./style.module.scss";
 import Fancybox from "../../components/Fancybox";
 import data from "./data.json";
 
-const News = ({ apiData }) => {
+const News = () => {
   return (
     <>
       <Head>
@@ -128,30 +128,4 @@ const News = ({ apiData }) => {
   );
 };
 
-export const getStaticProps = async () => {
-  try {
-    const response = await fetch(
-      "https://app.greenshift.creasion.org/api/blogs"
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const apiData = await response.json();
-    return {
-      props: {
-        apiData,
-      },
-      revalidate: 30,
-    };
-  } catch (error) {
-    console.error("Error fetching data:", error.message);
-    return {
-      props: {
-        apiData: [],
-        error: error.message,
-      },
-      revalidate: 30,
-    };
-  }
-};
 export default News;
