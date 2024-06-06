@@ -11,13 +11,36 @@ const mapStyleLine = {
   },
 };
 
-const mapStyleFill = {
-  id: "map_style_fill",
+const bagmatiMapFill = {
+  id: "bagmatiMap",
   type: "fill",
   layout: {},
   paint: {
-    "fill-color": "#33b2b6",
-    "fill-opacity": 0.75,
+    "fill-color": "#22bf52",
+    "fill-opacity": 0.55,
+    "fill-outline-color": "#ffffff",
+  },
+};
+
+const madeshMapFill = {
+  id: "madeshMap",
+  type: "fill",
+  layout: {},
+  paint: {
+    "fill-color": "#29dadf",
+    "fill-opacity": 0.65,
+    "fill-outline-color": "#ffffff",
+  },
+};
+
+const lumbiniMapFill = {
+  id: "lumbiniMap",
+  type: "fill",
+  layout: {},
+  paint: {
+    "fill-color": "#21a4a5",
+    "fill-opacity": 0.95,
+    "fill-outline-color": "#ffffff",
   },
 };
 
@@ -30,4 +53,22 @@ const viewportCommon = {
   scrollZoom: false,
 };
 
-export { mapStyleLine, mapStyleFill, viewportCommon };
+const mapStyleFill = {
+  id: "map_style_fill",
+  type: "fill",
+  layout: {},
+  paint: {
+    "fill-color": "#f7c624",
+    "fill-opacity": 0.55,
+    "fill-outline-color": "#ffffff",
+  },
+};
+
+export {
+  mapStyleLine,
+  bagmatiMapFill,
+  madeshMapFill,
+  lumbiniMapFill,
+  mapStyleFill,
+  viewportCommon,
+};

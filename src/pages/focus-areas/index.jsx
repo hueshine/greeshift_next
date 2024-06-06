@@ -11,7 +11,7 @@ import style from "./style.module.scss";
 import Fancybox from "../../components/Fancybox";
 import data from "./data.json";
 
-const News = () => {
+const News = ({ apiData }) => {
   return (
     <>
       <Head>
@@ -126,6 +126,19 @@ const News = () => {
       })}
     </>
   );
+};
+
+export const getStaticProps = async ({}) => {
+  // Fetch additional data from the API
+  const response = await fetch("https://app.greenshift.creasion.org/api/news");
+  const apiData = await response.json();
+
+  return {
+    props: {
+      apiData,
+    },
+    revalidate: 30,
+  };
 };
 
 export default News;

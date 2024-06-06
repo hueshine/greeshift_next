@@ -27,6 +27,7 @@ interface HomeData {
   og_image: any;
   homepage: any;
   impacts: any;
+  banners: any;
 }
 
 interface NewsItem {
@@ -71,7 +72,7 @@ export default function Home({
       </Head>
 
       <section className={homeStyle.heroAbout}>
-        <Hero />
+        <Hero data={apiHomeData.banners} />
         <section className={homeStyle.introAbout}>
           <div className={homeStyle.introAbout_svg}>
             <img src="./introsvg.svg" alt="" />

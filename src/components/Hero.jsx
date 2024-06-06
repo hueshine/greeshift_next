@@ -15,7 +15,7 @@ import { Jar, WaterJar, TakeAway, Plastic, Glass, Bottle } from "./HeroSvg";
 import homeStyle from "../styles/home.module.scss";
 import Link from "next/link";
 
-const Hero = () => {
+const Hero = ({ data }) => {
   useIsomorphicLayoutEffect(() => {
     // Define a function to create a random value within a range
     function random(min, max) {
@@ -168,14 +168,12 @@ const Hero = () => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>Circular Economy</h5>
-                <p>
-                  The circular economy is a system where materials never become
-                  waste and nature is regenerated. In a circular economy,
-                  products and materials are kept in circulation through
-                  processes like maintenance, reuse, refurbishment,
-                  remanufacture, recycling, and composting.{" "}
-                </p>
+                <h5>{data[0].title}</h5>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data[0].text,
+                  }}
+                />
               </div>
             }
           >
@@ -187,13 +185,12 @@ const Hero = () => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>Net-Zero</h5>
-                <p>
-                  Net zero means cutting carbon emissions to a small amount of
-                  residual emissions that can be absorbed and durably stored by
-                  nature and other carbon dioxide removal measures, leaving zero
-                  in the atmosphere.
-                </p>
+                <h5>{data[1].title}</h5>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data[1].text,
+                  }}
+                />
               </div>
             }
           >
@@ -205,13 +202,12 @@ const Hero = () => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>Plastic Pollution</h5>
-                <p>
-                  Plastic pollution, accumulation in the environment of
-                  synthetic plastic products to the point that they create
-                  problems for wildlife and their habitats as well as for human
-                  populations.
-                </p>
+                <h5>{data[2].title}</h5>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data[2].text,
+                  }}
+                />
               </div>
             }
           >
@@ -225,13 +221,12 @@ const Hero = () => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>Recycling</h5>
-                <p>
-                  Recycling is the process of collecting and processing
-                  materials that would otherwise be thrown away as trash and
-                  turning them into new products. Recycling can benefit your
-                  community, the economy, and the environment.
-                </p>
+                <h5>{data[3].title}</h5>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data[3].text,
+                  }}
+                />
               </div>
             }
           >
@@ -243,18 +238,12 @@ const Hero = () => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>#GreenShift</h5>
-                <p>
-                  The #GreenShift campaign, an initiative under the GreenShift
-                  Nepal project, aims to promote a just transition towards
-                  Circular Economy among youths and children. It provides them
-                  with dynamic platforms to express their creativity. Through
-                  avenues like slogans, art, photography, and posters, this
-                  campaign empowers young minds to showcase their talents while
-                  simultaneously deepening their understanding of environmental
-                  sustainability, plastic pollution, and the principles of
-                  circular economy.
-                </p>
+                <h5>{data[4].title}</h5>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data[4].text,
+                  }}
+                />
               </div>
             }
           >
@@ -266,10 +255,12 @@ const Hero = () => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>Climate Smart Schools</h5>
-                <p>
-                  Climate Smart Schools are a part of the GreenShift project,
-                </p>
+                <h5>{data[5].title}</h5>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data[5].text,
+                  }}
+                />
               </div>
             }
           >

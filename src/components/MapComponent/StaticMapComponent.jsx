@@ -13,8 +13,9 @@ import {
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
+import InfoIcon from "@mui/icons-material/Info";
 
-import { Marker, Map, Source, Layer } from "react-map-gl";
+import { Marker, Map, Source, Layer, Popup } from "react-map-gl";
 import mapboxgl from "!mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -23,6 +24,8 @@ import MunicipalityMap from "./data/MapOfMunicipalities.json";
 import BagmatiMap from "./data/Bagmati.json";
 import MadeshMap from "./data/Madesh.json";
 import LumbiniMap from "./data/Lumbini.json";
+
+import MunicipalityData from "./data/dataNew.json";
 
 import {
   mapStyleLine,
@@ -54,9 +57,6 @@ if (typeof Highcharts === "object") {
 }
 
 const MapComponent = ({ mapData }) => {
-  let MunicipalityData = mapData;
-  const imageUrl = `https://www.app.greenshift.creasion.org/storage`;
-
   const mapRef = useRef(null);
   const [initialZoomValue, setInitialZoomValue] = useState(null);
   const [dataBoxIndex, setDataBoxIndex] = useState(false);
@@ -300,10 +300,9 @@ const MapComponent = ({ mapData }) => {
                   >
                     <div className={componentStyle.numbers}>
                       <img
-                        src={`${imageUrl}/${MunicipalityData.allData.plasticCollected.icon}`}
+                        src={MunicipalityData.allData.plasticCollected.icon}
                         alt=""
                       />
-                      abc
                       <h2>{MunicipalityData.allData.plasticCollected.count}</h2>
                       <p>{MunicipalityData.allData.plasticCollected.unit}</p>
                       <h6>{MunicipalityData.allData.plasticCollected.title}</h6>
@@ -395,8 +394,8 @@ const MapComponent = ({ mapData }) => {
                     style={{ height: "130px" }}
                   >
                     <div className={componentStyle.numbers}>
-                      <h2>{MunicipalityData.allData.campaign.count}</h2>
-                      <h6>{MunicipalityData.allData.campaign.title}</h6>
+                      <h2>{MunicipalityData.allData.campaigns.count}</h2>
+                      <h6>{MunicipalityData.allData.campaigns.title}</h6>
                     </div>
                   </div>
 
@@ -481,10 +480,7 @@ const MapComponent = ({ mapData }) => {
               <Grid container spacing={2} alignItems={"center"}>
                 <Grid item sm={7}>
                   <h5>{selectedMunicipality.title}</h5>
-                  <p>
-                    Last Updated{" "}
-                    {selectedMunicipality.last_updated_at.split("T")[0]}
-                  </p>
+                  <p>Last Updated 8th April, 2024</p>
                 </Grid>
 
                 <Grid item sm={5}>
@@ -532,7 +528,9 @@ const MapComponent = ({ mapData }) => {
                     >
                       <div className={componentStyle.numbers}>
                         <img
-                          src={`${imageUrl}/${selectedMunicipality.dashboard.plasticCollected.icon}`}
+                          src={
+                            selectedMunicipality.dashboard.plasticCollected.icon
+                          }
                           alt=""
                         />
                         <h2>
@@ -654,8 +652,12 @@ const MapComponent = ({ mapData }) => {
                       style={{ height: "130px" }}
                     >
                       <div className={componentStyle.numbers}>
-                        <h2>{selectedMunicipality.dashboard.campaign.count}</h2>
-                        <h6>{selectedMunicipality.dashboard.campaign.title}</h6>
+                        <h2>
+                          {selectedMunicipality.dashboard.campaigns.count}
+                        </h2>
+                        <h6>
+                          {selectedMunicipality.dashboard.campaigns.title}
+                        </h6>
                       </div>
                     </div>
 
@@ -788,6 +790,38 @@ const MapComponent = ({ mapData }) => {
           </FormControl>
         </div>
 
+        {/* <div className={componentStyle.initial_wrap}>
+          <ul>
+            <li
+              onClick={(e) => {
+                setDataBoxIndex(true);
+                setAllDataIndex(true);
+              }}
+            >
+              <div className={componentStyle.initial_list}>
+                <h6>Overall Dashboard</h6>
+              </div>
+            </li>
+            {MunicipalityFilter.map((val, index) => {
+              return (
+                <li
+                  key={index}
+                  onClick={(e) => {
+                    setDataBoxIndex(true);
+                    setAllDataIndex(false);
+                    setSelectedMunicipality(val);
+                    whereFly(val);
+                  }}
+                >
+                  <div className={componentStyle.initial_list}>
+                    <h6>{val.title}</h6>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div> */}
+
         <div className={componentStyle.muniCard_wrap}>
           {MunicipalityFilter.map((val, index) => {
             return (
@@ -802,7 +836,7 @@ const MapComponent = ({ mapData }) => {
                 }}
               >
                 <div className={componentStyle.muniCard_img}>
-                  <img src={`${imageUrl}/${val.image}`} alt="" />
+                  <img src={val.image} alt="" />
                 </div>
 
                 <div className={componentStyle.muniCard_text}>
@@ -837,26 +871,6 @@ const MapComponent = ({ mapData }) => {
       </div>
     );
   };
-
-  const pins = MunicipalityFilter.map((city, index) => (
-    <Marker
-      key={`marker-${index}`}
-      longitude={city.longitude}
-      latitude={city.latitude}
-      onClick={(e) => {
-        setDataBoxIndex(true);
-        setSelectedMunicipality(city);
-        whereFly(city);
-      }}
-    >
-      <div
-        className={`${componentStyle.map_pin} marker-pin 
-        }`}
-      >
-        <img src="/map_recycle.svg" alt="" />
-      </div>
-    </Marker>
-  ));
 
   useIsomorphicLayoutEffect(() => {
     if (window.innerWidth < 2500) {
@@ -910,16 +924,15 @@ const MapComponent = ({ mapData }) => {
         )}
       </div>
 
-      <div className={componentStyle.map_info}>
-        <h2>
-          Project <span>Areas</span>
-        </h2>
-
+      {/* <div className={componentStyle.map_info}>
         <p>
-          GreenShift Nepal is a four-year project which will be implemented in 9
-          municipalities – 3 in each of Bagmati, Madhesh, and Lumbini provinces.
+          <InfoIcon />
+          <small>
+            <strong>Click</strong> on the highlighted municipalities to view the
+            impacts of Project Cap
+          </small>
         </p>
-      </div>
+      </div> */}
 
       <Container maxWidth="xl">
         <div

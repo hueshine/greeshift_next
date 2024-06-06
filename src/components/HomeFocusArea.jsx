@@ -93,7 +93,7 @@ const HomeFocusArea = ({ focusData }) => {
                       alt=""
                       className={`${homeStyle.lineart} lineart`}
                     />
-                    <img src={`${imageUrl}/${val.image[0]}`} alt="" />
+                    <img src={`${imageUrl}/${val.homepage_image}`} alt="" />
                   </div>
                 </Grid>
 

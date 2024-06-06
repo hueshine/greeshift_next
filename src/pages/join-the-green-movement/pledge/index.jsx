@@ -525,18 +525,18 @@ const Pledge = () => {
                         <ul>
                           <li>
                             <p>
-                              Customized pledges according to what the user
-                              selects/ticks in the boxes
-                            </p>
-                          </li>
-                          <li>
-                            <p>
                               To turn your pledge into action you can practice
                               what you have pledged in you daily life!
                             </p>
                           </li>
                           <li>
                             <p>What have you pledged?</p>
+                          </li>
+                          <li>
+                            <p>
+                              Turn your pledge into action, document it and send
+                              it to us!{" "}
+                            </p>
                           </li>
                         </ul>
                       </div>
@@ -558,14 +558,8 @@ const Pledge = () => {
                           </li>
                           <li>
                             <p>
-                              After the clean-up, weigh your collected waste and
-                              click a picture of it
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              Handover your collected waste to your nearest
-                              waste collectors/pickers
+                              After we receive your ‘Pledge into Action’ photos
+                              and videos, we will verify it
                             </p>
                           </li>
                         </ul>
@@ -584,14 +578,15 @@ const Pledge = () => {
                         <ul>
                           <li>
                             <p>
-                              The prizes are determined according to the hours
-                              of volunteering and the wastes collected
+                              After you’ve submitted your ‘Pledge into Action’
+                              photos/videos, you will receive your certificates!
                             </p>
                           </li>
                           <li>
                             <p>
-                              [x] hours of volunteering = GreenShift stickers,
-                              T-shirt
+                              The best ‘Pledge into Actions’ will also get a
+                              chance to win exciting prizes and a chance to be
+                              featured on our social media platforms and website
                             </p>
                           </li>
                         </ul>

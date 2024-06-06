@@ -1,10 +1,10 @@
 {
   "allData": {
-    "title": " ",
+    "title": "",
     "grantDistributed": {
       "title": "Amount of Grant Distributed",
-      "pointStartYear": "2024",
-      "pointStartMonth": "1",
+      "pointStartYear": 2024,
+      "pointStartMonth": 1,
       "chart": {
         "xAxis": {
           "accessibility": {
@@ -15,6 +15,7 @@
             "month": "%b %Y"
           }
         },
+
         "series": [
           {
             "name": "Waste Smart Fellowship",
@@ -36,7 +37,7 @@
       }
     },
     "plasticCollected": {
-      "icon": "dashboards/2/plascticCollected.png",
+      "icon": "/plastic_waste_collected.svg",
       "count": 1000,
       "unit": "Tons of",
       "title": "Plastic Waste Collected"
@@ -47,43 +48,43 @@
       "malePercentage": 80,
       "femalePercentage": 50
     },
-    "ethnicity": [
+    "ethinicity": [
       {
-        "title": "Ethnicity",
         "minPointSize": 10,
         "innerSize": "30%",
         "zMin": 0,
         "borderRadius": 2,
         "name": "",
+
         "data": [
           {
             "name": "Brahmin",
             "y": 20,
-            "z": 0,
+            "Z": 0,
             "color": "#D04848"
           },
           {
             "name": "Janajati",
             "y": 20,
-            "z": 0,
+            "Z": 0,
             "color": "#F3B95F"
           },
           {
             "name": "Tharu",
             "y": 20,
-            "z": 0,
+            "Z": 0,
             "color": "#6895D2"
           },
           {
             "name": "Madhesi",
             "y": 20,
-            "z": 0,
+            "Z": 0,
             "color": "#910A67"
           },
           {
             "name": "Others",
             "y": 10,
-            "z": 0,
+            "Z": 0,
             "color": "#FF004D"
           }
         ]
@@ -95,7 +96,7 @@
       "reached": 80,
       "countTitle": "Youth Reached"
     },
-    "campaign": {
+    "campaigns": {
       "title": "Youth Led Campaigns",
       "count": 12
     },
@@ -137,25 +138,22 @@
   },
   "siteData": [
     {
-      "municipality": "Bardibas",
-      "title": "Bardibas Municipality",
-      "latitude": 27.042609999999999814690454513765871524810791015625,
-      "longitude": 85.872478900000004387038643471896648406982421875,
-      "latLng": [
-        86.3224780000000038171492633409798145294189453125,
-        26.942613900000001336820787400938570499420166015625
-      ],
-      "zoomValue": 9.5,
+      "municipality": "Bagmati",
+      "title": "Bagmati Province",
+      "latitude": 27.04261,
+      "longitude": 85.8724789,
+      "latLng": [86.622478, 27.2426139],
+      "zoomValue": 7.5,
       "year": 1,
       "date": "2024-2025",
       "plasticWasteCollected": "2000 Tons",
       "grantDistributed": "250000 NPR",
-      "image": "dashboards/2/main.jpg",
+      "image": "/focusarea/3/4.jpg",
       "dashboard": {
         "grantDistributed": {
           "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
+          "pointStartYear": 2025,
+          "pointStartMonth": 0,
           "chart": {
             "xAxis": {
               "accessibility": {
@@ -166,6 +164,7 @@
                 "month": "%b %Y"
               }
             },
+
             "series": [
               {
                 "name": "Waste Smart Fellowship",
@@ -187,64 +186,66 @@
           }
         },
         "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
+          "icon": "/plastic_waste_collected.svg",
           "count": 2000,
           "unit": "Tons of",
           "title": "Plastic Waste Collected"
         },
         "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
+          "maleNum": 50,
+          "femaleNum": 40,
+          "malePercentage": 50,
+          "femalePercentage": 40
         },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
+        "ethinicity": [
+          {
+            "minPointSize": 10,
+            "innerSize": "30%",
+            "zMin": 0,
+            "borderRadius": 2,
+            "name": "",
+
+            "data": [
+              {
+                "name": "Brahmin",
+                "y": 50,
+                "Z": 0,
+                "color": "#D04848"
+              },
+              {
+                "name": "Janajati",
+                "y": 20,
+                "Z": 0,
+                "color": "#F3B95F"
+              },
+              {
+                "name": "Tharu",
+                "y": 20,
+                "Z": 0,
+                "color": "#6895D2"
+              },
+              {
+                "name": "Madhesi",
+                "y": 20,
+                "Z": 0,
+                "color": "#910A67"
+              },
+              {
+                "name": "Others",
+                "y": 10,
+                "Z": 0,
+                "color": "#FF004D"
+              }
+            ]
+          }
+        ],
         "youthReached": {
           "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
+          "target": 50,
+          "reached": 50,
           "countTitle": "Youth Reached"
         },
-        "campaign": {
+        "campaigns": {
           "title": "Youth Led Campaigns",
           "count": 12
         },
@@ -271,12 +272,12 @@
               "data": [
                 {
                   "name": "Male",
-                  "y": 300,
+                  "y": 150,
                   "color": "#008DDA"
                 },
                 {
                   "name": "Female",
-                  "y": 450,
+                  "y": 20,
                   "color": "#DD5746"
                 }
               ]
@@ -286,25 +287,22 @@
       }
     },
     {
-      "municipality": "Lalitpur",
-      "title": "Lalitpur Metropolitan City",
-      "latitude": 27.54846380000000038990037865005433559417724609375,
-      "longitude": 85.3367808999999937213942757807672023773193359375,
-      "latLng": [
-        86.5167809000000005426045390777289867401123046875,
-        27.65846379999999982146619004197418689727783203125
-      ],
-      "zoomValue": 8,
+      "municipality": "Madesh",
+      "title": "Madesh Province",
+      "latitude": 27.5484638,
+      "longitude": 85.3367809,
+      "latLng": [88.5167809, 26.6584638],
+      "zoomValue": 7.5,
       "year": 1,
       "date": "2024-2025",
       "plasticWasteCollected": "2000 Tons",
       "grantDistributed": "250000 NPR",
-      "image": "dashboards/3/main.jpeg",
+      "image": "/focusarea/3/5.jpeg",
       "dashboard": {
         "grantDistributed": {
           "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
+          "pointStartYear": 2025,
+          "pointStartMonth": 0,
           "chart": {
             "xAxis": {
               "accessibility": {
@@ -315,6 +313,7 @@
                 "month": "%b %Y"
               }
             },
+
             "series": [
               {
                 "name": "Waste Smart Fellowship",
@@ -336,64 +335,66 @@
           }
         },
         "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
+          "icon": "/plastic_waste_collected.svg",
           "count": 2000,
           "unit": "Tons of",
           "title": "Plastic Waste Collected"
         },
         "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
+          "maleNum": 50,
+          "femaleNum": 40,
+          "malePercentage": 50,
+          "femalePercentage": 40
         },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
+        "ethinicity": [
+          {
+            "minPointSize": 10,
+            "innerSize": "30%",
+            "zMin": 0,
+            "borderRadius": 2,
+            "name": "",
+
+            "data": [
+              {
+                "name": "Brahmin",
+                "y": 50,
+                "Z": 0,
+                "color": "#D04848"
+              },
+              {
+                "name": "Janajati",
+                "y": 20,
+                "Z": 0,
+                "color": "#F3B95F"
+              },
+              {
+                "name": "Tharu",
+                "y": 20,
+                "Z": 0,
+                "color": "#6895D2"
+              },
+              {
+                "name": "Madhesi",
+                "y": 20,
+                "Z": 0,
+                "color": "#910A67"
+              },
+              {
+                "name": "Others",
+                "y": 10,
+                "Z": 0,
+                "color": "#FF004D"
+              }
+            ]
+          }
+        ],
         "youthReached": {
           "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
+          "target": 50,
+          "reached": 50,
           "countTitle": "Youth Reached"
         },
-        "campaign": {
+        "campaigns": {
           "title": "Youth Led Campaigns",
           "count": 12
         },
@@ -420,12 +421,12 @@
               "data": [
                 {
                   "name": "Male",
-                  "y": 300,
+                  "y": 150,
                   "color": "#008DDA"
                 },
                 {
                   "name": "Female",
-                  "y": 450,
+                  "y": 20,
                   "color": "#DD5746"
                 }
               ]
@@ -435,25 +436,22 @@
       }
     },
     {
-      "municipality": "Nepalgunj",
-      "title": "Nepalgunj Sub-Metropolitan City",
-      "latitude": 28.071165900000000448244463768787682056427001953125,
-      "longitude": 81.6509640999999959376509650610387325286865234375,
-      "latLng": [
-        82.4209641000000061694663600064814090728759765625,
-        28.071165900000000448244463768787682056427001953125
-      ],
-      "zoomValue": 9,
+      "municipality": "Lumbini",
+      "title": "Lumbini Province",
+      "latitude": 28.0711659,
+      "longitude": 81.6509641,
+      "latLng": [85.5809641, 28.0711659],
+      "zoomValue": 7,
       "year": 1,
       "date": "2024-2025",
       "plasticWasteCollected": "2000 Tons",
       "grantDistributed": "250000 NPR",
-      "image": "dashboards/4/main.jpeg",
+      "image": "/focusarea/3/6.jpeg",
       "dashboard": {
         "grantDistributed": {
           "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
+          "pointStartYear": 2025,
+          "pointStartMonth": 0,
           "chart": {
             "xAxis": {
               "accessibility": {
@@ -464,6 +462,7 @@
                 "month": "%b %Y"
               }
             },
+
             "series": [
               {
                 "name": "Waste Smart Fellowship",
@@ -485,64 +484,66 @@
           }
         },
         "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
+          "icon": "/plastic_waste_collected.svg",
           "count": 2000,
           "unit": "Tons of",
           "title": "Plastic Waste Collected"
         },
         "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
+          "maleNum": 50,
+          "femaleNum": 40,
+          "malePercentage": 50,
+          "femalePercentage": 40
         },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
+        "ethinicity": [
+          {
+            "minPointSize": 10,
+            "innerSize": "30%",
+            "zMin": 0,
+            "borderRadius": 2,
+            "name": "",
+
+            "data": [
+              {
+                "name": "Brahmin",
+                "y": 50,
+                "Z": 0,
+                "color": "#D04848"
+              },
+              {
+                "name": "Janajati",
+                "y": 20,
+                "Z": 0,
+                "color": "#F3B95F"
+              },
+              {
+                "name": "Tharu",
+                "y": 20,
+                "Z": 0,
+                "color": "#6895D2"
+              },
+              {
+                "name": "Madhesi",
+                "y": 20,
+                "Z": 0,
+                "color": "#910A67"
+              },
+              {
+                "name": "Others",
+                "y": 10,
+                "Z": 0,
+                "color": "#FF004D"
+              }
+            ]
+          }
+        ],
         "youthReached": {
           "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
+          "target": 50,
+          "reached": 50,
           "countTitle": "Youth Reached"
         },
-        "campaign": {
+        "campaigns": {
           "title": "Youth Led Campaigns",
           "count": 12
         },
@@ -569,906 +570,12 @@
               "data": [
                 {
                   "name": "Male",
-                  "y": 300,
+                  "y": 150,
                   "color": "#008DDA"
                 },
                 {
                   "name": "Female",
-                  "y": 450,
-                  "color": "#DD5746"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "municipality": "Bharatpur",
-      "title": "Bharatpur Metropolitan City",
-      "latitude": 27.660630000000001160742613137699663639068603515625,
-      "longitude": 84.4000999999999947931428323499858379364013671875,
-      "latLng": [
-        84.886179999999995970938471145927906036376953125,
-        27.67309900000000055797499953769147396087646484375
-      ],
-      "zoomValue": 9.5,
-      "year": 2,
-      "date": "2025-2026",
-      "plasticWasteCollected": "",
-      "grantDistributed": "",
-      "image": "dashboards/5/main.jpeg",
-      "dashboard": {
-        "grantDistributed": {
-          "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
-          "chart": {
-            "xAxis": {
-              "accessibility": {
-                "rangeDescription": ""
-              },
-              "type": "datetime",
-              "dateTimeLabelFormats": {
-                "month": "%b %Y"
-              }
-            },
-            "series": [
-              {
-                "name": "Waste Smart Fellowship",
-                "data": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 115]
-              },
-              {
-                "name": "Youth Groups",
-                "data": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 90]
-              },
-              {
-                "name": "Climate Smart Schools",
-                "data": [15, 20, 25, 28, 30, 32, 38, 42, 44, 46, 50, 55]
-              },
-              {
-                "name": "CSOs",
-                "data": [8, 10, 15, 18, 20, 22, 28, 32, 34, 40, 45, 58]
-              }
-            ]
-          }
-        },
-        "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
-          "count": 2000,
-          "unit": "Tons of",
-          "title": "Plastic Waste Collected"
-        },
-        "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
-        },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
-        "youthReached": {
-          "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
-          "countTitle": "Youth Reached"
-        },
-        "campaign": {
-          "title": "Youth Led Campaigns",
-          "count": 12
-        },
-        "tagMePoints": {
-          "title": "Tag Me Data Points Collected",
-          "count": 600
-        },
-        "govermentOfficial": {
-          "title": "Goverment official sensitized",
-          "count": 20
-        },
-        "studentReached": {
-          "title": "Number of Students Reached",
-          "target": 12,
-          "reached": 80,
-          "countTitle": "Student Reached"
-        },
-        "wasteWorker": {
-          "title": "Number of Waste Workers Involved",
-          "chart": [
-            {
-              "name": "Waste Workers",
-              "colorByPoint": true,
-              "data": [
-                {
-                  "name": "Male",
-                  "y": 300,
-                  "color": "#008DDA"
-                },
-                {
-                  "name": "Female",
-                  "y": 450,
-                  "color": "#DD5746"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "municipality": "Ichchhakamana",
-      "title": "Ichchhakamana Rural Municipality",
-      "latitude": 27.830113000000000766931407270021736621856689453125,
-      "longitude": 84.56653000000000020008883439004421234130859375,
-      "latLng": [
-        85.40618929999999409119482152163982391357421875,
-        27.35011300000000034060576581396162509918212890625
-      ],
-      "zoomValue": 8.5,
-      "year": 3,
-      "date": "2026-2027",
-      "plasticWasteCollected": "",
-      "grantDistributed": "",
-      "image": "dashboards/5/main.jpeg",
-      "dashboard": {
-        "grantDistributed": {
-          "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
-          "chart": {
-            "xAxis": {
-              "accessibility": {
-                "rangeDescription": ""
-              },
-              "type": "datetime",
-              "dateTimeLabelFormats": {
-                "month": "%b %Y"
-              }
-            },
-            "series": [
-              {
-                "name": "Waste Smart Fellowship",
-                "data": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 115]
-              },
-              {
-                "name": "Youth Groups",
-                "data": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 90]
-              },
-              {
-                "name": "Climate Smart Schools",
-                "data": [15, 20, 25, 28, 30, 32, 38, 42, 44, 46, 50, 55]
-              },
-              {
-                "name": "CSOs",
-                "data": [8, 10, 15, 18, 20, 22, 28, 32, 34, 40, 45, 58]
-              }
-            ]
-          }
-        },
-        "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
-          "count": 2000,
-          "unit": "Tons of",
-          "title": "Plastic Waste Collected"
-        },
-        "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
-        },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
-        "youthReached": {
-          "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
-          "countTitle": "Youth Reached"
-        },
-        "campaign": {
-          "title": "Youth Led Campaigns",
-          "count": 12
-        },
-        "tagMePoints": {
-          "title": "Tag Me Data Points Collected",
-          "count": 600
-        },
-        "govermentOfficial": {
-          "title": "Goverment official sensitized",
-          "count": 20
-        },
-        "studentReached": {
-          "title": "Number of Students Reached",
-          "target": 12,
-          "reached": 80,
-          "countTitle": "Student Reached"
-        },
-        "wasteWorker": {
-          "title": "Number of Waste Workers Involved",
-          "chart": [
-            {
-              "name": "Waste Workers",
-              "colorByPoint": true,
-              "data": [
-                {
-                  "name": "Male",
-                  "y": 300,
-                  "color": "#008DDA"
-                },
-                {
-                  "name": "Female",
-                  "y": 450,
-                  "color": "#DD5746"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "municipality": "Kohalpur",
-      "title": "Kohalpur Municipality",
-      "latitude": 28.222391200000000566205926588736474514007568359375,
-      "longitude": 81.7178866999999939935150905512273311614990234375,
-      "latLng": [
-        82.4209641000000061694663600064814090728759765625,
-        28.071165900000000448244463768787682056427001953125
-      ],
-      "zoomValue": 9,
-      "year": 2,
-      "date": "2025-2026",
-      "plasticWasteCollected": "",
-      "grantDistributed": "",
-      "image": "dashboards/7/main.jpeg",
-      "dashboard": {
-        "grantDistributed": {
-          "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
-          "chart": {
-            "xAxis": {
-              "accessibility": {
-                "rangeDescription": ""
-              },
-              "type": "datetime",
-              "dateTimeLabelFormats": {
-                "month": "%b %Y"
-              }
-            },
-            "series": [
-              {
-                "name": "Waste Smart Fellowship",
-                "data": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 115]
-              },
-              {
-                "name": "Youth Groups",
-                "data": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 90]
-              },
-              {
-                "name": "Climate Smart Schools",
-                "data": [15, 20, 25, 28, 30, 32, 38, 42, 44, 46, 50, 55]
-              },
-              {
-                "name": "CSOs",
-                "data": [8, 10, 15, 18, 20, 22, 28, 32, 34, 40, 45, 58]
-              }
-            ]
-          }
-        },
-        "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
-          "count": 2000,
-          "unit": "Tons of",
-          "title": "Plastic Waste Collected"
-        },
-        "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
-        },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
-        "youthReached": {
-          "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
-          "countTitle": "Youth Reached"
-        },
-        "campaign": {
-          "title": "Youth Led Campaigns",
-          "count": 12
-        },
-        "tagMePoints": {
-          "title": "Tag Me Data Points Collected",
-          "count": 600
-        },
-        "govermentOfficial": {
-          "title": "Goverment official sensitized",
-          "count": 20
-        },
-        "studentReached": {
-          "title": "Number of Students Reached",
-          "target": 12,
-          "reached": 80,
-          "countTitle": "Student Reached"
-        },
-        "wasteWorker": {
-          "title": "Number of Waste Workers Involved",
-          "chart": [
-            {
-              "name": "Waste Workers",
-              "colorByPoint": true,
-              "data": [
-                {
-                  "name": "Male",
-                  "y": 300,
-                  "color": "#008DDA"
-                },
-                {
-                  "name": "Female",
-                  "y": 450,
-                  "color": "#DD5746"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "municipality": "Janakpur",
-      "title": "Janakapur Sub-Metropolitan City",
-      "latitude": 26.730675600000001423950379830785095691680908203125,
-      "longitude": 85.930832600000002230444806627929210662841796875,
-      "latLng": [
-        86.622478000000000974978320300579071044921875,
-        26.54261389999999920519258012063801288604736328125
-      ],
-      "zoomValue": 9,
-      "year": 2,
-      "date": "2025-2026",
-      "plasticWasteCollected": "",
-      "grantDistributed": "",
-      "image": "dashboards/8/main.jpeg",
-      "dashboard": {
-        "grantDistributed": {
-          "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
-          "chart": {
-            "xAxis": {
-              "accessibility": {
-                "rangeDescription": ""
-              },
-              "type": "datetime",
-              "dateTimeLabelFormats": {
-                "month": "%b %Y"
-              }
-            },
-            "series": [
-              {
-                "name": "Waste Smart Fellowship",
-                "data": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 115]
-              },
-              {
-                "name": "Youth Groups",
-                "data": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 90]
-              },
-              {
-                "name": "Climate Smart Schools",
-                "data": [15, 20, 25, 28, 30, 32, 38, 42, 44, 46, 50, 55]
-              },
-              {
-                "name": "CSOs",
-                "data": [8, 10, 15, 18, 20, 22, 28, 32, 34, 40, 45, 58]
-              }
-            ]
-          }
-        },
-        "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
-          "count": 2000,
-          "unit": "Tons of",
-          "title": "Plastic Waste Collected"
-        },
-        "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
-        },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
-        "youthReached": {
-          "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
-          "countTitle": "Youth Reached"
-        },
-        "campaign": {
-          "title": "Youth Led Campaigns",
-          "count": 12
-        },
-        "tagMePoints": {
-          "title": "Tag Me Data Points Collected",
-          "count": 600
-        },
-        "govermentOfficial": {
-          "title": "Goverment official sensitized",
-          "count": 20
-        },
-        "studentReached": {
-          "title": "Number of Students Reached",
-          "target": 12,
-          "reached": 80,
-          "countTitle": "Student Reached"
-        },
-        "wasteWorker": {
-          "title": "Number of Waste Workers Involved",
-          "chart": [
-            {
-              "name": "Waste Workers",
-              "colorByPoint": true,
-              "data": [
-                {
-                  "name": "Male",
-                  "y": 300,
-                  "color": "#008DDA"
-                },
-                {
-                  "name": "Female",
-                  "y": 450,
-                  "color": "#DD5746"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "municipality": "Khadak",
-      "title": "Khadak Municipality",
-      "latitude": 26.631441599999998715020410600118339061737060546875,
-      "longitude": 86.600716500000004316461854614317417144775390625,
-      "latLng": [
-        87.300716499999992947778082452714443206787109375,
-        26.54261389999999920519258012063801288604736328125
-      ],
-      "zoomValue": 9,
-      "year": 2,
-      "date": "2026-2027",
-      "plasticWasteCollected": "",
-      "grantDistributed": "",
-      "image": "dashboards/9/main.jpeg",
-      "dashboard": {
-        "grantDistributed": {
-          "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
-          "chart": {
-            "xAxis": {
-              "accessibility": {
-                "rangeDescription": ""
-              },
-              "type": "datetime",
-              "dateTimeLabelFormats": {
-                "month": "%b %Y"
-              }
-            },
-            "series": [
-              {
-                "name": "Waste Smart Fellowship",
-                "data": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 115]
-              },
-              {
-                "name": "Youth Groups",
-                "data": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 90]
-              },
-              {
-                "name": "Climate Smart Schools",
-                "data": [15, 20, 25, 28, 30, 32, 38, 42, 44, 46, 50, 55]
-              },
-              {
-                "name": "CSOs",
-                "data": [8, 10, 15, 18, 20, 22, 28, 32, 34, 40, 45, 58]
-              }
-            ]
-          }
-        },
-        "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
-          "count": 2000,
-          "unit": "Tons of",
-          "title": "Plastic Waste Collected"
-        },
-        "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
-        },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
-        "youthReached": {
-          "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
-          "countTitle": "Youth Reached"
-        },
-        "campaign": {
-          "title": "Youth Led Campaigns",
-          "count": 12
-        },
-        "tagMePoints": {
-          "title": "Tag Me Data Points Collected",
-          "count": 600
-        },
-        "govermentOfficial": {
-          "title": "Goverment official sensitized",
-          "count": 20
-        },
-        "studentReached": {
-          "title": "Number of Students Reached",
-          "target": 12,
-          "reached": 80,
-          "countTitle": "Student Reached"
-        },
-        "wasteWorker": {
-          "title": "Number of Waste Workers Involved",
-          "chart": [
-            {
-              "name": "Waste Workers",
-              "colorByPoint": true,
-              "data": [
-                {
-                  "name": "Male",
-                  "y": 300,
-                  "color": "#008DDA"
-                },
-                {
-                  "name": "Female",
-                  "y": 450,
-                  "color": "#DD5746"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "municipality": "Tilottama",
-      "title": "Tilottama Municipality",
-      "latitude": 27.622228899999999640613168594427406787872314453125,
-      "longitude": 83.4828193000000027268470148555934429168701171875,
-      "latLng": [
-        84.258819299999998975181370042264461517333984375,
-        27.622228899999999640613168594427406787872314453125
-      ],
-      "zoomValue": 9,
-      "year": 1,
-      "date": "2026-2026",
-      "plasticWasteCollected": "",
-      "grantDistributed": "",
-      "image": "dashboards/10/main.jpeg",
-      "dashboard": {
-        "grantDistributed": {
-          "title": "Amount of Grant Distributed",
-          "pointStartYear": "2025",
-          "pointStartMonth": "0",
-          "chart": {
-            "xAxis": {
-              "accessibility": {
-                "rangeDescription": ""
-              },
-              "type": "datetime",
-              "dateTimeLabelFormats": {
-                "month": "%b %Y"
-              }
-            },
-            "series": [
-              {
-                "name": "Waste Smart Fellowship",
-                "data": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 115]
-              },
-              {
-                "name": "Youth Groups",
-                "data": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 90]
-              },
-              {
-                "name": "Climate Smart Schools",
-                "data": [15, 20, 25, 28, 30, 32, 38, 42, 44, 46, 50, 55]
-              },
-              {
-                "name": "CSOs",
-                "data": [8, 10, 15, 18, 20, 22, 28, 32, 34, 40, 45, 58]
-              }
-            ]
-          }
-        },
-        "plasticCollected": {
-          "icon": "dashboards/2/plascticCollected.png",
-          "count": 2000,
-          "unit": "Tons of",
-          "title": "Plastic Waste Collected"
-        },
-        "gender": {
-          "maleNum": 120,
-          "femaleNum": 80,
-          "malePercentage": 80,
-          "femalePercentage": 50
-        },
-        "ethnicity": {
-          "title": "Ethnicity",
-          "minPointSize": 10,
-          "innerSize": "30%",
-          "zMin": 0,
-          "borderRadius": 2,
-          "name": "",
-          "data": [
-            {
-              "name": "Brahmin",
-              "y": 20,
-              "z": 0,
-              "color": "#D04848"
-            },
-            {
-              "name": "Janajati",
-              "y": 20,
-              "z": 0,
-              "color": "#F3B95F"
-            },
-            {
-              "name": "Tharu",
-              "y": 20,
-              "z": 0,
-              "color": "#6895D2"
-            },
-            {
-              "name": "Madhesi",
-              "y": 20,
-              "z": 0,
-              "color": "#910A67"
-            },
-            {
-              "name": "Others",
-              "y": 10,
-              "z": 0,
-              "color": "#FF004D"
-            }
-          ]
-        },
-        "youthReached": {
-          "title": "Number of Youth Reached",
-          "target": 200,
-          "reached": 80,
-          "countTitle": "Youth Reached"
-        },
-        "campaign": {
-          "title": "Youth Led Campaigns",
-          "count": 12
-        },
-        "tagMePoints": {
-          "title": "Tag Me Data Points Collected",
-          "count": 600
-        },
-        "govermentOfficial": {
-          "title": "Goverment official sensitized",
-          "count": 20
-        },
-        "studentReached": {
-          "title": "Number of Students Reached",
-          "target": 12,
-          "reached": 80,
-          "countTitle": "Student Reached"
-        },
-        "wasteWorker": {
-          "title": "Number of Waste Workers Involved",
-          "chart": [
-            {
-              "name": "Waste Workers",
-              "colorByPoint": true,
-              "data": [
-                {
-                  "name": "Male",
-                  "y": 300,
-                  "color": "#008DDA"
-                },
-                {
-                  "name": "Female",
-                  "y": 450,
+                  "y": 20,
                   "color": "#DD5746"
                 }
               ]
