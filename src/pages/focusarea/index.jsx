@@ -1,5 +1,5 @@
 import Head from "next/head";
-import FocusContainer from "./FocusContainer";
+import FocusContainer from "../../components/Focusarea/FocusContainer";
 
 const GreenShiftCampaign = () => {
   return (
