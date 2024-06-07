@@ -164,8 +164,6 @@ const MapComponent = ({ mapData }) => {
       ],
     };
 
-    console.log(selectedMunicipality.dashboard.ethnicity);
-
     const ethinicity = {
       ...ethinicityStyle,
 
@@ -778,7 +776,7 @@ const MapComponent = ({ mapData }) => {
     return (
       <div className={componentStyle.initial}>
         <h3 className={componentStyle.mb_title}>Project Areas</h3>
-        <div
+        {/* <div
           className={componentStyle.initial_head}
           style={{ marginBottom: "15px" }}
         >
@@ -800,7 +798,7 @@ const MapComponent = ({ mapData }) => {
               <MenuItem value={3}>Third Year</MenuItem>
             </Select>
           </FormControl>
-        </div>
+        </div> */}
 
         <div className={componentStyle.muniCard_wrap}>
           {MunicipalityFilter.map((val, index) => {
@@ -822,8 +820,8 @@ const MapComponent = ({ mapData }) => {
                 <div className={componentStyle.muniCard_text}>
                   <h5>{val.title}</h5>
                   <p>
-                    <span>Project Year:</span>
-                    {val.date}
+                    <span>Project Area:</span>
+                    {val.description}
                   </p>
 
                   {val.plasticWasteCollected ? (
@@ -903,21 +901,80 @@ const MapComponent = ({ mapData }) => {
               <Layer {...mapStyleLine} />
             </Source>
 
-            <Source id="bagmatiMap" type="geojson" data={BagmatiMap}>
-              <Layer {...bagmatiMapFill} />
-            </Source>
+            {selectedMunicipality ? (
+              <>
+                {["Madesh", "Bagmati", "Lumbini"].map((region) =>
+                  selectedMunicipality.municipality === region ? (
+                    <Source
+                      key={`${region.toLowerCase()}Map-selected`}
+                      id={`${region.toLowerCase()}Map`}
+                      type="geojson"
+                      data={
+                        region === "Madesh"
+                          ? MadeshMap
+                          : region === "Bagmati"
+                          ? BagmatiMap
+                          : LumbiniMap
+                      }
+                    >
+                      <Layer
+                        {...(region === "Madesh"
+                          ? madeshMapFill
+                          : region === "Bagmati"
+                          ? bagmatiMapFill
+                          : lumbiniMapFill)}
+                      />
+                    </Source>
+                  ) : null
+                )}
+                <Source
+                  key="municipalityMap-selected"
+                  id="municipalityMap"
+                  type="geojson"
+                  data={MunicipalityMap}
+                >
+                  <Layer id="municipalityMap-layer" {...mapStyleFill} />
+                </Source>
+              </>
+            ) : (
+              <>
+                <Source
+                  key="bagmatiMap-default"
+                  id="bagmatiMap"
+                  type="geojson"
+                  data={BagmatiMap}
+                >
+                  <Layer {...bagmatiMapFill} />
+                </Source>
 
-            <Source id="madeshMap" type="geojson" data={MadeshMap}>
-              <Layer {...madeshMapFill} />
-            </Source>
+                <Source
+                  key="madeshMap-default"
+                  id="madeshMap"
+                  type="geojson"
+                  data={MadeshMap}
+                >
+                  <Layer {...madeshMapFill} />
+                </Source>
 
-            <Source id="lumbiniMap" type="geojson" data={LumbiniMap}>
-              <Layer {...lumbiniMapFill} />
-            </Source>
+                <Source
+                  key="lumbiniMap-default"
+                  id="lumbiniMap"
+                  type="geojson"
+                  data={LumbiniMap}
+                >
+                  <Layer {...lumbiniMapFill} />
+                </Source>
 
-            <Source id="municipalityMap" type="geojson" data={MunicipalityMap}>
-              <Layer id="municipalityMap-layer" {...mapStyleFill} />
-            </Source>
+                <Source
+                  key="municipalityMap-default"
+                  id="municipalityMap"
+                  type="geojson"
+                  data={MunicipalityMap}
+                >
+                  <Layer id="municipalityMap-layer" {...mapStyleFill} />
+                </Source>
+              </>
+            )}
           </Map>
         ) : (
           ""

@@ -81,7 +81,7 @@ const Header = () => {
 
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
-                    <Link className="btn-page" href={"/focus-areas"}>
+                    <Link className="btn-page" href={"/focusarea"}>
                       Focus Areas
                     </Link>
                     <Link className="btn-page" href={"/impacts"}>
