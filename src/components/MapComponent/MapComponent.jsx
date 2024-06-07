@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
+
 import componentStyle from "./dashboard.module.scss";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
@@ -14,7 +15,7 @@ import {
 
 import CloseIcon from "@mui/icons-material/Close";
 
-import { Marker, Map, Source, Layer } from "react-map-gl";
+import { Marker, Map, Source, Layer, Popup } from "react-map-gl";
 import mapboxgl from "!mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -58,6 +59,7 @@ const MapComponent = ({ mapData }) => {
   const imageUrl = `https://www.app.greenshift.creasion.org/storage`;
 
   const mapRef = useRef(null);
+  const [hoverInfo, setHoverInfo] = useState(null);
   const [initialZoomValue, setInitialZoomValue] = useState(null);
   const [dataBoxIndex, setDataBoxIndex] = useState(false);
   const [selectedMunicipality, setSelectedMunicipality] = useState(null);
@@ -896,6 +898,7 @@ const MapComponent = ({ mapData }) => {
             mapboxAccessToken={mapboxgl.accessToken}
             attributionControl={false}
             ref={mapRef}
+            interactiveLayerIds={["map_style_fill"]}
           >
             <Source id="nepalMap" type="geojson" data={NepalMap}>
               <Layer {...mapStyleLine} />

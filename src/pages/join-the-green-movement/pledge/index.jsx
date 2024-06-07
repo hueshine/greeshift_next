@@ -505,9 +505,15 @@ const Pledge = () => {
                 <Container maxWidth={"md"}>
                   <div className={style.thanks_container}>
                     <h2>
-                      <span>Congratulations!</span>
+                      <span>CONGRATULATIONS!</span>
                     </h2>
-                    <h4>You are now a part of the Green Movement!</h4>
+                    <h5 style={{ fontWeight: "500" }}>
+                      You are now a part of the Green Movement
+                    </h5>
+                    <h4>
+                      Thank you for being a part of the green community
+                      dedicated shifting towards Circular Economy ♻️
+                    </h4>
                     <p>
                       To take your{" "}
                       <Link href={"/join-the-green-movement/pitch-your-ideas"}>
