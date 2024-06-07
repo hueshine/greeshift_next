@@ -164,12 +164,26 @@ const MapComponent = ({ mapData }) => {
       ],
     };
 
+    console.log(selectedMunicipality.dashboard.ethnicity);
+
     const ethinicity = {
       ...ethinicityStyle,
 
-      series: allDataIndex
-        ? MunicipalityData.allData.ethinicity
-        : selectedMunicipality.dashboard.ethinicity,
+      series: [
+        {
+          minPointSize: 10,
+          innerSize: "30%",
+          zMin: 0,
+          borderRadius: 2,
+          name: allDataIndex
+            ? MunicipalityData.allData.dashboard.ethnicity.title
+            : selectedMunicipality.dashboard.ethnicity.title,
+
+          data: allDataIndex
+            ? MunicipalityData.allData.dashboard.ethnicity.data
+            : selectedMunicipality.dashboard.ethnicity.data,
+        },
+      ],
     };
 
     const youthReached = {

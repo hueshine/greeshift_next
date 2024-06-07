@@ -1,18 +1,7 @@
-import { Container, Grid } from "@mui/material";
-
-import Banner from "../../layout/Banner/Banner";
 import Head from "next/head";
+import FocusContainer from "./FocusContainer";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import style from "./style.module.scss";
-
-import Fancybox from "../../components/Fancybox";
-
-const GreenShiftCampaign = ({ apiData }) => {
-  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
-
+const GreenShiftCampaign = () => {
   return (
     <>
       <Head>
@@ -21,22 +10,10 @@ const GreenShiftCampaign = ({ apiData }) => {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={apiData.banner_text} parent={"About"} />
+
+      <FocusContainer />
     </>
   );
-};
-
-export const getStaticProps = async ({}) => {
-  // Fetch additional data from the API
-  const response = await fetch("https://app.greenshift.creasion.org/api/area");
-  const apiData = await response.json();
-
-  return {
-    props: {
-      apiData,
-    },
-    revalidate: 30,
-  };
 };
 
 export default GreenShiftCampaign;
