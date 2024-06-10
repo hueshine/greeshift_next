@@ -17,7 +17,7 @@ const bagmatiMapFill = {
   layout: {},
   paint: {
     "fill-color": "#22bf52",
-    "fill-opacity": 0.55,
+    "fill-opacity": 0.45,
     "fill-outline-color": "#ffffff",
   },
 };
@@ -28,7 +28,7 @@ const madeshMapFill = {
   layout: {},
   paint: {
     "fill-color": "#29dadf",
-    "fill-opacity": 0.65,
+    "fill-opacity": 0.55,
     "fill-outline-color": "#ffffff",
   },
 };
