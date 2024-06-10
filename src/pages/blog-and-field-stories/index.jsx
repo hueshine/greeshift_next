@@ -26,7 +26,7 @@ const Blogs = ({ apiData }) => {
       <div className={style.blog_wrapper}>
         <Container maxWidth={"lg"}>
           <Grid container spacing={4}>
-            <Grid item md={12}>
+            <Grid item sm={12}>
               <div className={style.blog_latest}>
                 <div className={style.image}>
                   <img src={`${imageUrl}/${apiData.blogs[0].image}`} alt="" />
@@ -56,7 +56,7 @@ const Blogs = ({ apiData }) => {
             {apiData.blogs.slice(1).map((val, index) => {
               let link = val.title.toLowerCase().replace(/\s+/g, "-");
               return (
-                <Grid key={index} item md={4}>
+                <Grid key={index} item md={4} xs={12}>
                   <div className={style.blog_grid}>
                     <div className={style.image}>
                       <img src={`${imageUrl}/${val.image}`} alt="" />

@@ -34,7 +34,7 @@ import Link from "next/link";
 
 const steps = ["Personal Information", "Contact Information", "Pledge to"];
 
-const Pledge = () => {
+const Pledge = ({ apiData }) => {
   gsap.registerPlugin(ScrollToPlugin);
 
   const elTop = useRef(null);
@@ -167,138 +167,140 @@ const Pledge = () => {
     switch (stepIndex) {
       case 0:
         return (
-          <div className={style.form_container}>
-            <div className={style.form_container_title}>
-              <h3>
-                Our <span>Action</span>, Our <span>Responsibility</span>,
-                <br /> Let’s take a realistic pledge.
-              </h3>
-              <p>Ready to take the responsibility?</p>
+          <>
+            <div className={style.form_container}>
+              <div className={style.form_container_title}>
+                <h3>
+                  Our <span>Action</span>, Our <span>Responsibility</span>,
+                  <br /> Let’s take a realistic pledge.
+                </h3>
+                <p>Ready to take the responsibility?</p>
+              </div>
+
+              <Grid container rowSpacing={2} columnSpacing={2}>
+                <Grid className={style.form_grid} item md={6}>
+                  <div className={style.form_box}>
+                    <InputLabel htmlFor="name">Full Name</InputLabel>
+
+                    <TextField
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      fullWidth
+                      required
+                    />
+                  </div>
+                </Grid>
+
+                <Grid className={style.form_grid} item md={6}>
+                  <div className={style.form_box}>
+                    <InputLabel htmlFor="gender">Gender</InputLabel>
+                    <Select
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleChange}
+                      fullWidth
+                      required
+                    >
+                      <MenuItem value={"male"}>Male</MenuItem>
+                      <MenuItem value={"female"}>Female</MenuItem>
+                      <MenuItem value={"others"}>Others</MenuItem>
+                    </Select>
+                  </div>
+                </Grid>
+
+                <Grid className={style.form_grid} item md={6}>
+                  <div className={style.form_box}>
+                    <InputLabel htmlFor="ethnicity">Ethnicity</InputLabel>
+
+                    <Select
+                      name="ethnicity"
+                      value={formData.ethnicity}
+                      onChange={handleChange}
+                      fullWidth
+                    >
+                      <MenuItem value={"Dalit"}>Dalit</MenuItem>
+                      <MenuItem value={"Janajati"}>Janajati (Others)</MenuItem>
+                      <MenuItem value={"Madhesi"}>Madhesi</MenuItem>
+                      <MenuItem value={"Muslim"}>Muslim</MenuItem>
+                      <MenuItem value={"Tharu"}>Tharu</MenuItem>
+                      <MenuItem value={"Brahmin/Chhetri"}>
+                        Brahmin/Chhetri
+                      </MenuItem>
+
+                      <MenuItem value={"Others"}>Others</MenuItem>
+                    </Select>
+                  </div>
+                </Grid>
+
+                <Grid className={style.form_grid} item md={6}>
+                  <div className={style.form_box}>
+                    <InputLabel htmlFor="province">Province</InputLabel>
+
+                    <Select
+                      name="province"
+                      value={formData.province}
+                      onChange={handleChange}
+                      fullWidth
+                      required
+                    >
+                      {provinceData.results.map((val, index) => {
+                        return (
+                          <MenuItem key={index} value={val.id}>
+                            {val.title}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </div>
+                </Grid>
+
+                <Grid className={style.form_grid} item md={6}>
+                  <div className={style.form_box}>
+                    <InputLabel htmlFor="district">District</InputLabel>
+
+                    <Select
+                      name="district"
+                      value={formData.district}
+                      onChange={handleChange}
+                      fullWidth
+                      required
+                    >
+                      {districtData.results
+                        .filter((val) => val.province == formData.province)
+                        .map((val, index) => (
+                          <MenuItem key={index} value={val.id}>
+                            {val.title}
+                          </MenuItem>
+                        ))}
+                    </Select>
+                  </div>
+                </Grid>
+
+                <Grid className={style.form_grid} item md={6}>
+                  <div className={style.form_box}>
+                    <InputLabel htmlFor="municipality">Municipality</InputLabel>
+
+                    <Select
+                      name="municipality"
+                      value={formData.municipality}
+                      onChange={handleChange}
+                      fullWidth
+                      required
+                    >
+                      {municipalityData.results
+                        .filter((val) => val.district == formData.district)
+                        .map((val, index) => (
+                          <MenuItem key={index} value={val.title}>
+                            {val.title}
+                          </MenuItem>
+                        ))}
+                    </Select>
+                  </div>
+                </Grid>
+              </Grid>
             </div>
-
-            <Grid container rowSpacing={2} columnSpacing={2}>
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="name">Full Name</InputLabel>
-
-                  <TextField
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                  />
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="gender">Gender</InputLabel>
-                  <Select
-                    name="gender"
-                    value={formData.gender}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                  >
-                    <MenuItem value={"male"}>Male</MenuItem>
-                    <MenuItem value={"female"}>Female</MenuItem>
-                    <MenuItem value={"others"}>Others</MenuItem>
-                  </Select>
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="ethnicity">Ethnicity</InputLabel>
-
-                  <Select
-                    name="ethnicity"
-                    value={formData.ethnicity}
-                    onChange={handleChange}
-                    fullWidth
-                  >
-                    <MenuItem value={"Dalit"}>Dalit</MenuItem>
-                    <MenuItem value={"Janajati"}>Janajati (Others)</MenuItem>
-                    <MenuItem value={"Madhesi"}>Madhesi</MenuItem>
-                    <MenuItem value={"Muslim"}>Muslim</MenuItem>
-                    <MenuItem value={"Tharu"}>Tharu</MenuItem>
-                    <MenuItem value={"Brahmin/Chhetri"}>
-                      Brahmin/Chhetri
-                    </MenuItem>
-
-                    <MenuItem value={"Others"}>Others</MenuItem>
-                  </Select>
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="province">Province</InputLabel>
-
-                  <Select
-                    name="province"
-                    value={formData.province}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                  >
-                    {provinceData.results.map((val, index) => {
-                      return (
-                        <MenuItem key={index} value={val.id}>
-                          {val.title}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="district">District</InputLabel>
-
-                  <Select
-                    name="district"
-                    value={formData.district}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                  >
-                    {districtData.results
-                      .filter((val) => val.province == formData.province)
-                      .map((val, index) => (
-                        <MenuItem key={index} value={val.id}>
-                          {val.title}
-                        </MenuItem>
-                      ))}
-                  </Select>
-                </div>
-              </Grid>
-
-              <Grid className={style.form_grid} item md={6}>
-                <div className={style.form_box}>
-                  <InputLabel htmlFor="municipality">Municipality</InputLabel>
-
-                  <Select
-                    name="municipality"
-                    value={formData.municipality}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                  >
-                    {municipalityData.results
-                      .filter((val) => val.district == formData.district)
-                      .map((val, index) => (
-                        <MenuItem key={index} value={val.title}>
-                          {val.title}
-                        </MenuItem>
-                      ))}
-                  </Select>
-                </div>
-              </Grid>
-            </Grid>
-          </div>
+          </>
         );
       case 1:
         return (
@@ -431,7 +433,7 @@ const Pledge = () => {
         <meta property="og:image:height" content="442" />
       </Head>
 
-      <Banner title={"Pledge"} />
+      <Banner title={apiData.banner_text} />
 
       <div className={style.pledge_box} id="pledgeBox" ref={elTop}>
         <Container maxWidth={"lg"}>
@@ -504,101 +506,34 @@ const Pledge = () => {
               {activeStep === steps.length ? (
                 <Container maxWidth={"md"}>
                   <div className={style.thanks_container}>
-                    <h2>
-                      <span>CONGRATULATIONS!</span>
-                    </h2>
-                    <h5 style={{ fontWeight: "500" }}>
-                      You are now a part of the Green Movement
-                    </h5>
-                    <h4>
-                      Thank you for being a part of the green community
-                      dedicated shifting towards Circular Economy ♻️
-                    </h4>
-                    <p>
-                      To take your{" "}
-                      <Link href={"/join-the-green-movement/pitch-your-ideas"}>
-                        Pledge into action{" "}
-                      </Link>
-                      , here are a few ways you can become a Green Warrior!
-                    </p>
-
-                    <div className={style.pledge_into_action}>
-                      <div className={style.icon}>
-                        <img src="/honesty.svg" alt="" />
-                      </div>
+                    <div className={style.title_flex}>
                       <div className={style.text}>
-                        <h5>Turn your Pledge into Action! </h5>
-                        <ul>
-                          <li>
-                            <p>
-                              To turn your pledge into action you can practice
-                              what you have pledged in you daily life!
-                            </p>
-                          </li>
-                          <li>
-                            <p>What have you pledged?</p>
-                          </li>
-                          <li>
-                            <p>
-                              Turn your pledge into action, document it and send
-                              it to us!{" "}
-                            </p>
-                          </li>
-                        </ul>
+                        <h2>
+                          You are now a part of the
+                          <em> Green Movement!</em>
+                        </h2>
+                      </div>
+
+                      <div className={style.counter}>
+                        <h1>
+                          {apiData.count}
+                          <small>+</small>
+                        </h1>
+                        <span> People pledges to the cause</span>
                       </div>
                     </div>
-
-                    <div className={style.pledge_into_action}>
-                      <div className={style.icon}>
-                        <img src="/nature.svg" alt="" />
-                      </div>
-                      <div className={style.text}>
-                        <h5>Send us for verification! </h5>
-                        <ul>
-                          <li>
-                            <p>
-                              After you turn your pledge into action, send us
-                              your photos or videos (maximum 60 sec) showing us
-                              how you have turned your pledge into action
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              After we receive your ‘Pledge into Action’ photos
-                              and videos, we will verify it
-                            </p>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className={style.pledge_into_action}>
-                      <div className={style.icon}>
-                        <img src="/gift_box.svg" alt="" />
-                      </div>
-                      <div className={style.text}>
-                        <h5>
-                          Get your Certificates (and a chance to be featured on
-                          our website)!
-                        </h5>
-                        <ul>
-                          <li>
-                            <p>
-                              After you’ve submitted your ‘Pledge into Action’
-                              photos/videos, you will receive your certificates!
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              The best ‘Pledge into Actions’ will also get a
-                              chance to win exciting prizes and a chance to be
-                              featured on our social media platforms and website
-                            </p>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                    <div
+                      className={style.news_wrap_text_description}
+                      dangerouslySetInnerHTML={{ __html: apiData.description }}
+                    />
                   </div>
+
+                  <a
+                    href="https://greenshift.creasion.org/join-the-green-movement/pledge"
+                    className={style.pledge_btn}
+                  >
+                    PLEDGE AGAIN
+                  </a>
                 </Container>
               ) : (
                 <>
@@ -642,4 +577,18 @@ const Pledge = () => {
   );
 };
 
+export const getStaticProps = async ({}) => {
+  // Fetch additional data from the API
+  const response = await fetch(
+    "https://app.greenshift.creasion.org/api/pledge-page"
+  );
+  const apiData = await response.json();
+
+  return {
+    props: {
+      apiData,
+    },
+    revalidate: 30,
+  };
+};
 export default Pledge;

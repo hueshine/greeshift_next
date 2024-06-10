@@ -179,3 +179,14 @@
     margin-bottom: 20px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .logo_bottom {
+    margin-left: 30px;
+    display: flex;
+
+    a {
+      width: 50%;
+    }
+  }
+}

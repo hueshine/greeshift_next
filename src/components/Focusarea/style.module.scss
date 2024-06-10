@@ -118,6 +118,12 @@
     }
 
     .title {
+      display: block;
+
+      h3 {
+        margin-top: 15px;
+      }
+
       span {
         text-align: center;
       }

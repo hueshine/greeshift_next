@@ -80,6 +80,67 @@
       text-decoration: underline;
     }
 
+    ul {
+      padding-left: 25px;
+      li {
+        list-style: circle;
+        p {
+          margin-bottom: 10px;
+        }
+
+        &:last-child {
+          p {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td {
+      vertical-align: top;
+    }
+
+    .title_flex {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+
+      .text {
+        width: 60%;
+      }
+    }
+
+    .counter {
+      width: 40%;
+      text-align: right;
+      h1 {
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #33b2b6;
+        -webkit-text-fill-color: transparent;
+        font-size: 68px;
+        line-height: 1;
+        letter-spacing: 2px;
+        font-family: "TuskerGrotesk-7700";
+        margin-bottom: 5px;
+
+        small {
+          font-size: 40px;
+        }
+      }
+
+      span {
+        display: block;
+        margin-top: 15px;
+      }
+    }
+
     // p {
     //   margin-bottom: 30px;
     // }
@@ -375,6 +436,14 @@
 
   .pledge_box {
     .thanks_container {
+      .title_flex {
+        margin-bottom: 40px;
+        .text,
+        .counter {
+          width: 100%;
+          text-align: left;
+        }
+      }
       h2 {
         font-size: 48px;
       }

@@ -122,3 +122,17 @@
     margin-bottom: 50px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .blog_wrapper {
+    .blog_latest {
+      .image {
+        width: 100%;
+      }
+
+      .text {
+        width: 100%;
+      }
+    }
+  }
+}

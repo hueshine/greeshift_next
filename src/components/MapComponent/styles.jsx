@@ -54,7 +54,7 @@ const viewportCommon = {
 };
 
 const mapStyleFill = {
-  id: "map_style_fill",
+  id: "municipalityMap-layer",
   type: "fill",
   layout: {},
   paint: {
