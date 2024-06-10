@@ -1,17 +1,10 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 
 import componentStyle from "./dashboard.module.scss";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
-import {
-  Container,
-  Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-} from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -67,22 +60,6 @@ const MapComponent = ({ mapData }) => {
   const [MunicipalityFilter, setMunicipalityFilter] = useState(
     MunicipalityData.siteData
   );
-
-  const [year, setYear] = useState("");
-
-  const handleChange = (event) => {
-    setYear(event.target.value);
-
-    if (event.target.value == 0) {
-      setMunicipalityFilter(MunicipalityData.siteData);
-    } else {
-      let filterData = MunicipalityData.siteData.filter(
-        (muni) => muni.year == event.target.value
-      );
-
-      setMunicipalityFilter(filterData);
-    }
-  };
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoieW9nZXNoa2Fya2kiLCJhIjoiY2txZXphNHNlMGNybDJ1cXVmeXFiZzB1eSJ9.A7dJUR4ppKJDKWZypF_0lA";
@@ -264,512 +241,249 @@ const MapComponent = ({ mapData }) => {
 
     return (
       <>
-        {allDataIndex ? (
-          <>
-            <div className={componentStyle.data_title}>
-              <Grid container spacing={2} alignItems={"center"}>
-                <Grid item sm={7}>
-                  <h5>{MunicipalityData.allData.title}</h5>
-                  <p>Last Updated 8th April, 2024</p>
-                </Grid>
+        <div className={componentStyle.data_title}>
+          <Grid container spacing={2} alignItems={"center"}>
+            <Grid item sm={7}>
+              <h5>{selectedMunicipality.title}</h5>
+              <h6>{selectedMunicipality.description}</h6>
+              <p>
+                Last Updated{" "}
+                {selectedMunicipality.last_updated_at.split("T")[0]}
+              </p>
+            </Grid>
 
-                <Grid item sm={5}>
-                  <div
-                    className={componentStyle.map_data_box_close}
-                    onClick={resetMapBox}
-                  >
-                    <span>Reset Map</span>
-                    <CloseIcon />
+            <Grid item sm={5}>
+              <div
+                className={componentStyle.map_data_box_close}
+                onClick={resetMapBox}
+              >
+                <span>Reset Map</span>
+                <CloseIcon />
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+
+        <div className={componentStyle.chart_data}>
+          <div className={componentStyle.chart_data}>
+            <Grid container columnSpacing={2}>
+              <Grid item xs={12} md={8}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ display: "block" }}
+                >
+                  <div>
+                    <div className={componentStyle.chart_title}>
+                      <h6>
+                        {selectedMunicipality.dashboard.grantDistributed.title}
+                      </h6>
+                    </div>
+
+                    <HighchartsReact
+                      highcharts={Highcharts}
+                      options={grantDistributed}
+                    />
                   </div>
-                </Grid>
+                </div>
               </Grid>
-            </div>
 
-            <div className={componentStyle.chart_data}>
-              <Grid container columnSpacing={2}>
-                <Grid item xs={12} md={8}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
-                      <div className={componentStyle.chart_title}>
-                        <h6>
-                          {MunicipalityData.allData.grantDistributed.title}
-                        </h6>
-                      </div>
-
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={grantDistributed}
-                      />
-                    </div>
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "307px" }}
+                >
+                  <div className={componentStyle.numbers}>
+                    <img
+                      src={`${imageUrl}/${selectedMunicipality.dashboard.plasticCollected.icon}`}
+                      alt=""
+                    />
+                    <h2>
+                      {selectedMunicipality.dashboard.plasticCollected.count}
+                    </h2>
+                    <p>
+                      {selectedMunicipality.dashboard.plasticCollected.unit}
+                    </p>
+                    <h6>
+                      {selectedMunicipality.dashboard.plasticCollected.title}
+                    </h6>
                   </div>
-                </Grid>
+                </div>
+              </Grid>
 
-                <Grid item xs={12} md={4}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ height: "307px" }}
-                  >
-                    <div className={componentStyle.numbers}>
-                      <img
-                        src={`${imageUrl}/${MunicipalityData.allData.plasticCollected.icon}`}
-                        alt=""
-                      />
-                      abc
-                      <h2>{MunicipalityData.allData.plasticCollected.count}</h2>
-                      <p>{MunicipalityData.allData.plasticCollected.unit}</p>
-                      <h6>{MunicipalityData.allData.plasticCollected.title}</h6>
+              <Grid item xs={12} md={8}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ display: "block" }}
+                >
+                  <div>
+                    <div className={componentStyle.chart_title}>
+                      <h6>Total Number of People Reached</h6>
                     </div>
-                  </div>
-                </Grid>
 
-                <Grid item xs={12} md={8}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div>
-                      <div className={componentStyle.chart_title}>
-                        <h6>Total Number of People Reached</h6>
-                      </div>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} md={6}>
+                        <HighchartsReact
+                          highcharts={Highcharts}
+                          options={gender}
+                        />
 
-                      <Grid container spacing={2}>
-                        <Grid item xs={12} md={6}>
-                          <HighchartsReact
-                            highcharts={Highcharts}
-                            options={gender}
-                          />
+                        <Grid container>
+                          <Grid item xs={6} md={6}>
+                            <div className={componentStyle.genderText}>
+                              <h2>
+                                {
+                                  selectedMunicipality.dashboard.gender
+                                    .femaleNum
+                                }
+                              </h2>
+                              <p>Female</p>
+                            </div>
+                          </Grid>
 
-                          <Grid container>
-                            <Grid item xs={6} md={6}>
-                              <div className={componentStyle.genderText}>
-                                <h2>
-                                  {MunicipalityData.allData.gender.femaleNum}
-                                </h2>
-                                <p>Female</p>
-                              </div>
-                            </Grid>
-
-                            <Grid item xs={6} md={6}>
-                              <div className={componentStyle.genderText}>
-                                <h2>
-                                  {MunicipalityData.allData.gender.maleNum}
-                                </h2>
-                                <p>Male</p>
-                              </div>
-                            </Grid>
+                          <Grid item xs={6} md={6}>
+                            <div className={componentStyle.genderText}>
+                              <h2>
+                                {selectedMunicipality.dashboard.gender.maleNum}
+                              </h2>
+                              <p>Male</p>
+                            </div>
                           </Grid>
                         </Grid>
-
-                        <Grid item xs={12} md={6}>
-                          <label>Ethinicity</label>
-                          <HighchartsReact
-                            highcharts={Highcharts}
-                            options={ethinicity}
-                          />
-                        </Grid>
                       </Grid>
-                    </div>
+
+                      <Grid item xs={12} md={6}>
+                        <label>Ethinicity</label>
+                        <HighchartsReact
+                          highcharts={Highcharts}
+                          options={ethinicity}
+                        />
+                      </Grid>
+                    </Grid>
                   </div>
-                </Grid>
+                </div>
+              </Grid>
 
-                <Grid item xs={12} md={4}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div className={componentStyle.chart_title}>
-                      <h6>{MunicipalityData.allData.youthReached.title}</h6>
-                    </div>
-
-                    <div>
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={youthReached}
-                      />
-
-                      <div
-                        className={componentStyle.chart_title}
-                        style={{ textAlign: "center" }}
-                      >
-                        <h2>{MunicipalityData.allData.youthReached.reached}</h2>
-                        <h6>
-                          {MunicipalityData.allData.youthReached.countTitle}
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ height: "130px" }}
-                  >
-                    <div className={componentStyle.numbers}>
-                      <h2>{MunicipalityData.allData.campaign.count}</h2>
-                      <h6>{MunicipalityData.allData.campaign.title}</h6>
-                    </div>
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ display: "block" }}
+                >
+                  <div className={componentStyle.chart_title}>
+                    <h6>{selectedMunicipality.dashboard.youthReached.title}</h6>
                   </div>
 
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ height: "130px" }}
-                  >
-                    <div className={componentStyle.numbers}>
-                      <h2>{MunicipalityData.allData.tagMePoints.count}</h2>
-                      <h6>{MunicipalityData.allData.tagMePoints.title}</h6>
-                    </div>
-                  </div>
+                  <div>
+                    <HighchartsReact
+                      highcharts={Highcharts}
+                      options={youthReached}
+                    />
 
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ height: "130px" }}
-                  >
-                    <div className={componentStyle.numbers}>
+                    <div
+                      className={componentStyle.chart_title}
+                      style={{ textAlign: "center" }}
+                    >
                       <h2>
-                        {MunicipalityData.allData.govermentOfficial.count}
+                        {selectedMunicipality.dashboard.youthReached.reached}
                       </h2>
                       <h6>
-                        {MunicipalityData.allData.govermentOfficial.title}
+                        {selectedMunicipality.dashboard.youthReached.countTitle}
                       </h6>
                     </div>
                   </div>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div className={componentStyle.chart_title}>
-                      <h6>{MunicipalityData.allData.studentReached.title}</h6>
-                    </div>
-
-                    <div>
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={studentReached}
-                      />
-
-                      <div
-                        className={componentStyle.chart_title}
-                        style={{ textAlign: "center" }}
-                      >
-                        <h2>
-                          {MunicipalityData.allData.studentReached.reached}
-                        </h2>
-                        <h6>
-                          {MunicipalityData.allData.studentReached.countTitle}
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                  <div
-                    className={componentStyle.chart_card}
-                    style={{ display: "block" }}
-                  >
-                    <div className={componentStyle.chart_title}>
-                      <h6>{MunicipalityData.allData.wasteWorker.title}</h6>
-                    </div>
-
-                    <div>
-                      <HighchartsReact
-                        highcharts={Highcharts}
-                        options={wasteWorkers}
-                      />
-                    </div>
-                  </div>
-                </Grid>
+                </div>
               </Grid>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className={componentStyle.data_title}>
-              <Grid container spacing={2} alignItems={"center"}>
-                <Grid item sm={7}>
-                  <h5>{selectedMunicipality.title}</h5>
-                  <p>
-                    Last Updated{" "}
-                    {selectedMunicipality.last_updated_at.split("T")[0]}
-                  </p>
-                </Grid>
 
-                <Grid item sm={5}>
-                  <div
-                    className={componentStyle.map_data_box_close}
-                    onClick={resetMapBox}
-                  >
-                    <span>Reset Map</span>
-                    <CloseIcon />
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "130px" }}
+                >
+                  <div className={componentStyle.numbers}>
+                    <h2>{selectedMunicipality.dashboard.campaign.count}</h2>
+                    <h6>{selectedMunicipality.dashboard.campaign.title}</h6>
                   </div>
-                </Grid>
+                </div>
+
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "130px" }}
+                >
+                  <div className={componentStyle.numbers}>
+                    <h2>{selectedMunicipality.dashboard.tagMePoints.count}</h2>
+                    <h6>{selectedMunicipality.dashboard.tagMePoints.title}</h6>
+                  </div>
+                </div>
+
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "130px" }}
+                >
+                  <div className={componentStyle.numbers}>
+                    <h2>
+                      {selectedMunicipality.dashboard.govermentOfficial.count}
+                    </h2>
+                    <h6>
+                      {selectedMunicipality.dashboard.govermentOfficial.title}
+                    </h6>
+                  </div>
+                </div>
               </Grid>
-            </div>
 
-            <div className={componentStyle.chart_data}>
-              <div className={componentStyle.chart_data}>
-                <Grid container columnSpacing={2}>
-                  <Grid item xs={12} md={8}>
-                    <div
-                      className={componentStyle.chart_card}
-                      style={{ display: "block" }}
-                    >
-                      <div>
-                        <div className={componentStyle.chart_title}>
-                          <h6>
-                            {
-                              selectedMunicipality.dashboard.grantDistributed
-                                .title
-                            }
-                          </h6>
-                        </div>
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ display: "block" }}
+                >
+                  <div className={componentStyle.chart_title}>
+                    <h6>
+                      {selectedMunicipality.dashboard.studentReached.title}
+                    </h6>
+                  </div>
 
-                        <HighchartsReact
-                          highcharts={Highcharts}
-                          options={grantDistributed}
-                        />
-                      </div>
-                    </div>
-                  </Grid>
-
-                  <Grid item xs={12} md={4}>
-                    <div
-                      className={componentStyle.chart_card}
-                      style={{ height: "307px" }}
-                    >
-                      <div className={componentStyle.numbers}>
-                        <img
-                          src={`${imageUrl}/${selectedMunicipality.dashboard.plasticCollected.icon}`}
-                          alt=""
-                        />
-                        <h2>
-                          {
-                            selectedMunicipality.dashboard.plasticCollected
-                              .count
-                          }
-                        </h2>
-                        <p>
-                          {selectedMunicipality.dashboard.plasticCollected.unit}
-                        </p>
-                        <h6>
-                          {
-                            selectedMunicipality.dashboard.plasticCollected
-                              .title
-                          }
-                        </h6>
-                      </div>
-                    </div>
-                  </Grid>
-
-                  <Grid item xs={12} md={8}>
-                    <div
-                      className={componentStyle.chart_card}
-                      style={{ display: "block" }}
-                    >
-                      <div>
-                        <div className={componentStyle.chart_title}>
-                          <h6>Total Number of People Reached</h6>
-                        </div>
-
-                        <Grid container spacing={2}>
-                          <Grid item xs={12} md={6}>
-                            <HighchartsReact
-                              highcharts={Highcharts}
-                              options={gender}
-                            />
-
-                            <Grid container>
-                              <Grid item xs={6} md={6}>
-                                <div className={componentStyle.genderText}>
-                                  <h2>
-                                    {
-                                      selectedMunicipality.dashboard.gender
-                                        .femaleNum
-                                    }
-                                  </h2>
-                                  <p>Female</p>
-                                </div>
-                              </Grid>
-
-                              <Grid item xs={6} md={6}>
-                                <div className={componentStyle.genderText}>
-                                  <h2>
-                                    {
-                                      selectedMunicipality.dashboard.gender
-                                        .maleNum
-                                    }
-                                  </h2>
-                                  <p>Male</p>
-                                </div>
-                              </Grid>
-                            </Grid>
-                          </Grid>
-
-                          <Grid item xs={12} md={6}>
-                            <label>Ethinicity</label>
-                            <HighchartsReact
-                              highcharts={Highcharts}
-                              options={ethinicity}
-                            />
-                          </Grid>
-                        </Grid>
-                      </div>
-                    </div>
-                  </Grid>
-
-                  <Grid item xs={12} md={4}>
-                    <div
-                      className={componentStyle.chart_card}
-                      style={{ display: "block" }}
-                    >
-                      <div className={componentStyle.chart_title}>
-                        <h6>
-                          {selectedMunicipality.dashboard.youthReached.title}
-                        </h6>
-                      </div>
-
-                      <div>
-                        <HighchartsReact
-                          highcharts={Highcharts}
-                          options={youthReached}
-                        />
-
-                        <div
-                          className={componentStyle.chart_title}
-                          style={{ textAlign: "center" }}
-                        >
-                          <h2>
-                            {
-                              selectedMunicipality.dashboard.youthReached
-                                .reached
-                            }
-                          </h2>
-                          <h6>
-                            {
-                              selectedMunicipality.dashboard.youthReached
-                                .countTitle
-                            }
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </Grid>
-
-                  <Grid item xs={12} md={4}>
-                    <div
-                      className={componentStyle.chart_card}
-                      style={{ height: "130px" }}
-                    >
-                      <div className={componentStyle.numbers}>
-                        <h2>{selectedMunicipality.dashboard.campaign.count}</h2>
-                        <h6>{selectedMunicipality.dashboard.campaign.title}</h6>
-                      </div>
-                    </div>
+                  <div>
+                    <HighchartsReact
+                      highcharts={Highcharts}
+                      options={studentReached}
+                    />
 
                     <div
-                      className={componentStyle.chart_card}
-                      style={{ height: "130px" }}
+                      className={componentStyle.chart_title}
+                      style={{ textAlign: "center" }}
                     >
-                      <div className={componentStyle.numbers}>
-                        <h2>
-                          {selectedMunicipality.dashboard.tagMePoints.count}
-                        </h2>
-                        <h6>
-                          {selectedMunicipality.dashboard.tagMePoints.title}
-                        </h6>
-                      </div>
+                      <h2>
+                        {selectedMunicipality.dashboard.studentReached.reached}
+                      </h2>
+                      <h6>
+                        {
+                          selectedMunicipality.dashboard.studentReached
+                            .countTitle
+                        }
+                      </h6>
                     </div>
+                  </div>
+                </div>
+              </Grid>
 
-                    <div
-                      className={componentStyle.chart_card}
-                      style={{ height: "130px" }}
-                    >
-                      <div className={componentStyle.numbers}>
-                        <h2>
-                          {
-                            selectedMunicipality.dashboard.govermentOfficial
-                              .count
-                          }
-                        </h2>
-                        <h6>
-                          {
-                            selectedMunicipality.dashboard.govermentOfficial
-                              .title
-                          }
-                        </h6>
-                      </div>
-                    </div>
-                  </Grid>
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ display: "block" }}
+                >
+                  <div className={componentStyle.chart_title}>
+                    <h6>{selectedMunicipality.dashboard.wasteWorker.title}</h6>
+                  </div>
 
-                  <Grid item xs={12} md={4}>
-                    <div
-                      className={componentStyle.chart_card}
-                      style={{ display: "block" }}
-                    >
-                      <div className={componentStyle.chart_title}>
-                        <h6>
-                          {selectedMunicipality.dashboard.studentReached.title}
-                        </h6>
-                      </div>
-
-                      <div>
-                        <HighchartsReact
-                          highcharts={Highcharts}
-                          options={studentReached}
-                        />
-
-                        <div
-                          className={componentStyle.chart_title}
-                          style={{ textAlign: "center" }}
-                        >
-                          <h2>
-                            {
-                              selectedMunicipality.dashboard.studentReached
-                                .reached
-                            }
-                          </h2>
-                          <h6>
-                            {
-                              selectedMunicipality.dashboard.studentReached
-                                .countTitle
-                            }
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </Grid>
-
-                  <Grid item xs={12} md={4}>
-                    <div
-                      className={componentStyle.chart_card}
-                      style={{ display: "block" }}
-                    >
-                      <div className={componentStyle.chart_title}>
-                        <h6>
-                          {selectedMunicipality.dashboard.wasteWorker.title}
-                        </h6>
-                      </div>
-
-                      <div>
-                        <HighchartsReact
-                          highcharts={Highcharts}
-                          options={wasteWorkers}
-                        />
-                      </div>
-                    </div>
-                  </Grid>
-                </Grid>
-              </div>
-            </div>
-          </>
-        )}
+                  <div>
+                    <HighchartsReact
+                      highcharts={Highcharts}
+                      options={wasteWorkers}
+                    />
+                  </div>
+                </div>
+              </Grid>
+            </Grid>
+          </div>
+        </div>
       </>
     );
   };
@@ -778,29 +492,6 @@ const MapComponent = ({ mapData }) => {
     return (
       <div className={componentStyle.initial}>
         <h3 className={componentStyle.mb_title}>Project Areas</h3>
-        {/* <div
-          className={componentStyle.initial_head}
-          style={{ marginBottom: "15px" }}
-        >
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">
-              View Municipality according to year
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={year}
-              label="View Municipality according to year"
-              onChange={handleChange}
-            >
-              <MenuItem value={0}>See All</MenuItem>
-
-              <MenuItem value={1}>First Year</MenuItem>
-              <MenuItem value={2}>Second Year</MenuItem>
-              <MenuItem value={3}>Third Year</MenuItem>
-            </Select>
-          </FormControl>
-        </div> */}
 
         <div className={componentStyle.muniCard_wrap}>
           {MunicipalityFilter.map((val, index) => {
@@ -852,26 +543,6 @@ const MapComponent = ({ mapData }) => {
     );
   };
 
-  const pins = MunicipalityFilter.map((city, index) => (
-    <Marker
-      key={`marker-${index}`}
-      longitude={city.longitude}
-      latitude={city.latitude}
-      onClick={(e) => {
-        setDataBoxIndex(true);
-        setSelectedMunicipality(city);
-        whereFly(city);
-      }}
-    >
-      <div
-        className={`${componentStyle.map_pin} marker-pin 
-        }`}
-      >
-        <img src="/map_recycle.svg" alt="" />
-      </div>
-    </Marker>
-  ));
-
   useIsomorphicLayoutEffect(() => {
     if (window.innerWidth < 2500) {
       setInitialZoomValue(6.6);
@@ -888,6 +559,16 @@ const MapComponent = ({ mapData }) => {
     }
   });
 
+  const onHover = useCallback((event) => {
+    const {
+      features,
+      point: { x, y },
+    } = event;
+    const hoveredFeature = features && features[0];
+
+    setHoverInfo(hoveredFeature && { feature: hoveredFeature, x, y });
+  }, []);
+
   return (
     <section className={componentStyle.map_section}>
       <div className={componentStyle.map_container}>
@@ -898,7 +579,9 @@ const MapComponent = ({ mapData }) => {
             mapboxAccessToken={mapboxgl.accessToken}
             attributionControl={false}
             ref={mapRef}
-            interactiveLayerIds={["map_style_fill"]}
+            interactiveLayerIds={["municipalityMap-layer"]}
+            onMouseMove={onHover}
+            style={{ width: "100%", height: "100%" }}
           >
             <Source id="nepalMap" type="geojson" data={NepalMap}>
               <Layer {...mapStyleLine} />
@@ -930,6 +613,7 @@ const MapComponent = ({ mapData }) => {
                     </Source>
                   ) : null
                 )}
+
                 <Source
                   key="municipalityMap-selected"
                   id="municipalityMap"
@@ -969,7 +653,7 @@ const MapComponent = ({ mapData }) => {
                 </Source>
 
                 <Source
-                  key="municipalityMap-default"
+                  key="municipalityMap"
                   id="municipalityMap"
                   type="geojson"
                   data={MunicipalityMap}
@@ -977,6 +661,26 @@ const MapComponent = ({ mapData }) => {
                   <Layer id="municipalityMap-layer" {...mapStyleFill} />
                 </Source>
               </>
+            )}
+
+            {hoverInfo && (
+              <div
+                className="tooltip"
+                style={{
+                  position: "absolute",
+                  left: hoverInfo.x,
+                  top: hoverInfo.y,
+                  background: "#20617B",
+                  color: "#fff",
+                  padding: "8px 15px",
+                  border: "1px solid #fff",
+                  borderRadius: "4px",
+                  fontSize: "16px",
+                  zIndex: 1000,
+                }}
+              >
+                {hoverInfo.feature.properties.NAME}
+              </div>
             )}
           </Map>
         ) : (

@@ -321,6 +321,15 @@ a {
   max-width: 1463px;
 }
 
+.tooltip {
+  position: absolute;
+  background: white;
+  padding: 5px;
+  border: 1px solid black;
+  z-index: 1000;
+  transition: 0.5s all ease;
+}
+
 h1 {
   font-size: 108px;
   font-weight: 900;

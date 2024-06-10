@@ -59,7 +59,7 @@ const mapStyleFill = {
   layout: {},
   paint: {
     "fill-color": "#f7c624",
-    "fill-opacity": 0.55,
+    "fill-opacity": 0.75,
     "fill-outline-color": "#ffffff",
   },
 };
