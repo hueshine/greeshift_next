@@ -665,7 +665,7 @@ const MapComponent = ({ mapData }) => {
 
             {hoverInfo && (
               <div
-                className="tooltip"
+                className="tooltips"
                 style={{
                   position: "absolute",
                   left: hoverInfo.x,
