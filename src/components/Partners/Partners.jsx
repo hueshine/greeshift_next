@@ -5,9 +5,13 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 import homeStyle from "@/styles/home.module.scss";
+import { useRouter } from "next/router";
 
 const Partners = ({ data }) => {
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
+  const router = useRouter();
+  let lang = router.locale;
 
   let partnersData = data.partner;
 
@@ -20,7 +24,7 @@ const Partners = ({ data }) => {
   return (
     <>
       <Container maxWidth={"lg"}>
-        <h2>Our Partners</h2>
+        <h2>{lang == "en" ? "Our Partners" : "हाम्रा साझेदारहरू"} </h2>
 
         {Object.keys(groupData).map((categoryID) => {
           const shouldAutoplay =
@@ -32,7 +36,11 @@ const Partners = ({ data }) => {
                 };
           return (
             <div className={homeStyle.partnerRow} key={categoryID}>
-              <h5>{groupData[categoryID][0].categoryTitle}</h5>
+              <h5>
+                {lang == "en"
+                  ? groupData[categoryID][0].categoryTitle
+                  : groupData[categoryID][0].categoryTitle_np}
+              </h5>
 
               {groupData[categoryID].length < 4 ? (
                 <div className={homeStyle.partner_logo_wrapper}>

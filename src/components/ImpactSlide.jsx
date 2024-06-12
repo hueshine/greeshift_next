@@ -2,11 +2,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
+import { useRouter } from "next/router";
+
 import homeStyle from "@/styles/home.module.scss";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
 const ImpactSlide = ({ data }) => {
+  const router = useRouter();
+  let lang = router.locale;
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
   useIsomorphicLayoutEffect(() => {
@@ -63,10 +67,10 @@ const ImpactSlide = ({ data }) => {
           <div>
             <img src={`${imageUrl}/${val.image}`} alt="" />
             <h3>
-              {val.title}
+              {lang == "en" ? val.title : val.title_np}
               <span></span>
             </h3>
-            <p>{val.subtitle}</p>
+            <p>{lang == "en" ? val.subtitle : val.subtitle_np}</p>
           </div>
         </SwiperSlide>
       ))}

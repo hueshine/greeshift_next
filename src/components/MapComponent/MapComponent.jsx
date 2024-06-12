@@ -40,6 +40,7 @@ import HighchartsReact from "highcharts-react-official";
 import HighchartsMore from "highcharts/highcharts-more";
 import HighchartsSolidGauge from "highcharts/modules/solid-gauge";
 import HighchartsPictorial from "highcharts/modules/pictorial";
+import { useRouter } from "next/router";
 
 if (typeof Highcharts === "object") {
   HighchartsMore(Highcharts);
@@ -47,7 +48,10 @@ if (typeof Highcharts === "object") {
   HighchartsPictorial(Highcharts);
 }
 
-const MapComponent = ({ mapData }) => {
+const MapComponent = ({ mapData, mapText }) => {
+  const router = useRouter();
+  let lang = router.locale;
+
   let MunicipalityData = mapData;
   const imageUrl = `https://www.app.greenshift.creasion.org/storage`;
 
@@ -689,14 +693,14 @@ const MapComponent = ({ mapData }) => {
       </div>
 
       <div className={componentStyle.map_info}>
-        <h2>
-          Project <span>Areas</span>
-        </h2>
-
-        <p>
-          GreenShift Nepal is a four-year project which will be implemented in 9
-          municipalities – 3 in each of Bagmati, Madhesh, and Lumbini provinces.
-        </p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              lang == "en"
+                ? mapText.homepage.map_description
+                : mapText.homepage.map_description_np,
+          }}
+        />
       </div>
 
       <Container maxWidth="xl">

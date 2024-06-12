@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import { Container, Grid } from "@mui/material";
 
@@ -32,8 +33,10 @@ interface HomeData {
 
 interface NewsItem {
   title: string;
+  title_np: string;
   date: string;
   text: string;
+  text_np: string;
   image: string;
 }
 
@@ -52,6 +55,8 @@ export default function Home({
   apiNewsData: NewsData;
   apiHomeData: HomeData;
 }) {
+  const router = useRouter();
+  let lang = router.locale;
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
   return (
     <>
@@ -82,7 +87,10 @@ export default function Home({
             <div className={homeStyle.introAbout_text}>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: apiHomeData.homepage.impacts,
+                  __html:
+                    lang == "en"
+                      ? apiHomeData.homepage.impacts
+                      : apiHomeData.homepage.impacts_np,
                 }}
               />
             </div>
@@ -96,11 +104,19 @@ export default function Home({
 
       <section className={homeStyle.focus_area}>
         <h2 style={{ textAlign: "center" }}>
-          <span>{apiHomeData.homepage.area_title}</span>
+          <span>
+            {lang == "en"
+              ? apiHomeData.homepage.area_title
+              : apiHomeData.homepage.area_title_np}
+          </span>
         </h2>
 
         <Container maxWidth="lg" style={{ textAlign: "center" }}>
-          <p>{apiHomeData.homepage.area_description}</p>
+          <p>
+            {lang == "en"
+              ? apiHomeData.homepage.area_description
+              : apiHomeData.homepage.area_description_np}
+          </p>
         </Container>
 
         <div className={homeStyle.focusBox}>
@@ -109,7 +125,7 @@ export default function Home({
       </section>
 
       <div className={homeStyle.home_map}>
-        <MapComponent mapData={apiMapData} />
+        <MapComponent mapData={apiMapData} mapText={apiHomeData} />
       </div>
 
       <section className={homeStyle.home_news}>
@@ -118,11 +134,19 @@ export default function Home({
             <div className={homeStyle.home_news_title}>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: apiHomeData.homepage.news,
+                  __html:
+                    lang == "en"
+                      ? apiHomeData.homepage.news
+                      : apiHomeData.homepage.news_np,
                 }}
               />
 
-              <Button text={"More News & Updates"} link={"/news-and-updates"} />
+              <Button
+                text={
+                  lang == "en" ? "More News & Updates" : "अझ धेरै हेर्नुहोस्"
+                }
+                link={"/news-and-updates"}
+              />
             </div>
 
             <div className={homeStyle.home_news_slide}>
@@ -152,13 +176,15 @@ export default function Home({
                     <SwiperSlide key={index}>
                       <div className={homeStyle.news_wrap}>
                         <div className={homeStyle.news_wrap_text}>
-                          <h6>{val.title}</h6>
+                          <h6>{lang == "en" ? val.title : val.title_np}</h6>
 
                           <span>{val.date}</span>
 
                           <div
                             className={homeStyle.news_wrap_text_description}
-                            dangerouslySetInnerHTML={{ __html: val.text }}
+                            dangerouslySetInnerHTML={{
+                              __html: lang == "en" ? val.text : val.text_np,
+                            }}
                           />
 
                           <Link href={`/news-and-updates/${link}`}>

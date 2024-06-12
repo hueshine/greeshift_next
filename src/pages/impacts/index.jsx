@@ -2,7 +2,7 @@ import style from "../../styles/component.module.scss";
 import MapConponent from "../../components/MapComponent/MapComponent";
 import Head from "next/head";
 
-const Impacts = ({ apiData }) => {
+const Impacts = ({ apiData, apiHomeData }) => {
   return (
     <>
       <Head>
@@ -12,7 +12,7 @@ const Impacts = ({ apiData }) => {
         <meta property="og:image:height" content="442" />
       </Head>
       <section className={style.impact_banner}></section>
-      <MapConponent mapData={apiData} />
+      <MapConponent mapData={apiData} mapText={apiHomeData} />
     </>
   );
 };
@@ -21,9 +21,15 @@ export async function getStaticProps() {
   const res = await fetch("https://app.greenshift.creasion.org/api/dashboard");
   const apiData = await res.json();
 
+  const homeData = await fetch(
+    "https://app.greenshift.creasion.org/api/homepage"
+  );
+  const apiHomeData = await homeData.json();
+
   return {
     props: {
       apiData,
+      apiHomeData,
     },
     revalidate: 30,
   };

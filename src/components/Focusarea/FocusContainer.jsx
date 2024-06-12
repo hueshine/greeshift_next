@@ -17,6 +17,7 @@ import Fancybox from "../Fancybox";
 
 const FocusContainer = () => {
   const router = useRouter();
+  let lang = router.locale;
 
   const [data, setData] = useState(null);
 
@@ -35,7 +36,9 @@ const FocusContainer = () => {
     <>
       {data ? (
         <>
-          <Banner title={data.banner_text} />
+          <Banner
+            title={lang == "en" ? data.banner_text : data.banner_text_np}
+          />
 
           {data.areas.map((val, index) => (
             <section
@@ -49,12 +52,14 @@ const FocusContainer = () => {
                     <h1>0{index + 1}</h1>
                     <span>Focus Area </span>
                   </div>
-                  <h3>{val.title}</h3>
+                  <h3>{lang == "en" ? val.title : val.title_np}</h3>
                 </div>
 
                 <div
                   className={style.text}
-                  dangerouslySetInnerHTML={{ __html: val.text }}
+                  dangerouslySetInnerHTML={{
+                    __html: lang == "en" ? val.text : val.text_np,
+                  }}
                 />
 
                 <Grid container spacing={5}>
@@ -62,12 +67,16 @@ const FocusContainer = () => {
                     <div className={style.output}>
                       <div className={style.output_title}>
                         <img src="/projected_output.svg" alt="" />
-                        <h4>Intended Output</h4>
+                        <h4>
+                          {lang == "en" ? "Intended Output" : "अभिप्रेत आउटपुट"}{" "}
+                        </h4>
                       </div>
 
                       <div
                         className={style.output_text}
-                        dangerouslySetInnerHTML={{ __html: val.output }}
+                        dangerouslySetInnerHTML={{
+                          __html: lang == "en" ? val.output : val.output_np,
+                        }}
                       />
                     </div>
                   </Grid>
@@ -76,12 +85,15 @@ const FocusContainer = () => {
                     <div className={style.output}>
                       <div className={style.output_title}>
                         <img src="/activities.svg" alt="" />
-                        <h4>Activities</h4>
+                        <h4>{lang == "en" ? "Activities" : "गतिविधिहरू"} </h4>
                       </div>
 
                       <div
                         className={style.output_text}
-                        dangerouslySetInnerHTML={{ __html: val.activities }}
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            lang == "en" ? val.activities : val.activities_np,
+                        }}
                       />
                     </div>
                   </Grid>

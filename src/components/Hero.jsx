@@ -6,6 +6,8 @@ import EastIcon from "@mui/icons-material/East";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
+import { useRouter } from "next/router";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { SplitText } from "gsap/dist/SplitText";
@@ -16,6 +18,9 @@ import homeStyle from "../styles/home.module.scss";
 import Link from "next/link";
 
 const Hero = ({ data }) => {
+  const router = useRouter();
+  let lang = router.locale;
+
   useIsomorphicLayoutEffect(() => {
     // Define a function to create a random value within a range
     function random(min, max) {
@@ -168,10 +173,10 @@ const Hero = ({ data }) => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>{data[0].title}</h5>
+                <h5>{lang == "en" ? data[0].title : data[0].title_np}</h5>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data[0].text,
+                    __html: lang == "en" ? data[0].text : data[0].text_np,
                   }}
                 />
               </div>
@@ -185,10 +190,10 @@ const Hero = ({ data }) => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>{data[1].title}</h5>
+                <h5>{lang == "en" ? data[1].title : data[1].title_np}</h5>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data[1].text,
+                    __html: lang == "en" ? data[1].text : data[1].text_np,
                   }}
                 />
               </div>
@@ -202,10 +207,10 @@ const Hero = ({ data }) => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>{data[2].title}</h5>
+                <h5>{lang == "en" ? data[2].title : data[2].title_np}</h5>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data[2].text,
+                    __html: lang == "en" ? data[2].text : data[2].text_np,
                   }}
                 />
               </div>
@@ -221,10 +226,10 @@ const Hero = ({ data }) => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>{data[3].title}</h5>
+                <h5>{lang == "en" ? data[3].title : data[3].title_np}</h5>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data[3].text,
+                    __html: lang == "en" ? data[3].text : data[3].text_np,
                   }}
                 />
               </div>
@@ -238,10 +243,10 @@ const Hero = ({ data }) => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>{data[4].title}</h5>
+                <h5>{lang == "en" ? data[4].title : data[4].title_np}</h5>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data[4].text,
+                    __html: lang == "en" ? data[4].text : data[4].text_np,
                   }}
                 />
               </div>
@@ -255,10 +260,10 @@ const Hero = ({ data }) => {
           <HtmlTooltip
             title={
               <div className="tooltip">
-                <h5>{data[5].title}</h5>
+                <h5>{lang == "en" ? data[5].title : data[5].title_np}</h5>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data[5].text,
+                    __html: lang == "en" ? data[5].text : data[5].text_np,
                   }}
                 />
               </div>
@@ -282,7 +287,7 @@ const Hero = ({ data }) => {
               <div className={homeStyle.icon}>
                 <EastIcon />
               </div>
-              <span>Take a Quiz </span>
+              <span>{lang == "en" ? "Take a Quiz" : "Take a Quiz"} </span>
             </div>
           </Link>
         </div>

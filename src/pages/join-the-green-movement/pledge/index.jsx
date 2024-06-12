@@ -519,7 +519,7 @@ const Pledge = ({ apiData }) => {
                           {apiData.count}
                           <small>+</small>
                         </h1>
-                        <span> People pledges to the cause</span>
+                        <span> People pledged to the cause</span>
                       </div>
                     </div>
                     <div

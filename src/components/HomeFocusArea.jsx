@@ -9,8 +9,11 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // hooks
 import { useIsomorphicLayoutEffect } from "@/hook";
+import { useRouter } from "next/router";
 
 const HomeFocusArea = ({ focusData }) => {
+  const router = useRouter;
+  let lang = router.locale;
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
   let data = focusData.areas;
@@ -99,8 +102,12 @@ const HomeFocusArea = ({ focusData }) => {
 
                 <Grid item md={8} xs={12}>
                   <div className={homeStyle.focusCard_text}>
-                    <h4>{val.title}</h4>
-                    <div dangerouslySetInnerHTML={{ __html: val.text }} />
+                    <h4>{lang == "en" ? val.title : val.title_np}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: lang == "en" ? val.text : val.text_np,
+                      }}
+                    />
                   </div>
                 </Grid>
               </Grid>

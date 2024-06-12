@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
+import { styled } from "@mui/material/styles";
+import Switch from "@mui/material/Switch";
+
+import { useRouter } from "next/router";
+
 import { Grid } from "@mui/material";
 import headerStyle from "./header.module.scss";
 import Link from "next/link";
@@ -9,7 +17,57 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import { useIsomorphicLayoutEffect } from "@/hook";
 
+const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+  width: 62,
+  height: 34,
+  padding: 7,
+
+  "& .MuiSwitch-switchBase": {
+    margin: 1,
+    padding: 0,
+    transform: "translateX(6px)",
+    "&.Mui-checked": {
+      color: "#fff",
+      transform: "translateX(22px)",
+      "& .MuiSwitch-thumb:before": {
+        backgroundImage: `url('/usa-flag.svg')`,
+      },
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    width: 32,
+    height: 32,
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      width: "80%",
+      height: "80%",
+      left: "50%",
+      top: "50%",
+      transform: "translate(-50%,-50%)",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundImage: `url('/nepal-flag.svg')`,
+    },
+  },
+  "& .MuiSwitch-track": {
+    opacity: 1,
+    backgroundColor:
+      theme.palette.mode === "#ADDFE1 !important"
+        ? "#ADDFE1 !important"
+        : "#ADDFE1 !important",
+    borderRadius: 20 / 2,
+  },
+}));
+
 const Header = () => {
+  const router = useRouter();
+  let lang = router.locale;
+
+  const handleLocaleChange = (locale) => {
+    router.push(router.pathname, router.asPath, { locale });
+  };
+
   const [activityData, setActivityData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -49,6 +107,27 @@ const Header = () => {
     };
     fetchData();
   }, []);
+
+  const ButtonList = () => {
+    return (
+      <div className={`${headerStyle.submenu} submenu`}>
+        <div className={headerStyle.wrap}>
+          <Link href={"/greenshift-campaigns"}>
+            What is the GreenShift Campaign?
+          </Link>
+          <Link className="btn-page" href={"/greenshift-campaigns/campaigns"}>
+            Campaigns
+          </Link>
+          <Link href={"/join-the-green-movement/pledge"}>
+            (Realistic) Pledge{" "}
+          </Link>
+          <Link href={"/join-the-green-movement/pitch-your-ideas"}>
+            Pitch Your Ideas{" "}
+          </Link>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <header className={`${headerStyle.header} header`}>
@@ -214,34 +293,7 @@ const Header = () => {
                   Join the Green Movement
                 </a>
 
-                <div className={`${headerStyle.submenu} submenu`}>
-                  <div className={headerStyle.wrap}>
-                    <Link className="btn-page" href={"/greenshift-campaigns"}>
-                      What is the GreenShift Campaign?
-                    </Link>
-
-                    <Link
-                      className="btn-page"
-                      href={"/greenshift-campaigns/campaigns"}
-                    >
-                      Campaigns
-                    </Link>
-
-                    <Link
-                      className="btn-page"
-                      href={"/join-the-green-movement/pledge"}
-                    >
-                      (Realistic) Pledge{" "}
-                    </Link>
-
-                    <Link
-                      className="btn-page"
-                      href={"/join-the-green-movement/pitch-your-ideas"}
-                    >
-                      Pitch Your Ideas{" "}
-                    </Link>
-                  </div>
-                </div>
+                <ButtonList />
               </li>
             </ul>
           </Grid>
@@ -250,30 +302,42 @@ const Header = () => {
             <ul
               className={`${headerStyle.nav} ${headerStyle.nav_align_right} has-dropdown`}
             >
-              <li>
+              <li style={{ margin: "0" }}>
                 <a href="#" className={headerStyle.btn_highlight}>
                   Join the Green Movement
                 </a>
 
-                <div className={`${headerStyle.submenu} submenu`}>
-                  <div className={headerStyle.wrap}>
-                    <Link href={"/greenshift-campaigns"}>
-                      What is the GreenShift Campaign?
-                    </Link>
-                    <Link
-                      className="btn-page"
-                      href={"/greenshift-campaigns/campaigns"}
-                    >
-                      Campaigns
-                    </Link>
-                    <Link href={"/join-the-green-movement/pledge"}>
-                      (Realistic) Pledge{" "}
-                    </Link>
-                    <Link href={"/join-the-green-movement/pitch-your-ideas"}>
-                      Pitch Your Ideas{" "}
-                    </Link>
-                  </div>
-                </div>
+                <ButtonList />
+              </li>
+
+              <li style={{ marginLeft: "15px" }}>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <MaterialUISwitch
+                        sx={{ m: 1 }}
+                        defaultChecked={lang === "en"}
+                        onChange={() =>
+                          handleLocaleChange(lang === "en" ? "np" : "en")
+                        }
+                      />
+                    }
+                  />
+                </FormGroup>
+
+                {/* <button
+                  className={lang == "en" ? headerStyle.active : ""}
+                  onClick={() => handleLocaleChange("en")}
+                >
+                  EN
+                </button> */}
+
+                {/* <button
+                  className={lang == "np" ? headerStyle.active : ""}
+                  onClick={() => handleLocaleChange("np")}
+                >
+                  NP
+                </button> */}
               </li>
             </ul>
           </Grid>

@@ -6,12 +6,16 @@ import { Container, Drawer } from "@mui/material";
 import { useState } from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
+import { useRouter } from "next/router";
 
 const Team = ({ apiData }) => {
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
+  const router = useRouter();
+  let lang = router.locale;
+
   const [activeData, setActiveData] = useState(apiData.PIT);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
   const [activeProfile, setActiveProfile] = useState();
 
   const [open, setOpen] = useState(false);
@@ -34,10 +38,20 @@ const Team = ({ apiData }) => {
             </div>
 
             <div className={style.detail}>
-              <h4>{activeProfile.name}</h4>
-              <p>{activeProfile.designation}</p>
+              <h4>
+                {lang == "en" ? activeProfile.name : activeProfile.name_np}
+              </h4>
               <p>
-                <small>{activeProfile.consortium}</small>
+                {lang == "en"
+                  ? activeProfile.designation
+                  : activeProfile.designation_np}
+              </p>
+              <p>
+                <small>
+                  {lang == "en"
+                    ? activeProfile.consortium
+                    : activeProfile.consortium_np}
+                </small>
               </p>
             </div>
           </div>
@@ -45,7 +59,10 @@ const Team = ({ apiData }) => {
           <div className={style.text}>
             <div
               className={style.news_wrap_text_description}
-              dangerouslySetInnerHTML={{ __html: activeProfile.text }}
+              dangerouslySetInnerHTML={{
+                __html:
+                  lang == "en" ? activeProfile.text : activeProfile.text_np,
+              }}
             />
           </div>
         </div>
@@ -63,7 +80,10 @@ const Team = ({ apiData }) => {
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={apiData.banner_text} parent={"About"} />
+      <Banner
+        title={lang == "en" ? apiData.banner_text : apiData.banner_text_np}
+        parent={"About"}
+      />
 
       <Drawer
         className={style.drawer}
@@ -77,7 +97,7 @@ const Team = ({ apiData }) => {
         <Container maxWidth={"lg"}>
           <div
             dangerouslySetInnerHTML={{
-              __html: apiData.intro,
+              __html: lang == "en" ? apiData.intro : apiData.intro_np,
             }}
           />
         </Container>
@@ -116,10 +136,12 @@ const Team = ({ apiData }) => {
                     <div className={style.profile_image}>
                       <img src={`${imageUrl}/${val.image}`} alt="" />
                     </div>
-                    <h5>{val.name}</h5>
-                    <p>{val.designation}</p>
+                    <h5>{lang == "en" ? val.name : val.name_np}</h5>
+                    <p>{lang == "en" ? val.designation : val.designation_np}</p>
                     <p>
-                      <small>{val.consortium}</small>
+                      <small>
+                        {lang == "en" ? val.consortium : val.consortium_np}
+                      </small>
                     </p>
                   </div>
                 );
