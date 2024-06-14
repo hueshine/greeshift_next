@@ -49,7 +49,7 @@ const Footer = () => {
           </Grid>
 
           <Grid item style={marginBottom} lg={2.5}>
-            <h6>{lang == "en" ? "Quick Links" : "द्रुत लिङ्कहरू"} </h6>
+            <h6>{lang == "en" ? "Quick Links" : "लिङ्कहरू"} </h6>
             <Link href={"/focus-area"}>
               {lang == "en" ? "Focus Area" : "प्राथमिकताका क्षेत्रहरु"}
             </Link>
@@ -68,7 +68,7 @@ const Footer = () => {
           </Grid>
 
           <Grid item style={marginBottom} lg={3}>
-            <h6>{lang == "en" ? "Contact Us" : "सम्पर्क गर्नुहोस्"}</h6>
+            <h6>{lang == "en" ? "Contact Us" : "सम्पर्क ठेगाना"}</h6>
             <a href="#">
               {lang == "en"
                 ? "Pabitra Pyara Marga, Baluwatar"
@@ -82,7 +82,7 @@ const Footer = () => {
             <a href="">greenshift@creasion.org</a>
 
             <div className={footerStyle.social}>
-              <h6>{lang == "en" ? "Connect Via" : ""}</h6>
+              <h6>{lang == "en" ? "Connect Via" : "मार्फत जोडिनुहोस्"}</h6>
               <a href="https://www.facebook.com/creasionorgg/" target="_blank">
                 <FacebookIcon />
               </a>
