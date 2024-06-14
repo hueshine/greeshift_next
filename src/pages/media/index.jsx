@@ -9,23 +9,33 @@ import Button from "@/components/Button/Button";
 // import data from "./data.json";
 
 import style from "./style.module.scss";
+import { useRouter } from "next/router";
 
 const Media = ({ apiData }) => {
+  const router = useRouter();
+  let lang = router.locale;
+
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
   return (
     <>
       <Head>
         <title>Media | Green Shift Nepal</title>
-        <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+        <meta name="description" content={apiData.meta_description} />
+        <meta property="og:image" content={`${imageUrl}/${apiData.og_image}`} />
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={apiData.banner_text} parent={"Knowledge Hub"} />
+      <Banner
+        title={lang == "en" ? apiData.banner_text : apiData.banner_text_np}
+        parent={lang == "en" ? "Knowledge Hub" : "ज्ञान केन्द्र"}
+      />
 
       <section className={style.about}>
         <Container maxWidth="lg">
           <div
             dangerouslySetInnerHTML={{
-              __html: apiData.text,
+              __html: lang == "en" ? apiData.text : apiData.text_np,
             }}
           />
         </Container>
@@ -41,13 +51,13 @@ const Media = ({ apiData }) => {
                   <div className={style.media_list}>
                     <div className={style.title}>
                       <Link href={`/media/${link}`}>
-                        <h5>{val.title}</h5>
+                        <h5>{lang == "en" ? val.title : val.title_np}</h5>
                       </Link>
                     </div>
 
                     <div className={style.footer}>
                       <Button
-                        text={"Read More"}
+                        text={lang == "en" ? "Read More" : "थप पढ्नुहोस्"}
                         link={`/media/${link}`}
                       ></Button>
 

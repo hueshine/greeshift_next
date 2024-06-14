@@ -17,7 +17,7 @@ import { Jar, WaterJar, TakeAway, Plastic, Glass, Bottle } from "./HeroSvg";
 import homeStyle from "../styles/home.module.scss";
 import Link from "next/link";
 
-const Hero = ({ data }) => {
+const Hero = ({ data, text }) => {
   const router = useRouter();
   let lang = router.locale;
 
@@ -287,7 +287,9 @@ const Hero = ({ data }) => {
               <div className={homeStyle.icon}>
                 <EastIcon />
               </div>
-              <span>{lang == "en" ? "Take a Quiz" : "Take a Quiz"} </span>
+              <span>
+                {lang == "en" ? text.button_name : text.button_name_np}{" "}
+              </span>
             </div>
           </Link>
         </div>

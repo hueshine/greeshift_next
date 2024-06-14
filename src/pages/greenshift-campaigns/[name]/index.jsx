@@ -15,6 +15,7 @@ const NewsDetail = () => {
   const [data, setData] = useState(null);
 
   const router = useRouter();
+  let lang = router.locale;
 
   const { name } = router.query;
 
@@ -45,13 +46,22 @@ const NewsDetail = () => {
       {selectedCampaigns ? (
         <>
           <Head>
-            <title>{selectedCampaigns.title} | Green Shift Nepal</title>
-            <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+            <title>{selectedCampaigns[0].title} | Green Shift Nepal</title>
+            <meta
+              property="og:image"
+              content={`${imageUrl}/${selectedCampaigns[0].image}`}
+            />
             <meta property="og:image:width" content="640" />
             <meta property="og:image:height" content="442" />
           </Head>
 
-          <Banner title={selectedCampaigns[0].title} />
+          <Banner
+            title={
+              lang == "en"
+                ? selectedCampaigns[0].title
+                : selectedCampaigns[0].title_np
+            }
+          />
 
           <div className={style.campaign_detail}>
             <Container maxWidth={"lg"}>
@@ -64,7 +74,10 @@ const NewsDetail = () => {
               <div
                 className={style.text}
                 dangerouslySetInnerHTML={{
-                  __html: selectedCampaigns[0].description,
+                  __html:
+                    lang == "en"
+                      ? selectedCampaigns[0].description
+                      : selectedCampaigns[0].description_np,
                 }}
               />
             </Container>

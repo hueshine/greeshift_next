@@ -8,9 +8,13 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 import footerStyle from "./footer.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Footer = () => {
   let marginBottom = { marginBottom: "30px" };
+
+  const router = useRouter();
+  let lang = router.locale;
 
   return (
     <footer className={footerStyle.footer}>
@@ -45,22 +49,40 @@ const Footer = () => {
           </Grid>
 
           <Grid item style={marginBottom} lg={2.5}>
-            <h6>Quick Links</h6>
-            <Link href={"/focus-area"}>Focus Area</Link>
-            <Link href={"/impacts"}>Impacts</Link>
-            <Link href={"/news-and-updates"}>News & Updates</Link>
-            <Link href={"/greenshift-campaigns"}>GreenShift Campaigns</Link>
-            <Link href={"/pitch-your-ideas"}>Pitch Your Ideas</Link>
+            <h6>{lang == "en" ? "Quick Links" : "द्रुत लिङ्कहरू"} </h6>
+            <Link href={"/focus-area"}>
+              {lang == "en" ? "Focus Area" : "प्राथमिकताका क्षेत्रहरु"}
+            </Link>
+            <Link href={"/impacts"}>
+              {lang == "en" ? "Impacts" : "असर/प्रभाव"}
+            </Link>
+            <Link href={"/news-and-updates"}>
+              {lang == "en" ? "News & Updates" : "समाचार र अपडेटहरू"}
+            </Link>
+            <Link href={"/greenshift-campaigns/campaigns"}>
+              {lang == "en" ? "GreenShift Campaigns" : "अभियानहरू"}
+            </Link>
+            <Link href={"/pitch-your-ideas"}>
+              {lang == "en" ? "Pitch Your Ideas" : "तपाईको अवधारणा"}
+            </Link>
           </Grid>
 
           <Grid item style={marginBottom} lg={3}>
-            <h6>Contact Us</h6>
-            <a href="">Pabitra Pyara Marga, Baluwatar</a>
-            <a href="">+977-1 -4520784 /01-4540085</a>
+            <h6>{lang == "en" ? "Contact Us" : "सम्पर्क गर्नुहोस्"}</h6>
+            <a href="#">
+              {lang == "en"
+                ? "Pabitra Pyara Marga, Baluwatar"
+                : "पवित्र प्यारा मार्ग, बालुवाटार, काठमाडौं"}
+            </a>
+            <a href="">
+              {lang == "en"
+                ? "+977-1 -4520784 /01-4540085"
+                : "+९७७-१-४५२०७८४ / ४५४००८५"}
+            </a>
             <a href="">greenshift@creasion.org</a>
 
             <div className={footerStyle.social}>
-              <h6>Connect Via</h6>
+              <h6>{lang == "en" ? "Connect Via" : ""}</h6>
               <a href="https://www.facebook.com/creasionorgg/" target="_blank">
                 <FacebookIcon />
               </a>
@@ -74,11 +96,11 @@ const Footer = () => {
           </Grid>
 
           <Grid item style={marginBottom} lg={2.5}>
-            <h6>Grievance</h6>
+            <h6>{lang == "en" ? "Grievance" : "गुनासो"}</h6>
             <p>
-              GreenShift Nepal is committed to upholding the highest standards
-              of integrity and we have a zero-tolerance policy regarding any
-              instances of misconduct.{" "}
+              {lang == "en"
+                ? "GreenShift Nepal is committed to upholding the highest standards of integrity and we have a zero-tolerance policy regarding any instances of misconduct."
+                : "GreenShift नेपाल अखण्डताको उच्चतम मापदण्ड कायम गर्न प्रतिबद्ध छ र हामीसँग कुनै पनि दुर्व्यवहारका घटनाहरूमा शून्य सहनशीलता नीति छ।"}
             </p>
 
             <a
@@ -86,7 +108,7 @@ const Footer = () => {
               target="_blank"
               className={footerStyle.logo_btn}
             >
-              Grievance
+              {lang == "en" ? "Grievance" : "गुनासो"}
               <div>
                 <ArrowOutwardIcon />
               </div>
@@ -103,10 +125,9 @@ const Footer = () => {
             <Grid item lg={4.5}>
               <p>
                 <small>
-                  Disclaimer: This website is produced with the financial
-                  support of the European Union. Its content are the sole
-                  responsibility of Creasion and its consortium partners and do
-                  not necessarily reflect the views of the European Union.
+                  {lang == "en"
+                    ? "Disclaimer: This website is produced with the financial support of the European Union. Its content are the sole responsibility of Creasion and its consortium partners and do not necessarily reflect the views of the European Union."
+                    : "अस्वीकरण: यो वेबसाइट यूरोपीय संघ को आर्थिक सहयोग संग उत्पादन गरिएको हो। यसको सामग्री क्रिएशन र यसको कन्सोर्टियम साझेदारहरूको एकमात्र जिम्मेवारी हो र युरोपियन युनियनको विचारहरू प्रतिबिम्बित गर्दैन।"}
                 </small>
               </p>
             </Grid>

@@ -12,8 +12,13 @@ import gsap from "gsap";
 import { Container, Grid } from "@mui/material";
 
 import style from "@/styles/activity.module.scss";
+import { useRouter } from "next/router";
 
 const Activity = ({ data }) => {
+  const router = useRouter();
+
+  let lang = router.locale;
+
   let selectedData = data;
 
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
@@ -54,7 +59,10 @@ const Activity = ({ data }) => {
             <Grid item md={9}>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: selectedData.descriptionTitle,
+                  __html:
+                    lang == "en"
+                      ? selectedData.descriptionTitle
+                      : selectedData.descriptionTitle_np,
                 }}
               />
             </Grid>
@@ -63,7 +71,10 @@ const Activity = ({ data }) => {
               <div
                 className={style.text}
                 dangerouslySetInnerHTML={{
-                  __html: selectedData.description,
+                  __html:
+                    lang == "en"
+                      ? selectedData.description
+                      : selectedData.description_np,
                 }}
               />
             </Grid>
@@ -73,7 +84,10 @@ const Activity = ({ data }) => {
                 <div
                   className={style.text}
                   dangerouslySetInnerHTML={{
-                    __html: selectedData.objective,
+                    __html:
+                      lang == "en"
+                        ? selectedData.objective
+                        : selectedData.objective_np,
                   }}
                 />
               </div>
@@ -98,7 +112,7 @@ const Activity = ({ data }) => {
                       setActiveIndex(index);
                     }}
                   >
-                    {val.activity}
+                    {lang == "en" ? val.activity : val.activity_np}
                   </li>
                 );
               })}
@@ -109,11 +123,18 @@ const Activity = ({ data }) => {
               <Grid container columnSpacing={8} alignItems={"center"}>
                 <Grid item sm={7}>
                   <div className={style.activity_detail_text}>
-                    <h3>{selectedActivity.title}</h3>
+                    <h3>
+                      {lang == "en"
+                        ? selectedActivity.title
+                        : selectedActivity.title_np}
+                    </h3>
                     <div
                       className={style.text}
                       dangerouslySetInnerHTML={{
-                        __html: selectedActivity.text,
+                        __html:
+                          lang == "en"
+                            ? selectedActivity.text
+                            : selectedActivity.text_np,
                       }}
                     />
                   </div>
@@ -166,7 +187,11 @@ const Activity = ({ data }) => {
                 <SwiperSlide className={style.image_slide} key={index}>
                   <a data-fancybox="gallery" href={`${imageUrl}/${img}`}>
                     <img src={`${imageUrl}/${img}`} alt="" />
-                    <p>{selectedData.subtitle[index]}</p>
+                    <p>
+                      {lang == "en"
+                        ? selectedData.subtitle[index]
+                        : selectedData.subtitle_np[index]}
+                    </p>
                   </a>
                 </SwiperSlide>
               );
@@ -177,7 +202,7 @@ const Activity = ({ data }) => {
 
       <section className={style.sdg_wrap}>
         <Container maxWidth={"lg"}>
-          <h3>SDG Contribution</h3>
+          <h3>{lang == "en" ? "SDG Contributions" : "एसडीजीका योगदानहरु"} </h3>
           <div className={style.sdg_flex}>
             {selectedData.sdg.map((val, index) => {
               return <img src={`/sdg/${val}.png`} alt="" key={index} />;

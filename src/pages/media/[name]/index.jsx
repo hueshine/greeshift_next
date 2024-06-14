@@ -17,6 +17,7 @@ const NewsDetail = () => {
   const [dataNews, setDataNews] = useState(null);
 
   const router = useRouter();
+  let lang = router.locale;
 
   const { name } = router.query;
 
@@ -44,16 +45,23 @@ const NewsDetail = () => {
         <>
           <Head>
             <title>{selectedNews[0].title} | Green Shift Nepal</title>
-            <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+
             <meta property="og:image:width" content="640" />
             <meta property="og:image:height" content="442" />
           </Head>
 
-          <Banner title={"Media Coverage"} parent={"Knowledge Hub"} />
+          <Banner
+            title={lang == "en" ? "Media Coverage" : "मिडिया"}
+            parent={lang == "en" ? "Knowledge Hub" : "ज्ञान केन्द्र"}
+          />
 
           <section className={style.about}>
             <Container maxWidth="lg">
-              <h2>{selectedNews[0].title}</h2>
+              <h2>
+                {lang == "en"
+                  ? selectedNews[0].title
+                  : selectedNews[0].title_np}
+              </h2>
             </Container>
           </section>
 

@@ -4,16 +4,19 @@ import { Container, Grid } from "@mui/material";
 import homeStyle from "../styles/home.module.scss";
 // import Button from "@/components/Button/Button";
 
+import { useRouter } from "next/router";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // hooks
 import { useIsomorphicLayoutEffect } from "@/hook";
-import { useRouter } from "next/router";
 
 const HomeFocusArea = ({ focusData }) => {
-  const router = useRouter;
+  const router = useRouter();
   let lang = router.locale;
+
+  console.log(lang);
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
   let data = focusData.areas;

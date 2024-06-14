@@ -76,7 +76,7 @@ const Team = ({ apiData }) => {
     <>
       <Head>
         <title>Team | Green Shift Nepal</title>
-        {/* <meta property="og:image" content={`${imageUrl}/${apiData.banner}`} /> */}
+        <meta property="og:image" content={`${imageUrl}/${apiData.og_image}`} />
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>

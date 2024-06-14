@@ -77,7 +77,7 @@ export default function Home({
       </Head>
 
       <section className={homeStyle.heroAbout}>
-        <Hero data={apiHomeData.banners} />
+        <Hero data={apiHomeData.banners} text={apiHomeData.homepage} />
         <section className={homeStyle.introAbout}>
           <div className={homeStyle.introAbout_svg}>
             <img src="./introsvg.svg" alt="" />

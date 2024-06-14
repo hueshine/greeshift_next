@@ -113,16 +113,19 @@ const Header = () => {
       <div className={`${headerStyle.submenu} submenu`}>
         <div className={headerStyle.wrap}>
           <Link href={"/greenshift-campaigns"}>
-            What is the GreenShift Campaign?
+            {lang == "en"
+              ? "What is the GreenShift Campaign?"
+              : "ग्रीनसिफ्ट अभियान के हो ?"}
           </Link>
           <Link className="btn-page" href={"/greenshift-campaigns/campaigns"}>
-            Campaigns
+            {lang == "en" ? "Campaigns" : "अभियानहरू"}
           </Link>
           <Link href={"/join-the-green-movement/pledge"}>
-            (Realistic) Pledge{" "}
+            {lang == "en" ? "(Realistic) Pledge" : "प्लेज (प्रतिज्ञा)"}
           </Link>
           <Link href={"/join-the-green-movement/pitch-your-ideas"}>
-            Pitch Your Ideas{" "}
+            {" "}
+            {lang == "en" ? "Pitch Your Ideas" : "तपाईको अवधारणा"}
           </Link>
         </div>
       </div>
@@ -156,24 +159,24 @@ const Header = () => {
               </li>
 
               <li className="has-dropdown">
-                <a href="#">About</a>
+                <a href="#">{lang == "en" ? "About" : "हाम्रो बारेमा"}</a>
 
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
                     <Link className="btn-page" href={"/focusarea"}>
-                      Focus Areas
+                      {lang == "en" ? "Focus Areas" : "प्राथमिकताका क्षेत्रहरु"}
                     </Link>
                     <Link className="btn-page" href={"/impacts"}>
-                      Impacts
+                      {lang == "en" ? "Impacts" : "असर/प्रभाव"}
                     </Link>
                     <Link className="btn-page" href={"/team"}>
-                      Team
+                      {lang == "en" ? "Team" : "टिम"}
                     </Link>
                   </div>
                 </div>
               </li>
               <li className="has-dropdown">
-                <a href="#">CREASION</a>
+                <a href="#">{lang == "en" ? "CREASION" : "क्रिएसन"}</a>
 
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
@@ -191,7 +194,7 @@ const Header = () => {
                                 href={`/creasion/${link}`}
                                 key={index}
                               >
-                                {val.title}
+                                {lang == "en" ? val.title : val.title_np}
                               </a>
                             );
                           })}
@@ -203,7 +206,11 @@ const Header = () => {
                 </div>
               </li>
               <li className="has-dropdown">
-                <a href="#">Restless Development</a>
+                <a href="#">
+                  {lang == "en"
+                    ? "Restless Development"
+                    : "रेस्टलेस डेभलपमेन्ट"}
+                </a>
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
                     {!loading ? (
@@ -222,7 +229,7 @@ const Header = () => {
                                 href={`/restless-development/${link}`}
                                 key={index}
                               >
-                                {val.title}
+                                {lang == "en" ? val.title : val.title_np}
                               </a>
                             );
                           })}
@@ -234,7 +241,9 @@ const Header = () => {
                 </div>
               </li>
               <li className="has-dropdown">
-                <a href="#">Youth Innovation Lab</a>
+                <a href="#">
+                  {lang == "en" ? "Youth Innovation Lab" : "यूथ इनोभेसन ल्याब"}
+                </a>
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
                     {!loading ? (
@@ -253,7 +262,7 @@ const Header = () => {
                                 href={`/youth-innovation-lab/${link}`}
                                 key={index}
                               >
-                                {val.title}
+                                {lang == "en" ? val.title : val.title_np}
                               </a>
                             );
                           })}
@@ -266,23 +275,27 @@ const Header = () => {
               </li>
 
               <li className="has-dropdown">
-                <a href="#">Knowledge Hub</a>
+                <a href="#">
+                  {lang == "en" ? "Knowledge Hub" : "ज्ञान केन्द्र"}
+                </a>
                 <div className={`${headerStyle.submenu} submenu`}>
                   <div className={headerStyle.wrap}>
                     <Link className="btn-page" href={"/blog-and-field-stories"}>
-                      Blogs & Field Stories{" "}
+                      {lang == "en" ? "Blogs & Field Stories" : "ब्लग र कथाहरू"}
                     </Link>
                     <Link
                       className="btn-page"
                       href={"/publications-and-reports"}
                     >
-                      Publications & Reports{" "}
+                      {lang == "en"
+                        ? "Publications & Reports"
+                        : "प्रकाशन र रिपोर्टहरू"}
                     </Link>
                     <Link className="btn-page" href={"/news-and-updates"}>
-                      News & Updates{" "}
+                      {lang == "en" ? "News & Updates" : "समाचार र अपडेटहरू"}
                     </Link>
                     <Link className="btn-page" href={"/media"}>
-                      Media
+                      {lang == "en" ? "Media" : "मिडिया"}
                     </Link>
                   </div>
                 </div>
@@ -290,7 +303,9 @@ const Header = () => {
 
               <li className={`${headerStyle.mb_display} has-dropdown`}>
                 <a href="#" className={headerStyle.btn_highlight}>
-                  Join the Green Movement
+                  {lang == "en"
+                    ? "Join the Green Movement"
+                    : "हरित अभियानमा सहभागि हुनुहोस्"}
                 </a>
 
                 <ButtonList />
@@ -304,7 +319,9 @@ const Header = () => {
             >
               <li style={{ margin: "0" }}>
                 <a href="#" className={headerStyle.btn_highlight}>
-                  Join the Green Movement
+                  {lang == "en"
+                    ? "Join the Green Movement"
+                    : "हरित अभियानमा सहभागि हुनुहोस्"}
                 </a>
 
                 <ButtonList />
@@ -324,20 +341,6 @@ const Header = () => {
                     }
                   />
                 </FormGroup>
-
-                {/* <button
-                  className={lang == "en" ? headerStyle.active : ""}
-                  onClick={() => handleLocaleChange("en")}
-                >
-                  EN
-                </button> */}
-
-                {/* <button
-                  className={lang == "np" ? headerStyle.active : ""}
-                  onClick={() => handleLocaleChange("np")}
-                >
-                  NP
-                </button> */}
               </li>
             </ul>
           </Grid>

@@ -3,19 +3,26 @@ import Head from "next/head";
 import { Container, Grid, Link } from "@mui/material";
 
 import style from "../style.module.scss";
+import { useRouter } from "next/router";
 
 const GreenShiftCampaign = ({ apiData }) => {
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
+  const router = useRouter();
+  let lang = router.locale;
 
   return (
     <>
       <Head>
         <title>GreenShift Campaigns | Green Shift Nepal</title>
-        <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+        <meta
+          property="og:image"
+          content={`${imageUrl}/${apiData.header.basic_og}`}
+        />
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
-      <Banner title={"GreenShift Campaigns"} />
+      <Banner title={lang == "en" ? "GreenShift Campaigns" : "अभियानहरू"} />
 
       <section className={style.campaign_wrap}>
         <Container>
@@ -29,11 +36,14 @@ const GreenShiftCampaign = ({ apiData }) => {
                     <img src={`${imageUrl}/${val.image}`} alt="" />
 
                     <div className={style.text}>
-                      <h4>{val.title}</h4>
+                      <h4>{lang == "en" ? val.title : val.title_np}</h4>
 
                       <div
                         className={style.text_short}
-                        dangerouslySetInnerHTML={{ __html: val.description }}
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            lang == "en" ? val.description : val.description_np,
+                        }}
                       />
 
                       <Link href={`/greenshift-campaigns/${link}`}>

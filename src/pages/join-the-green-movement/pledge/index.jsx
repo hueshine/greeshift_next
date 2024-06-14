@@ -31,10 +31,16 @@ import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import style from "../style.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const steps = ["Personal Information", "Contact Information", "Pledge to"];
 
 const Pledge = ({ apiData }) => {
+  const router = useRouter();
+  let lang = router.locale;
+
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
   gsap.registerPlugin(ScrollToPlugin);
 
   const elTop = useRef(null);
@@ -428,12 +434,14 @@ const Pledge = ({ apiData }) => {
     <>
       <Head>
         <title>Pledge | Green Shift Nepal</title>
-        <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+        <meta property="og:image" content={`${imageUrl}/${apiData.og_image}`} />
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
 
-      <Banner title={apiData.banner_text} />
+      <Banner
+        title={lang == "en" ? apiData.banner_text : apiData.banner_text_np}
+      />
 
       <div className={style.pledge_box} id="pledgeBox" ref={elTop}>
         <Container maxWidth={"lg"}>
@@ -524,7 +532,12 @@ const Pledge = ({ apiData }) => {
                     </div>
                     <div
                       className={style.news_wrap_text_description}
-                      dangerouslySetInnerHTML={{ __html: apiData.description }}
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          lang == "en"
+                            ? apiData.description
+                            : apiData.description_np,
+                      }}
                     />
                   </div>
 

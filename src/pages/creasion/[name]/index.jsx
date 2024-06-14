@@ -27,6 +27,8 @@ const Creasion = () => {
 
   const { name } = router.query;
 
+  let lang = router.locale;
+
   let selectedData = null;
 
   if (activityData) {
@@ -35,17 +37,25 @@ const Creasion = () => {
     );
   }
 
+  let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
   return (
     <>
       {selectedData ? (
         <>
           <Head>
             <title>{selectedData.title} | Green Shift Nepal</title>
-            <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+            <meta
+              property="og:image"
+              content={`${imageUrl}/${selectedData.images[0]}`}
+            />
             <meta property="og:image:width" content="640" />
             <meta property="og:image:height" content="442" />
           </Head>
-          <Banner title={selectedData.title} parent={selectedData.ledBy} />
+          <Banner
+            title={lang == "en" ? selectedData.title : selectedData.title_np}
+            parent={lang == "en" ? selectedData.ledBy : selectedData.ledBy_np}
+          />
 
           <Activity data={selectedData} />
         </>

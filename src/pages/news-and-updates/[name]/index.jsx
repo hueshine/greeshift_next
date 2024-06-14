@@ -16,6 +16,7 @@ const NewsDetail = () => {
   const router = useRouter();
 
   const { name } = router.query;
+  let lang = router.locale;
 
   useIsomorphicLayoutEffect(() => {
     const fetchData = async () => {
@@ -40,16 +41,25 @@ const NewsDetail = () => {
         <>
           <Head>
             <title>{selectedNews[0].title} | Green Shift Nepal</title>
-            <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+            <meta
+              property="og:image"
+              content={`${imageUrl}/${selectedNews[0].image}`}
+            />
             <meta property="og:image:width" content="640" />
             <meta property="og:image:height" content="442" />
           </Head>
 
-          <Banner title={"News & Updates"} />
+          <Banner
+            title={lang == "en" ? "News & Updates" : "समाचार र अपडेटहरू"}
+          />
           <section className={style.newsDetail}>
             <Container maxWidth={"lg"}>
               <div className={style.newsDetail_title}>
-                <h2>{selectedNews[0].title}</h2>
+                <h2>
+                  {lang == "en"
+                    ? selectedNews[0].title
+                    : selectedNews[0].title_np}
+                </h2>
                 <p>
                   <small>{selectedNews[0].date}</small>
                 </p>
@@ -59,7 +69,12 @@ const NewsDetail = () => {
 
               <div
                 className={style.newsDetail_text}
-                dangerouslySetInnerHTML={{ __html: selectedNews[0].text }}
+                dangerouslySetInnerHTML={{
+                  __html:
+                    lang == "en"
+                      ? selectedNews[0].text
+                      : selectedNews[0].text_np,
+                }}
               />
             </Container>
           </section>
