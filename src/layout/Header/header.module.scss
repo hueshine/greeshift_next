@@ -11,6 +11,13 @@
   }
 
   .logo {
+    display: flex;
+    align-items: center;
+
+    .mb_lang {
+      display: none;
+    }
+
     a {
       display: block;
     }
@@ -200,6 +207,17 @@
   .header {
     z-index: 999;
     position: fixed;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      width: 85vw;
+      justify-content: space-between;
+
+      .mb_lang {
+        display: block;
+      }
+    }
 
     .nav {
       position: fixed;

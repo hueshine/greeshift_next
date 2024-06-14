@@ -16,7 +16,6 @@ const HomeFocusArea = ({ focusData }) => {
   const router = useRouter();
   let lang = router.locale;
 
-  console.log(lang);
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
   let data = focusData.areas;

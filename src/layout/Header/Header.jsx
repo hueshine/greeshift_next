@@ -141,6 +141,20 @@ const Header = () => {
               <Link href={"/"} className="btn-page">
                 <img src="/logo.png" alt="" />
               </Link>
+
+              <FormGroup className={headerStyle.mb_lang}>
+                <FormControlLabel
+                  control={
+                    <MaterialUISwitch
+                      sx={{ m: 1 }}
+                      defaultChecked={lang === "en"}
+                      onChange={() =>
+                        handleLocaleChange(lang === "en" ? "np" : "en")
+                      }
+                    />
+                  }
+                />
+              </FormGroup>
             </div>
           </Grid>
 
