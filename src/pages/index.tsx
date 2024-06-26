@@ -9,6 +9,7 @@ import ImpactSlide from "@/components/ImpactSlide";
 import Partners from "../components/Partners/Partners";
 import HomeFocusArea from "../components/HomeFocusArea";
 import MapComponent from "../components/MapComponent/MapComponent";
+import HomePopOver from "../components/HomePopOver";
 
 import Button from "@/components/Button/Button";
 
@@ -26,6 +27,7 @@ interface FocusData {}
 
 interface HomeData {
   og_image: any;
+  popups: any;
   homepage: any;
   impacts: any;
   banners: any;
@@ -75,6 +77,10 @@ export default function Home({
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
+
+      {apiHomeData.popups.length > 0 && (
+        <HomePopOver data={apiHomeData.popups} />
+      )}
 
       <section className={homeStyle.heroAbout}>
         <Hero data={apiHomeData.banners} text={apiHomeData.homepage} />
