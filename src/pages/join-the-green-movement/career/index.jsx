@@ -24,12 +24,12 @@ const Career = ({ apiData }) => {
     <>
       <Head>
         <title>Career | Green Shift Nepal</title>
-        <meta property="og:image" content="./XDfMiMpv1kt6nn5JPDLG.jpg" />
+        <meta property="og:image" content="./focusarea1.png" />
         <meta property="og:image:width" content="640" />
         <meta property="og:image:height" content="442" />
       </Head>
 
-      <Banner title={lang == "en" ? "Career" : "Career Nepali"} />
+      <Banner title={lang == "en" ? "Career" : "क्यारियर"} />
 
       <section className={style.carrer}>
         <Container maxWidth={"lg"}>
