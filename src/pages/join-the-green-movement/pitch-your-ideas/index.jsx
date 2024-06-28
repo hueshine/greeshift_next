@@ -15,6 +15,7 @@ import axios from "axios";
 
 import PledgeIntoAction from "./PledgeIntoAction";
 import CleanUp from "./CleanUp";
+import { useRouter } from "next/router";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,6 +47,9 @@ function a11yProps(index) {
 }
 
 const Ideas = () => {
+  const router = useRouter();
+  let lang = router.locale;
+
   const [value, setValue] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -61,7 +65,7 @@ const Ideas = () => {
         <meta property="og:image:height" content="442" />
       </Head>
 
-      <Banner title={"Pitch Your Ideas"} />
+      <Banner title={lang == "en" ? "Pitch Your Ideas" : "तपाईको अवधारणा"} />
 
       <section className={style.pitch_form}>
         <div className={style.form_container}>

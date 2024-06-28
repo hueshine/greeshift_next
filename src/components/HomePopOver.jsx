@@ -12,6 +12,8 @@ const HomePopOver = ({ data }) => {
     position: "absolute",
     top: "50%",
     left: "50%",
+    width: "auto",
+    maxWidth: "85%",
     transform: "translate(-50%, -50%)",
     bgcolor: "background.paper",
     height: "90vh",
@@ -32,7 +34,7 @@ const HomePopOver = ({ data }) => {
           newOpenStates[index] = false;
           return newOpenStates;
         });
-      }, 8500)
+      }, 9500)
     );
 
     setTimeouts(newTimeouts);
