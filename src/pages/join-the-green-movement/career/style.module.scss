@@ -1,0 +1,122 @@
+.carrer {
+  padding: 80px 0;
+
+  .section_nav {
+    margin-bottom: 30px;
+    ul {
+      display: flex;
+      justify-content: center;
+
+      li {
+        font-family: "Source Sans Pro";
+        font-weight: 600;
+        margin: 10px;
+        font-size: 24px;
+        padding: 10px 30px;
+        border-radius: 30px;
+        letter-spacing: -0.4px;
+        cursor: pointer;
+
+        &.active {
+          background: #33b2b6;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .nav_text {
+    text-align: center;
+  }
+
+  .list {
+    margin-top: 60px;
+    font-size: 20px;
+    line-height: 32px;
+    font-family: "Satoshi";
+
+    .list_card {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #cdcdcd;
+    }
+
+    .job_card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+
+      h4 {
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 0;
+        opacity: 0.9;
+      }
+
+      button {
+        background: #33b2b6;
+        color: #fff;
+        border: 0;
+        border-radius: 30px;
+        display: inline-flex;
+        height: 42px;
+        padding: 0 22px;
+        align-items: center;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+          background: #288689;
+        }
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: circle;
+      padding-left: 25px;
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carrer {
+    .section_nav {
+      ul {
+        flex-wrap: wrap;
+
+        li {
+          font-size: 18px;
+          padding: 10px;
+          border: 1px solid #cdcdcd;
+        }
+      }
+    }
+
+    .list {
+      .job_card {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        h4 {
+          font-size: 28px;
+          line-height: 32px;
+        }
+
+        button {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
