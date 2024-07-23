@@ -14,12 +14,18 @@ import { Container, Grid } from "@mui/material";
 import style from "@/styles/activity.module.scss";
 import { useRouter } from "next/router";
 
-const Activity = ({ data }) => {
+import Link from "next/link";
+
+const Activity = ({ data, newsData }) => {
   const router = useRouter();
 
   let lang = router.locale;
 
   let selectedData = data;
+
+  let selectedNews = newsData.filter(
+    (el) => el.activity === selectedData.title
+  );
 
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
@@ -208,6 +214,54 @@ const Activity = ({ data }) => {
               return <img src={`/sdg/${val}.png`} alt="" key={index} />;
             })}
           </div>
+        </Container>
+      </section>
+
+      <section className={style.news_activity}>
+        <Container maxWidth={"lg"}>
+          <h3>{lang == "en" ? "News & Updates" : "समाचार र अपडेटहरू"} </h3>
+
+          <Swiper
+            className={style.image_slide_wrap}
+            spaceBetween={30}
+            autoplay={{
+              delay: 6500,
+            }}
+            loop={false}
+            modules={[Autoplay]}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+          >
+            {selectedNews.map((val, index) => {
+              let link = val.title.toLowerCase().replace(/\s+/g, "-");
+              return (
+                <SwiperSlide key={index}>
+                  <div className={style.news_wrap}>
+                    <div className={style.news_wrap_image}>
+                      <img src={`${imageUrl}/${val.image}`} alt="" />
+                    </div>
+                    <div className={style.news_wrap_text}>
+                      <h6>{lang == "en" ? val.title : val.title_np}</h6>
+
+                      <span>{val.date}</span>
+
+                      <Link href={`/news-and-updates/${link}`}>
+                        {lang == "en" ? "Read More" : "थप पढ्नुहोस्"}
+                      </Link>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </Container>
       </section>
     </>

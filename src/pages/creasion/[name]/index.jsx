@@ -11,6 +11,7 @@ import { useState } from "react";
 
 const Creasion = () => {
   const [activityData, setActivityData] = useState();
+  const [newsData, setNewsData] = useState();
 
   useIsomorphicLayoutEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,18 @@ const Creasion = () => {
       setActivityData(apiData.items);
     };
     fetchData();
+
+    const fetchNewsData = async () => {
+      const res = await fetch(
+        "https://www.app.greenshift.creasion.org/api/news"
+      );
+      const apiNewsData = await res.json();
+
+      setNewsData(apiNewsData.news);
+    };
+    fetchNewsData();
   }, []);
+
   const router = useRouter();
 
   const { name } = router.query;
@@ -57,7 +69,7 @@ const Creasion = () => {
             parent={lang == "en" ? selectedData.ledBy : selectedData.ledBy_np}
           />
 
-          <Activity data={selectedData} />
+          <Activity data={selectedData} newsData={newsData} />
         </>
       ) : (
         <PreLoader />
