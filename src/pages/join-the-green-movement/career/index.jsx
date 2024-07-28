@@ -5,14 +5,16 @@ import { Container } from "@mui/material";
 import style from "./style.module.scss";
 import { useState } from "react";
 
+import DownloadIcon from "@mui/icons-material/Download";
+
 const Career = ({ apiData }) => {
   const router = useRouter();
   let lang = router.locale;
 
-  const careerTypes = apiData.vacancy.map((v) => v.career_type);
-  const uniqueCareerTypes = Array.from(
-    new Set(careerTypes.map(JSON.stringify))
-  ).map(JSON.parse);
+  // const careerTypes = apiData.vacancy.map((v) => v.career_type);
+  // const uniqueCareerTypes = Array.from(
+  //   new Set(careerTypes.map(JSON.stringify))
+  // ).map(JSON.parse);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -35,7 +37,7 @@ const Career = ({ apiData }) => {
         <Container maxWidth={"lg"}>
           <div className={style.section_nav}>
             <ul>
-              {uniqueCareerTypes.map((val, index) => {
+              {apiData.category.map((val, index) => {
                 return (
                   <li
                     key={index}
@@ -65,6 +67,10 @@ const Career = ({ apiData }) => {
             {apiData.vacancy
               .filter((job) => job.careerType_id === activeCarrer)
               .map((val, index) => {
+                let fileStr = val.file;
+
+                const fileArr = JSON.parse(fileStr);
+
                 return (
                   <div className={style.list_card} key={index}>
                     <div className={style.job_card}>
@@ -76,11 +82,35 @@ const Career = ({ apiData }) => {
                         </p>
                       </div>
 
-                      {index == job ? (
-                        ""
-                      ) : (
-                        <button onClick={() => setJob(index)}>Read More</button>
-                      )}
+                      <div>
+                        {index == job ? (
+                          <div className={style.job_file}>
+                            {fileArr[0] && fileArr[0].download_link && (
+                              <a
+                                href={`https://www.app.greenshift.creasion.org/storage/${fileArr[0].download_link}`}
+                                target="_blank"
+                              >
+                                <DownloadIcon /> Download PDF
+                              </a>
+                            )}
+                          </div>
+                        ) : (
+                          <div className={style.job_file}>
+                            {fileArr[0] && fileArr[0].download_link && (
+                              <a
+                                href={`https://www.app.greenshift.creasion.org/storage/${fileArr[0].download_link}`}
+                                target="_blank"
+                              >
+                                <DownloadIcon /> Download PDF
+                              </a>
+                            )}
+
+                            <button onClick={() => setJob(index)}>
+                              Read More
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
 
                     {index == job ? (
