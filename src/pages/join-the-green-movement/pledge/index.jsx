@@ -175,12 +175,22 @@ const Pledge = ({ apiData }) => {
         return (
           <>
             <div className={style.form_container}>
-              <div className={style.form_container_title}>
-                <h3>
-                  Our <span>Action</span>, Our <span>Responsibility</span>,
-                  <br /> Let’s take a realistic pledge.
-                </h3>
-                <p>Ready to take the responsibility?</p>
+              <div className={style.form_title_flex}>
+                <div className={style.form_container_title}>
+                  <h3>
+                    Our <span>Action</span>, Our <span>Responsibility</span>,
+                    <br /> Let’s take a realistic pledge.
+                  </h3>
+                  {/* <p>Ready to take the responsibility?</p> */}
+                </div>
+
+                <div className={style.counter}>
+                  <h1>
+                    {apiData.count}
+                    <small>+</small>
+                  </h1>
+                  <span> People pledged to the cause</span>
+                </div>
               </div>
 
               <Grid container rowSpacing={2} columnSpacing={2}>

@@ -30,7 +30,16 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       color: "#fff",
       transform: "translateX(22px)",
       "& .MuiSwitch-thumb:before": {
-        backgroundImage: `url('/usa-flag.svg')`,
+        content: "'EN'",
+        fontSize: "12px", // Adjust font size as needed
+        color: "#043f41", // Text color
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+        // backgroundImage: `url('/usa-flag.svg')`,
       },
     },
   },
@@ -38,16 +47,16 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 32,
     height: 32,
     "&::before": {
-      content: "''",
+      content: "'NP'",
+      fontSize: "12px", // Adjust font size as needed
+      color: "#043f41", // Text color
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
       position: "absolute",
-      width: "80%",
-      height: "80%",
-      left: "50%",
-      top: "50%",
-      transform: "translate(-50%,-50%)",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-      backgroundImage: `url('/nepal-flag.svg')`,
+      // backgroundImage: `url('/nepal-flag.svg')`,
     },
   },
   "& .MuiSwitch-track": {

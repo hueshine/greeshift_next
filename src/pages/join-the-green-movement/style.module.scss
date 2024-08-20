@@ -36,6 +36,36 @@
   }
 
   .form_container {
+    .form_title_flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .counter {
+        text-align: right;
+        margin-bottom: 30px;
+        h1 {
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: #33b2b6;
+          -webkit-text-fill-color: transparent;
+          font-size: 68px;
+          line-height: 1;
+          letter-spacing: 2px;
+          font-family: "TuskerGrotesk-7700";
+          margin-bottom: 5px;
+
+          small {
+            font-size: 40px;
+          }
+        }
+
+        span {
+          display: block;
+          margin: 15px 0;
+        }
+      }
+    }
+
     p {
       font-size: 16px;
     }
