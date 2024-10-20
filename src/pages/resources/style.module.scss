@@ -1,11 +1,22 @@
-.report_wrap {
+.section_wrap {
   padding: 60px 0;
+}
+
+.report_wrap {
+  padding: 30px 0px;
+
+  .section_title {
+    color: #33b2b6;
+    text-transform: uppercase;
+    letter-spacing: -0.24px;
+    font-weight: 600;
+  }
 
   .report_card {
     text-align: center;
+    padding-bottom: 10px;
     border-radius: 4px;
     box-shadow: 5px 5px 20px 0 rgba(218, 218, 218, 0.5);
-    padding-bottom: 10px;
 
     &:hover {
       h5 {

@@ -1,0 +1,44 @@
+{
+  "banner": {
+    "bannerTitle": "Downloads",
+    "bannerTitleNp": "DownloadsNp"
+  },
+  "downloadArr": [
+    {
+      "title": "Plastic Waste",
+      "titleNp": "Plastic Waste Nepali",
+      "downloads": [
+        {
+          "title": "Plastic Waste Characterization Report",
+          "titleNp": "Plastic Waste Characterization Report Np",
+          "image": "https://creasion.org/storage/downloads/April2023/2023%20report-01.png",
+          "link": "https://creasion.org/storage/downloads/April2023/CREASION%20-%20Plastic%20Characterization%20Report%202022.docx.pdf"
+        },
+        {
+          "title": "Analysis of Exisiting Acts and Policies for plastic waste management in Nepal",
+          "titleNp": "Plastic Waste Characterization Report Np",
+          "image": "https://creasion.org/storage/downloads/November2023/WhatsApp%20Image%202023-10-29%20at%202.40.26%20PM%20(1).jpeg",
+          "link": "https://creasion.org/storage/downloads/November2023/Policy%20Brief.pdf"
+        }
+      ]
+    },
+    {
+      "title": "COVID-19 POSTERS",
+      "titleNp": "COVID-19 POSTERS Np",
+      "downloads": [
+        {
+          "title": "Creasion - Poster - Reduce Risk of Infection",
+          "titleNp": "Creasion - Poster - Reduce Risk of Infection Np",
+          "image": "https://creasion.org/storage/downloads/April2023/2023%20report-01.png",
+          "link": "https://creasion.org/storage/downloads/April2023/CREASION%20-%20Plastic%20Characterization%20Report%202022.docx.pdf"
+        },
+        {
+          "title": "Gloves and Masks",
+          "titleNp": "Gloves and Masks Np",
+          "image": "https://creasion.org/storage/downloads/November2023/WhatsApp%20Image%202023-10-29%20at%202.40.26%20PM%20(1).jpeg",
+          "link": "https://creasion.org/storage/downloads/November2023/Policy%20Brief.pdf"
+        }
+      ]
+    }
+  ]
+}

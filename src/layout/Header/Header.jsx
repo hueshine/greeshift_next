@@ -323,6 +323,10 @@ const Header = () => {
                     <Link className="btn-page" href={"/media"}>
                       {lang == "en" ? "Media" : "मिडिया"}
                     </Link>
+
+                    <Link className="btn-page" href={"/resources"}>
+                      {lang == "en" ? "Resources" : "स्रोतहरू"}
+                    </Link>
                   </div>
                 </div>
               </li>
@@ -353,7 +357,7 @@ const Header = () => {
                 <ButtonList />
               </li>
 
-              <li style={{ marginLeft: "15px" }}>
+              <li className={headerStyle.lang} style={{ marginLeft: "15px" }}>
                 <FormGroup>
                   <FormControlLabel
                     control={
