@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 const Resources = ({ apiData }) => {
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
-  console.log(apiData);
-
   const router = useRouter();
   let lang = router.locale;
 
