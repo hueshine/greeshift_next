@@ -20,6 +20,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 import Link from "next/link";
+import { url } from "inspector";
 
 interface DashboardData {}
 
@@ -31,6 +32,7 @@ interface HomeData {
   homepage: any;
   impacts: any;
   banners: any;
+  sliders: any;
 }
 
 interface NewsItem {
@@ -44,6 +46,12 @@ interface NewsItem {
 
 interface NewsData {
   news: NewsItem[];
+}
+
+interface HeroSlider {
+  title: string;
+  title_np: string;
+  image: string;
 }
 
 export default function Home({
@@ -60,6 +68,8 @@ export default function Home({
   const router = useRouter();
   let lang = router.locale;
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
+  console.log(apiHomeData.sliders);
   return (
     <>
       <Head>
@@ -83,7 +93,36 @@ export default function Home({
       )}
 
       <section className={homeStyle.heroAbout}>
-        <Hero data={apiHomeData.banners} text={apiHomeData.homepage} />
+        <Swiper
+          spaceBetween={30}
+          speed={1500}
+          autoplay={{
+            delay: 7500,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          modules={[Autoplay]}
+          className={homeStyle.hero_slider}
+        >
+          <SwiperSlide>
+            <Hero data={apiHomeData.banners} text={apiHomeData.homepage} />
+          </SwiperSlide>
+
+          {apiHomeData.sliders.map((val: HeroSlider, index: number) => {
+            return (
+              <SwiperSlide key={index}>
+                <div className={homeStyle.hero_image}>
+                  <div>
+                    <img src={`${imageUrl}/${val.image}`} alt="" />
+
+                    <h1>{lang == "en" ? val.title : val.title_np}</h1>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+
         <section className={homeStyle.introAbout}>
           <div className={homeStyle.introAbout_svg}>
             <img src="./introsvg.svg" alt="" />

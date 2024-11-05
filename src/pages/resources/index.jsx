@@ -5,10 +5,10 @@ import style from "./style.module.scss";
 import { Container, Grid } from "@mui/material";
 import { useRouter } from "next/router";
 
-import data from "./data.json";
-
 const Resources = ({ apiData }) => {
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
+  console.log(apiData);
 
   const router = useRouter();
   let lang = router.locale;
@@ -64,6 +64,36 @@ const Resources = ({ apiData }) => {
             </section>
           );
         })}
+
+        <section className={style.report_wrap}>
+          <Container maxWidth="lg">
+            <h4 className={style.section_title}>
+              {lang == "en" ? "Videos" : "Videos"}
+            </h4>
+
+            <Grid container spacing={4}>
+              {apiData.videos.map((val, index) => {
+                return (
+                  <Grid item md={6} key={index}>
+                    <div className={style.video_wrap}>
+                      <iframe
+                        width="560"
+                        height="315"
+                        src={`https://www.youtube.com/embed/${val.url}`}
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      ></iframe>
+
+                      <h5>{lang == "en" ? val.title : val.titleNp}</h5>
+                    </div>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Container>
+        </section>
       </section>
     </>
   );
