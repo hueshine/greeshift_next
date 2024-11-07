@@ -43,7 +43,7 @@ const Footer = () => {
               </a>
 
               <a href="https://youthinnovationlab.org/" target="_blank">
-                <img src="/Youth_Innovation_Lab.png" alt="" />
+                <img src="/YI-Lab Logo Blue.png" alt="" />
               </a>
             </div>
           </Grid>

@@ -69,7 +69,6 @@ export default function Home({
   let lang = router.locale;
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
-  console.log(apiHomeData.sliders);
   return (
     <>
       <Head>
@@ -97,7 +96,7 @@ export default function Home({
           spaceBetween={30}
           speed={1500}
           autoplay={{
-            delay: 7500,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           loop={true}
