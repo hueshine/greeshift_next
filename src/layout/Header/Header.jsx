@@ -137,7 +137,7 @@ const Header = () => {
             {lang == "en" ? "Pitch Your Ideas" : "तपाईको अवधारणा"}
           </Link>
           <Link href={"/join-the-green-movement/career"}>
-            {lang == "en" ? "Career" : "क्यारियर"}
+            {lang == "en" ? "Career & Opportunities" : "क्यारियर र अवसरहरू"}
           </Link>
         </div>
       </div>
