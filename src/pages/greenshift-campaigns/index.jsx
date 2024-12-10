@@ -12,6 +12,8 @@ const GreenShiftCampaign = ({ apiData }) => {
   const router = useRouter();
   let lang = router.locale;
 
+  console.log(apiData);
+
   return (
     <>
       <Head>
@@ -45,6 +47,10 @@ const GreenShiftCampaign = ({ apiData }) => {
         </Container>
       </section>
 
+      {/* <section className={style.mission_image}>
+        <img src={`${imageUrl}/${apiData.header.basic_og}`} alt="" />
+      </section> */}
+
       <section className={style.mission}>
         <Container maxWidth={"lg"}>
           <div
@@ -57,9 +63,37 @@ const GreenShiftCampaign = ({ apiData }) => {
             }}
           />
 
+          <div className={style.camp_row}>
+            <Grid container spacing={4}>
+              {apiData.campaigns.slice(0, 3).map((val, index) => {
+                let link = val.title.toLowerCase().replace(/\s+/g, "-");
+
+                return (
+                  <Grid item md="4" key={index}>
+                    <div className={style.campaign_card}>
+                      <div className={style.campaign_card_image}>
+                        <Link href={`/greenshift-campaigns/${link}`}>
+                          <img src={`${imageUrl}/${val.image}`} alt="" />
+                        </Link>
+                      </div>
+
+                      <div className={style.text}>
+                        <h4>
+                          <Link href={`/greenshift-campaigns/${link}`}>
+                            {lang == "en" ? val.title : val.title_np}
+                          </Link>
+                        </h4>
+                      </div>
+                    </div>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </div>
+
           <div className={style.see_more}>
             <Button
-              text={lang == "en" ? "GreenShift Campaigns" : "अभियानहरू"}
+              text={lang == "en" ? "See All GreenShift Campaigns" : "अभियानहरू"}
               link={`/greenshift-campaigns/campaigns`}
             ></Button>
           </div>
