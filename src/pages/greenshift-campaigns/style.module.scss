@@ -125,17 +125,19 @@
       }
 
       .readmore {
-        margin-top: 30px;
+        margin-top: 10px;
         font-weight: 600;
         font-size: 15px;
         text-transform: uppercase;
         position: relative;
         transition: 0.5s;
         text-decoration: none;
-        color: #000;
+        color: #fff;
         display: inline-flex;
         align-items: center;
-        color: #33b2b6;
+        background-color: #33b2b6;
+        padding: 15px 30px;
+        border-radius: 30px;
 
         svg {
           margin-left: 8px;

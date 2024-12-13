@@ -47,9 +47,9 @@ const GreenShiftCampaign = ({ apiData }) => {
         </Container>
       </section>
 
-      {/* <section className={style.mission_image}>
+      <section className={style.mission_image}>
         <img src={`${imageUrl}/${apiData.header.basic_og}`} alt="" />
-      </section> */}
+      </section>
 
       <section className={style.mission}>
         <Container maxWidth={"lg"}>
