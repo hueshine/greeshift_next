@@ -12,8 +12,6 @@ const GreenShiftCampaign = ({ apiData }) => {
   const router = useRouter();
   let lang = router.locale;
 
-  console.log(apiData);
-
   return (
     <>
       <Head>
