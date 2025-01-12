@@ -23,9 +23,11 @@ const Activity = ({ data, newsData }) => {
 
   let selectedData = data;
 
-  let selectedNews = newsData.filter(
-    (el) => el.activity === selectedData.title
-  );
+  let selectedNews = [];
+
+  if (newsData) {
+    selectedNews = newsData.filter((el) => el.activity === selectedData.title);
+  }
 
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
 
@@ -240,27 +242,29 @@ const Activity = ({ data, newsData }) => {
               },
             }}
           >
-            {selectedNews.map((val, index) => {
-              let link = val.title.toLowerCase().replace(/\s+/g, "-");
-              return (
-                <SwiperSlide key={index}>
-                  <div className={style.news_wrap}>
-                    <div className={style.news_wrap_image}>
-                      <img src={`${imageUrl}/${val.image}`} alt="" />
-                    </div>
-                    <div className={style.news_wrap_text}>
-                      <h6>{lang == "en" ? val.title : val.title_np}</h6>
+            {selectedNews &&
+              selectedNews.length > 0 &&
+              selectedNews.map((val, index) => {
+                let link = val.title.toLowerCase().replace(/\s+/g, "-");
+                return (
+                  <SwiperSlide key={index}>
+                    <div className={style.news_wrap}>
+                      <div className={style.news_wrap_image}>
+                        <img src={`${imageUrl}/${val.image}`} alt={val.title} />
+                      </div>
+                      <div className={style.news_wrap_text}>
+                        <h6>{lang === "en" ? val.title : val.title_np}</h6>
 
-                      <span>{val.date}</span>
+                        <span>{val.date}</span>
 
-                      <Link href={`/news-and-updates/${link}`}>
-                        {lang == "en" ? "Read More" : "थप पढ्नुहोस्"}
-                      </Link>
+                        <Link href={`/news-and-updates/${link}`}>
+                          {lang === "en" ? "Read More" : "थप पढ्नुहोस्"}
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
+                  </SwiperSlide>
+                );
+              })}
           </Swiper>
         </Container>
       </section>

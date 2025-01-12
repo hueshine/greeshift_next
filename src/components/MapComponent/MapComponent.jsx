@@ -147,6 +147,27 @@ const MapComponent = ({ mapData, mapText }) => {
       ],
     };
 
+    const studentGender = {
+      ...genderStyle,
+      series: [
+        {
+          data: [
+            {
+              y: allDataIndex
+                ? MunicipalityData.allData.studentReached.femalePercentage
+                : selectedMunicipality.dashboard.studentReached
+                    .femalePercentage,
+            },
+            {
+              y: allDataIndex
+                ? MunicipalityData.allData.studentReached.malePercentage
+                : selectedMunicipality.dashboard.studentReached.malePercentage,
+            },
+          ],
+        },
+      ],
+    };
+
     const ethinicity = {
       ...ethinicityStyle,
 
@@ -294,6 +315,36 @@ const MapComponent = ({ mapData, mapText }) => {
               <Grid item xs={12} md={4}>
                 <div
                   className={componentStyle.chart_card}
+                  style={{ display: "block" }}
+                >
+                  <div className={componentStyle.chart_title}>
+                    <h6>{selectedMunicipality.dashboard.youthReached.title}</h6>
+                  </div>
+
+                  <div>
+                    <HighchartsReact
+                      highcharts={Highcharts}
+                      options={youthReached}
+                    />
+
+                    <div
+                      className={componentStyle.chart_title}
+                      style={{ textAlign: "center" }}
+                    >
+                      <h2>
+                        {selectedMunicipality.dashboard.youthReached.reached}
+                      </h2>
+                      <h6>
+                        {selectedMunicipality.dashboard.youthReached.countTitle}
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </Grid>
+
+              {/* <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
                   style={{ height: "307px" }}
                 >
                   <div className={componentStyle.numbers}>
@@ -312,7 +363,7 @@ const MapComponent = ({ mapData, mapText }) => {
                     </h6>
                   </div>
                 </div>
-              </Grid>
+              </Grid> */}
 
               <Grid item xs={12} md={8}>
                 <div
@@ -368,31 +419,36 @@ const MapComponent = ({ mapData, mapText }) => {
               </Grid>
 
               <Grid item xs={12} md={4}>
+                <div className={componentStyle.chart_card}>
+                  <div className={componentStyle.numbers}>
+                    <img
+                      src={`${imageUrl}/${selectedMunicipality.dashboard.communityAwareness.icon}`}
+                      alt=""
+                    />
+                    <h2>
+                      {selectedMunicipality.dashboard.communityAwareness.count}
+                    </h2>
+                    <h6>
+                      {selectedMunicipality.dashboard.communityAwareness.title}
+                    </h6>
+                  </div>
+                </div>
+
                 <div
                   className={componentStyle.chart_card}
-                  style={{ display: "block" }}
+                  style={{ height: "auto" }}
                 >
-                  <div className={componentStyle.chart_title}>
-                    <h6>{selectedMunicipality.dashboard.youthReached.title}</h6>
-                  </div>
-
-                  <div>
-                    <HighchartsReact
-                      highcharts={Highcharts}
-                      options={youthReached}
+                  <div className={componentStyle.numbers}>
+                    <img
+                      src={`${imageUrl}/${selectedMunicipality.dashboard.eventsConducted.icon}`}
+                      alt=""
                     />
-
-                    <div
-                      className={componentStyle.chart_title}
-                      style={{ textAlign: "center" }}
-                    >
-                      <h2>
-                        {selectedMunicipality.dashboard.youthReached.reached}
-                      </h2>
-                      <h6>
-                        {selectedMunicipality.dashboard.youthReached.countTitle}
-                      </h6>
-                    </div>
+                    <h2>
+                      {selectedMunicipality.dashboard.eventsConducted.count}
+                    </h2>
+                    <h6>
+                      {selectedMunicipality.dashboard.eventsConducted.title}
+                    </h6>
                   </div>
                 </div>
               </Grid>
@@ -433,42 +489,89 @@ const MapComponent = ({ mapData, mapText }) => {
                 </div>
               </Grid>
 
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={8}>
                 <div
                   className={componentStyle.chart_card}
                   style={{ display: "block" }}
                 >
-                  <div className={componentStyle.chart_title}>
-                    <h6>
-                      {selectedMunicipality.dashboard.studentReached.title}
-                    </h6>
-                  </div>
+                  <Grid container spacing={0}>
+                    <Grid item md={7} xs={12}>
+                      <div>
+                        <div className={componentStyle.chart_title}>
+                          <h6>
+                            {
+                              selectedMunicipality.dashboard.studentReached
+                                .title
+                            }
+                          </h6>
+                        </div>
 
-                  <div>
-                    <HighchartsReact
-                      highcharts={Highcharts}
-                      options={studentReached}
-                    />
+                        <div>
+                          <HighchartsReact
+                            highcharts={Highcharts}
+                            options={studentReached}
+                          />
 
-                    <div
-                      className={componentStyle.chart_title}
-                      style={{ textAlign: "center" }}
-                    >
-                      <h2>
-                        {selectedMunicipality.dashboard.studentReached.reached}
-                      </h2>
-                      <h6>
-                        {
-                          selectedMunicipality.dashboard.studentReached
-                            .countTitle
-                        }
-                      </h6>
-                    </div>
-                  </div>
+                          <div
+                            className={componentStyle.chart_title}
+                            style={{ textAlign: "center" }}
+                          >
+                            <h2>
+                              {
+                                selectedMunicipality.dashboard.studentReached
+                                  .reached
+                              }
+                            </h2>
+                            <h6>
+                              {
+                                selectedMunicipality.dashboard.studentReached
+                                  .countTitle
+                              }
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </Grid>
+
+                    <Grid item md={5} xs={12}>
+                      <div style={{ marginTop: "60px" }}>
+                        <HighchartsReact
+                          highcharts={Highcharts}
+                          options={studentGender}
+                        />
+
+                        <Grid container>
+                          <Grid item xs={6} md={6}>
+                            <div className={componentStyle.genderText}>
+                              <h2>
+                                {
+                                  selectedMunicipality.dashboard.studentReached
+                                    .femaleNumber
+                                }
+                              </h2>
+                              <p>Female</p>
+                            </div>
+                          </Grid>
+
+                          <Grid item xs={6} md={6}>
+                            <div className={componentStyle.genderText}>
+                              <h2>
+                                {
+                                  selectedMunicipality.dashboard.studentReached
+                                    .maleNumber
+                                }
+                              </h2>
+                              <p>Male</p>
+                            </div>
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </Grid>
+                  </Grid>
                 </div>
               </Grid>
 
-              <Grid item xs={12} md={4}>
+              {/* <Grid item xs={12} md={4}>
                 <div
                   className={componentStyle.chart_card}
                   style={{ display: "block" }}
@@ -484,7 +587,7 @@ const MapComponent = ({ mapData, mapText }) => {
                     />
                   </div>
                 </div>
-              </Grid>
+              </Grid> */}
             </Grid>
           </div>
         </div>

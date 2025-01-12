@@ -2,7 +2,7 @@ const grantDistributedStyle = {
   chart: {
     type: "line",
     spacing: [10, 10, 10, 10],
-    height: 235,
+    height: 335,
   },
   title: false,
   credits: {
