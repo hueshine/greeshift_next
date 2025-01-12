@@ -77,8 +77,11 @@ const Career = ({ apiData }) => {
                       <div className={style.job_title}>
                         <h4>{val.title}</h4>
                         <p>
-                          Posted:{" "}
-                          {new Date(val.created_at).toLocaleDateString()}
+                          {val.expiry_date
+                            ? `Expiry Date: ${new Date(
+                                val.expiry_date
+                              ).toLocaleDateString()}`
+                            : ""}
                         </p>
                       </div>
 

@@ -321,7 +321,7 @@ const Header = () => {
                       {lang == "en" ? "News & Updates" : "समाचार र अपडेटहरू"}
                     </Link>
                     <Link className="btn-page" href={"/media"}>
-                      {lang == "en" ? "Media" : "मिडिया"}
+                      {lang == "en" ? "Media Coverages" : "मिडिया"}
                     </Link>
 
                     <Link className="btn-page" href={"/resources"}>

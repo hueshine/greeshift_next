@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Banner from "../../layout/Banner/Banner";
 import Head from "next/head";
 
@@ -7,6 +9,13 @@ import { useRouter } from "next/router";
 
 const Blogs = ({ apiData }) => {
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
+  const [filter, setFilter] = useState("all");
+
+  const filteredBlogs =
+    filter === "all"
+      ? apiData.blogs
+      : apiData.blogs.filter((blog) => blog.type === filter);
 
   const router = useRouter();
   let lang = router.locale;
@@ -30,55 +39,51 @@ const Blogs = ({ apiData }) => {
 
       <div className={style.blog_wrapper}>
         <Container maxWidth={"lg"}>
+          <div className={style.filter_buttons}>
+            <button
+              className={filter === "all" ? style.active : ""}
+              onClick={() => setFilter("all")}
+            >
+              All
+            </button>
+            <button
+              className={filter === "blog" ? style.active : ""}
+              onClick={() => setFilter("blog")}
+            >
+              Blogs
+            </button>
+            <button
+              className={filter === "story" ? style.active : ""}
+              onClick={() => setFilter("story")}
+            >
+              Field Stories
+            </button>
+          </div>
+
           <Grid container spacing={4}>
-            <Grid item sm={12}>
-              <div className={style.blog_latest}>
-                <div className={style.image}>
-                  <img src={`${imageUrl}/${apiData.blogs[0].image}`} alt="" />
-                </div>
-                <div className={style.text}>
-                  <h4>
-                    {lang == "en"
-                      ? apiData.blogs[0].title
-                      : apiData.blogs[0].title_np}
-                  </h4>
-                  <span>
-                    {lang == "en"
-                      ? apiData.blogs[0].author
-                      : apiData.blogs[0].author_np}{" "}
-                    | {apiData.blogs[0].date}
-                  </span>
-
-                  <div
-                    className={style.blog_text}
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        lang == "en"
-                          ? apiData.blogs[0].text
-                          : apiData.blogs[0].text_np,
-                    }}
-                  />
-
-                  <Link
-                    href={`/blog-and-field-stories/${apiData.blogs[0].title
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                  >
-                    {lang == "en" ? "Read More" : "थप पढ्नुहोस्"}
-                  </Link>
-                </div>
-              </div>
-            </Grid>
-
-            {apiData.blogs.slice(1).map((val, index) => {
+            {filteredBlogs.map((val, index) => {
               let link = val.title.toLowerCase().replace(/\s+/g, "-");
+
               return (
-                <Grid key={index} item md={4} xs={12}>
-                  <div className={style.blog_grid}>
+                <Grid key={index} item md={index === 0 ? 12 : 4} xs={12}>
+                  <div
+                    className={
+                      index === 0 ? style.blog_latest : style.blog_grid
+                    }
+                  >
                     <div className={style.image}>
                       <img src={`${imageUrl}/${val.image}`} alt="" />
                     </div>
                     <div className={style.text}>
+                      <p
+                        className={
+                          val.type === "blog"
+                            ? `${style.blog_type} ${style.blog}`
+                            : `${style.blog_type} ${style.story}`
+                        }
+                      >
+                        {val.type === "blog" ? "Blogs" : "Field Stories"}
+                      </p>
                       <h4>{lang == "en" ? val.title : val.title_np}</h4>
                       <span>
                         {lang == "en" ? val.author : val.author_np} | {val.date}
