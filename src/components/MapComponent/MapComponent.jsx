@@ -372,7 +372,7 @@ const MapComponent = ({ mapData, mapText }) => {
                 >
                   <div>
                     <div className={componentStyle.chart_title}>
-                      <h6>Total Number of People Reached</h6>
+                      <h6>Total Number of Community People Reached</h6>
                     </div>
 
                     <Grid container spacing={2}>
