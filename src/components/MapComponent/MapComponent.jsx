@@ -453,43 +453,77 @@ const MapComponent = ({ mapData, mapText }) => {
                 </div>
               </Grid>
 
-              <Grid item xs={12} md={4}>
-                <div
-                  className={componentStyle.chart_card}
-                  style={{ height: "130px" }}
-                >
-                  <div className={componentStyle.numbers}>
-                    <h2>{selectedMunicipality.dashboard.campaign.count}</h2>
-                    <h6>{selectedMunicipality.dashboard.campaign.title}</h6>
-                  </div>
-                </div>
+              <Grid item xs={12} md={5}>
+                <Grid container spacing={0} columnSpacing={2}>
+                  <Grid item xs={12} md={6}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ height: "195px" }}
+                    >
+                      <div className={componentStyle.numbers}>
+                        <h2>{selectedMunicipality.dashboard.campaign.count}</h2>
+                        <h6>{selectedMunicipality.dashboard.campaign.title}</h6>
+                      </div>
+                    </div>
+                  </Grid>
 
-                <div
-                  className={componentStyle.chart_card}
-                  style={{ height: "130px" }}
-                >
-                  <div className={componentStyle.numbers}>
-                    <h2>{selectedMunicipality.dashboard.tagMePoints.count}</h2>
-                    <h6>{selectedMunicipality.dashboard.tagMePoints.title}</h6>
-                  </div>
-                </div>
+                  <Grid item xs={12} md={6}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ height: "195px" }}
+                    >
+                      <div className={componentStyle.numbers}>
+                        <h2>
+                          {selectedMunicipality.dashboard.tagMePoints.count}
+                        </h2>
+                        <h6>
+                          {selectedMunicipality.dashboard.tagMePoints.title}
+                        </h6>
+                      </div>
+                    </div>
+                  </Grid>
 
-                <div
-                  className={componentStyle.chart_card}
-                  style={{ height: "130px" }}
-                >
-                  <div className={componentStyle.numbers}>
-                    <h2>
-                      {selectedMunicipality.dashboard.govermentOfficial.count}
-                    </h2>
-                    <h6>
-                      {selectedMunicipality.dashboard.govermentOfficial.title}
-                    </h6>
-                  </div>
-                </div>
+                  <Grid item xs={12} md={6}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ height: "195px" }}
+                    >
+                      <div className={componentStyle.numbers}>
+                        <h2>
+                          {
+                            selectedMunicipality.dashboard.govermentOfficial
+                              .count
+                          }
+                        </h2>
+                        <h6>
+                          {
+                            selectedMunicipality.dashboard.govermentOfficial
+                              .title
+                          }
+                        </h6>
+                      </div>
+                    </div>
+                  </Grid>
+
+                  <Grid item xs={12} md={6}>
+                    <div
+                      className={componentStyle.chart_card}
+                      style={{ height: "195px" }}
+                    >
+                      <div className={componentStyle.numbers}>
+                        <h2>
+                          {selectedMunicipality.dashboard.youthNumber.count}
+                        </h2>
+                        <h6>
+                          {selectedMunicipality.dashboard.youthNumber.title}
+                        </h6>
+                      </div>
+                    </div>
+                  </Grid>
+                </Grid>
               </Grid>
 
-              <Grid item xs={12} md={8}>
+              <Grid item xs={12} md={7}>
                 <div
                   className={componentStyle.chart_card}
                   style={{ display: "block" }}
