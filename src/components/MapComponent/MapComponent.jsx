@@ -342,29 +342,6 @@ const MapComponent = ({ mapData, mapText }) => {
                 </div>
               </Grid>
 
-              {/* <Grid item xs={12} md={4}>
-                <div
-                  className={componentStyle.chart_card}
-                  style={{ height: "307px" }}
-                >
-                  <div className={componentStyle.numbers}>
-                    <img
-                      src={`${imageUrl}/${selectedMunicipality.dashboard.plasticCollected.icon}`}
-                      alt=""
-                    />
-                    <h2>
-                      {selectedMunicipality.dashboard.plasticCollected.count}
-                    </h2>
-                    <p>
-                      {selectedMunicipality.dashboard.plasticCollected.unit}
-                    </p>
-                    <h6>
-                      {selectedMunicipality.dashboard.plasticCollected.title}
-                    </h6>
-                  </div>
-                </div>
-              </Grid> */}
-
               <Grid item xs={12} md={8}>
                 <div
                   className={componentStyle.chart_card}
@@ -419,7 +396,33 @@ const MapComponent = ({ mapData, mapText }) => {
               </Grid>
 
               <Grid item xs={12} md={4}>
-                <div className={componentStyle.chart_card}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "407px" }}
+                >
+                  <div className={componentStyle.numbers}>
+                    <img
+                      src={`${imageUrl}/${selectedMunicipality.dashboard.plasticCollected.icon}`}
+                      alt=""
+                    />
+                    <h2>
+                      {selectedMunicipality.dashboard.plasticCollected.count}
+                    </h2>
+                    <p>
+                      {selectedMunicipality.dashboard.plasticCollected.unit}
+                    </p>
+                    <h6>
+                      {selectedMunicipality.dashboard.plasticCollected.title}
+                    </h6>
+                  </div>
+                </div>
+              </Grid>
+
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "185px" }}
+                >
                   <div className={componentStyle.numbers}>
                     <img
                       src={`${imageUrl}/${selectedMunicipality.dashboard.communityAwareness.icon}`}
@@ -436,7 +439,7 @@ const MapComponent = ({ mapData, mapText }) => {
 
                 <div
                   className={componentStyle.chart_card}
-                  style={{ height: "auto" }}
+                  style={{ height: "200px" }}
                 >
                   <div className={componentStyle.numbers}>
                     <img
@@ -448,42 +451,6 @@ const MapComponent = ({ mapData, mapText }) => {
                     </h2>
                     <h6>
                       {selectedMunicipality.dashboard.eventsConducted.title}
-                    </h6>
-                  </div>
-                </div>
-              </Grid>
-
-              <Grid item xs={12} md={4}>
-                <div
-                  className={componentStyle.chart_card}
-                  style={{ height: "130px" }}
-                >
-                  <div className={componentStyle.numbers}>
-                    <h2>{selectedMunicipality.dashboard.campaign.count}</h2>
-                    <h6>{selectedMunicipality.dashboard.campaign.title}</h6>
-                  </div>
-                </div>
-
-                <div
-                  className={componentStyle.chart_card}
-                  style={{ height: "130px" }}
-                >
-                  <div className={componentStyle.numbers}>
-                    <h2>{selectedMunicipality.dashboard.tagMePoints.count}</h2>
-                    <h6>{selectedMunicipality.dashboard.tagMePoints.title}</h6>
-                  </div>
-                </div>
-
-                <div
-                  className={componentStyle.chart_card}
-                  style={{ height: "130px" }}
-                >
-                  <div className={componentStyle.numbers}>
-                    <h2>
-                      {selectedMunicipality.dashboard.govermentOfficial.count}
-                    </h2>
-                    <h6>
-                      {selectedMunicipality.dashboard.govermentOfficial.title}
                     </h6>
                   </div>
                 </div>
@@ -568,6 +535,45 @@ const MapComponent = ({ mapData, mapText }) => {
                       </div>
                     </Grid>
                   </Grid>
+                </div>
+              </Grid>
+
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "160px" }}
+                >
+                  <div className={componentStyle.numbers}>
+                    <h2>{selectedMunicipality.dashboard.campaign.count}</h2>
+                    <h6>{selectedMunicipality.dashboard.campaign.title}</h6>
+                  </div>
+                </div>
+              </Grid>
+
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "160px" }}
+                >
+                  <div className={componentStyle.numbers}>
+                    <h2>{selectedMunicipality.dashboard.tagMePoints.count}</h2>
+                    <h6>{selectedMunicipality.dashboard.tagMePoints.title}</h6>
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <div
+                  className={componentStyle.chart_card}
+                  style={{ height: "160px" }}
+                >
+                  <div className={componentStyle.numbers}>
+                    <h2>
+                      {selectedMunicipality.dashboard.govermentOfficial.count}
+                    </h2>
+                    <h6>
+                      {selectedMunicipality.dashboard.govermentOfficial.title}
+                    </h6>
+                  </div>
                 </div>
               </Grid>
 

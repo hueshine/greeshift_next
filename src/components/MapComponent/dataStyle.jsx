@@ -176,7 +176,7 @@ const pieChartDataStyle = {
   chart: {
     type: "pie",
     spacing: [10, 10, 10, 10],
-    height: 212,
+    height: 190,
   },
   credits: {
     enabled: false,
