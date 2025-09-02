@@ -195,9 +195,9 @@ const Header = () => {
                     <Link className="btn-page" href={"/impacts"}>
                       {lang == "en" ? "Impacts" : "असर/प्रभाव"}
                     </Link>
-                    <Link className="btn-page" href={"/team"}>
+                    {/* <Link className="btn-page" href={"/team"}>
                       {lang == "en" ? "Team" : "टिम"}
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </li>
