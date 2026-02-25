@@ -9,7 +9,7 @@ import { Container, Grid } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 import { Marker, Map, Source, Layer, Popup } from "react-map-gl";
-import mapboxgl from "!mapbox-gl";
+import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import NepalMap from "./data/MapOfNepal.json";
@@ -66,7 +66,7 @@ const MapComponent = ({ mapData, mapText }) => {
   );
 
   mapboxgl.accessToken =
-    "pk.eyJ1IjoieW9nZXNoa2Fya2kiLCJhIjoiY2txZXphNHNlMGNybDJ1cXVmeXFiZzB1eSJ9.A7dJUR4ppKJDKWZypF_0lA";
+    "process.env.NEXT_PUBLIC_MAPBOX_TOKEN";
 
   const viewportXl = {
     ...viewportCommon,
