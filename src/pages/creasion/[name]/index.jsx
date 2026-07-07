@@ -16,7 +16,7 @@ const Creasion = () => {
   useIsomorphicLayoutEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        "https://www.app.greenshift.creasion.org/api/activities"
+        "https://www.app.greenshift.creasion.org/api/activities",
       );
       const apiData = await res.json();
 
@@ -26,7 +26,7 @@ const Creasion = () => {
 
     const fetchNewsData = async () => {
       const res = await fetch(
-        "https://www.app.greenshift.creasion.org/api/news"
+        "https://www.app.greenshift.creasion.org/api/news",
       );
       const apiNewsData = await res.json();
 
@@ -45,11 +45,15 @@ const Creasion = () => {
 
   if (activityData) {
     selectedData = activityData.find(
-      (el) => el.title.toLowerCase().replace(/\s+/g, "-") === name
+      (el) => el.title.toLowerCase().replace(/\s+/g, "-") === name,
     );
   }
 
   let imageUrl = "https://www.app.greenshift.creasion.org/storage";
+
+  const ogImage = selectedData?.images?.[0]
+    ? `${imageUrl}/${selectedData.images[0]}`
+    : "/creasion 1.png";
 
   return (
     <>
@@ -57,10 +61,8 @@ const Creasion = () => {
         <>
           <Head>
             <title>{selectedData.title} | Green Shift Nepal</title>
-            <meta
-              property="og:image"
-              content={`${imageUrl}/${selectedData.images[0]}`}
-            />
+
+            <meta property="og:image" content={ogImage} />
             <meta property="og:image:width" content="640" />
             <meta property="og:image:height" content="442" />
           </Head>

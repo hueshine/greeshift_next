@@ -190,20 +190,22 @@ const Activity = ({ data, newsData }) => {
               },
             }}
           >
-            {selectedData.images.map((img, index) => {
-              return (
-                <SwiperSlide className={style.image_slide} key={index}>
-                  <a data-fancybox="gallery" href={`${imageUrl}/${img}`}>
-                    <img src={`${imageUrl}/${img}`} alt="" />
-                    <p>
-                      {lang == "en"
-                        ? selectedData.subtitle[index]
-                        : selectedData.subtitle_np[index]}
-                    </p>
-                  </a>
-                </SwiperSlide>
-              );
-            })}
+            {selectedData?.images?.length > 0
+              ? selectedData.images.map((img, index) => {
+                  return (
+                    <SwiperSlide className={style.image_slide} key={index}>
+                      <a data-fancybox="gallery" href={`${imageUrl}/${img}`}>
+                        <img src={`${imageUrl}/${img}`} alt="" />
+                        <p>
+                          {lang == "en"
+                            ? selectedData.subtitle[index]
+                            : selectedData.subtitle_np[index]}
+                        </p>
+                      </a>
+                    </SwiperSlide>
+                  );
+                })
+              : null}
           </Swiper>
         </section>
       </Fancybox>
@@ -212,9 +214,11 @@ const Activity = ({ data, newsData }) => {
         <Container maxWidth={"lg"}>
           <h3>{lang == "en" ? "SDG Contributions" : "एसडीजीका योगदानहरु"} </h3>
           <div className={style.sdg_flex}>
-            {selectedData.sdg.map((val, index) => {
-              return <img src={`/sdg/${val}.png`} alt="" key={index} />;
-            })}
+            {selectedData?.sdg?.length > 0
+              ? selectedData.sdg.map((val, index) => (
+                  <img src={`/sdg/${val}.png`} alt="" key={index} />
+                ))
+              : null}
           </div>
         </Container>
       </section>
